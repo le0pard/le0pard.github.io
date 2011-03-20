@@ -60,9 +60,9 @@ a:hover{
   border-top: 1px solid #000;
   background: url(/images/bg_dark.png) 0 0 repeat;
   
-  -moz-box-shadow:inset 0px 0px 5px #000000;
-  -webkit-box-shadow:inset 0px 0px 5px #000000;
-  box-shadow:inset 0px 0px 5px #000000;
+  -moz-box-shadow: 0 0 1px inset #555;
+  -webkit-box-shadow: 0 0 1px inset #555;
+  box-shadow: 0 0 1px inset #555;
   width: 100%;
 }
 
@@ -200,7 +200,7 @@ a:hover{
 
 .work_maket_footer h1 {
   font-size: 1.6em;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .work_maket_footer .features ul {
@@ -212,6 +212,8 @@ a:hover{
 .work_maket_footer .features ul li {
   background: url(/images/bullet.png) 0 2px no-repeat;
   padding-left: 25px;
+  font-size: 14px; 
+  color: #999;
 }
 
 .work_maket_footer .media{
