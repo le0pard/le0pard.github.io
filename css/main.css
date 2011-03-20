@@ -243,6 +243,7 @@ a:hover{
   border: 5px solid #585D58;
   float: left;
   height: 100px;
+  position: relative;
 }
 
 .work_maket_footer .media a{
@@ -250,4 +251,8 @@ a:hover{
   border: 0;
   padding: 0;
   margin: 0;
+}
+
+.work_maket_footer .media ul li a {
+  position: absolute; top: -10px; right: -10px;
 }
