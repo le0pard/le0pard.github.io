@@ -4,7 +4,6 @@ body {
 	color: #FFF;
   background: #101112 url(/images/bg.jpg) 0 0 repeat;
   text-shadow: rgba(0,0,0,.8) 0 -1px 0;
-  text-align: center;
   font:16px/24px "Helvetica Neue",HelveticaNeue,Helvetica,arial,sans;
 }
 
