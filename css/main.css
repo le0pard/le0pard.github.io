@@ -60,9 +60,9 @@ a:hover{
   border-top: 1px solid #000;
   background: url(/images/bg_dark.png) 0 0 repeat;
   
-  -moz-box-shadow: 0 0 1px inset #555;
-  -webkit-box-shadow: 0 0 1px inset #555;
-  box-shadow: 0 0 1px inset #555;
+  -moz-box-shadow: 0 0 1px #555 inset;
+  -webkit-box-shadow: 0 0 1px #555 inset;
+  box-shadow: 0 0 1px #555 inset;
   width: 100%;
 }
 
