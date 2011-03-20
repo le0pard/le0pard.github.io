@@ -102,7 +102,7 @@ a:hover{
 .work_maket .main_img {
   width: 440px;
   height: 627px;
-  top: -40px;
+  top: 0;
   left: 0;
   position: absolute;
   padding-top: 73px;
@@ -180,7 +180,7 @@ a:hover{
   background: url(/images/bg_dark.png) 0 0 repeat;
   min-height: 200px;
   border-top: 1px solid #000;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .work_maket_footer{
