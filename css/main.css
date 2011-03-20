@@ -1,7 +1,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	color: #666;
+	color: #FFF;
   background: #101112 url(/images/bg.jpg) 0 0 repeat;
   text-shadow: rgba(0,0,0,.8) 0 -1px 0;
   text-align: center;
@@ -60,10 +60,10 @@ a:hover{
 
 
 .work_maket {
-  width: 650px;
+  width: 500px;
   text-align: left;
   margin: 0 auto;
-  padding-left: 450px;
+  padding-left: 480px;
   position: relative;
   margin-top: 50px;
 }
@@ -81,4 +81,89 @@ a:hover{
   padding-top: 73px;
   padding-left: 15px;
   background: url(/images/works/android/shakemute/phones.png) 0 0 no-repeat;
+}
+
+.work_maket .description {
+  margin: 20px 0;
+  font-size: 1.2em;
+}
+
+.work_maket .download{
+  width: 100%;
+  display: block;
+}
+
+.work_maket .download .left{
+  float: left;
+}
+
+.work_maket .download .left #dl {
+  display: block;
+  background: url(/images/works/android/shakemute/market_btn.png) 0 0 no-repeat;
+  width: 245px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: rgba(0, 0, 0, .4) 0 1px 1px;
+  text-decoration: none;
+  line-height: 16px;
+  padding:0;
+  min-height: 85px;
+  border: 0;
+}
+
+.work_maket .download .left #dl:hover {
+  background: url(/images/works/android/shakemute/market_hover_btn.png) 0 0 no-repeat;
+}
+
+.work_maket .download .left .market_free{
+  margin: 10px 0;
+  line-height: 18px;
+  background: #2B2B2B;
+  border-bottom: 1px solid #585D58;
+  border-top: 1px solid #585D58;
+  border-right: 1px solid #585D58;
+  -moz-border-radius:0px 10px 10px 0px;
+  -webkit-border-radius:0px 10px 10px 0px;
+  border-radius:0px 10px 10px 0px;
+  padding: 18px;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+
+.work_maket .download .left .market_free a{
+  text-decoration: none;
+  border: 0;
+}
+
+.work_maket .amplitude{
+  background: url(/images/works/android/shakemute/amplitude.png) 0 30px repeat-x;
+}
+
+.work_maket .barcode{
+  margin-top: 10px;
+  padding: 10px;
+  background: #2B2B2B;
+  display: block;
+  width: 200px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  border: 1px solid #585D58;
+}
+
+
+.work_maket_footer{
+  width: 100%;
+  margin-top: 100px;
+  border-top: 1px solid #000;
+  background: url(/images/bg_dark.png) 0 0 repeat;
+  min-height: 200px;
+  
+  -moz-border-radius:9px;
+  -webkit-border-radius:9px;
+  border-radius:9px;
+  -moz-box-shadow:0px 0px 10px #000000;
+  -webkit-box-shadow:0px 0px 10px #000000;
+  box-shadow:0px 0px 10px #000000;
 }
