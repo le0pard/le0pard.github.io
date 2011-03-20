@@ -193,10 +193,7 @@ a:hover{
 .work_maket_footer .features{
   float: left;
   width: 43%;
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 3% 40px 10px;
   text-align: left;
   border-right: 1px solid #585D58;
 }
