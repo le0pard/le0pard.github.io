@@ -156,10 +156,6 @@ a:hover{
   border: 0;
 }
 
-.work_maket .amplitude{
-  background: url(/images/works/android/shakemute/amplitude.png) 0 30px repeat-x;
-}
-
 .work_maket .barcode{
   margin-top: 10px;
   padding: 10px;
@@ -173,17 +169,18 @@ a:hover{
   border: 1px solid #585D58;
 }
 
-
-.work_maket_footer{
-  width: 100%;
-  margin-top: 100px;
-  border-top: 1px solid #000;
+.work_maket_box_footer{
   background: url(/images/bg_dark.png) 0 0 repeat;
   min-height: 200px;
-  
-  -moz-box-shadow:inset 0px 0px 5px #000000;
-  -webkit-box-shadow:inset 0px 0px 5px #000000;
-  box-shadow:inset 0px 0px 5px #000000;
+  border-top: 1px solid #000;
+  margin-top: 100px;
+}
+
+.work_maket_footer{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(/images/bg_dark.png) 0 0 repeat;
 }
 
 .work_maket_footer .features{
