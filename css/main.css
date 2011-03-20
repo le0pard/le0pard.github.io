@@ -69,11 +69,14 @@ a:hover{
 #footer div.about {
   display: block;
   padding: 0;
-  width: 20em;
   margin: auto;
   line-height: 16px;
   height: 30px;
   padding-top: 15px;
+  width: 980px; 
+  font-size: 12px; 
+  color: #aaa; 
+  text-align: left;
 }
 
 
