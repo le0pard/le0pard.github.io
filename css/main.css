@@ -1,0 +1,84 @@
+body {
+	padding: 0;
+	margin: 0;
+	color: #666;
+  background: #101112 url(/images/bg.jpg) 0 0 repeat;
+  text-shadow: rgba(0,0,0,.8) 0 -1px 0;
+  text-align: center;
+  font:16px/24px "Helvetica Neue",HelveticaNeue,Helvetica,arial,sans;
+}
+
+a {
+  color: #CCC;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
+
+a:hover{
+  color:#56b80e;
+}
+
+#header {
+  border-bottom: 1px solid #000;
+  padding: 0;
+  color: #AAA;
+  background: #101112 url(/images/topmenu.png) 0 0 repeat-x;
+  height: 50px;
+  width: 100%;
+}
+
+#header ul.toplist {
+  list-style-type: none;
+  display: block;
+  padding: 0;
+  width: 20em;
+  margin: auto;
+}
+
+#header ul.toplist li {
+  float: left;
+  display: list-item;
+}
+
+#header ul.toplist li a {
+  line-height: 30px;
+  display: block;
+  text-decoration: none;
+  margin: 10px 15px;
+  border-bottom: none;
+}
+
+#content {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 970px;
+  max-width: 1200px;
+}
+
+
+.work_maket {
+  width: 650px;
+  text-align: left;
+  margin: 0 auto;
+  padding-left: 450px;
+  position: relative;
+  margin-top: 50px;
+}
+
+.work_maket h1 {
+  margin-bottom: 9px;
+}
+
+.work_maket .main_img {
+  width: 440px;
+  height: 627px;
+  top: -40px;
+  left: 0;
+  position: absolute;
+  padding-top: 73px;
+  padding-left: 15px;
+  background: url(/images/works/android/shakemute/phones.png) 0 0 no-repeat;
+}

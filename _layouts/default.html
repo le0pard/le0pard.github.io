@@ -3,11 +3,15 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <title>{{ page.title }}</title>
+   <link rel="stylesheet" href="/css/reset.css" type="text/css" />
    <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+   <link rel="stylesheet" href="/css/main.css" type="text/css" />
 </head>
 <body>
   {% include header.html %}
-  {{ content }}
+  <div id="content">
+    {{ content }}
+  </div>
   {% include footer.html %}
 </body>
 </html>
