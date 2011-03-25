@@ -85,6 +85,11 @@ a:hover{
   width: 100%;
 }
 
+.cat_amplit {
+  background: url(/images/works/android/cat/catpaws.png) 10px 370px repeat-x;
+  width: 100%;
+}
+
 .work_maket {
   width: 500px;
   text-align: left;
@@ -92,6 +97,7 @@ a:hover{
   padding-top: 50px;
   padding-left: 480px;
   position: relative;
+  min-height: 525px;
 }
 
 .work_maket h1 {
@@ -106,7 +112,14 @@ a:hover{
   position: absolute;
   padding-top: 73px;
   padding-left: 15px;
+}
+
+.work_maket .main_shake_img {
   background: url(/images/works/android/shakemute/phones.png) 0 0 no-repeat;
+}
+
+.work_maket .main_cat_img {
+  background: url(/images/works/android/cat/phones.png) 0 0 no-repeat;
 }
 
 .work_maket .description {
