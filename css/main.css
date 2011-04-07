@@ -1,10 +1,11 @@
 body {
-	padding: 0;
-	margin: 0;
-	color: #FFF;
+  padding: 0;
+  margin: 0;
+  color: #FFF;
   background: #101112 url(/images/bg.jpg) 0 0 repeat;
   text-shadow: rgba(0,0,0,.8) 0 -1px 0;
   font:16px/24px "Helvetica Neue",HelveticaNeue,Helvetica,arial,sans;
+  height: 100%;
 }
 
 a {
@@ -53,16 +54,19 @@ a:hover{
   margin-left: auto;
   margin-right: auto;
   min-width: 800px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
 }
 
 #footer {
   border-top: 1px solid #000;
   background: url(/images/bg_dark.png) 0 0 repeat;
-  
   -moz-box-shadow: 0 0 1px #555 inset;
   -webkit-box-shadow: 0 0 1px #555 inset;
   box-shadow: 0 0 1px #555 inset;
   width: 100%;
+  
 }
 
 #footer div.about {
