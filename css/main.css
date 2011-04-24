@@ -29,7 +29,7 @@ a:hover{
   list-style-type: none;
   display: block;
   padding: 0;
-  width: 20em;
+  width: 0;
   margin: auto;
 }
 
@@ -90,6 +90,11 @@ a:hover{
   width: 100%;
 }
 
+.popcornua_amplit {
+  background: url(/images/works/android/popcornua/repeat.png) 26px 370px repeat-x;
+  width: 100%;
+}
+
 .work_maket {
   width: 500px;
   text-align: left;
@@ -120,6 +125,10 @@ a:hover{
 
 .work_maket .main_cat_img {
   background: url(/images/works/android/cat/phones.png) 0 0 no-repeat;
+}
+
+.work_maket .main_popcornua_img {
+  background: url(/images/works/android/popcornua/photo.png) 0 0 no-repeat;
 }
 
 .work_maket .description {

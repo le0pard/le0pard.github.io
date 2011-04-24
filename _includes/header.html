@@ -1,10 +1,5 @@
 <div id="header">
   <ul class="toplist">
     <li><a href="/"><img style="padding-top:6px;" src="/images/home_btn.png" alt="Home" title="Home" /></a></li>
-    <li><a href="#">Portfolio</a></li>
-    {% for post in site.categories.about limit:1 %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-    <li><a href="#">Blog</a></li>
   </ul>
 </div>
