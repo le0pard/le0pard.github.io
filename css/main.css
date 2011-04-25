@@ -82,6 +82,17 @@ a:hover{
   text-align: left;
 }
 
+.main_page{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main_page_box{
+  min-height: 400px;
+  margin-top: 70px;
+}
+
 
 
 .amplit {
@@ -215,7 +226,25 @@ a:hover{
   background: url(/images/bg_dark.png) 0 0 repeat;
 }
 
-.work_maket_footer .features{
+.main_page .slogan {
+  float: left;
+  width: 43%;
+  margin: 20px 3% 40px 10px;
+  text-align: left;
+}
+
+.main_page .slogan h1 {
+  font-family: 'Bangers', arial, serif;
+  font-size: 4em;
+  line-height: 1em;
+}
+
+.main_page .slogan h1.blue {
+  font-size: 5em;
+  color: #35B6D6;
+}
+
+.work_maket_footer .features {
   float: left;
   width: 43%;
   margin: 20px 3% 40px 10px;
@@ -228,20 +257,20 @@ a:hover{
   margin-bottom: 15px;
 }
 
-.work_maket_footer .features ul {
+.work_maket_footer .features ul, .main_page .slogan ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.work_maket_footer .features ul li {
+.work_maket_footer .features ul li, .main_page .slogan ul li {
   background: url(/images/bullet.png) 0 2px no-repeat;
   padding-left: 25px;
   font-size: 14px; 
   color: #999;
 }
 
-.work_maket_footer .media{
+.work_maket_footer .media, .main_page .catware {
   float: left;
   width: 44%;
   margin-left: 3%;
@@ -251,13 +280,13 @@ a:hover{
   text-align: left;
 }
 
-.work_maket_footer .media ul{
+.work_maket_footer .media ul, .main_page .catware ul{
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.work_maket_footer .media ul li{
+.work_maket_footer .media ul li, .main_page .catware ul li{
   margin: 10px;
   background: #2B2B2B;
   display: block;
@@ -270,18 +299,18 @@ a:hover{
   position: relative;
 }
 
-.work_maket_footer .media a{
+.work_maket_footer .media a, .main_page .catware a{
   text-decoration: none;
   border: 0;
   padding: 0;
   margin: 0;
 }
 
-.work_maket_footer .media ul li span {
+.work_maket_footer .media ul li span, .main_page .catware ul li span {
   position: absolute; top: -20px; right: -20px;
 }
 
-.work_maket_footer .media ul li span.screenshot {
+.work_maket_footer .media ul li span.screenshot, .main_page .catware ul li span.screenshot {
   width: 40px;
   height: 40px;
   background: url(/images/zoom_btn.png) no-repeat;
