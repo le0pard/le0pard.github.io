@@ -1,0 +1,21 @@
+---
+layout: post
+title: Shared memory - снижение нагрузки на сервер с чатом
+wordpress_id: 79
+wordpress_url: http://leopard.in.ua/?p=79
+categories:
+- PHP
+tags:
+- PHP
+- shared memory
+---
+Однажды я работал над чатом, у которого было огромное количество пользователей. Работал чат через базу данных. База данных была очень сильно нагружена, поэтому решили перевести систему на альтернативный метод хранения сообщений (сообщение для нас не сильно важно, хранить их не нужно на сервере, только максимум история на 10-15 сообщений). Решил перевести чат на shared memory. В PHP для этого используется shmop. Shmop это набор легко используемых функций, позволяющих РНР читать , записывать, создавать и удалять сегменты совместно используемой памяти UNIX shared memory). Функции не будут работать в Windows, так как эти ОС не поддерживают shared-память. Для использования shmop вам нужно скомпилировать РНР с параметром --enable-shmop в строке конфигурации. [Подробней тут](http://phpclub.ru/manrus/f/ref.shmop.html)Ниже результат для Intel Pentium VI 2.8 сервера с файлами и shared memory:<!--more-->
+
+
+**IO test on 1000 files**
+
+**IO Result of Regular Directory : 0.079015016555786**
+
+**IO Result of Shared Memory Directory : 0.047761917114258**
+
+******IO test on 10000 files****IO Result of Regular Directory : 3.7090260982513****IO Result of Shared Memory Directory : 0.46256303787231********IO test on 40000 files****IO Result of Regular Directory : 117.35703110695 seconds****IO Result of Shared Memory Directory : 2.6221358776093 seconds**Различие не очень очевидны для 100 файлов. Но когда мы спустимся к уровню 10000 и 40000 файлов, становится довольно очевидно, что Shared memory является лучшим для временного хранения данных (если сервер перегрузить - мы теряем все данные). Для чата очень много комнат, поэтому каждая ячейка памяти - будет одна комната. Вот пример куска кода для работы с Shared memory :)<?php// Создать 100-байтный блок shared memory с системным id if 0xff3$shm_id = shmop_open(0xff3, "c", 0644, 100);if(!$shm_id) {echo "Couldn't create shared memory segment\n";}// Получить размер блока shared memory$shm_size = shmop_size($shm_id);echo "SHM Block Size: ".$shm_size. " has been created.\n";// Запишем тестовой строки в shared memory$shm_bytes_written = shmop_write($shm_id, "my блок shared memory", 0);if($shm_bytes_written != strlen("my блок shared memory")) {echo "Couldn't write the entire length of data\n";}// Теперь прочитаем строку$my_string = shmop_read($shm_id, 0, $shm_size);if(!$my_string) {echo "Couldn't read from блок shared memory\n";}echo "The data inside shared memory was: ".$my_string."\n";// А теперь удалим блок и закроем сегмент shared memory//Но нам это использовать не нужно, максимум в админке поставить кнопку для чистки чата в локацииif(!shmop_delete($shm_id)) {echo "Couldn't mark блок shared memory for deletion.";}shmop_close($shm_id);//Только не для чата это юзать :)?>Тогда я интегрировал эту систему в существующий чат, который использовал до этого postgreSql. Перед нововведением нагрузка на центральный процессор было в среднем 30.6 %, а с shared memory - 3.6 %. Уменьшение нагрузки почти в 10 раз по сравнению с базой данных. Минус один - больше памяти стал использовать сервер.

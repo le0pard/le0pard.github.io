@@ -1,0 +1,13 @@
+---
+layout: post
+title: Браузер для мобильных телефонов от Mozilla доступен для загрузки
+wordpress_id: 481
+wordpress_url: http://leopard.in.ua/?p=481
+categories:
+- Mozilla
+- Fennec
+tags:
+- Mozilla
+- Fennec
+---
+[![](http://leopard.in.ua/wp-content/uploads/2008/10/56114144548fdbd4e9754f1224588622.jpg "56114144548fdbd4e9754f1224588622")](http://leopard.in.ua/wp-content/uploads/2008/10/56114144548fdbd4e9754f1224588622.jpg)Выпущена первая альфа-версия Fennec – браузера для мобильных телефонов от Mozilla. По заверению разработчиков, в настоящее время особое внимание уделяется созданию интерфейса, который должен отражать принципы дизайна, внедренные в Firefox.В первой альфа-версии можно обнаружить поддержку закладок (в том числе и тэги), "умную" адресную строку со встроенным веб-поиском, открытие окон в виде вкладок с отображением эскизов страниц, быстрый доступ к разным поисковым системам, средства для масштабирования страниц, автоматическое скрытие всех элементов интерфейса для увеличения рабочей области. Что до возможностей для обеспечения безопасности, то в Fennec уже есть менеджер паролей, блокировщик всплывающих окон, средства для быстрого удаления личных данных.Пока что Fennec [доступен](http://www.mozilla.org/projects/fennec/1.0a1/releasenotes/) только для платформы OS2008 (Maemo), которая используется на устройствах Nokia N810. Однако тестеры могут также скачать специальные версии для настольных ПК, работающих под управлением Windows, Mac OS X и Linux.Под катом скрины<!--more-->[![](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot2-300x240.png "screenshot2")](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot2.png)[![](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-1-300x240.png "screenshot-1")](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-1.png)[![](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-2-150x150.png "screenshot-2")](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-2.png)[![](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-3-300x240.png "screenshot-3")](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-3.png)[![](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-4-300x240.png "screenshot-4")](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-4.png)[![](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-5-300x240.png "screenshot-5")](http://leopard.in.ua/wp-content/uploads/2008/10/screenshot-5.png)На фоне Firefox 3.0.3

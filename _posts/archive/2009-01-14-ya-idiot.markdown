@@ -1,0 +1,11 @@
+---
+layout: post
+title: Я-идиот
+wordpress_id: 658
+wordpress_url: http://leopard.in.ua/?p=658
+categories:
+- юмор
+tags:
+- юмор
+---
+[![0_29f2_590e3420_orig](http://leopard.in.ua/wp-content/uploads/2009/01/0_29f2_590e3420_orig-300x177.gif "0_29f2_590e3420_orig")](http://leopard.in.ua/wp-content/uploads/2009/01/0_29f2_590e3420_orig.gif)Все просто :)sudo osascript -e «set Volume 10»say -v Whisper “Otkroy dveri!”или ещё такsudo apt-get install espeakespeak -v ru «Открой дверь»from [Habr](http://habrahabr.ru)
