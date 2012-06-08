@@ -11,8 +11,9 @@ tagline: Anything is possible, the impossible becomes longer
   {% endfor %}
 </ul>
 
-## To-Do
+## About Me
 
+Alexei Vassiliev, a developer and administrator. At the moment working in Railsware. Developed products such as: PopCornUA, MongodbLogger, SmtRails, PIRO, and others. Alex is also known as the creator of Open Source manual for setting up and scaling PostgreSQL.
 
 
 
