@@ -8,4 +8,8 @@ categories:
 - postgresql
 tags: []
 ---
-Написал статью про самые полезные PostgreSQL расширение в блог Railsware:[http://blog.railsware.com/2012/04/23/postgresql-most-useful-extensions/](http://blog.railsware.com/2012/04/23/postgresql-most-useful-extensions/)Приятного прочтения.
+Написал статью про самые полезные PostgreSQL расширение в блог Railsware:
+
+[http://blog.railsware.com/2012/04/23/postgresql-most-useful-extensions/](http://blog.railsware.com/2012/04/23/postgresql-most-useful-extensions/)
+
+Приятного прочтения.
