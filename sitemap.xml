@@ -16,7 +16,7 @@ title : Sitemap
   {% for page in site.pages limit:200 %}
   <url>
     <loc>{{site.production_url}}{{ post.url }}</loc>
-    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+    <lastmod>2012-06-09T00:00:00-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
