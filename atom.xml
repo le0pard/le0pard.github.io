@@ -16,13 +16,15 @@ title : Atom Feed
  </author>
 
  {% for post in site.posts limit:50 %}
- <entry>
-   <title>{{ post.title }}</title>
-   <link href="{{ site.production_url }}{{ post.url }}"/>
-   <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>{{ site.production_url }}{{ post.id }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
- </entry>
+  {% unless post.draft %}
+     <entry>
+       <title>{{ post.title }}</title>
+       <link href="{{ site.production_url }}{{ post.url }}"/>
+       <updated>{{ post.date | date_to_xmlschema }}</updated>
+       <id>{{ site.production_url }}{{ post.id }}</id>
+       <content type="html">{{ post.content | xml_escape }}</content>
+     </entry>
+  {% endunless %}
  {% endfor %}
  
 </feed>

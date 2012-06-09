@@ -6,11 +6,13 @@ title : Sitemap
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {% for page in site.posts limit:200 %}
-  <url>
-    <loc>{{site.production_url}}{{ page.url }}</loc>
-    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    {% unless page.draft %}
+      <url>
+        <loc>{{site.production_url}}{{ page.url }}</loc>
+        <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+    {% endunless %}
   {% endfor %}
 </urlset>
