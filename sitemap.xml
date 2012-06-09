@@ -7,16 +7,16 @@ title : Sitemap
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {% for page in site.posts limit:200 %}
   <url>
-    <loc>{{site.production_url}}</loc>
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    <loc>{{page.production_url}}</loc>
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   {% endfor %}
   {% for page in site.pages limit:200 %}
   <url>
-    <loc>{{site.production_url}}</loc>
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    <loc>{{page.production_url}}</loc>
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
