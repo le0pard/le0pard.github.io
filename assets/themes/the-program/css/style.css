@@ -1482,3 +1482,9 @@ hr {
   *display: inline;
   float: right;
 }
+
+/* LEOPARD */
+
+img.aligncenter {
+  margin: 20px auto;
+}
