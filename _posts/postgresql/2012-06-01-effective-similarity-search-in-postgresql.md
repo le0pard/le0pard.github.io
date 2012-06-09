@@ -76,14 +76,12 @@ Oleg Bartunov and Teodor Sigaev developed PostgreSQL extension, called smlar, wh
 
 On PostgreSQL 9.2 this extension should build without problem, for PostgreSQL 9.1 and earlier you need to make a little fix. In file "smlar_guc.c" on line 214 change call
 
-    set_config_option("smlar.threshold", buf,
-                                                PGC_USERSET, PGC_S_SESSION ,GUC_ACTION_SET, true, 0);
+    set_config_option("smlar.threshold", buf, PGC_USERSET, PGC_S_SESSION ,GUC_ACTION_SET, true, 0);
 
 
 to this (delete last argument)
 
-    set_config_option("smlar.threshold", buf,
-                                                PGC_USERSET, PGC_S_SESSION ,GUC_ACTION_SET, true);
+    set_config_option("smlar.threshold", buf, PGC_USERSET, PGC_S_SESSION ,GUC_ACTION_SET, true);
 
 
 Let's test instaled extension:
