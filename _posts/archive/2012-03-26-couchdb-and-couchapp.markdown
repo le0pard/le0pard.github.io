@@ -12,4 +12,12 @@ tags:
 - couchdb
 - couchapp
 ---
-Привет всем. Часть статей я начал писать и публиковать в блоге компании RW. Недавние публикации связаны с CouchDB и CouchApp:[http://blog.railsware.com/2012/03/12/couchdb-and-couchapp-part-1/](http://blog.railsware.com/2012/03/12/couchdb-and-couchapp-part-1/)[http://blog.railsware.com/2012/03/15/couchdb-and-couchapp-part-2/](http://blog.railsware.com/2012/03/15/couchdb-and-couchapp-part-2/)[http://blog.railsware.com/2012/03/26/couchdb-and-couchapp-part-3/](http://blog.railsware.com/2012/03/26/couchdb-and-couchapp-part-3/)Приятного прочтения.
+Привет всем. Часть статей я начал писать и публиковать в блоге компании RW. Недавние публикации связаны с CouchDB и CouchApp:
+
+[http://blog.railsware.com/2012/03/12/couchdb-and-couchapp-part-1/](http://blog.railsware.com/2012/03/12/couchdb-and-couchapp-part-1/)
+
+[http://blog.railsware.com/2012/03/15/couchdb-and-couchapp-part-2/](http://blog.railsware.com/2012/03/15/couchdb-and-couchapp-part-2/)
+
+[http://blog.railsware.com/2012/03/26/couchdb-and-couchapp-part-3/](http://blog.railsware.com/2012/03/26/couchdb-and-couchapp-part-3/)
+
+Приятного прочтения.
