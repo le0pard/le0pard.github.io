@@ -63,9 +63,7 @@ module WordPress
       post_tags = []
       link_categories = []
       db[categories_and_tags_query % post[:ID]].each do |category_or_tag|
-        name = category_or_tag[:slug]
-        name = 'development' if ['разработка', 'проектирование'].include?(name)
-        eval(category_or_tag[:taxonomy].pluralize) << name
+        eval(category_or_tag[:taxonomy].pluralize) << category_or_tag[:slug]
       end
 
       data = {
