@@ -66,3 +66,8 @@ This is not required. In my case, I didn't like the idea of having new posts in 
       ...
     end
     
+# Сompletion
+
+Next you should create layout for your blog. The quickest way to start and publish your Jekyll powered blog you can use [Jekyll-Bootstrap](http://jekyllbootstrap.com/). It is 100% compatible with GitHub pages. 
+
+*That’s all folks!* Thank you for reading till the end.

@@ -74,7 +74,7 @@ module WordPress
          'wordpress_id'  => post[:ID],
          'wordpress_url' => post[:guid]
        }.delete_if { |k,v| v.nil? || v == ''}
-       
+       # double convert help do valid YAML.dump for cyrillic
        data = YAML.dump(Yajl::Parser.parse(Yajl::Encoder.encode(data)))
 
       File.open("#{status == 'publish' ? '_posts' : '_drafts'}/#{name}", "w") do |f|
