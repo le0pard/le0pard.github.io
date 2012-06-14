@@ -34,7 +34,6 @@ _\_layouts_ these are the templates which posts are inserted into. Layouts are c
 
 _\_posts_ your dynamic content, so to speak. The format of these files is important, as named as YEAR-MONTH-DAY-title.MARKUP. The Permalinks can be adjusted very flexibly for each post, but the date and markup language are determined solely by the file name.
 
-
 # Configuration
 
 Jekyll allows you to concoct your sites in any way you can dream up. Here's my current configuration file:
@@ -56,7 +55,7 @@ Before this you should install needed gems:
 
     gem install sequel yajl-ruby activesupport
     
-## Converting the imported posts to Markdown
+### Converting the imported posts to Markdown
 
 This is not required. In my case, I didn't like the idea of having new posts in Markdown, mixed to old posts - imported from Wordpress - in HTML. Exists simple library [DownmarkIt](https://github.com/cousine/downmark_it), which convert HTML to Markdown. Here part of code from migration script:
 
