@@ -7,7 +7,6 @@ categories:
 tags: 
 - rails
 - html5
-draft: true
 ---
 Hello my dear friends. Today we will talk about CORS and usage it in Rails application. What is CORS?
 
