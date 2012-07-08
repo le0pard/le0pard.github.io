@@ -77,7 +77,7 @@ Here’s a valid server response:
     
 All CORS related headers are prefixed with "Access-Control-". Here’s some more details about each header.
 
-**Access-Control-Allow-Origin (required)** - This header must be included in all valid CORS responses; omitting the header will cause the CORS request to fail. The value of the header can either echo the Origin request header (as in the example above), or be a '*' to allow requests from any origin. If you’d like any site to be able to access your data, using '*' is fine. But if you’d like finer control over who can access your data, use an actual value in the header.
+**Access-Control-Allow-Origin (required)** - This header must be included in all valid CORS responses; omitting the header will cause the CORS request to fail. The value of the header can either echo the Origin request header (as in the example above), or be a '\*' to allow requests from any origin. If you’d like any site to be able to access your data, using '\*' is fine. But if you’d like finer control over who can access your data, use an actual value in the header.
 
 **Access-Control-Allow-Credentials (optional)** - By default, cookies are not included in CORS requests. Use this header to indicate that cookies should be included in CORS requests. The only valid value for this header is true (all lowercase). If you don't need cookies, don't include this header (rather than setting its value to false).
 
@@ -193,7 +193,7 @@ First of all you need setup response headers in Rails application:
       end
     end
     
-This settings allow requests from any origin (any site to be able to access your data). If you need cookies (Access-Control-Allow-Credentials), then you coudn't use "*" in Access-Control-Allow-Origin and should set host. In Rails you can do this by setting ORIGIN headers from request to Access-Control-Allow-Origin header in response:
+This settings allow requests from any origin (any site to be able to access your data). If you need cookies (Access-Control-Allow-Credentials), then you coudn't use "\*" in Access-Control-Allow-Origin and should set host. In Rails you can do this by setting ORIGIN headers from request to Access-Control-Allow-Origin header in response:
 
     class Api::BaseController < ApplicationController
       before_filter :set_headers
