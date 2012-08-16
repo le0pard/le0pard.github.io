@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Мастер-класс: Разработка веб-приложений с использованием CoffeeScript и Backbone.js
+title: Разработка веб-приложений с использованием CoffeeScript и Backbone.js (мастер-класс)
 description: ""
 categories: 
 - javascript
