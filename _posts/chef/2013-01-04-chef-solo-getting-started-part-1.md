@@ -32,6 +32,8 @@ And of course main point is __Automate All The Things!!!__
  * Blindly reuse cookbooks and recipes
  * Monitor your servers or softwares
  * Undoing concept
+ 
+# Chef types and terminology
 
 Exists two types of Chef: Chef Solo and Chef Server. Chef Solo is simple way to begin working with Chef what is why I will show how to use it in articles.
 
