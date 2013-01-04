@@ -305,7 +305,7 @@ The main idea of Chef is idempotence: it can safely be run multiple times. Once 
 
 # Cook real server
 
-After fully testing the kitchen you can apply your node configuration on real server. You should rename "vgrant.json" on your server host and run commands:
+After fully testing the kitchen you can apply your node configuration on real server. You should rename "vagrant.json" on your server host and run commands:
 
     knife cook host_username@host
     
