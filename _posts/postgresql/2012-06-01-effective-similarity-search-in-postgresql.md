@@ -130,11 +130,11 @@ For example, I select the search for duplicate images. Other options for shoppin
 
 In our algorithm, we will create a pixel matrix of each image. Let it be 15x15 pixels. The next step: we do not know the color of a pixel, but its intensity (the intensity is given by 0.299 * red + 0,587 * green + 0,114 * blue). Calculating the intensity will help us find the image is not paying attention to the colors of the images.
 
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/1.jpg"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/1.jpg" alt="" title="1" width="800" height="600" class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/postgresql/smlar/1.jpg"><img src="/assets/images/postgresql/smlar/1.jpg" alt="" title="1" width="800" height="600" class="aligncenter size-full wp-image-1950" /></a>
 
 Once you have to calculate the intensity of all pixels in a 15x15 matrix, we find the ratio of the intensity of each pixel to the mean intensity of the matrix, and generate a unique number for each cell (in the code to generate unique for each cell, I added the coordinates to intensity) and obtain an array of 225 elements length (15 * 15 = 225). Excellent.
 
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/2.jpg"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/2.jpg" alt="" title="2" width="800" height="333" class="aligncenter size-full wp-image-1951" /></a>
+<a href="/assets/images/postgresql/smlar/2.jpg"><img src="/assets/images/postgresql/smlar/2.jpg" alt="" title="2" width="800" height="333" class="aligncenter size-full wp-image-1951" /></a>
 
 Below is the code to generate a digital signature for images on Ruby and PHP languages:
 
@@ -150,10 +150,10 @@ Below is the code to generate a digital signature for images on Ruby and PHP lan
 <tbody>
 <tr>
 <td>
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/chart1.png"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/chart1.png" alt="" title="chart1" width="300" height="225" class="alignleft size-full wp-image-1956" /></a>
+<a href="/assets/images/postgresql/smlar/chart1.png"><img src="/assets/images/postgresql/smlar/chart1.png" alt="" title="chart1" width="300" height="225" class="alignleft size-full wp-image-1956" /></a>
 </td>
 <td>
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/chart2.png"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/chart2.png" alt="" title="chart2" width="300" height="225" class="alignleft size-full wp-image-1957" /></a>
+<a href="/assets/images/postgresql/smlar/chart2.png"><img src="/assets/images/postgresql/smlar/chart2.png" alt="" title="chart2" width="300" height="225" class="alignleft size-full wp-image-1957" /></a>
 </td>
 </tr>
 <tr>
@@ -169,10 +169,10 @@ Below is the code to generate a digital signature for images on Ruby and PHP lan
 <tbody>
 <tr>
 <td>
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/11.png"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/11-300x300.png" alt="" title="11" width="300" height="300" class="aligncenter size-medium wp-image-1952" /></a>
+<a href="/assets/images/postgresql/smlar/11.png"><img src="/assets/images/postgresql/smlar/11-300x300.png" alt="" title="11" width="300" height="300" class="aligncenter size-medium wp-image-1952" /></a>
 </td>
 <td>
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/12.gif"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/12-264x300.gif" alt="" title="12" width="264" height="300" class="aligncenter size-medium wp-image-1953" /></a>
+<a href="/assets/images/postgresql/smlar/12.gif"><img src="/assets/images/postgresql/smlar/12-264x300.gif" alt="" title="12" width="264" height="300" class="aligncenter size-medium wp-image-1953" /></a>
 </td>
 </tr>
 <tr>
@@ -188,10 +188,10 @@ Below is the code to generate a digital signature for images on Ruby and PHP lan
 <tbody>
 <tr>
 <td>
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/689545_65148464.jpg"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/689545_65148464-300x225.jpg" alt="" title="689545_65148464" width="300" height="225" class="aligncenter size-medium wp-image-1954" /></a>
+<a href="/assets/images/postgresql/smlar/689545_65148464.jpg"><img src="/assets/images/postgresql/smlar/689545_65148464-300x225.jpg" alt="" title="689545_65148464" width="300" height="225" class="aligncenter size-medium wp-image-1954" /></a>
 </td>
 <td>
-<a href="http://leopard.in.ua/assets/images/postgresql/smlar/689545_651484642.jpg"><img src="http://leopard.in.ua/assets/images/postgresql/smlar/689545_651484642-300x225.jpg" alt="" title="689545_651484642" width="300" height="225" class="aligncenter size-medium wp-image-1955" /></a>
+<a href="/assets/images/postgresql/smlar/689545_651484642.jpg"><img src="/assets/images/postgresql/smlar/689545_651484642-300x225.jpg" alt="" title="689545_651484642" width="300" height="225" class="aligncenter size-medium wp-image-1955" /></a>
 </td>
 </tr>
 <tr>
