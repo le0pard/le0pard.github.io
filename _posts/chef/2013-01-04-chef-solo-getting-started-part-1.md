@@ -315,7 +315,7 @@ Your server must have installed Chef client. If no, just before command "cook" r
 
 # Summary
 
-In the current article we considered usage Chef Solo and test our first kitchen. In the next article we will look at the use of roles and environments.
+In the current article we considered usage Chef Solo and test our first kitchen. In the next article we will look at the cookbook structure and will write own cookbook.
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/1.0](https://github.com/le0pard/chef-solo-example/tree/1.0).
 
