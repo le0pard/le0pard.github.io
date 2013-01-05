@@ -1,0 +1,266 @@
+---
+layout: post
+title: Getting Started with Chef Solo. Part 2
+categories:
+- chef
+tags:
+- chef
+- solo
+draft: true
+---
+Hello my dear friends. Today we will continue talk about Chef Solo. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/2.0](https://github.com/le0pard/chef-solo-example/tree/2.0).
+
+In [previous article](/2013/01/04/chef-solo-getting-started-part-1/) we discussed how to use Chef Solo, learned about knife, librarian and vagrant tools, which help us using and testing Chef Solo kitchen. In this article we will learn cookbook structure and will write own cookbook.
+
+# Cookbook
+
+Cookbook is a collection of Chef recipes. All cookbooks like a Chef written on [Ruby](http://www.ruby-lang.org/). You already have seen how we get nginx cookbook and use "source" recipe from it to install nginx on our server. Let's look on structure of this cookbook:
+
+{% highlight bash %}
+$ ls -la cookbooks/nginx
+total 112
+drwxr-xr-x  16 leo  staff    544 Jan  4 19:24 .
+drwxr-xr-x   6 leo  staff    204 Jan  4 19:24 ..
+drwxr-xr-x  15 leo  staff    510 Jan  4 19:24 .git
+-rw-r--r--   1 leo  staff     28 Jan  4 19:24 .gitignore
+-rw-r--r--   1 leo  staff   3526 Jan  4 19:24 CHANGELOG.md
+-rw-r--r--   1 leo  staff  10811 Jan  4 19:24 CONTRIBUTING.md
+-rw-r--r--   1 leo  staff     37 Jan  4 19:24 Gemfile
+-rw-r--r--   1 leo  staff  10850 Jan  4 19:24 LICENSE
+-rw-r--r--   1 leo  staff  14633 Jan  4 19:24 README.md
+drwxr-xr-x   8 leo  staff    272 Jan  4 19:24 attributes
+drwxr-xr-x   3 leo  staff    102 Jan  4 19:24 definitions
+drwxr-xr-x   3 leo  staff    102 Jan  4 19:24 files
+-rw-r--r--@  1 leo  staff   3283 Jan  4 19:24 metadata.rb
+drwxr-xr-x  20 leo  staff    680 Jan  4 19:24 recipes
+drwxr-xr-x   5 leo  staff    170 Jan  4 19:24 templates
+drwxr-xr-x   3 leo  staff    102 Jan  4 19:24 test
+{% endhighlight %}
+    
+Cookbook can have:
+ 
+ * metadata.rb - the file, which contain all information about cookbook (name, dependencies). 
+
+{% highlight ruby %}
+name              "nginx"
+maintainer        "Opscode, Inc."
+maintainer_email  "cookbooks@opscode.com"
+license           "Apache 2.0"
+description       "Installs and configures nginx"
+version           "1.1.2"
+
+recipe "nginx", "Installs nginx package and sets up configuration with Debian apache style with sites-enabled/sites-available"
+recipe "nginx::source", "Installs nginx from source and sets up configuration with Debian apache style with sites-enabled/sites-available"
+
+%w{ ubuntu debian centos redhat amazon scientific oracle fedora }.each do |os|
+ supports os
+end
+
+%w{ build-essential }.each do |cb|
+ depends cb
+end
+
+depends 'ohai', '>= 1.1.2'
+
+%w{ runit bluepill yum }.each do |cb|
+ recommends cb
+end
+{% endhighlight %}
+
+  This is important file, if you want distribute your cookbook.
+  
+ * attributes - folder, which contain files with default attributes for recipes. In nginx cookbook you can find such default attributes:
+
+{% highlight ruby %}
+default['nginx']['version'] = "1.2.3"
+default['nginx']['dir'] = "/etc/nginx"
+default['nginx']['log_dir'] = "/var/log/nginx"
+default['nginx']['binary'] = "/usr/sbin/nginx"
+{% endhighlight %}
+     
+  As you remember we can redefine all this attributes in node file.
+
+ * definitions - folder, which contain helpers from this cookbook. In nginx cookbook you can find this helper:
+ 
+{% highlight ruby %}
+define :nginx_site, :enable => true do
+ if params[:enable]
+   execute "nxensite #{params[:name]}" do
+     command "/usr/sbin/nxensite #{params[:name]}"
+     notifies :reload, "service[nginx]"
+     not_if do ::File.symlink?("#{node['nginx']['dir']}/sites-enabled/#{params[:name]}") end
+   end
+ else
+   execute "nxdissite #{params[:name]}" do
+     command "/usr/sbin/nxdissite #{params[:name]}"
+     notifies :reload, "service[nginx]"
+     only_if do ::File.symlink?("#{node['nginx']['dir']}/sites-enabled/#{params[:name]}") end
+   end
+ end
+end
+{% endhighlight %}
+     
+  The helper "nginx_site" can enable/disable configuration from folder "site-available" and reload nginx. I will show how to use this helper.
+  
+ * files - folder contain files, which need just copy on server in right place (it can be ssl keys, static configs, etc.)
+ * recipes - this folder contain all recipes of this cookbook. Each recipe is in a separate Ruby file:
+
+{% highlight bash %}
+$ ls -la cookbooks/nginx/recipes
+total 152
+drwxr-xr-x  20 leo  staff   680 Jan  4 19:24 .
+drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
+-rw-r--r--   1 leo  staff  1123 Jan  4 19:24 authorized_ips.rb
+-rw-r--r--   1 leo  staff   792 Jan  4 19:24 commons.rb
+-rw-r--r--   1 leo  staff  1114 Jan  4 19:24 commons_conf.rb
+-rw-r--r--   1 leo  staff  1070 Jan  4 19:24 commons_dir.rb
+-rw-r--r--   1 leo  staff   854 Jan  4 19:24 commons_script.rb
+-rw-r--r--   1 leo  staff  1201 Jan  4 19:24 default.rb
+-rw-r--r--   1 leo  staff  1551 Jan  4 19:24 http_echo_module.rb
+-rw-r--r--   1 leo  staff  3412 Jan  4 19:24 http_geoip_module.rb
+-rw-r--r--   1 leo  staff   814 Jan  4 19:24 http_gzip_static_module.rb
+-rw-r--r--   1 leo  staff  1352 Jan  4 19:24 http_realip_module.rb
+-rw-r--r--   1 leo  staff   797 Jan  4 19:24 http_ssl_module.rb
+-rw-r--r--   1 leo  staff  1091 Jan  4 19:24 http_stub_status_module.rb
+-rw-r--r--   1 leo  staff   738 Jan  4 19:24 ipv6.rb
+-rw-r--r--   1 leo  staff  1704 Jan  4 19:24 naxsi_module.rb
+-rw-r--r--   1 leo  staff  1059 Jan  4 19:24 ohai_plugin.rb
+-rw-r--r--   1 leo  staff  2994 Jan  4 19:24 passenger.rb
+-rw-r--r--   1 leo  staff  5218 Jan  4 19:24 source.rb
+-rw-r--r--   1 leo  staff  1571 Jan  4 19:24 upload_progress_module.rb
+{% endhighlight %}
+ 
+  As you remember we added to run\_list:
+
+{% highlight ruby %}
+"run_list": [
+  "recipe[nginx::source]"
+]
+{% endhighlight %}
+
+  This is run source.rb recipe from nginx cookbook. If you change by this:
+
+{% highlight ruby %}
+"run_list": [
+  "recipe[nginx]"
+]
+{% endhighlight %}
+
+  This is run default recipe from nginx cookbook (file default.rb in recipes folder).
+  
+ * templates - folder contain Erb templates of this cookbook (this is nginx configs)
+ * test - folder with tests for this cookbook
+ 
+
+# First cookbook
+
+Let's create our first cookbook. Our custom cookbooks should be in folder "site-cookbooks" (folder "cookbooks" using for vendor cookbooks and managed by librarian, so we add this folder in gitignore). If you look an solo.rb, you can see such settings:
+
+{% highlight ruby %}
+file_cache_path           "/tmp/chef-solo"
+cookbook_path             [ "/tmp/chef-solo/site-cookbooks",
+                            "/tmp/chef-solo/cookbooks" ]
+{% endhighlight %}
+
+This mean what Chef will search needed cookbook first in folder site-cookbooks and if no found will try to search in folder cookbooks. So if you create in site-cookbooks nginx cookbook, Chef will try use it first.
+
+Let's create cookbook with name "tomatoes":
+
+{% highlight bash %}
+$ mkdir site-cookbooks/tomatoes
+$ mkdir site-cookbooks/tomatoes/recipes site-cookbooks/tomatoes/templates
+$ mkdir site-cookbooks/tomatoes/templates/default
+$ ls -la site-cookbooks/tomatoes
+drwxr-xr-x  4 leo  staff  136 Jan  5 14:50 .
+drwxr-xr-x  4 leo  staff  136 Jan  5 14:49 ..
+drwxr-xr-x  2 leo  staff   68 Jan  5 14:50 recipes
+drwxr-xr-x  3 leo  staff  102 Jan  5 14:50 templates
+{% endhighlight %}
+
+And create file default.rb in recipes folder with content:
+
+{% highlight ruby %}
+package "git"
+{% endhighlight %}
+
+Command "package" is used to manage packages in the server. This command will install on server git package. More info about this command you can read here: [docs.opscode.com/chef/resources.html#package](http://docs.opscode.com/chef/resources.html#package). Next, add to our vagrant.json node file in run list new recipe:
+
+{% highlight ruby %}
+"run_list": [
+  "recipe[nginx::source]",
+  "recipe[tomatoes]"
+]
+{% endhighlight %}
+
+And test our kitchen again:
+
+{% highlight bash %}
+$ vagrant provision
+[default] Running provisioner: Vagrant::Provisioners::ChefSolo...
+[default] Generating chef JSON and uploading...
+[default] Running chef-solo...
+stdin: is not a tty
+[Sat, 05 Jan 2013 13:07:34 +0000] INFO: *** Chef 0.10.10 ***
+[Sat, 05 Jan 2013 13:07:34 +0000] INFO: Setting the run_list to ["recipe[nginx::source]", "recipe[tomatoes]"] from JSON
+[Sat, 05 Jan 2013 13:07:34 +0000] INFO: Run List is [recipe[nginx::source], recipe[tomatoes]]
+[Sat, 05 Jan 2013 13:07:34 +0000] INFO: Run List expands to [nginx::source, tomatoes]
+[Sat, 05 Jan 2013 13:07:34 +0000] INFO: Starting Chef Run for precise64
+[Sat, 05 Jan 2013 13:07:34 +0000] INFO: Running start handlers
+[Sat, 05 Jan 2013 13:07:34 +0000] INFO: Start handlers complete.
+
+...
+
+[Sat, 05 Jan 2013 13:07:35 +0000] INFO: Processing package[git] action install (tomatoes::default line 1)
+[Sat, 05 Jan 2013 13:07:50 +0000] INFO: package[git] installed version 1:1.7.9.5-1
+[Sat, 05 Jan 2013 13:07:50 +0000] INFO: execute[nxensite default] sending reload action to service[nginx] (delayed)
+[Sat, 05 Jan 2013 13:07:50 +0000] INFO: Processing service[nginx] action reload (nginx::source line 82)
+[Sat, 05 Jan 2013 13:07:50 +0000] INFO: service[nginx] reloaded
+[Sat, 05 Jan 2013 13:07:50 +0000] INFO: Chef Run complete in 16.410976 seconds
+[Sat, 05 Jan 2013 13:07:50 +0000] INFO: Running report handlers
+[Sat, 05 Jan 2013 13:07:50 +0000] INFO: Report handlers complete
+{% endhighlight %}
+
+As you can see git package installed on server. Let's check this:
+
+{% highlight bash %}
+$ vagrant ssh
+Welcome to Ubuntu 12.04.1 LTS (GNU/Linux 3.2.0-23-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+Welcome to your Vagrant-built virtual machine.
+Last login: Sat Jan  5 13:09:24 2013 from 10.0.2.2
+vagrant@precise64:~$ git --version
+git version 1.7.9.5
+vagrant@precise64:~$ exit
+logout
+Connection to 127.0.0.1 closed.
+{% endhighlight %}
+
+All works fine.
+
+# Сonfigure nginx through our cookbook
+
+Let's configure nginx for our application. First of all add new attributes in vagrant node (file "nodes/vagrant.json"):
+
+{% highlight erb %}
+<h2><%=dsf%></h2>
+{% endhighlight %}
+
+Next, create nginx template ("tomatoes/templates/default/nginx.conf.erb"):
+
+{% highlight ruby %}
+"run_list": [
+  "recipe[nginx::source]",
+  "recipe[tomatoes]"
+]
+{% endhighlight %}
+
+And add this content to "tomatoes/recipes/default.rb":
+
+{% highlight ruby %}
+"run_list": [
+  "recipe[nginx::source]",
+  "recipe[tomatoes]"
+]
+{% endhighlight %}
+
