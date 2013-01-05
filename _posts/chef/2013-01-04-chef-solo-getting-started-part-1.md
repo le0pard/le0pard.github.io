@@ -53,21 +53,25 @@ This is list of terminology, which I will use in my articles:
 
 Let's create our folder, which will contain all our Chef kitchen:
 
-    # mkdir chef-solo-example
-    # cd chef-solo-example
+{% highlight bash %}
+$ mkdir chef-solo-example
+$ cd chef-solo-example
+{% endhighlight %}
 
 Next I will use [bundler](http://gembundler.com/) to get some useful gems:
 
-    # cat Gemfile
-      source :rubygems
+{% highlight bash %}
+$ cat Gemfile
+  source :rubygems
 
-      gem 'knife-solo'
-      gem 'librarian'
-      gem 'ffi', '~> 1.2.0'
-      gem 'vagrant', "~> 1.0.5"
-      gem 'multi_json'
-    
-    # bundle
+  gem 'knife-solo'
+  gem 'librarian'
+  gem 'ffi', '~> 1.2.0'
+  gem 'vagrant', "~> 1.0.5"
+  gem 'multi_json'
+
+$ bundle
+{% endhighlight %}
 
 List of the required gems:
 
@@ -77,23 +81,25 @@ List of the required gems:
  
 Next you need to create a kitchen by knife:
 
-    # knife kitchen .
-    # ls -la
-    total 48
-    drwxr-xr-x  14 leo  staff   476 Jan  4 19:01 .
-    drwxr-xr-x  69 leo  staff  2346 Jan  4 18:43 ..
-    drwxr-xr-x  13 leo  staff   442 Jan  4 18:57 .git
-    -rw-r--r--@  1 leo  staff    38 Jan  4 18:57 .gitignore
-    -rw-r--r--@  1 leo  staff     9 Jan  4 18:51 .rvmrc
-    -rw-r--r--@  1 leo  staff    98 Jan  4 18:53 Gemfile
-    -rw-r--r--   1 leo  staff  2033 Jan  4 18:53 Gemfile.lock
-    -rw-r--r--@  1 leo  staff    19 Jan  4 18:56 README.md
-    drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 cookbooks
-    drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 data_bags
-    drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 nodes
-    drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 roles
-    drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 site-cookbooks
-    -rw-r--r--   1 leo  staff   319 Jan  4 19:01 solo.rb
+{% highlight bash %}
+$ knife kitchen .
+$ ls -la
+total 48
+drwxr-xr-x  14 leo  staff   476 Jan  4 19:01 .
+drwxr-xr-x  69 leo  staff  2346 Jan  4 18:43 ..
+drwxr-xr-x  13 leo  staff   442 Jan  4 18:57 .git
+-rw-r--r--@  1 leo  staff    38 Jan  4 18:57 .gitignore
+-rw-r--r--@  1 leo  staff     9 Jan  4 18:51 .rvmrc
+-rw-r--r--@  1 leo  staff    98 Jan  4 18:53 Gemfile
+-rw-r--r--   1 leo  staff  2033 Jan  4 18:53 Gemfile.lock
+-rw-r--r--@  1 leo  staff    19 Jan  4 18:56 README.md
+drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 cookbooks
+drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 data_bags
+drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 nodes
+drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 roles
+drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 site-cookbooks
+-rw-r--r--   1 leo  staff   319 Jan  4 19:01 solo.rb
+{% endhighlight %}
 
 Command "kitchen" is used to create a new directory structure that fits with chef’s standard structure and can be used to build and store recipes.
 
@@ -110,58 +116,70 @@ Let's look at the directory structure:
  
 Now let's create librarian Cheffile for manage the cookbooks:
 
-    # librarian-chef init
-      create  Cheffile
+{% highlight bash %}
+$ librarian-chef init
+  create  Cheffile
+{% endhighlight %}
       
 And add to Cheffile nginx cookbook. More cookbooks you can find at [community.opscode.com](http://community.opscode.com/).
 
-    # cat Cheffile
-      #!/usr/bin/env ruby
-      #^syntax detection
+{% highlight bash %}
+$ cat Cheffile
+  #!/usr/bin/env ruby
+  #^syntax detection
 
-      site 'http://community.opscode.com/api/v1'
+  site 'http://community.opscode.com/api/v1'
 
-      cookbook 'runit'
-      cookbook 'nginx', :git => 'git://github.com/opscode-cookbooks/nginx.git'
-    
-    # librarian-chef install
-    
+  cookbook 'runit'
+  cookbook 'nginx', :git => 'git://github.com/opscode-cookbooks/nginx.git'
+
+$ librarian-chef install
+{% endhighlight %}
+
 Now in folder "cookbooks" you should find nginx cookbook and all it dependens:
 
-    # ls -la cookbooks
-    total 0
-    drwxr-xr-x   6 leo  staff  204 Jan  4 19:24 .
-    drwxr-xr-x  18 leo  staff  612 Jan  4 19:24 ..
-    drwxr-xr-x  12 leo  staff  408 Jan  4 19:24 build-essential
-    drwxr-xr-x  16 leo  staff  544 Jan  4 19:24 nginx
-    drwxr-xr-x  11 leo  staff  374 Jan  4 19:24 ohai
-    drwxr-xr-x  13 leo  staff  442 Jan  4 19:24 runit
+{% highlight bash %}
+$ ls -la cookbooks
+total 0
+drwxr-xr-x   6 leo  staff  204 Jan  4 19:24 .
+drwxr-xr-x  18 leo  staff  612 Jan  4 19:24 ..
+drwxr-xr-x  12 leo  staff  408 Jan  4 19:24 build-essential
+drwxr-xr-x  16 leo  staff  544 Jan  4 19:24 nginx
+drwxr-xr-x  11 leo  staff  374 Jan  4 19:24 ohai
+drwxr-xr-x  13 leo  staff  442 Jan  4 19:24 runit
+{% endhighlight %}
 
 # First node
     
 Next, create a node file. Chef node file always have name as server host. For create this file automatically and check, what Chef Solo installed on server you can use knife command "prepare". This command installs Ruby, RubyGems and Chef on a given host. It’s structured to auto-detect the target OS and change the installation process accordingly:
 
-    # knife prepare host_username@host
+{% highlight bash %}
+$ knife prepare host_username@host
+{% endhighlight %}
     
 This command apply the same parameters as ssh command. Fox example, executing with ssh key:
 
-    # knife prepare -i key/ssh_key.pem host_username@host
+{% highlight bash %}
+$ knife prepare -i key/ssh_key.pem host_username@host
+{% endhighlight %}
 
 Let's for test call our node file "vagrant":
 
-    # cat nodes/vagrant.json
-    {
-      "nginx": {
-        "version": "1.2.3",
-        "default_site_enabled": true,
-        "source": {
-          "modules": ["http_gzip_static_module", "http_ssl_module"]
-        }
-      },
-      "run_list": [
-        "recipe[nginx::source]"
-      ]
+{% highlight bash %}
+$ cat nodes/vagrant.json
+{
+  "nginx": {
+    "version": "1.2.3",
+    "default_site_enabled": true,
+    "source": {
+      "modules": ["http_gzip_static_module", "http_ssl_module"]
     }
+  },
+  "run_list": [
+    "recipe[nginx::source]"
+  ]
+}
+{% endhighlight %}
     
 "run\_list" the main part of node, where you specify roles and/or recipes to add to the node. In our case I add recipe source from nginx cookbook. Also you can see nginx attributes (like version, modules, etc.). All cookbook can have directory "attributes" and this directory contain default attributes for cookbook recipes. But you can redefine this attributes in node file. We are ready to test our kitchen!
 
@@ -169,129 +187,140 @@ Let's for test call our node file "vagrant":
  
 For testing Chef Solo kitchen by vagrant we need download vagrant box. List of boxes you can find [www.vagrantbox.es](http://www.vagrantbox.es/).
 
-    # vagrant box add precise64 http://dl.dropbox.com/u/1537815/precise64.box
-    
-    # vagrant init precise64
-    
-    A `Vagrantfile` has been placed in this directory. You are now
-    ready to `vagrant up` your first virtual environment! Please read
-    the comments in the Vagrantfile as well as documentation on
-    `vagrantup.com` for more information on using Vagrant.
+{% highlight bash %}
+$ vagrant box add precise64 http://dl.dropbox.com/u/1537815/precise64.box
+$ vagrant init precise64
+
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+{% endhighlight %}
     
 Next we should edit Vagrantfile for define chef solo:
 
-    # cat Vagrantfile
+{% highlight bash %}
+$ cat Vagrantfile
+
+  # -*- mode: ruby -*-
+  # vi: set ft=ruby :
+
+  require 'rubygems'
+  require 'bundler'
+
+  Bundler.require
+  require 'multi_json'
+
+  Vagrant::Config.run do |config|
+    # All Vagrant configuration is done here. The most common configuration
+    # options are documented and commented below. For a complete reference,
+    # please see the online documentation at vagrantup.com.
+
+    # Every Vagrant virtual environment requires a box to build off of.
+    config.vm.box = "precise64"
     
-      # -*- mode: ruby -*-
-      # vi: set ft=ruby :
+    ...
+    
+    VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
 
-      require 'rubygems'
-      require 'bundler'
+    config.vm.provision :chef_solo do |chef|
+       chef.cookbooks_path = ["site-cookbooks", "cookbooks"]
+       chef.roles_path = "roles"
+       chef.data_bags_path = "data_bags"
+       chef.provisioning_path = "/tmp/vagrant-chef"
 
-      Bundler.require
-      require 'multi_json'
-
-      Vagrant::Config.run do |config|
-        # All Vagrant configuration is done here. The most common configuration
-        # options are documented and commented below. For a complete reference,
-        # please see the online documentation at vagrantup.com.
-
-        # Every Vagrant virtual environment requires a box to build off of.
-        config.vm.box = "precise64"
-        
-        ...
-        
-        VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
-
-        config.vm.provision :chef_solo do |chef|
-           chef.cookbooks_path = ["site-cookbooks", "cookbooks"]
-           chef.roles_path = "roles"
-           chef.data_bags_path = "data_bags"
-           chef.provisioning_path = "/tmp/vagrant-chef"
-
-           # You may also specify custom JSON attributes:
-           chef.json = VAGRANT_JSON
-           VAGRANT_JSON['run_list'].each do |recipe|
-            chef.add_recipe(recipe)
-           end if VAGRANT_JSON['run_list']
-        end
-        
-        ...
-        
-      end
+       # You may also specify custom JSON attributes:
+       chef.json = VAGRANT_JSON
+       VAGRANT_JSON['run_list'].each do |recipe|
+        chef.add_recipe(recipe)
+       end if VAGRANT_JSON['run_list']
+    end
+    
+    ...
+    
+  end
+{% endhighlight %}
     
 As you can see "run\_list" and json attributes from node "vagrant.json" automatically loaded from file. More information about using Chef Solo with Vagrant you can find by [this link](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html). 
 
 Next, we can try test Chef Solo with Vagrant:
 
-    # vagrant up                                                                                                                                                                                              
-    [default] Importing base box 'precise64'...
-    [default] The guest additions on this VM do not match the install version of
-    VirtualBox! This may cause things such as forwarded ports, shared
-    folders, and more to not work properly. If any of those things fail on
-    this machine, please update the guest additions and repackage the
-    box.
+{% highlight bash %}
+$ vagrant up                                                                                                                                                                                              
+[default] Importing base box 'precise64'...
+[default] The guest additions on this VM do not match the install version of
+VirtualBox! This may cause things such as forwarded ports, shared
+folders, and more to not work properly. If any of those things fail on
+this machine, please update the guest additions and repackage the
+box.
 
-    Guest Additions Version: 4.1.18
-    VirtualBox Version: 4.2.6
-    [default] Matching MAC address for NAT networking...
-    [default] Clearing any previously set forwarded ports...
-    [default] Forwarding ports...
-    [default] -- 22 => 2222 (adapter 1)
-    [default] Creating shared folders metadata...
-    [default] Clearing any previously set network interfaces...
-    [default] Booting VM...
-    [default] Waiting for VM to boot. This can take a few minutes.
-    [default] VM booted and ready for use!
-    [default] Mounting shared folders...
-    [default] -- v-root: /vagrant
-    [default] -- v-csr-3: /tmp/vagrant-chef/chef-solo-3/roles
-    [default] -- v-csc-2: /tmp/vagrant-chef/chef-solo-2/cookbooks
-    [default] -- v-csc-1: /tmp/vagrant-chef/chef-solo-1/cookbooks
-    [default] -- v-csdb-4: /tmp/vagrant-chef/chef-solo-4/data_bags
-    [default] Running provisioner: Vagrant::Provisioners::ChefSolo...
-    [default] Generating chef JSON and uploading...
-    [default] Running chef-solo...
-    stdin: is not a tty
-    [Fri, 04 Jan 2013 18:31:24 +0000] INFO: *** Chef 0.10.10 ***
-    [Fri, 04 Jan 2013 18:31:24 +0000] INFO: Setting the run_list to ["recipe[nginx::source]"] from JSON
-    [Fri, 04 Jan 2013 18:31:24 +0000] INFO: Run List is [recipe[nginx::source]]
-    [Fri, 04 Jan 2013 18:31:24 +0000] INFO: Run List expands to [nginx::source]
-    [Fri, 04 Jan 2013 18:31:24 +0000] INFO: Starting Chef Run for precise64
-    [Fri, 04 Jan 2013 18:31:24 +0000] INFO: Running start handlers
-    [Fri, 04 Jan 2013 18:31:24 +0000] INFO: Start handlers complete.
-    
-    ...
-    
-    [Fri, 04 Jan 2013 18:33:44 +0000] INFO: Chef Run complete in 139.63975 seconds
-    [Fri, 04 Jan 2013 18:33:44 +0000] INFO: Running report handlers
-    [Fri, 04 Jan 2013 18:33:44 +0000] INFO: Report handlers complete
+Guest Additions Version: 4.1.18
+VirtualBox Version: 4.2.6
+[default] Matching MAC address for NAT networking...
+[default] Clearing any previously set forwarded ports...
+[default] Forwarding ports...
+[default] -- 22 => 2222 (adapter 1)
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Booting VM...
+[default] Waiting for VM to boot. This can take a few minutes.
+[default] VM booted and ready for use!
+[default] Mounting shared folders...
+[default] -- v-root: /vagrant
+[default] -- v-csr-3: /tmp/vagrant-chef/chef-solo-3/roles
+[default] -- v-csc-2: /tmp/vagrant-chef/chef-solo-2/cookbooks
+[default] -- v-csc-1: /tmp/vagrant-chef/chef-solo-1/cookbooks
+[default] -- v-csdb-4: /tmp/vagrant-chef/chef-solo-4/data_bags
+[default] Running provisioner: Vagrant::Provisioners::ChefSolo...
+[default] Generating chef JSON and uploading...
+[default] Running chef-solo...
+stdin: is not a tty
+[Fri, 04 Jan 2013 18:31:24 +0000] INFO: *** Chef 0.10.10 ***
+[Fri, 04 Jan 2013 18:31:24 +0000] INFO: Setting the run_list to ["recipe[nginx::source]"] from JSON
+[Fri, 04 Jan 2013 18:31:24 +0000] INFO: Run List is [recipe[nginx::source]]
+[Fri, 04 Jan 2013 18:31:24 +0000] INFO: Run List expands to [nginx::source]
+[Fri, 04 Jan 2013 18:31:24 +0000] INFO: Starting Chef Run for precise64
+[Fri, 04 Jan 2013 18:31:24 +0000] INFO: Running start handlers
+[Fri, 04 Jan 2013 18:31:24 +0000] INFO: Start handlers complete.
+
+...
+
+[Fri, 04 Jan 2013 18:33:44 +0000] INFO: Chef Run complete in 139.63975 seconds
+[Fri, 04 Jan 2013 18:33:44 +0000] INFO: Running report handlers
+[Fri, 04 Jan 2013 18:33:44 +0000] INFO: Report handlers complete
+{% endhighlight %}
     
 Next, we can check what nginx successfully installed on vagrant image:
 
-    # vagrant ssh
-    Welcome to Ubuntu 12.04.1 LTS (GNU/Linux 3.2.0-23-generic x86_64)
+{% highlight bash %}
+$ vagrant ssh
+Welcome to Ubuntu 12.04.1 LTS (GNU/Linux 3.2.0-23-generic x86_64)
 
-     * Documentation:  https://help.ubuntu.com/
-    Welcome to your Vagrant-built virtual machine.
-    Last login: Mon Aug 20 19:28:45 2012 from 10.0.2.2
-    vagrant@precise64:~$ ps ax | grep nginx
-     6682 ?        Ss     0:00 runsv nginx
-     9010 ?        S      0:00 nginx: master process /opt/nginx-1.2.3/sbin/nginx -c /etc/nginx/nginx.conf
-     9011 ?        S      0:00 nginx: worker process                               
-     9012 ?        S      0:00 nginx: worker process                               
-     9132 pts/1    S+     0:00 grep --color=auto nginx
-    vagrant@precise64:~$ exit
-    logout
-    Connection to 127.0.0.1 closed.
+ * Documentation:  https://help.ubuntu.com/
+Welcome to your Vagrant-built virtual machine.
+Last login: Mon Aug 20 19:28:45 2012 from 10.0.2.2
+vagrant@precise64:~$ ps ax | grep nginx
+ 6682 ?        Ss     0:00 runsv nginx
+ 9010 ?        S      0:00 nginx: master process /opt/nginx-1.2.3/sbin/nginx -c /etc/nginx/nginx.conf
+ 9011 ?        S      0:00 nginx: worker process                               
+ 9012 ?        S      0:00 nginx: worker process                               
+ 9132 pts/1    S+     0:00 grep --color=auto nginx
+vagrant@precise64:~$ exit
+logout
+Connection to 127.0.0.1 closed.
+{% endhighlight %}
 
 Let's check what nginx is running. Just add in "Vagrantfile" port forwarding:
 
-    config.vm.forward_port 80, 8085
+{% highlight ruby %}
+config.vm.forward_port 80, 8085
+{% endhighlight %}
     
 Next, reload vagrant instance:
 
-    # vagrant reload
+{% highlight bash %}
+$ vagrant reload
+{% endhighlight %}
     
 And you should see in your browser:
 
@@ -299,7 +328,9 @@ And you should see in your browser:
 
 After change something in your kitchen, you should run command "vagrant provision":
 
-    # vagrant provision
+{% highlight bash %}
+$ vagrant provision
+{% endhighlight %}
     
 And Chef Solo will be running again on vagrant server.
 
@@ -309,7 +340,9 @@ The main idea of Chef is idempotence: it can safely be run multiple times. Once 
 
 After fully testing the kitchen you can apply your node configuration on real server. You should rename "vagrant.json" on your server host and run commands:
 
-    knife cook host_username@host
+{% highlight bash %}
+$ knife cook host_username@host
+{% endhighlight %}
     
 Your server must have installed Chef client. If no, just before command "cook" run command "prepare".
 
