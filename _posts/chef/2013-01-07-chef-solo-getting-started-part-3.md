@@ -140,7 +140,7 @@ Chef very flexible, because your node can use several roles and/or a several rec
 
 # Summary
 
-In the current article we have learn the Chef roles. In the next article we will learn about writing more complex cookbooks.
+In the current article we have learn the Chef roles. In the next article we will learn about writing complex cookbooks.
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/3.0](https://github.com/le0pard/chef-solo-example/tree/3.0).
 
