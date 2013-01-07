@@ -9,7 +9,7 @@ tags:
 ---
 Hello my dear friends. Today we will continue talk about Chef Solo. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/3.0](https://github.com/le0pard/chef-solo-example/tree/3.0).
 
-In [the previous article](/2013/01/05/chef-solo-getting-started-part-2/) we learned Chef cookbook structure and wrote own Chef cookbook. In this article we will learn Chef roles.
+In [the previous article](/2013/01/05/chef-solo-getting-started-part-2/) we learned Chef cookbook structure and wrote own Chef cookbook. In this article we will learn Chef role.
 
 # Create your cloud
 
