@@ -368,7 +368,7 @@ We collect all subfolders in Ruby array and create its in one cycle.
 
 # Summary
 
-In the current article we learn the Chef cookbook structure and write simple Chef cookbook. In the next article we will look at the usage of roles in your Chef kitchen.
+In the current article we have learn the Chef cookbook structure and write simple Chef cookbook. In the [next article](/2013/01/08/chef-solo-getting-started-part-3/) we will look at the usage of roles in your Chef kitchen.
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/2.0](https://github.com/le0pard/chef-solo-example/tree/2.0).
 
