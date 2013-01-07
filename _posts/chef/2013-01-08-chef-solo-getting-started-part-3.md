@@ -6,7 +6,6 @@ categories:
 tags:
 - chef
 - solo
-draft: true
 ---
 Hello my dear friends. Today we will continue talk about Chef Solo. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/3.0](https://github.com/le0pard/chef-solo-example/tree/3.0).
 
