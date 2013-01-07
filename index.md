@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Alexei Vasiliev aka leopard
+title: Alexey Vasiliev aka leopard
 tagline: Anything is possible, the impossible becomes longer
 ---
 {% include JB/setup %}
 
-Hello everyone. My name Alexei Vasiliev (leopard). I am a web developer and Linux administrator. [My main projects](/projects.html).
+Hello everyone. My name Alexey Vasiliev (leopard). I am a web developer and Linux administrator. [My main projects](/projects.html).
 
 ## Posts
 
