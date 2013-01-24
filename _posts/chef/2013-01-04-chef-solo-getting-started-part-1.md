@@ -75,14 +75,15 @@ $ bundle
 
 List of the required gems:
 
- * knife-solo - knife is a powerful command-line interface (CLI) that comes with Chef. It is used to control Chef client.
+ * [knife-solo](http://matschaffer.github.com/knife-solo/) - knife is a powerful command-line interface (CLI) that comes with Chef. It is used to control Chef client.
  * librarian - is a bundler for your Chef-based infrastructure repositories
  * [vagrant](http://www.vagrantup.com/) - create and configure lightweight, reproducible, and portable development environments. For this rubygems need installed VirtualBox. We will use vagrant to test our Chef Solo.
  
 Next you need to create a kitchen by knife:
 
 {% highlight bash %}
-$ knife kitchen .
+$ knife solo init .
+# for version < 0.1.0 you should use "knife kitchen ."
 $ ls -la
 total 48
 drwxr-xr-x  14 leo  staff   476 Jan  4 19:01 .
@@ -101,7 +102,7 @@ drwxr-xr-x   3 leo  staff   102 Jan  4 19:01 site-cookbooks
 -rw-r--r--   1 leo  staff   319 Jan  4 19:01 solo.rb
 {% endhighlight %}
 
-Command "kitchen" is used to create a new directory structure that fits with chef’s standard structure and can be used to build and store recipes.
+Command "init" ("kitchen") is used to create a new directory structure that fits with chef’s standard structure and can be used to build and store recipes.
 
 Let's look at the directory structure:
 
@@ -154,13 +155,14 @@ drwxr-xr-x  13 leo  staff  442 Jan  4 19:24 runit
 Next, create a node file. Chef node file always have name as server host. For create this file automatically and check, what Chef Solo installed on server you can use knife command "prepare". This command installs Ruby, RubyGems and Chef on a given host. It’s structured to auto-detect the target OS and change the installation process accordingly:
 
 {% highlight bash %}
-$ knife prepare host_username@host
+$ knife solo prepare host_username@host
+# for version < 0.1.0 you should use "knife prepare host_username@host"
 {% endhighlight %}
     
 This command apply the same parameters as ssh command. Fox example, executing with ssh key:
 
 {% highlight bash %}
-$ knife prepare -i key/ssh_key.pem host_username@host
+$ knife solo prepare -i key/ssh_key.pem host_username@host
 {% endhighlight %}
 
 Let's for test call our node file "vagrant":
@@ -341,7 +343,8 @@ The main idea of Chef is idempotence: it can safely be run multiple times. Once 
 After fully testing the kitchen you can apply your node configuration on real server. You should rename "vagrant.json" on your server host and run commands:
 
 {% highlight bash %}
-$ knife cook host_username@host
+$ knife solo cook host_username@host
+# for version < 0.1.0 you should use "knife cook host_username@host"
 {% endhighlight %}
     
 Your server must have installed Chef client. If no, just before command "cook" run command "prepare".
