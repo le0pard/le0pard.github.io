@@ -149,7 +149,7 @@ depends "build-essential"
 
 # Summary
 
-In the current article we have learn more about Chef cookbooks.
+In the current article we have learn more about Chef cookbooks. In the [next article](/2013/01/26/chef-solo-getting-started-part-5/) we will learn more about Ohai and how to write Ohai plugin.
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/4.0](https://github.com/le0pard/chef-solo-example/tree/4.0).
 
