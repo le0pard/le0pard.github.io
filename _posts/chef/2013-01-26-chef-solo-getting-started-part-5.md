@@ -122,7 +122,7 @@ And restart "vagrant provision":
 [Sat, 26 Jan 2013 19:18:19 +0000] INFO: execute[nodejs make install] ran successfully
 {% endhighlight %}
 
-And after some time, the server will install a new node.js:
+And after some time, the server will have a new node.js:
 
 {% highlight bash %}
 $ vagrant ssh
