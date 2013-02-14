@@ -1,7 +1,0 @@
----
-layout: post
-title: Как создать список установленных пакетов в Debian (Ubuntu)
-wordpress_id: 856
-wordpress_url: http://leopard.in.ua/?p=856
----
-Для того, чтобы создать список установленных в Debian (Ubuntu) пакетов можно воспользоваться следующей утилитой:<pre lang="bash">$ dpkg –get-selections &gt; installed_programs.txt</pre>Можно также записать в файл краткую информацию о пакетах (версия пакета и краткое описание):<pre lang="bash">$ COLUMNS=150 dpkg -l &gt; packages.txt</pre>Теперь все эти пакеты можно установить на другом компьютере (или на этом же, после переустановки). Для этого устанавливаем Debian (Ubuntu) по умолчанию, и после установки выполняем следующую операцию, предварительно скопировав на этот компьютер файл installed_programs.txt:<pre lang="bash">$ sudo dpkg –set-selections &lt; installed_programs.txt</pre>и дальше<pre lang="bash">$ sudo apt-get -u dist-upgrade</pre>или<pre lang="bash">$ sudo apt-get dselect-upgrade</pre>Прежде чем переносить, желательно забэкапить /etc/, а потом на новой машине восстановить.
