@@ -6,7 +6,6 @@ categories:
 tags:
 - chef
 - server
-draft: true
 ---
 Hello my dear friends. Today we will continue talk about Chef Server. All example code you can find here: [github.com/le0pard/chef-server-example/tree/1.0](https://github.com/le0pard/chef-server-example/tree/1.0).
 
