@@ -66,12 +66,15 @@ Next I will use [bundler](http://gembundler.com/) to get some useful gems:
 {% highlight bash %}
 $ cat Gemfile
   source :rubygems
-
-  gem 'chef'
+  # 
+  # gem 'chef', "~> 11.4.0"
+  # need version 11.4.0, but problem with net-ssh versions conflict
+  # install it manual by "gem install" command
+  # 
   gem 'knife-solo'
-  gem 'berkshelf'
+  gem 'berkshelf', github: "RiotGames/berkshelf", branch: "fix-for-chef-11"
   gem 'ffi', '~> 1.2.0'
-  gem 'vagrant', "~> 1.0.5"
+  gem 'vagrant'
   gem 'oj'
   gem 'multi_json'
 
@@ -209,8 +212,8 @@ Vagrant::Config.run do |config|
         chef.add_recipe(recipe)
        end if VAGRANT_JSON['run_list']
 
-       Dir["#{Pathname(__FILE__).dirname.join('roles')}/*.json"].each do |role|
-         chef.add_role(role)
+       Dir.glob(Pathname(__FILE__).dirname.join('roles', '*.json')).each do |role|
+        chef.add_role(Pathname.new(role).basename(".*").to_s)
        end
     end
   end
@@ -297,13 +300,20 @@ Please enter the validation clientname: [chef-validator]
 Please enter the location of the validation key: [/etc/chef/validation.pem] .chef/validation.pem
 Please enter the path to a chef repository (or leave blank): 
 Creating initial API user...
+{% endhighlight %}
+
+If you have such error:
+
+{% highlight bash %}
 ERROR: knife encountered an unexpected error
 This may be a bug in the 'configure' knife command or plugin
 Please collect the output of this command with the `-VV` option before filing a bug report.
 Exception: NoMethodError: undefined method `save' for #<Hash:0x007fa8fe123668>
 {% endhighlight %}
 
-Do not pay attention to an error at the end of the operation. As a result, you should have a file ".chef/knife.rb" with similar content:
+This mean, what you are using chef version 11.0.0. This bug fixed in version 11.4.0.
+
+As a result, you should have a file ".chef/knife.rb" with similar content:
 
 {% highlight ruby %}
 log_level                :info
@@ -378,6 +388,11 @@ You also can see this client in Chef Server web interface:
 <a href="/assets/images/chef-server/precise64.png"><img src="/assets/images/chef-server/precise64.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
 
 And new registered node:
+
+{% highlight bash %}
+$ knife node list
+precise64
+{% endhighlight %}
 
 <a href="/assets/images/chef-server/precise64_2.png"><img src="/assets/images/chef-server/precise64_2.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
 
