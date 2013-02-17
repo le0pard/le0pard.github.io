@@ -11,7 +11,7 @@ Hello my dear friends. Today we will continue talk about Chef Server. All exampl
 
 In this article we will learn what is Chef Server and how to setup it.
 
-Before reading this article, it is better to read my articles about [Chef Solo](/2013/01/04/chef-solo-getting-started-part-1/). In this series of articles I will explain only what hasn't already been covered in this Chef Solo series of articles.
+Before reading this article, I recommend reading a series of articles about the [Chef Solo](/2013/01/04/chef-solo-getting-started-part-1/). In this series of articles I will explain only what I hasn't already been covered in this Chef Solo series of articles.
 
 # What is Chef Server?
 
@@ -51,7 +51,7 @@ In this series of articles we will work with Chef 11. You can read about changes
 
 # Initialize Chef Server project
 
-To setup and configure Chef Server we will use Chef Solo (really? :). This is because this component of system also should quickly deployed the new server, if with Chef Server something happens (crash file system of server, etc.). Do not forget to make a backups of Chef Server (because compared with Chef Solo, Chef Server will be the point of failure in your configuration management system).
+To setup and configure Chef Server we will use Chef Solo (really? :). Chef Solo will help us quickly deploy Chef Server on a new server, if with it something happens (crash file system of server, etc.). Do not forget to make a backups of Chef Server (because compared with Chef Solo, Chef Server will be the point of failure in your configuration management system).
 
 Let's create our folder, which will contain all our Chef kitchen:
 
@@ -80,7 +80,7 @@ $ cat Gemfile
 $ bundle
 {% endhighlight %}
 
-And create kitchen for Chef:
+And will create kitchen for Chef:
 
 {% highlight bash %}
 $ knife solo init .
@@ -88,7 +88,7 @@ $ knife solo init .
 
 # Berkshelf
 
-As you remember, to manage cookbooks for Chef Solo we used librarian gem. For this tutorial I select another good gem for manage a cookbooks dependencies - [berkshelf](http://berkshelf.com/). You can use any which like, but compared to the "librarian" the "berkshelf" has several pros:
+As you remember, to manage cookbooks for Chef Solo we used librarian gem. For this tutorial I selected another good gem for manage a cookbooks dependencies - [berkshelf](http://berkshelf.com/). You can use any which like, but compared to the "librarian" the "berkshelf" has several pros:
 
  * By default, berkshelf stores every version of a cookbook that you have ever installed in one folder on your local machine (the same workflow as for rubybems)
  * Flexible configuring
@@ -227,7 +227,7 @@ Vagrant::Config.run do |config|
 end
 {% endhighlight %}
 
-We set two servers: chef (Chef Server) and chef\_client (client of Chef Server). We use "hostonly" network for this servers. In this case both of this servers will be available by IPs: 10.33.33.33 and 10.33.33.50. Also no need to forward ports, because services on this servers can be available by this IPs. More about ["Multi-VM Environments"](http://docs.vagrantup.com/v1/docs/multivm.html) and ["Chef Solo Provisioning"](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) you can find by this links.
+We set two servers by this configuration: chef (Chef Server) and chef\_client (client of Chef Server). We use "hostonly" network for this servers. In this case both of this servers will be available by IPs: 10.33.33.33 and 10.33.33.50. Also doesn't need to do forward ports, because services on this servers will be available by this IPs. More about ["Multi-VM Environments"](http://docs.vagrantup.com/v1/docs/multivm.html) and ["Chef Solo Provisioning"](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) you can find by this links.
 
 Let's create our servers:
 
