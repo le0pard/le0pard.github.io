@@ -15,6 +15,8 @@ Before reading this article, I recommend reading a series of articles about the 
 
 # What is Chef Server?
 
+Chef is a Ruby-based configuration management engine.
+
 The Chef Server acts as a hub, ensuring that the right cookbooks are used, that the right policies are applied, that all of the node objects are up-to-date, and that all of the nodes that will be maintained are registered and known to the Chef Server. The Chef Server distributes configuration details (such as recipes, templates, and file distributions) to every node within the organization. Chef then does as much of the configuration work as possible on the nodes themselves (and not on the Chef Server). This scalable approach distributes the configuration effort throughout the organization.
 
 There are three types of Chef servers:
