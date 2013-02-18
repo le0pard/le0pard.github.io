@@ -227,9 +227,9 @@ Vagrant::Config.run do |config|
 end
 {% endhighlight %}
 
-We set two servers by this configuration: chef (Chef Server) and chef\_client (client of Chef Server). We use "hostonly" network for this servers. In this case both of this servers will be available by IPs: 10.33.33.33 and 10.33.33.50. Also doesn't need to do forward ports, because services on this servers will be available by this IPs. More about ["Multi-VM Environments"](http://docs.vagrantup.com/v1/docs/multivm.html) and ["Chef Solo Provisioning"](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) you can find by this links.
+We set two nodes by this configuration: chef (Chef Server) and chef\_client (client of Chef Server). We use "hostonly" network for this servers. In this case both of this servers will be available by IPs: 10.33.33.33 and 10.33.33.50. Also doesn't need to do forward ports, because services on this servers will be available by this IPs. More about ["Multi-VM Environments"](http://docs.vagrantup.com/v1/docs/multivm.html) and ["Chef Solo Provisioning"](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) you can find by this links.
 
-Let's create our servers:
+Let's create our nodes:
 
 {% highlight bash %}
 $ vagrant up
@@ -320,7 +320,7 @@ log_location             STDOUT
 node_name                'admin'
 client_key               '/Users/leo/programs/projects/chef-server-example/.chef/admin.pem'
 validation_client_name   'chef-validator'
-validation_key           '/Users/leo/programs/projects/chef-server-example/.chef/validator.pem'
+validation_key           '/Users/leo/programs/projects/chef-server-example/.chef/validation.pem'
 chef_server_url          'https://10.33.33.33'
 syntax_check_cache_path  '/Users/leo/programs/projects/chef-server-example/.chef/syntax_check_cache'
 {% endhighlight %}
