@@ -5,7 +5,7 @@
   LeoSite = {
     repos: [],
     recentlyUpdatedRepos: [],
-    reposInclude: ["mongodb_logger", "omniauth-yammer", "postgresql_book", "couch_yammer", "LibreOfficeCSVGenerator", "my_little_nosql"],
+    reposInclude: ["mongodb_logger", "omniauth-yammer", "postgresql_book", "couch_yammer", "LibreOfficeCSVGenerator", "my_little_nosql", "webp-ffi"],
     additionalProjects: [
       {
         "html_url": "https://github.com/railsware/libskypekit",
