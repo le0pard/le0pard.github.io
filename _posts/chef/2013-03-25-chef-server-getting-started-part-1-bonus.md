@@ -63,7 +63,7 @@ Chef Solo:
 
 {% highlight bash %}
 $ wget http://dl.dropbox.com/u/83704794/vagrant/rwpreise64.box
-$ vagrant box add precise64 /Users/leo/Downloads/precise64.box
+$ vagrant box add precise64 precise64.box
 $ git clone git://github.com/le0pard/chef-solo-example.git
 $ cd chef-solo-example
 $ git checkout vagrant
@@ -75,7 +75,7 @@ Chef Server:
 
 {% highlight bash %}
 $ wget http://dl.dropbox.com/u/83704794/vagrant/rwpreise64.box
-$ vagrant box add precise64 /Users/leo/Downloads/precise64.box
+$ vagrant box add precise64 precise64.box
 $ git clone git://github.com/le0pard/chef-server-example.git
 $ cd chef-server-example
 $ git checkout vagrant
