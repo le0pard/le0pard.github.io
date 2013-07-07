@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Storing the tree structures in the RDBMS
-date: 2013-04-14 00:00:00
 categories:
 - algorithms
 tags:

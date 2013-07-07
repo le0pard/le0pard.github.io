@@ -15,6 +15,6 @@ tags:
 
 Страница книги: [postgresql.leopard.in.ua](http://postgresql.leopard.in.ua)
 
-Исходники: [github.com/le0pard/postgresql\_book](http://github.com/le0pard/postgresql\_book)
+Исходники: [github.com/le0pard/postgresql_book](http://github.com/le0pard/postgresql_book)
 
 ЗЫ. 24 ноября в Харькове пройдет конференция [RubYcon 2012](http://rubycon.in.ua/), на которой я буду выступать в числе докладчиков и рассказывать про применения Chef и Ruby. Приходите, будет интересно!
