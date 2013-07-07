@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started with Chef Server. Bonus updates
+date: 2013-03-25 00:00:00
 categories:
 - chef
 tags:

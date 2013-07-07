@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started with Chef Solo. Part 5
+date: 2013-01-26 00:00:00
 categories:
 - chef
 tags:
@@ -21,8 +22,8 @@ When Chef configures the node object during each Chef run, these attributes are 
 
 {% highlight ruby %}
 node['platform'] # The platform on which a node is running. This attribute helps determine which providers will be used.
-node['platform_version']	# The version of the platform. This attribute helps determine which providers will be used.
-node['hostname']	# The host name for the node.
+node['platform_version']  # The version of the platform. This attribute helps determine which providers will be used.
+node['hostname']  # The host name for the node.
 {% endhighlight %}
 
 # Ohai plugin

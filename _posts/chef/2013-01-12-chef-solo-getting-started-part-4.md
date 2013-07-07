@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started with Chef Solo. Part 4
+date: 2013-01-12 00:00:00
 categories:
 - chef
 tags:

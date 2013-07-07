@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started with Chef Solo. Part 3
+date: 2013-01-07 00:00:00
 categories:
 - chef
 tags:
@@ -86,7 +87,7 @@ config.vm.provision :chef_solo do |chef|
    VAGRANT_JSON['run_list'].each do |recipe|
     chef.add_recipe(recipe)
    end if VAGRANT_JSON['run_list']
-   
+
    Dir["#{Pathname(__FILE__).dirname.join('roles')}/*.json"].each do |role|
      chef.add_role(role)
    end

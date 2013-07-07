@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Работа с PostgreSQL: настройка и масштабирование. 3-е издание"
+date: 2012-11-14 00:00:00
 categories:
 - postgresql
 tags:

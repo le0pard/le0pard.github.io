@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Using CORS with Rails
-description: ""
-categories: 
+date: 2012-07-08 00:00:00
+categories:
 - rails
-tags: 
+tags:
 - rails
 - html5
 ---
@@ -17,7 +17,7 @@ Hello my dear friends. Today we will talk about CORS and usage it in Rails appli
  * Safari 4+
  * Internet Explorer 8+
  * Opera 12+
- 
+
 Here is example with using JQuery to send CORS request:
 
     $.ajax({
@@ -27,18 +27,18 @@ Here is example with using JQuery to send CORS request:
         withCredentials: true
       }
     })
-  
+
 The main parameters:
 
   * *crossDomain* - should be set to true, if we want to use cross domain request
   * *xhrFields* - a map of fieldName-fieldValue pairs to set on the native XHR object. In this case I set "withCredentials: true". What does do this parameter?
-  
+
 ## withCredentials
 
 Standard CORS requests do not send or set any cookies by default. In order to include cookies as part of the request, you need to set the XmlHttpRequest’s .withCredentials property to true:
 
     xhr.withCredentials = true;
-    
+
 The .withCredentials property will include any cookies from the remote domain in the request, and it will also set any cookies from the remote domain. Note that these cookies still honor same-origin policies, so your JavaScript code can’t access the cookies from document.cookie or the response headers. They can only be controlled by the remote domain.
 
 ## Handling a simple requests
@@ -55,7 +55,7 @@ JavaScript:
         withCredentials: true
       }
     })
-    
+
 HTTP Request:
 
     GET /test HTTP/1.1
@@ -64,7 +64,7 @@ HTTP Request:
     Accept-Language: en-US
     Connection: keep-alive
     User-Agent: Mozilla/5.0...
-    
+
 The first thing to note is that a valid CORS request *always* contains an Origin header. This Origin header is added by the browser, and can not be controlled by the user. The value of this header is the scheme (e.g. http), domain (e.g. bob.com) and port (included only if it is not a default port, e.g. 81) from which the request originates; for example: http://some.another.domain.
 
 Here’s a valid server response:
@@ -73,7 +73,7 @@ Here’s a valid server response:
     Access-Control-Allow-Credentials: true
     Access-Control-Expose-Headers: FooBar
     Content-Type: text/html; charset=utf-8
-    
+
 All CORS related headers are prefixed with "Access-Control-". Here’s some more details about each header.
 
 **Access-Control-Allow-Origin (required)** - This header must be included in all valid CORS responses; omitting the header will cause the CORS request to fail. The value of the header can either echo the Origin request header (as in the example above), or be a '\*' to allow requests from any origin. If you’d like any site to be able to access your data, using '\*' is fine. But if you’d like finer control over who can access your data, use an actual value in the header.
@@ -147,7 +147,7 @@ If the HTTP method and headers are valid, the server should respond with the fol
     Access-Control-Allow-Methods: GET, POST, PUT
     Access-Control-Allow-Headers: Content-Type
     Content-Type: text/html; charset=utf-8
-    
+
 **Access-Control-Allow-Origin (required)** - Like the simple response, the preflight response must include this header.
 
 **Access-Control-Allow-Methods (required)** - Comma-delimited list of the supported HTTP methods. Note that although the preflight request only asks permisions for a single HTTP method, this reponse header can include the list of all supported HTTP methods. This is helpful because the preflight response may be cached, so a single preflight response can contain details about multiple request types.
@@ -180,9 +180,9 @@ First of all you need setup response headers in Rails application:
 
     class Api::BaseController < ApplicationController
       before_filter :set_headers
-  
+
       private
-  
+
       def set_headers
         headers['Access-Control-Allow-Origin'] = '*'
         headers['Access-Control-Expose-Headers'] = 'ETag'
@@ -191,7 +191,7 @@ First of all you need setup response headers in Rails application:
         headers['Access-Control-Max-Age'] = '86400'
       end
     end
-    
+
 This settings allow requests from any origin (any site to be able to access your data). If you need cookies (Access-Control-Allow-Credentials), then you coudn't use "\*" in Access-Control-Allow-Origin and should set host. In Rails you can do this by setting ORIGIN headers from request to Access-Control-Allow-Origin header in response:
 
     class Api::BaseController < ApplicationController
@@ -212,9 +212,9 @@ This settings allow requests from any origin (any site to be able to access your
         end
       end
     end
-    
+
 ## Access-Control-Expose-Headers problem
 
-All browsers (except Google Chrome) have buggy getRequestHeader() implementations, so the headers may not be accessible to clients even after you set the Access-Control-Expose-Headers header. In my example, ETag header accessible only in Google Chrome browser. Safari return only simple response headers, while Firefox doesn't return ANY response headers. 
+All browsers (except Google Chrome) have buggy getRequestHeader() implementations, so the headers may not be accessible to clients even after you set the Access-Control-Expose-Headers header. In my example, ETag header accessible only in Google Chrome browser. Safari return only simple response headers, while Firefox doesn't return ANY response headers.
 
 *That’s all folks!* Thank you for reading till the end.

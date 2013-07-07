@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Riak and Ruby - writing a simple url shortener
-description: ""
-categories: 
+date: 2012-06-09 00:00:00
+categories:
 - nosql
-tags: 
+tags:
 - nosql
 - riak
 - ruby
-draft: true
+published: false
 ---
 Hello my dear friends. Today we will talk about Riak.

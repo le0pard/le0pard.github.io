@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started with Chef Solo. Part 2
+date: 2013-01-05 00:00:00
 categories:
 - chef
 tags:
@@ -35,10 +36,10 @@ drwxr-xr-x  20 leo  staff    680 Jan  4 19:24 recipes
 drwxr-xr-x   5 leo  staff    170 Jan  4 19:24 templates
 drwxr-xr-x   3 leo  staff    102 Jan  4 19:24 test
 {% endhighlight %}
-    
+
 Cookbook can have:
- 
- * metadata.rb - the file, which contain all information about cookbook (name, dependencies). 
+
+ * metadata.rb - the file, which contain all information about cookbook (name, dependencies).
 
 {% highlight ruby %}
 name              "nginx"
@@ -67,7 +68,7 @@ end
 {% endhighlight %}
 
   This is an important file, if you want distribute your cookbook.
-  
+
  * attributes - folder, which contain files with default attributes for recipes. In nginx cookbook you can find such default attributes:
 
 {% highlight ruby %}
@@ -76,11 +77,11 @@ default['nginx']['dir'] = "/etc/nginx"
 default['nginx']['log_dir'] = "/var/log/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"
 {% endhighlight %}
-     
+
   As you remember we can redefine all this attributes in node file.
 
  * definitions - folder, which contain helpers from this cookbook. In nginx cookbook you can find this helper:
- 
+
 {% highlight ruby %}
 define :nginx_site, :enable => true do
  if params[:enable]
@@ -98,9 +99,9 @@ define :nginx_site, :enable => true do
  end
 end
 {% endhighlight %}
-     
+
   The helper "nginx_site" can enable/disable configuration from folder "site-available" and reload nginx. I will show how to use this helper.
-  
+
  * files - folder, which contain files and this files just need to copy on server in the right place (it can be ssl keys, static configs, etc.)
  * recipes - folder, which contain all recipes of this cookbook. Each recipe is in a separate Ruby file:
 
@@ -128,7 +129,7 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 -rw-r--r--   1 leo  staff  5218 Jan  4 19:24 source.rb
 -rw-r--r--   1 leo  staff  1571 Jan  4 19:24 upload_progress_module.rb
 {% endhighlight %}
- 
+
   As you remember we added to run\_list:
 
 {% highlight ruby %}
@@ -146,10 +147,10 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 {% endhighlight %}
 
   This is run default recipe from nginx cookbook (file default.rb in recipes folder).
-  
+
  * templates - folder, which contain Erb templates of this cookbook (this is nginx configs)
  * test - folder, which contain tests for this cookbook
- 
+
 
 # First cookbook
 
@@ -269,11 +270,11 @@ Next, create nginx template ("tomatoes/templates/default/nginx.conf.erb"):
 {% highlight erb %}
 server {
     listen 80 default;
-    
+
     access_log <%= node.app.web_dir %>/logs/nginx_access.log;
-    error_log <%= node.app.web_dir %>/logs/nginx_error.log;                                                                                                                                                                                                     
-                                                                                                                                                                                                           
-    keepalive_timeout 10;                                                                                                                                                                                   
+    error_log <%= node.app.web_dir %>/logs/nginx_error.log;
+
+    keepalive_timeout 10;
     root <%= node.app.web_dir %>/public;
 }
 {% endhighlight %}
@@ -335,7 +336,7 @@ As you can see in recipe code we created 3 directories, created new config for n
 
 <a href="/assets/images/chef/nginx2.png"><img src="/assets/images/chef/nginx2.png" alt="nginx" title="nginx" class="aligncenter" /></a>
 
-# Ruby Power! 
+# Ruby Power!
 
 As you can see in our recipe we created 3 directories by 3 command. Better [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself) this code. But how to do this? Simple! This is all Ruby code, so you can use it to do your recipe more powerful (and beautiful, of course):
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Effective similarity search in PostgreSQL
+date: 2012-06-01 00:00:00
 categories:
 - postgresql
 tags:
@@ -92,16 +93,16 @@ Let's test instaled extension:
 
     test=# CREATE EXTENSION smlar;
     CREATE EXTENSION
-    
+
     test=# SELECT smlar('{1,4,6}'::int[], '{5,4,6}' );
-      smlar  
+      smlar
     ----------
      0.666667
     (1 row)
 
-    
+
     test=# SELECT smlar('{1,4,6}'::int[], '{5,4,6}', 'N.i / sqrt(N.a * N.b)' );
-      smlar  
+      smlar
     ----------
      0.666667
     (1 row)
@@ -114,7 +115,7 @@ Function smlar computes similary of two arrays (arrays should be the same type) 
     custom_variable_classes = 'smlar'       # list of custom variable class names
     smlar.threshold = 0.8  # or any other value > 0 and < 1
 
-Array's with similarity lower than 'smlar.threshold' are not similar by % operation. 
+Array's with similarity lower than 'smlar.threshold' are not similar by % operation.
 
     test=# SELECT '{1,4,6,5,7,9}'::int[] % '{1,5,4,6,7,8,9}'::int[] as similar;
      similar
@@ -126,7 +127,7 @@ GiST/GIN support for % operation. The parameter "similar.type" allows you to spe
 
 # Finding duplicate of images
 
-For example, I select the search for duplicate images. Other options for shopping, blogs are implemented in a similar way. The algorithm helps to find similar images that are slightly different: desaturated images, add watermark, passed through the filters. 
+For example, I select the search for duplicate images. Other options for shopping, blogs are implemented in a similar way. The algorithm helps to find similar images that are slightly different: desaturated images, add watermark, passed through the filters.
 
 In our algorithm, we will create a pixel matrix of each image. Let it be 15x15 pixels. The next step: we do not know the color of a pixel, but its intensity (the intensity is given by 0.299 * red + 0,587 * green + 0,114 * blue). Calculating the intensity will help us find the image is not paying attention to the colors of the images.
 
@@ -213,7 +214,7 @@ Excellent, but it is comparing two images. Now let's use PostgreSQL for searchin
     INSERT into images(image_array) VALUES ('{1010257,...,2424257}');
 
     test=# SELECT count(*) from images;
-     count 
+     count
     --------
      200000
     (1 row)
@@ -252,7 +253,7 @@ Difference between GiST and GIN indexes you can read [here](http://www.postgresq
 Perfect! Let's check performance.
 
     test=# SELECT count(*) from images;
-      count 
+      count
     ---------
      1000000
     (1 row)
@@ -271,7 +272,7 @@ Perfect! Let's check performance.
 
 Let's add sorting in SQL (the most similar images were the first), and add similarity as extra field:
 
-    EXPLAIN ANALYZE SELECT smlar(images.image_array, '{1010259,...,2424252}'::int[]) as similarity FROM images WHERE images.image_array % '{1010259,1011253, ...,2423253,2424252}'::int[] ORDER BY similarity DESC; 
+    EXPLAIN ANALYZE SELECT smlar(images.image_array, '{1010259,...,2424252}'::int[]) as similarity FROM images WHERE images.image_array % '{1010259,1011253, ...,2423253,2424252}'::int[] ORDER BY similarity DESC;
 
 
      Sort  (cost=4020.94..4023.41 rows=986 width=924) (actual time=2888.472..2901.977 rows=200000 loops=1)

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started with Chef Solo. Part 1
+date: 2013-01-04 00:00:00
 categories:
 - chef
 tags:
@@ -32,7 +33,7 @@ And of course main point is __Automate All The Things!!!__
  * Blindly reuse cookbooks and recipes
  * Monitor your servers or softwares
  * Undoing concept
- 
+
 # Chef types and terminology
 
 Exists two types of Chef: Chef Solo and Chef Server. Chef Solo is simple way to begin working with Chef what is why I will show how to use it in articles.
@@ -42,13 +43,13 @@ This is list of terminology, which I will use in my articles:
  * Node - A host where the Chef client will run (web server, database server or another server). Chef Client always working on server, which it configure.
  * Chef Client - a command line tool that configures servers.
  * Chef Solo - a version of the Chef client that doesn't rely to the server for configuration (like Chef server).
- * Recipes - a single file of Ruby code that contains commands to run on a node (nginx ssl module, apache php module). 
+ * Recipes - a single file of Ruby code that contains commands to run on a node (nginx ssl module, apache php module).
  * Resources - a node's resources include files, directories, users and services.
  * Cookbook - a collection of Chef recipes (nginx cookbook, postgresql cookbook).
  * Role - reusable configuration for multiple nodes (web role, database role, etc).
  * Attribute - variables that are passed through Chef and used in recipes and templates (the version number of nginx to install).
  * Template - a file with placeholders for attributes, used to create configuration files (simple [Erb](http://ruby-doc.org/stdlib-1.9.3/libdoc/erb/rdoc/ERB.html) file).
- 
+
 # Initialize chef project
 
 Let's create our folder, which will contain all our Chef kitchen:
@@ -78,7 +79,7 @@ List of the required gems:
  * [knife-solo](http://matschaffer.github.com/knife-solo/) - knife is a powerful command-line interface (CLI) that comes with Chef. It is used to control Chef client.
  * librarian - is a bundler for your Chef-based infrastructure repositories
  * [vagrant](http://www.vagrantup.com/) - create and configure lightweight, reproducible, and portable development environments. For this rubygems need installed VirtualBox. We will use vagrant to test our Chef Solo.
- 
+
 Next you need to create a kitchen by knife:
 
 {% highlight bash %}
@@ -112,16 +113,16 @@ Let's look at the directory structure:
  * roles - directory for Chef roles
  * site-cookbooks - directory for your custom Chef cookbooks
  * solo.rb - file used by Chef Solo with [configuration settings](http://wiki.opscode.com/display/chef/Chef+Configuration+Settings)
- 
+
 # Librarian
- 
+
 Now let's create librarian Cheffile for manage the cookbooks:
 
 {% highlight bash %}
 $ librarian-chef init
   create  Cheffile
 {% endhighlight %}
-      
+
 And add to Cheffile nginx cookbook. More cookbooks you can find at [community.opscode.com](http://community.opscode.com/).
 
 {% highlight bash %}
@@ -151,14 +152,14 @@ drwxr-xr-x  13 leo  staff  442 Jan  4 19:24 runit
 {% endhighlight %}
 
 # First node
-    
+
 Next, create a node file. Chef node file always have name as server host. For create this file automatically and check, what Chef Solo installed on server you can use knife command "prepare". This command installs Ruby, RubyGems and Chef on a given host. It’s structured to auto-detect the target OS and change the installation process accordingly:
 
 {% highlight bash %}
 $ knife solo prepare host_username@host
 # for version < 0.1.0 you should use "knife prepare host_username@host"
 {% endhighlight %}
-    
+
 This command apply the same parameters as ssh command. Fox example, executing with ssh key:
 
 {% highlight bash %}
@@ -182,11 +183,11 @@ $ cat nodes/vagrant.json
   ]
 }
 {% endhighlight %}
-    
+
 "run\_list" the main part of node, where you specify roles and/or recipes to add to the node. In our case I add recipe source from nginx cookbook. Also you can see nginx attributes (like version, modules, etc.). All cookbook can have directory "attributes" and this directory contain default attributes for cookbook recipes. But you can redefine this attributes in node file. We are ready to test our kitchen!
 
 # Vagrant
- 
+
 For testing Chef Solo kitchen by vagrant we need download vagrant box. List of boxes you can find [www.vagrantbox.es](http://www.vagrantbox.es/).
 
 {% highlight bash %}
@@ -198,7 +199,7 @@ ready to `vagrant up` your first virtual environment! Please read
 the comments in the Vagrantfile as well as documentation on
 `vagrantup.com` for more information on using Vagrant.
 {% endhighlight %}
-    
+
 Next we should edit Vagrantfile for define chef solo:
 
 {% highlight bash %}
@@ -220,9 +221,9 @@ $ cat Vagrantfile
 
     # Every Vagrant virtual environment requires a box to build off of.
     config.vm.box = "precise64"
-    
+
     ...
-    
+
     VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
 
     config.vm.provision :chef_solo do |chef|
@@ -237,18 +238,18 @@ $ cat Vagrantfile
         chef.add_recipe(recipe)
        end if VAGRANT_JSON['run_list']
     end
-    
+
     ...
-    
+
   end
 {% endhighlight %}
-    
-As you can see "run\_list" and json attributes from node "vagrant.json" automatically loaded from file. More information about using Chef Solo with Vagrant you can find by [this link](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html). 
+
+As you can see "run\_list" and json attributes from node "vagrant.json" automatically loaded from file. More information about using Chef Solo with Vagrant you can find by [this link](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html).
 
 Next, we can try test Chef Solo with Vagrant:
 
 {% highlight bash %}
-$ vagrant up                                                                                                                                                                                              
+$ vagrant up
 [default] Importing base box 'precise64'...
 [default] The guest additions on this VM do not match the install version of
 VirtualBox! This may cause things such as forwarded ports, shared
@@ -291,7 +292,7 @@ stdin: is not a tty
 [Fri, 04 Jan 2013 18:33:44 +0000] INFO: Running report handlers
 [Fri, 04 Jan 2013 18:33:44 +0000] INFO: Report handlers complete
 {% endhighlight %}
-    
+
 Next, we can check what nginx successfully installed on vagrant image:
 
 {% highlight bash %}
@@ -304,8 +305,8 @@ Last login: Mon Aug 20 19:28:45 2012 from 10.0.2.2
 vagrant@precise64:~$ ps ax | grep nginx
  6682 ?        Ss     0:00 runsv nginx
  9010 ?        S      0:00 nginx: master process /opt/nginx-1.2.3/sbin/nginx -c /etc/nginx/nginx.conf
- 9011 ?        S      0:00 nginx: worker process                               
- 9012 ?        S      0:00 nginx: worker process                               
+ 9011 ?        S      0:00 nginx: worker process
+ 9012 ?        S      0:00 nginx: worker process
  9132 pts/1    S+     0:00 grep --color=auto nginx
 vagrant@precise64:~$ exit
 logout
@@ -317,13 +318,13 @@ Let's check what nginx is running. Just add in "Vagrantfile" port forwarding:
 {% highlight ruby %}
 config.vm.forward_port 80, 8085
 {% endhighlight %}
-    
+
 Next, reload vagrant instance:
 
 {% highlight bash %}
 $ vagrant reload
 {% endhighlight %}
-    
+
 And you should see in your browser:
 
 <a href="/assets/images/chef/nginx.png"><img src="/assets/images/chef/nginx.png" alt="nginx" title="nginx" class="aligncenter" /></a>
@@ -333,10 +334,10 @@ After change something in your kitchen, you should run command "vagrant provisio
 {% highlight bash %}
 $ vagrant provision
 {% endhighlight %}
-    
+
 And Chef Solo will be running again on vagrant server.
 
-The main idea of Chef is idempotence: it can safely be run multiple times. Once you develop your configuration, your machines will apply the configuration and Chef will only make any changes to the system if the system state does not match the configured state. For example, first time chef will compile nginx from source and install it on server. On next run it just check, what nginx already compiled and running (if you will not change attributes). 
+The main idea of Chef is idempotence: it can safely be run multiple times. Once you develop your configuration, your machines will apply the configuration and Chef will only make any changes to the system if the system state does not match the configured state. For example, first time chef will compile nginx from source and install it on server. On next run it just check, what nginx already compiled and running (if you will not change attributes).
 
 # Cook real server
 
@@ -346,7 +347,7 @@ After fully testing the kitchen you can apply your node configuration on real se
 $ knife solo cook host_username@host
 # for version < 0.1.0 you should use "knife cook host_username@host"
 {% endhighlight %}
-    
+
 Your server must have installed Chef client. If no, just before command "cook" run command "prepare".
 
 # Summary

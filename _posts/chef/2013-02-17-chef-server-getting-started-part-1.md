@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Getting Started with Chef Server. Part 1
+date: 2013-02-17 00:00:00
 categories:
 - chef
 tags:
@@ -30,13 +31,13 @@ In the series of articles we will work with Open Source Chef.
 # What is difference between Chef Solo and Chef Server?
 
 Chef Solo does not provide:
- 
+
  * Node data storage or search indexes.
  * Centralized cookbook distribution.
  * Environments, for setting policy of cookbook versions.
  * A central API to interact with and use to integrate infrastructure components.
  * Bulk operations with nodes.
- 
+
 As you can see, Chef Solo useful for small infrastructure (several servers), but if your you have huge amount of server - you must use Chef Server.
 
 # Environments
@@ -67,11 +68,11 @@ Next I will use [bundler](http://gembundler.com/) to get some useful gems:
 {% highlight bash %}
 $ cat Gemfile
   source :rubygems
-  # 
+  #
   # gem 'chef', "~> 11.4.0"
   # need version 11.4.0, but problem with net-ssh versions conflict
   # install it manual by "gem install" command
-  # 
+  #
   gem 'knife-solo'
   gem 'berkshelf', github: "RiotGames/berkshelf", branch: "fix-for-chef-11"
   gem 'ffi', '~> 1.2.0'
@@ -190,16 +191,16 @@ Vagrant::Config.run do |config|
   config.vm.define :chef do |chef_config|
     config.vm.customize ["modifyvm", :id, "--cpus", 2]
     config.vm.customize ["modifyvm", :id, "--memory", 1024]
-  
+
     chef_config.vm.box = "precise64"
     chef_config.vm.network :hostonly, "10.33.33.33"
     chef_config.vm.share_folder "cache", guest_cache_path, host_cache_path
 
     chef_config.ssh.max_tries = 40
     chef_config.ssh.timeout   = 120
-      
+
     chef_config.berkshelf.berksfile_path = Pathname(__FILE__).dirname.join('Berksfile')
-    
+
     VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
 
     chef_config.vm.provision :chef_solo do |chef|
@@ -218,11 +219,11 @@ Vagrant::Config.run do |config|
        end
     end
   end
-  
+
   config.vm.define :chef_client do |chef_client_config|
     chef_client_config.vm.box = "precise64"
     chef_client_config.vm.network :hostonly, "10.33.33.50"
-    
+
     chef_client_config.ssh.max_tries = 40
     chef_client_config.ssh.timeout   = 120
   end
@@ -295,11 +296,11 @@ WARNING: No knife configuration file found
 Where should I put the config file? [/Users/leo/.chef/knife.rb] .chef/knife.rb
 Please enter the chef server URL: [http://macbookproleo:4000] https://10.33.33.33
 Please enter a clientname for the new client: [leo] admin
-Please enter the existing admin clientname: [chef-webui] 
+Please enter the existing admin clientname: [chef-webui]
 Please enter the location of the existing admin client's private key: [/etc/chef/webui.pem] .chef/webui.pem
-Please enter the validation clientname: [chef-validator] 
+Please enter the validation clientname: [chef-validator]
 Please enter the location of the validation key: [/etc/chef/validation.pem] .chef/validation.pem
-Please enter the path to a chef repository (or leave blank): 
+Please enter the path to a chef repository (or leave blank):
 Creating initial API user...
 {% endhighlight %}
 
@@ -327,7 +328,7 @@ chef_server_url          'https://10.33.33.33'
 syntax_check_cache_path  '/Users/leo/programs/projects/chef-server-example/.chef/syntax_check_cache'
 {% endhighlight %}
 
-Let's check knife configuration: 
+Let's check knife configuration:
 
 {% highlight bash %}
 $ knife client list
@@ -347,9 +348,9 @@ So let's do this:
 $ knife bootstrap 10.33.33.50 -x vagrant -P vagrant --sudo
 Bootstrapping Chef on 10.33.33.50
 10.33.33.50 --2013-02-16 16:08:36--  http://opscode.com/chef/install.sh
-10.33.33.50 Resolving opscode.com (opscode.com)... 
+10.33.33.50 Resolving opscode.com (opscode.com)...
 10.33.33.50 184.106.28.82
-10.33.33.50 Connecting to opscode.com (opscode.com)|184.106.28.82|:80... 
+10.33.33.50 Connecting to opscode.com (opscode.com)|184.106.28.82|:80...
 10.33.33.50 connected.
 
 ...
@@ -380,7 +381,7 @@ $ knife client show precise64
 admin:      false
 chef_type:  client
 json_class: Chef::ApiClient
-name:       
+name:
 public_key:
 {% endhighlight %}
 

@@ -1,14 +1,15 @@
 ---
 layout: post
 title: MongodbLogger 0.4.0 for Rails 3. What's new?
-categories: 
+date: 2012-12-08 00:00:00
+categories:
 - rails
-tags: 
+tags:
 - rails
 - mongodb
 - logger
 ---
-Hello my dear friends. 
+Hello my dear friends.
 
 I just released a new version of my gem - [MongodbLogger](http://mongodb-logger.catware.org/) version 0.4.0. What is changed in this version?
 
