@@ -147,7 +147,7 @@ After this we should configure for Chef Solo node for our Chef Server. I will do
 }
 {% endhighlight %}
 
-By "configuration" key you can change settings for Chef Server. All available setting, which is possible to redefined, you can find [here](https://github.com/opscode/omnibus-chef/blob/master/files/chef-server-cookbooks/chef-server/attributes/default.rb).
+By "configuration" key you can change settings for Chef Server. All available setting, which is possible to redefined, you can find [here](https://github.com/opscode/omnibus-chef-server/blob/master/files/chef-server-cookbooks/chef-server/attributes/default.rb).
 
 Next we should create node "vagrant.json" with content:
 
