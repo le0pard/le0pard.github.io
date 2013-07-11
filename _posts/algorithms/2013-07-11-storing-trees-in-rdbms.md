@@ -94,3 +94,4 @@ This pattern is suitable for frequent selection and rare additions or changes. R
 
 Of course, these are only the most common solutions, and for sure there are techniques that I don't know about. Relational databases (RDBMS) are generally not very well suited for storing tree structures, but that's another topic. We should choose carefully what pattern to use because each of them has certain disadvantages. The main thing is that there are plenty to choose from.
 
+*That’s all folks!* Thank you for reading till the end.
