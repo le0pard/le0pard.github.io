@@ -7,7 +7,6 @@ tags:
 - algorithms
 - rdbms
 - trees
-published: true
 ---
 Hello my dear friends. Today we will talk about storing the tree structures in the RDBMS (Relational database management system: MySQL, PostgreSQL, Oracle, etc).
 
