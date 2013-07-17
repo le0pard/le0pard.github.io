@@ -69,16 +69,9 @@ Next I will use [bundler](http://gembundler.com/) to get some useful gems:
 $ cat Gemfile
   source :rubygems
   #
-  # gem 'chef', "~> 11.4.0"
-  # need version 11.4.0, but problem with net-ssh versions conflict
-  # install it manual by "gem install" command
-  #
+  gem 'chef', "~> 11.4.0"
   gem 'knife-solo'
-  gem 'berkshelf', github: "RiotGames/berkshelf", branch: "fix-for-chef-11"
-  gem 'ffi', '~> 1.2.0'
-  gem 'vagrant'
-  gem 'oj'
-  gem 'multi_json'
+  gem 'berkshelf'
 
 $ bundle
 {% endhighlight %}
@@ -173,12 +166,6 @@ $ vagrant init precise64
 Next we need modeling a cluster of machines by vagrant. Let's modify Vagrantfile:
 
 {% highlight ruby %}
-require 'rubygems'
-require 'bundler'
-
-Bundler.require
-require 'multi_json'
-require 'berkshelf/vagrant'
 
 host_cache_path = File.expand_path("../.cache", __FILE__)
 guest_cache_path = "/tmp/vagrant-cache"
@@ -199,9 +186,7 @@ Vagrant::Config.run do |config|
     chef_config.ssh.max_tries = 40
     chef_config.ssh.timeout   = 120
 
-    chef_config.berkshelf.berksfile_path = Pathname(__FILE__).dirname.join('Berksfile')
-
-    VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
+    VAGRANT_JSON = JSON.parse(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
 
     chef_config.vm.provision :chef_solo do |chef|
        chef.cookbooks_path = ["site-cookbooks", "cookbooks"]
@@ -209,10 +194,12 @@ Vagrant::Config.run do |config|
        chef.data_bags_path = "data_bags"
        chef.provisioning_path = guest_cache_path
 
+       chef.run_list = VAGRANT_JSON.delete('run_list')
        chef.json = VAGRANT_JSON
-       VAGRANT_JSON['run_list'].each do |recipe|
-        chef.add_recipe(recipe)
-       end if VAGRANT_JSON['run_list']
+       # old way
+       #VAGRANT_JSON['run_list'].each do |recipe|
+       # chef.add_recipe(recipe)
+       #end if VAGRANT_JSON['run_list']
 
        Dir.glob(Pathname(__FILE__).dirname.join('roles', '*.json')).each do |role|
         chef.add_role(Pathname.new(role).basename(".*").to_s)
