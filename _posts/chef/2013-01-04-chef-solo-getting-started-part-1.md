@@ -67,9 +67,7 @@ $ cat Gemfile
 
   gem 'knife-solo'
   gem 'librarian'
-  gem 'ffi', '~> 1.2.0'
   gem 'vagrant', "~> 1.0.5"
-  gem 'multi_json'
 
 $ bundle
 {% endhighlight %}
@@ -78,7 +76,7 @@ List of the required gems:
 
  * [knife-solo](http://matschaffer.github.com/knife-solo/) - knife is a powerful command-line interface (CLI) that comes with Chef. It is used to control Chef client.
  * librarian - is a bundler for your Chef-based infrastructure repositories
- * [vagrant](http://www.vagrantup.com/) - create and configure lightweight, reproducible, and portable development environments. For this rubygems need installed VirtualBox. We will use vagrant to test our Chef Solo.
+ * [vagrant](http://www.vagrantup.com/) - create and configure lightweight, reproducible, and portable development environments. For this rubygems need installed VirtualBox. We will use vagrant to test our Chef Solo. WARNING! Right now is not possible use vagrant from rubygems. You should install it separately. Also in this case "multi_json" gem will not available in Vagrant file, but we can use JSON gem, which have vagrant.
 
 Next you need to create a kitchen by knife:
 
@@ -208,12 +206,6 @@ $ cat Vagrantfile
   # -*- mode: ruby -*-
   # vi: set ft=ruby :
 
-  require 'rubygems'
-  require 'bundler'
-
-  Bundler.require
-  require 'multi_json'
-
   Vagrant::Config.run do |config|
     # All Vagrant configuration is done here. The most common configuration
     # options are documented and commented below. For a complete reference,
@@ -224,7 +216,7 @@ $ cat Vagrantfile
 
     ...
 
-    VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
+    VAGRANT_JSON = JSON.parse(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
 
     config.vm.provision :chef_solo do |chef|
        chef.cookbooks_path = ["site-cookbooks", "cookbooks"]
@@ -233,10 +225,12 @@ $ cat Vagrantfile
        chef.provisioning_path = "/tmp/vagrant-chef"
 
        # You may also specify custom JSON attributes:
+       chef.run_list = VAGRANT_JSON.delete('run_list')
        chef.json = VAGRANT_JSON
-       VAGRANT_JSON['run_list'].each do |recipe|
-        chef.add_recipe(recipe)
-       end if VAGRANT_JSON['run_list']
+       # old way
+       #VAGRANT_JSON['run_list'].each do |recipe|
+       # chef.add_recipe(recipe)
+       #end if VAGRANT_JSON['run_list']
     end
 
     ...

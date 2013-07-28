@@ -74,7 +74,7 @@ Next, I edited the node for the usage web role:
 And do not forget to specify vagrant that we had Chef roles:
 
 {% highlight ruby %}
-VAGRANT_JSON = MultiJson.load(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
+VAGRANT_JSON = JSON.parse(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
 
 config.vm.provision :chef_solo do |chef|
    chef.cookbooks_path = ["site-cookbooks", "cookbooks"]
@@ -83,10 +83,13 @@ config.vm.provision :chef_solo do |chef|
    chef.provisioning_path = "/tmp/vagrant-chef"
 
    # You may also specify custom JSON attributes:
+   
+   chef.run_list = VAGRANT_JSON.delete('run_list')
    chef.json = VAGRANT_JSON
-   VAGRANT_JSON['run_list'].each do |recipe|
-    chef.add_recipe(recipe)
-   end if VAGRANT_JSON['run_list']
+   # old way
+   #VAGRANT_JSON['run_list'].each do |recipe|
+   # chef.add_recipe(recipe)
+   #end if VAGRANT_JSON['run_list']
 
    Dir["#{Pathname(__FILE__).dirname.join('roles')}/*.json"].each do |role|
      chef.add_role(role)
