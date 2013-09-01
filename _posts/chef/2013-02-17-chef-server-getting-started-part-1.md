@@ -332,7 +332,7 @@ Once the Chef Server workstation is configured, it can be used to install Chef o
 So let's do this:
 
 {% highlight bash %}
-$ knife bootstrap 10.33.33.50 -x vagrant -P vagrant --sudo
+$ knife bootstrap 10.33.33.50 -x vagrant -P vagrant --sudo --node-name web.node
 Bootstrapping Chef on 10.33.33.50
 10.33.33.50 --2013-02-16 16:08:36--  http://opscode.com/chef/install.sh
 10.33.33.50 Resolving opscode.com (opscode.com)...
@@ -358,32 +358,41 @@ Let's check clients on Chef Server:
 $ knife client list
 chef-validator
 chef-webui
-precise64
+web.node
 {% endhighlight %}
 
-As you can see we get new client "precise64".
+As you can see we get new client "web.dev".
 
 {% highlight bash %}
-$ knife client show precise64
-admin:      false
+$ knife client show web.node
+dmin:      false
 chef_type:  client
 json_class: Chef::ApiClient
-name:
-public_key:
+name:       web.node
+public_key: -----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0RnjCJrOVkMAmD/IaUIZ
+LujnOpDSJlP9U/5KTDn+/x/7oDeSUlLbnS190u7kxiOL6E6Ea4eorc//82SR/PP3
+eeEAQbwaDrM7WaKgUige5UQWYOTJbXzCldQafzlYDR+5I6GgRPSyTQxs6JYcC5lG
+5AYokbl97TQtceFhg1oA2gYPmCgtCjGVU3Z2d0XFzrIs/3jpZVPaLSgZgVB2hufp
+Tnx+cVMlPCc3P4I0UwNhauD6YaRBriAa/Sap+9sbsBizqjvz2aGSwyTdAiFtqmqs
+xoiSt7Sl9H+GIaMnePr3TShCFS/Oh+u5RAONvFaHNInB54pFaIssyWlYrwA2FaF+
+UQIDAQAB
+-----END PUBLIC KEY-----
+
 {% endhighlight %}
 
 You also can see this client in Chef Server web interface:
 
-<a href="/assets/images/chef-server/precise64.png"><img src="/assets/images/chef-server/precise64.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_new_node.png"><img src="/assets/images/chef-server/chef_new_node.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
 
 And new registered node:
 
 {% highlight bash %}
 $ knife node list
-precise64
+web.chef-node
 {% endhighlight %}
 
-<a href="/assets/images/chef-server/precise64_2.png"><img src="/assets/images/chef-server/precise64_2.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_new_node2.png"><img src="/assets/images/chef-server/chef_new_node2.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
 
 # Summary
 
