@@ -10,8 +10,6 @@ tags:
 ---
 Hello my dear friends. Today we will continue talk about Chef Server. All example code you can find here: [github.com/le0pard/chef-server-example/tree/2.0](https://github.com/le0pard/chef-server-example/tree/2.0).
 
-In this article we will learn what is Chef Server and how to setup it.
-
 In [the previous article](/2013/02/17/chef-server-getting-started-part-1/) we learned Chef what is Chef Server and how to setup it. In this article we will learn how to work with it.
 
 # Directory .chef
