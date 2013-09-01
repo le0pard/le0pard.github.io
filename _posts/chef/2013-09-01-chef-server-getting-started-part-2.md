@@ -96,7 +96,7 @@ where:
 
 # Chef server and SSL self-signed certificate
 
-By default, as you remember from previous article Chef working only on https protocol (security!). But this can be problem, if you don't want buy valid ssl certificate for your chef server, because each command to chef server by knife will give you error with invalid ssl. Most simple solving of problem - disable https and working only on http. For this lets modify our chef.json role:
+By default, as you remember from previous article Chef working only on https protocol (security!). But this can be problem, if you don't want buy valid ssl certificate for your chef server, because each command to chef server by knife will give you error with invalid ssl. Most simple solution - disable https and working only on http. For this lets modify our chef.json role:
 
 {% highlight json %}
 {
@@ -133,7 +133,7 @@ I added section "nginx", which allow us to work by http protocol with Chef serve
 
 # Cookbooks, roles and nodes on chef server
 
-Compared with Chef Solo, Chef Server store all information on server and use only this information for "cooking" nodes. So we should know, how to upload our roles, cookbooks and nodes on server. First of all we should install vender cookbooks localy by [Berkshelf](http://berkshelf.com/):
+In comparison with Chef Solo, Chef Server store all information on server and use only this information for "cooking" nodes. So we should know, how to upload our roles, cookbooks and nodes on server. First of all we should install vender cookbooks localy by [Berkshelf](http://berkshelf.com/):
 
 {% highlight bash %}
 $ berks install --path cookbooks
@@ -245,7 +245,7 @@ Updated nodes/web.node.json
 
 {% endhighlight %}
 
-Just don't forget do this. Save current nodes, environments and roles also good point, because if you will lose by some reason chef server, all cookbooks and recipes will saved also in git repo.
+Just don't forget to do this. Save current nodes, environments and roles also good point in git (hg, svn, etc.) repo, because if you will lose by some reason chef server, all cookbooks and recipes will saved.
 
 # Cooking of the nodes
 
@@ -296,7 +296,7 @@ To upgrade all nodes:
 $ knife ssh "name:*" "sudo aptitude upgrade -y"
 {% endhighlight %}
 
-But sometimes you may want update you servers automaticaly. For example, you just updated new cookbooks, roles and nodes and all nodes should automaticaly fetch new cookbooks and execute its, if it updated. We can use special cookbook "chef-client". It allow for use bluepill, daemontools, runit or cron to configure your systems to run Chef as a service. Example of attributes for nodes:
+But sometimes you may want update you servers automaticaly. For example, you just updated new cookbooks, roles and nodes and all nodes should automaticaly fetch new cookbooks and execute its, if it updated (and for you not critical update speed). We can use special cookbook "chef-client". It allow for use bluepill, daemontools, runit or cron to configure your systems to run Chef Client as a service. Example of attributes for nodes:
 
 {% highlight json %}
 {
@@ -324,7 +324,7 @@ So for each node you can add this role. It will check for updates chef server ea
 
 # Summary
 
-In this article I am not cover many things about Chef server (environments advanced usage, knife-ec2, opsworks - based on chef solo, etc.), but I hope this should be enough for begin working with it.
+In this article I am not cover many things about Chef server (advanced usage, knife-ec2, opsworks - based on chef solo, etc.), but I hope this should be enough for begin working with it.
 
 All example code you can find here: [github.com/le0pard/chef-server-example/tree/2.0](https://github.com/le0pard/chef-server-example/tree/2.0).
 
