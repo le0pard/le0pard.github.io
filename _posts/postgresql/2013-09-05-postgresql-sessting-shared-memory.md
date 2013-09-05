@@ -6,6 +6,7 @@ categories:
 - postgresql
 tags:
 - postgresql
+- shared memory
 ---
 
 Hello my dear friends. In this article I will cover about setting up shared memory on Linux for PostgreSQL.
