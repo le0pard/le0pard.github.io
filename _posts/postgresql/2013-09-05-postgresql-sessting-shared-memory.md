@@ -28,7 +28,7 @@ probably means your kernel's limit on the size of shared memory is smaller than 
 
 # Configure shared memory
 
-We must to setup our Unix system shared memory, if we want tune PostgreSQL. We can use [this link] (http://www.postgresql.org/docs/current/static/kernel-resources.html) and see how to setup it. But what values to set for shmmax and shmall? To do this, I made a small script. It's mission - to calculate and display the size of shared memory, which is half the available memory on the server:
+We must to setup our Unix system shared memory, if we want tune PostgreSQL. We can go by [this link](http://www.postgresql.org/docs/current/static/kernel-resources.html) and see how to setup it. But what values to set for shmmax and shmall? To do this, I made a small script. It's mission - to calculate and display the size of shared memory, which is half the available memory on the server:
 
 {% highlight bash %}
 #!/bin/bash
