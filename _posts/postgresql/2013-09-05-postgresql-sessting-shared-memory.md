@@ -17,11 +17,22 @@ Hello my dear friends. In this article I will cover about setting up shared memo
 
 # PostgreSQL and shared memory
 
-A message like
+The "shared\_buffers" configuration parameter determines how much memory is dedicated to PostgreSQL to use for caching data. One reason the defaults are low is because on some platforms (like older Solaris versions and SGI), having large values requires invasive action like recompiling the kernel. Even on a modern Linux system, the stock kernel will likely not allow setting shared_buffers to over 32MB without adjusting kernel settings first.
+
+If you have a system with 1GB or more of RAM, a reasonable starting value for shared\_buffers is 1/4 of the memory in your system. If you have less RAM you'll have to account more carefully for how much RAM the OS is taking up; closer to 15% is more typical there. There are some workloads where even larger settings for shared_buffers are effective, but given the way PostgreSQL also relies on the operating system cache, it's unlikely you'll find using more than 40% of RAM to work better than a smaller amount.
+
+It's likely you will have to increase the amount of memory your operating system allows you to allocate at once to set the value for shared\_buffers this high. On UNIX-like systems, if you set it above what's supported, you'll get a message like this
 
 {% highlight bash %}
 FATAL:  could not create shared memory segment: Invalid argument
 DETAIL:  Failed system call was shmget(key=5440001, size=4011376640, 03600).
+
+This error usually means that PostgreSQL's request for a shared memory
+segment exceeded your kernel's SHMMAX parameter. You can either
+reduce the request size or reconfigure the kernel with larger SHMMAX.
+To reduce the request size (currently 4011376640 bytes), reduce
+PostgreSQL's shared_buffers parameter (currently 50000) and/or
+its max_connections parameter (currently 12).
 {% endhighlight %}
 
 probably means your kernel's limit on the size of shared memory is smaller than the work area PostgreSQL is trying to create (4011376640 bytes in this example). Or it could mean that you do not have System-V-style shared memory support configured into your kernel at all. As a temporary workaround, you can try starting the server with a smaller-than-normal number of buffers (shared_buffers).
