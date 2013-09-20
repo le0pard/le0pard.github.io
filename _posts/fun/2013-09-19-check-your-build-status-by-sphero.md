@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Check your build status in Travis CI by Sphero
-date: 2013-10-19 00:00:00
+date: 2013-09-19 00:00:00
 categories:
 - sphero
 - fun
