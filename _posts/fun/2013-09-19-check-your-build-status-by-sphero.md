@@ -61,13 +61,15 @@ class CISpheroRobot < Artoo::Robot
       when 'passed'
         puts "Your #{ci_repo} is green"
         sphero.set_color(0, 0, 0) # reset to white color
-      else
+      when 'failed'
         puts "Your #{ci_repo} is failed"
         5.times do
           sphero.set_color rand(255),rand(255),rand(255)
           sphero.roll 20, rand(360)
           sleep 0.5
         end
+      else
+        sphero.set_color(0, 0, 0)
       end
     end
   end
