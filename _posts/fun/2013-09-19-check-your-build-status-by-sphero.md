@@ -16,9 +16,9 @@ Hello my dear friends. In this article we will learn how to check our travis ci 
 
 <a href="/assets/images/fun/sphero/sphero1.png"><img src="/assets/images/fun/sphero/sphero1.png" alt="sphero" title="sphero" class="aligncenter" /></a>
 
-Sphero is small spherical robot. More info you can find on [official page](http://www.gosphero.com/) and in [this video](http://www.youtube.com/watch?v=5Bg88VkWGOQ).
+Sphero is small spherical robot. More info you can find on [official page](http://www.gosphero.com/) and see it in [this video](http://www.youtube.com/watch?v=5Bg88VkWGOQ).
 
-Yes, this is just a toy. But this toy have [development documents](https://github.com/orbotix/DeveloperResources) and [many SDKs](https://developer.gosphero.com/). So you can create applications, which will manipulate Sphero for your needs.
+Yes, this is just a toy. But this toy have [development docs](https://github.com/orbotix/DeveloperResources) and [many SDKs](https://developer.gosphero.com/). So you can create applications, which will manipulate Sphero for your needs.
 
 # Travis CI
 
