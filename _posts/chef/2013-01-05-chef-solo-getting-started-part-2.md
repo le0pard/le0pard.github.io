@@ -8,13 +8,13 @@ tags:
 - chef
 - solo
 ---
-Hello my dear friends. Today we will continue talk about Chef Solo. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/2.0](https://github.com/le0pard/chef-solo-example/tree/2.0).
+Hello my dear friends. Today we will continue to talk about Chef Solo. You can find all example code here: [github.com/le0pard/chef-solo-example/tree/2.0](https://github.com/le0pard/chef-solo-example/tree/2.0).
 
-In [the previous article](/2013/01/04/chef-solo-getting-started-part-1/) we discussed how to use Chef Solo, learned about knife, librarian and vagrant tools, which help us to use and testing Chef Solo kitchen. In this article we will learn cookbook structure and will write own cookbook.
+In [the previous article](/2013/01/04/chef-solo-getting-started-part-1/) we discussed how to use Chef Solo, learned about knife, librarian and vagrant tools, which help us to use and test Chef Solo kitchen. In this article we will learn cookbook structure and will write own cookbook.
 
 # Cookbook
 
-Cookbook is a collection of Chef recipes. All cookbooks like a Chef written on [Ruby](http://www.ruby-lang.org/). You already have seen how we get nginx cookbook and use "source" recipe from it to install nginx on our server. Let's look on the structure of this cookbook:
+A cookbook is a collection of Chef recipes. All cookbooks like a Chef are written in [Ruby](http://www.ruby-lang.org/). You already have seen how we get nginx cookbook and use "source" recipe from it to install nginx on our server. Let's look at the structure of this cookbook:
 
 {% highlight bash %}
 $ ls -la cookbooks/nginx
@@ -37,9 +37,9 @@ drwxr-xr-x   5 leo  staff    170 Jan  4 19:24 templates
 drwxr-xr-x   3 leo  staff    102 Jan  4 19:24 test
 {% endhighlight %}
 
-Cookbook can have:
+A cookbook can have:
 
- * metadata.rb - the file, which contain all information about cookbook (name, dependencies).
+ * metadata.rb - a file, which contain all information about the cookbook (name, dependencies).
 
 {% highlight ruby %}
 name              "nginx"
@@ -67,9 +67,9 @@ depends 'ohai', '>= 1.1.2'
 end
 {% endhighlight %}
 
-  This is an important file, if you want distribute your cookbook.
+  This is an important file, if you want to distribute your cookbook.
 
- * attributes - folder, which contain files with default attributes for recipes. In nginx cookbook you can find such default attributes:
+ * attributes - a folder, which contain files with default attributes for recipes. In the nginx cookbook you can find such default attributes:
 
 {% highlight ruby %}
 default['nginx']['version'] = "1.2.3"
@@ -78,9 +78,9 @@ default['nginx']['log_dir'] = "/var/log/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"
 {% endhighlight %}
 
-  As you remember we can redefine all this attributes in node file.
+  As you remember we can redefine all these attributes in the node file.
 
- * definitions - folder, which contain helpers from this cookbook. In nginx cookbook you can find this helper:
+ * definitions - a folder, which contain helpers from this cookbook. You can find this helper in the nginx cookbook you can find this helper:
 
 {% highlight ruby %}
 define :nginx_site, :enable => true do
@@ -100,10 +100,10 @@ define :nginx_site, :enable => true do
 end
 {% endhighlight %}
 
-  The helper "nginx_site" can enable/disable configuration from folder "site-available" and reload nginx. I will show how to use this helper.
+  The helper "nginx_site" can enable/disable configuration from the folder "site-available" and reload nginx. I will show you how to use this helper.
 
- * files - folder, which contain files and this files just need to copy on server in the right place (it can be ssl keys, static configs, etc.)
- * recipes - folder, which contain all recipes of this cookbook. Each recipe is in a separate Ruby file:
+ * files - a folder, which contain files and these files just need to be copied on the server in the right place (it can be ssl keys, static configs, etc.)
+ * recipes - a folder, which contain all recipes from this cookbook. Each recipe is in a separate Ruby file:
 
 {% highlight bash %}
 $ ls -la cookbooks/nginx/recipes
@@ -130,7 +130,7 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 -rw-r--r--   1 leo  staff  1571 Jan  4 19:24 upload_progress_module.rb
 {% endhighlight %}
 
-  As you remember we added to run\_list:
+  As you remember we added this to the run\_list:
 
 {% highlight ruby %}
 "run_list": [
@@ -138,7 +138,7 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 ]
 {% endhighlight %}
 
-  This is run source.rb recipe from nginx cookbook. If you change by this:
+  This is run the source.rb recipe from the nginx cookbook. If you change it with by this:
 
 {% highlight ruby %}
 "run_list": [
@@ -148,13 +148,13 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 
   This is run default recipe from nginx cookbook (file default.rb in recipes folder).
 
- * templates - folder, which contain Erb templates of this cookbook (this is nginx configs)
- * test - folder, which contain tests for this cookbook
+ * templates - a folder, which contains Erb templates for this cookbook (these are nginx configs)
+ * test - a folder, which contain tests for this cookbook
 
 
 # First cookbook
 
-Let's create our first cookbook. Our custom cookbooks should be in folder "site-cookbooks" (folder "cookbooks" using for vendor cookbooks and managed by librarian, so we add this folder in gitignore). If you look in solo.rb, you can see such settings:
+Let's create our first cookbook. Our custom cookbooks should be in the folder "site-cookbooks" (the folder "cookbooks" is used for vendor cookbooks and managed by librarian, so we will add this folder in gitignore). If you look in solo.rb, you can see such settings:
 
 {% highlight ruby %}
 file_cache_path           "/tmp/chef-solo"
@@ -162,9 +162,9 @@ cookbook_path             [ "/tmp/chef-solo/site-cookbooks",
                             "/tmp/chef-solo/cookbooks" ]
 {% endhighlight %}
 
-This mean what Chef will search needed cookbook first in folder site-cookbooks and if no found will try to search in folder cookbooks. So if you create in site-cookbooks nginx cookbook, Chef will try use it first.
+This means what Chef will search needed cookbooks first in the site-cookbooks folder and nothing is found will try to search in the cookbooks folder. So if you create the nginx cookbook in site-cookbooks, Chef will try to use it first.
 
-Let's create a cookbook with name "tomatoes":
+Let's create a cookbook with named "tomatoes":
 
 {% highlight bash %}
 $ mkdir site-cookbooks/tomatoes
@@ -177,13 +177,13 @@ drwxr-xr-x  2 leo  staff   68 Jan  5 14:50 recipes
 drwxr-xr-x  3 leo  staff  102 Jan  5 14:50 templates
 {% endhighlight %}
 
-And create file default.rb in recipes folder with content:
+And create the file default.rb in the recipes folder with content:
 
 {% highlight ruby %}
 package "git"
 {% endhighlight %}
 
-Command "package" is used to manage packages in the server. This command will install on server git package. More info about this command you can read here: [docs.opscode.com/chef/resources.html#package](http://docs.opscode.com/chef/resources.html#package). Next, add to our vagrant.json node file in run list new recipe:
+The command "package" is used to manage packages in the server. This command will install on server git package. For more info about this command you can read here: [docs.opscode.com/chef/resources.html#package](http://docs.opscode.com/chef/resources.html#package). Next, add our new recipe to the run list in our vagrant.json node:
 
 {% highlight ruby %}
 "run_list": [
@@ -220,7 +220,7 @@ stdin: is not a tty
 [Sat, 05 Jan 2013 13:07:50 +0000] INFO: Report handlers complete
 {% endhighlight %}
 
-As you can see git package installed on the server. Let's check this:
+As you can see the git package installed on the server. Let's check this:
 
 {% highlight bash %}
 $ vagrant ssh
@@ -240,7 +240,7 @@ All works fine.
 
 # Сonfigure nginx through our cookbook
 
-Let's configure nginx for our application. First of all add new attributes in vagrant node (file "nodes/vagrant.json"):
+Let's configure nginx for our application. First of all add new attributes in the vagrant node (file "nodes/vagrant.json"):
 
 {% highlight json %}
 {
@@ -265,7 +265,7 @@ Let's configure nginx for our application. First of all add new attributes in va
 }
 {% endhighlight %}
 
-Next, create nginx template ("tomatoes/templates/default/nginx.conf.erb"):
+Next, create a nginx template ("tomatoes/templates/default/nginx.conf.erb"):
 
 {% highlight erb %}
 server {
@@ -279,7 +279,7 @@ server {
 }
 {% endhighlight %}
 
-And create file index.html in directory "tomatoes/files/default" (create this directory before) with content:
+And create the index.html file in "tomatoes/files/default" (create this directory before) with content:
 
 {% highlight html %}
 <h1>Hello from Chef Solo</h1>
@@ -287,7 +287,7 @@ And create file index.html in directory "tomatoes/files/default" (create this di
 
 This we will use to check what nginx will show after setup of settings.
 
-At last add this content to "tomatoes/recipes/default.rb":
+Finally add this content to "tomatoes/recipes/default.rb":
 
 {% highlight ruby %}
 directory node.app.web_dir do
@@ -322,7 +322,7 @@ cookbook_file "#{node.app.web_dir}/public/index.html" do
 end
 {% endhighlight %}
 
-As you can see in recipe node attributes available for us in "node" variable. You can get this attributes in several ways:
+As you can see in the recipe node attributes available for us in the "node" variable. You can get this attributes in several ways:
 
 {% highlight ruby %}
  node.app.web_dir
@@ -330,15 +330,15 @@ As you can see in recipe node attributes available for us in "node" variable. Yo
  node[:app][:web_dir]
 {% endhighlight %}
 
-This all ways will give you the same value from app.web\_dir attribute.
+This always will give you the same value from the app.web\_dir attribute.
 
-As you can see in recipe code we created 3 directories, created new config for nginx, enabled this config by "nginx\_site" helper (this helper automatically reload nginx) and put "index.html" into server directory. After launch command "vagrant provision" you should see this in your browser by url "http://localhost:8085/":
+As you can see in the recipe code we created 3 directories, created a new config for nginx, enabled this config by "nginx\_site" helper (this helper automatically reloads nginx) and put "index.html" into the server directory. After the launch command, "vagrant provision", you should see this in your browser with url "http://localhost:8085/":
 
 <a href="/assets/images/chef/nginx2.png"><img src="/assets/images/chef/nginx2.png" alt="nginx" title="nginx" class="aligncenter" /></a>
 
 # Ruby Power!
 
-As you can see in our recipe we created 3 directories by 3 command. Better [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself) this code. But how to do this? Simple! This is all Ruby code, so you can use it to do your recipe more powerful (and beautiful, of course):
+As you can see in our recipe we created 3 directories by 3 commands. Better [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself) this code. But how to do this? Simple! This is all Ruby code, so you can use it to make your recipe more powerful (and beautiful, of course):
 
 {% highlight ruby %}
 package "git"
@@ -365,11 +365,11 @@ cookbook_file "#{node.app.web_dir}/public/index.html" do
 end
 {% endhighlight %}
 
-We collect all subfolders in Ruby array and create its in one cycle.
+We collect all subfolders in a Ruby array and create it in one cycle.
 
 # Summary
 
-In the current article we have learn the Chef cookbook structure and write simple Chef cookbook. In the [next article](/2013/01/07/chef-solo-getting-started-part-3/) we will look at the usage of roles in your Chef kitchen.
+In the current article we have learned the Chef cookbook structure and how to write a simple Chef cookbook. In the [next article](/2013/01/07/chef-solo-getting-started-part-3/) we will look at the usage of roles in your Chef kitchen.
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/2.0](https://github.com/le0pard/chef-solo-example/tree/2.0).
 
