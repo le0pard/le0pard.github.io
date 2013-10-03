@@ -396,7 +396,7 @@ web.chef-node
 
 # Summary
 
-In the current article we have learn what is Chef Server and how to setup it. In next article I will cover how to work with Chef Server.
+In the current article we have learn what is Chef Server and how to setup it. In [next article](/2013/09/01/chef-server-getting-started-part-2/) I will cover how to work with Chef Server.
 
 All example code you can find here: [github.com/le0pard/chef-server-example/tree/1.0](https://github.com/le0pard/chef-server-example/tree/1.0).
 
