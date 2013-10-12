@@ -3,13 +3,13 @@ $KCODE = 'u'
 
 %w(rubygems sequel fileutils yaml yajl active_support/inflector).each{|g| require g}
 
-class String 
-  def is_binary_data? 
-     false 
-  end 
-  def yaml_unescape 
-    self.gsub(/\\x([\dA-F]{2})/) {|ch| eval("\"#{ch}\"")} 
-  end 
+class String
+  def is_binary_data?
+     false
+  end
+  def yaml_unescape
+    self.gsub(/\\x([\dA-F]{2})/) {|ch| eval("\"#{ch}\"")}
+  end
 end
 
 require File.join(File.dirname(__FILE__), "downmark_it")
@@ -22,10 +22,10 @@ module WordPress
 
     query = <<-EOS
 
-      SELECT 	post_title, post_name, post_date, post_content, post_excerpt, ID, guid, post_status, post_type, post_status, 
-      		 (	SELECT 	guid 
+      SELECT 	post_title, post_name, post_date, post_content, post_excerpt, ID, guid, post_status, post_type, post_status,
+      		 (	SELECT 	guid
       			FROM 	#{table_prefix}_posts
-      			WHERE 	ID = (	SELECT 	meta_value 
+      			WHERE 	ID = (	SELECT 	meta_value
       							FROM	#{table_prefix}_postmeta
       							WHERE 	post_id = post.ID AND meta_key = "_thumbnail_id") ) AS post_image
 
@@ -33,7 +33,7 @@ module WordPress
       WHERE  post_type = 'post'
 
     EOS
-    
+
     categories_and_tags_query = <<-EOS
 
       SELECT 		  t.taxonomy, term.name, term.slug
@@ -42,7 +42,7 @@ module WordPress
       INNER JOIN 	#{table_prefix}_terms AS term ON term.term_id = t.term_id
       WHERE		    tr.object_id = %d
       ORDER BY	  tr.term_order
-    
+
     EOS
 
     db[query].each do |post|
@@ -55,11 +55,11 @@ module WordPress
       image      = File.basename(post[:post_image]) rescue ""
       categories = []
       post_tags  = []
-      
+
       puts title
-      
+
       `wget -O "images/posts/featured/#{image}" "#{post[:post_image]}"` unless File::exists?("images/posts/featured/#{image}") || post[:post_image].nil?
-      
+
       post_tags = []
       link_categories = []
       db[categories_and_tags_query % post[:ID]].each do |category_or_tag|
