@@ -214,9 +214,8 @@ Here's an example on how to utilize this feature in your .travis.yml:
 
 {% highlight yaml %}
 env:
-  - TESTFOLDER=spec/features
-  - TESTFOLDER=spec/requests
-  - TESTFOLDER=spec/models
+  - TEST_SUITE=units
+  - TEST_SUITE=integration
 script: "bundle exec rake test:$TEST_SUITE"
 {% endhighlight %}
 
