@@ -59,6 +59,12 @@ Originally comde from Erlang. Specification written by Tom Preston-Werner, found
 
 Protocol Buffers are a method of serializing structured data. As such, they are useful in developing programs to communicate with each other over a wire or for storing data. The method involves an interface description language that describes the structure of some data and a program that generates from that description source code in various programming languages for generating or parsing a stream of bytes that represents the structured data. Google developed Protocol Buffers for use internally. Does not provide an RPC mechanism but instead focuses on interchange protocols. Widely implemented, though not all are of the same quality/completion.
 
+## Cap'n Proto
+
+* [Site](http://kentonv.github.io/capnproto/)
+
+Cap'n Proto is an insanely fast data interchange format and capability-based RPC system. Cap'n Proto much faster, than Protocol Buffers, because there is no encoding/decoding step. The Cap'n Proto encoding is appropriate both as a data interchange format and an in-memory representation. Developed by Kenton Varda, who was the primary author of Protocol Buffers version 2. At the moment exists a C++ and Python implementations, for Erlang, Ruby and Rust under development.
+
 ## Apache Thrift
 
 * [Site](http://thrift.apache.org/)
@@ -109,12 +115,6 @@ Specific to the Go language binary serialization format. There is no need for a 
 * [Site](http://www.itu.int/ITU-T/asn1/index.html)
 
 Abstract Syntax Notation One (ASN.1) is a standard and notation that describes rules and structures for representing, encoding, transmitting, and decoding data in telecommunications and computer networking. The formal rules enable representation of objects that are independent of machine-specific encoding techniques. Because of the widespread use of ASN.1 in 1988 moved to its own standard X.208. Beginning in 1995, significantly revised ASN.1 standard describes X.680.
-
-## Cap'n Proto
-
-* [Site](http://kentonv.github.io/capnproto/)
-
-Cap'n Proto is an insanely fast data interchange format and capability-based RPC system. Cap'n Proto much faster, than Protocol Buffers, because there is no encoding/decoding step. The Cap'n Proto encoding is appropriate both as a data interchange format and an in-memory representation. Developed by Kenton Varda, who was the primary author of Protocol Buffers version 2. At the moment exists a C++ and Python implementations, for Erlang, Ruby and Rust under development.
 
 ## Boost Serialization
 
