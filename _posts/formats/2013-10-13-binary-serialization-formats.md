@@ -110,6 +110,12 @@ Specific to the Go language binary serialization format. There is no need for a 
 
 Abstract Syntax Notation One (ASN.1) is a standard and notation that describes rules and structures for representing, encoding, transmitting, and decoding data in telecommunications and computer networking. The formal rules enable representation of objects that are independent of machine-specific encoding techniques. Because of the widespread use of ASN.1 in 1988 moved to its own standard X.208. Beginning in 1995, significantly revised ASN.1 standard describes X.680.
 
+## Cap'n Proto
+
+* [Site](http://kentonv.github.io/capnproto/)
+
+Cap'n Proto is an insanely fast data interchange format and capability-based RPC system. Cap'n Proto much faster, than Protocol Buffers, because there is no encoding/decoding step. The Cap'n Proto encoding is appropriate both as a data interchange format and an in-memory representation. Developed by Kenton Varda, who was the primary author of Protocol Buffers version 2. At the moment exists a C++ and Python implementations, for Erlang, Ruby and Rust under development.
+
 ## Boost Serialization
 
 * [Site](http://www.boost.org/libs/serialization/)
