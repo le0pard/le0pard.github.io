@@ -71,6 +71,12 @@ Thrift is an interface definition language that is used to define and create ser
 
 Apache Avro is a data serialization system. Avro requires schemas when data is written or read. Most interesting is that you can use different schemas for serialization and deserialization, and Avro will handle the missing/extra/modified fields. Providing a schema with binary data allows each datum be written without overhead. The result is more compact data encoding, and faster data processing. Avro might be a good choice if the rigidity of Protocol Buffers or Thrift is too much for you.
 
+## Blink protocol
+
+* [Site](http://blinkprotocol.org/)
+
+The Blink Protocol is a standardized method for defining how to exchange messages in and between systems. Blink makes it easy for people to define what information to exchange and how. It also eliminates friction in the communications machinery. The philosophy of Blink is that efficient communication follows from making every word tell. At the moment exists a Java implementation. Protocol Buffers relatively more efficient at encoding a message with many absent fields. The decoding of Protocol Buffers messages will be somewhat more expensive as a result of this relaxed ordering. Blink requires fields to be encoded strictly in specification order.
+
 ## Sereal
 
 * [Site](https://github.com/Sereal/Sereal)
