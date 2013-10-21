@@ -63,19 +63,18 @@ Next I will use [bundler](http://gembundler.com/) to get some useful gems:
 
 {% highlight bash %}
 $ cat Gemfile
-  source :rubygems
+  source "https://rubygems.org"
 
   gem 'knife-solo'
-  gem 'librarian'
-  gem 'vagrant', "~> 1.0.5"
+  gem 'librarian-chef'
 
 $ bundle
 {% endhighlight %}
 
-List of the required gems:
+List of the required apps and libs:
 
  * [knife-solo](http://matschaffer.github.com/knife-solo/) - knife is a powerful command-line interface (CLI) that comes with Chef. It is used to control Chef client.
- * librarian - is a bundler for your Chef-based infrastructure repositories
+ * [librarian-chef](https://github.com/applicationsonline/librarian-chef) - is a bundler for your Chef-based infrastructure repositories
  * [vagrant](http://www.vagrantup.com/) - create and configure lightweight, reproducible, and portable development environments. For this rubygems need installed VirtualBox. We will use vagrant to test our Chef Solo. WARNING! Right now is not possible use vagrant from rubygems. You should install it separately. Also in this case "multi_json" gem will not available in Vagrant file, but we can use JSON gem, which have vagrant.
 
 Next you need to create a kitchen by knife:
