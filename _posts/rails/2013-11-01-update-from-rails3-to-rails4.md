@@ -84,7 +84,7 @@ Open Gemfile in a text editor and change the line that starts with gem 'rails' t
 gem 'rails', '~> 4.0.1rc3'
 {% endhighlight %}
 
-Why I use RC? Just because 4.0.0 have some bugs, which broke my app (my main problem was fixed by [this pull request](https://github.com/rails/rails/pull/11496))
+Why did I use RC? Just because 4.0.0 have some bugs, which broke my app (my main problem was fixed by [this pull request](https://github.com/rails/rails/pull/11496))
 
 Rails 4 also depends on newer versions of gems that drive the asset pipeline (assets group must be removed):
 
