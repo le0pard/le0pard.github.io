@@ -70,7 +70,7 @@ Migration of the rails 3 app to the rails 4 requires gem updates. Some gems in y
 
 The "rails4\_upgrade" gem helps to automate some of the processes required to the upgrade to the Rails 4. It add rake task to check old versions of gems:
 
-{% highlight ruby %}
+{% highlight bash %}
 $ bundle exec rake rails4:check_gems
 {% endhighlight %}
 
