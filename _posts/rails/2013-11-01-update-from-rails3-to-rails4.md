@@ -81,7 +81,7 @@ Some of gems stopped to support rails 3 and support just rails 4. In this case b
 Open Gemfile in a text editor and change the line that starts with gem 'rails' to:
 
 {% highlight ruby %}
-gem 'rails', '~> 4.0.1rc3'
+gem 'rails', '~> 4.0.1.rc3'
 {% endhighlight %}
 
 Why did I use RC? Just because 4.0.0 have some bugs, which broke my app (my main problem was fixed by [this pull request](https://github.com/rails/rails/pull/11496))
