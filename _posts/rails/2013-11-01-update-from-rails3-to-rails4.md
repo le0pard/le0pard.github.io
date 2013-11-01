@@ -44,10 +44,10 @@ After this change you have to remove "attr\_accessible" from models and use "str
 
 ## Step 3: Routes
 
-Method "match" can be used only for routes, which should accept several types of requests (GET, POST, PUT, DELETE, HEAD, OPTIONS).
+Method "match" can be used only for routes, which should accept several types of requests (GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS).
 
 {% highlight ruby %}
-match 'subscriptions/:subscription_id' => 'news#create', via: [:put, :post]
+match 'subscriptions/:subscription_id' => 'news#create', via: [:post, :put, :patch]
 {% endhighlight %}
 
 But if you have something like this:
