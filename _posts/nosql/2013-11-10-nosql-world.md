@@ -99,8 +99,6 @@ Examples of databases:
 
 ## Document Store
 
-# TODO: finish here
-
 Are programs designed to store, search, and manage document-oriented information (semi-structured data). The central concept is a document. Implementation of the specific document-oriented database is different, but in general, they suggest, encapsulation and encryption of data (documents) in several standard formats: XML, YAML, JSON, BSON, PDF, etc.
 
 Advantages:
@@ -140,6 +138,8 @@ Examples of such databases:
  * [InfoGrid](http://infogrid.org/trac/)
 
 ## Multimodel Databases
+
+# TODO: finish here
 
 These databases includes features of multiple databases.
 
