@@ -27,6 +27,13 @@ The relational database model focused on the organization of the data in the for
 
 The architecture of relational models counts its history back to the 1970s. The main task of the database then was to support the launch in 1960 a massive shift from paper records to computer-economic activities. A huge amount of information from paper documents tolerated in the database accounting systems that were to securely store all incoming information and, if necessary, to quickly find them. These requirements led to the architectural features of a RDBMS the remaining until now virtually unchanged: the row-data storage, indexing, records and logging operations.
 
+Examples of databases:
+
+ * [MySQL](http://www.mysql.com/)
+ * [PostgreSQL](http://www.postgresql.org/)
+ * [DB2](http://www-01.ibm.com/software/data/db2/)
+ * [SQL Server](https://www.microsoft.com/en-us/sqlserver/default.aspx)
+
 # NoSQL
 
 NoSQL (not only SQL) - a number of approaches and projects aimed at the implementation of database models, with significant differences from those used in traditional relational database management system with access to the data by means of SQL. Description schema in the case of NoSQL can be carried out through the use of different data structures: hash tables, arrays, trees, etc.
@@ -56,7 +63,7 @@ Disadvantages:
  * No transaction;
  * Have a number of limitations to the developer who is used to the development of traditional RDBMS.
 
-Examples of such databases:
+Examples of databases:
 
 * [HBase](http://hbase.apache.org/)
 * [Cassandra](http://cassandra.apache.org/)
@@ -80,7 +87,7 @@ Disadvantages:
  * Limitations of relational databases ensure data integrity at the lowest level. In stores key/value no such restriction. Data integrity controled by applications. In this case data integrity may be compromised due to errors in the application code;
  * In an RDBMS if you are well designed model, the database will contain a logical structure that fully reflects the structure of the stored data and can be differs with the structure of the application (the data are independent from the application). For a key/value storage of this is harder to achieve.
 
-Examples of such databases:
+Examples of databases:
 
  * [Amazon DynamoDB](http://aws.amazon.com/dynamodb/)
  * [Riak](http://docs.basho.com/riak/latest/)
