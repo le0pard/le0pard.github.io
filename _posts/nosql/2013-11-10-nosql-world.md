@@ -105,6 +105,13 @@ Are programs designed to store, search, and manage document-oriented information
 
 Advantages:
 
+ * Sufficiently flexible language for querying;
+ * Easy horizontally scalable.
+
+Disadvantages:
+
+ * It cannot have special type of indexes (partial, functional), triggers, stored procedures, forms, views, etc., which you can find in RDBMS;
+ * Atomicity in most cases is conditional.
 
 Examples of such databases:
 
@@ -115,7 +122,16 @@ Examples of such databases:
 
 ## Graph Databases
 
-A graph database is a database that uses graph structures with nodes, edges, and properties to represent and store data.
+A graph database is a database that uses graph structures with nodes, edges, and properties to represent and store data. By definition, a graph database is any storage system that provides index-free adjacency. This means that every element contains a direct pointer to its adjacent element and no index lookups are necessary.
+
+Advantages:
+
+ * Often faster for associative data sets;
+ * Can scale more naturally to large data sets as they do not typically require expensive join operations.
+
+Disadvantages:
+
+ * RDBMS can be used in more general cases. Graph databases are suitable for graph-like data.
 
 Examples of such databases:
 
