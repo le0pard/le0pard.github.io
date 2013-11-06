@@ -21,31 +21,29 @@ The relational database model focused on the organization of the data in the for
  * identical rows in the table are not available;
  * the order of the rows and columns can be arbitrary.
 
-Author of concept 'relational' is [Edgar Codd](http://en.wikipedia.org/wiki/Edgar_F._Codd).
+[Edgar Codd](http://en.wikipedia.org/wiki/Edgar_F._Codd) is the author of the 'relational' concept.
 
 <a href="/assets/images/nosql/Edgar_F_Codd.jpg"><img src="/assets/images/nosql/Edgar_F_Codd.jpg" alt="Edgar_F_Codd" title="Edgar_F_Codd" class="aligncenter" /></a>
 
-The architecture of relational models counts its history back to the 1970s. The main task of the database then was to support the launch in 1960 a massive shift from paper records to computer-economic activities. A huge amount of information from paper documents tolerated in the database accounting systems that were to securely store all incoming information and, if necessary, to quickly find them. These requirements led to the architectural features of a relational database management system, the remaining virtually unchanged: the row-data storage, indexing, records and logging operations.
+The architecture of relational models counts its history back to the 1970s. The main task of the database then was to support the launch in 1960 a massive shift from paper records to computer-economic activities. A huge amount of information from paper documents tolerated in the database accounting systems that were to securely store all incoming information and, if necessary, to quickly find them. These requirements led to the architectural features of a RDBMS the remaining until now virtually unchanged: the row-data storage, indexing, records and logging operations.
 
 # NoSQL
 
-NoSQL (not only SQL) - a number of approaches and projects aimed at the implementation of database models, with significant differences from those used in traditional relational database management system with access to the data by means of SQL. Description schema in the case of NoSQL - making can be carried out through the use of different data structures hash tables, arrays, and other trees.
+NoSQL (not only SQL) - a number of approaches and projects aimed at the implementation of database models, with significant differences from those used in traditional relational database management system with access to the data by means of SQL. Description schema in the case of NoSQL can be carried out through the use of different data structures: hash tables, arrays, trees, etc.
 
-The first time the term "NoSQL" was used in the late 90s, the real meaning in the form in which it is used now, only acquired in middle 2009. Originally, that was the name open-source database created by Carlo Strozzi, which stores all data as ASCII files and used shell scripts instead of SQL to access data. With the "NoSQL" in its current form it had nothing to do.
+For the first time the term "NoSQL" was used in the late 90's. The real meaning in the form in which it is used now only got in middle 2009. Originally, that was the name open-source database created by Carlo Strozzi, which stores all data as ASCII files and used shell scripts instead of SQL to access data. This database did not have anything in common with the "NoSQL" in it's current form.
 
 <a href="/assets/images/nosql/carlo-strozzi.jpg"><img src="/assets/images/nosql/carlo-strozzi.jpg" alt="carlo-strozzi" title="carlo-strozzi" class="aligncenter" /></a>
 
-In June of 2009 in San Francisco, Johan Oskarsson meeting was held to discuss the new IT technologies in the market data storage and processing. The main impetus for the meeting was the new open-source products like BigTable and Dynamo. For a meeting needed to find succinct and concise term that would be fine was laid in Twitter hash tag. One of those terms - "NoSQL" suggested by Eric Evans from RackSpace. The term was planned only one meeting and did not have under a deep meaning, but it turned out that it had spread worldwide network such as viral advertising and has become the de facto title of a trend in the IT industry. At the conference, spoke about Voldemort (a clone of Amazon Dynamo), Cassandra, Hbase (analogues Google BigTable), Hypertable, CouchDB, MongoDB.
+Johan Oskarsson was organized a meeting to discuss new technologies in the IT market, storage and processing of data in June 2009 in San Francisco. The main stimulus for the meeting was the new products such as BigTable and Dynamo. For a meeting needed to find a brief term which is great to use as a Twitter hashtag. "NoSQL" term was suggested by Eric Evans from RackSpace. The term was planned only for this meeting and did not have a deep meaning. But it turned out that it had spread worldwide network such as viral advertising and has become the de facto name of a trend in the IT.
 
-The term "NoSQL" has absolutely natural origin and has no universally accepted definition or scientific institution behind. This title is rather characterized by the vector of development of IT away from relational databases.
-
-Group and organize knowledge about the NoSQL world tried to make Pramod J. Sadalage and Martin Fowler in book ["NoSQL Distilled"](http://www.amazon.com/NoSQL-Distilled-Emerging-Polyglot-Persistence/dp/0321826620).
+The term "NoSQL" has absolutely natural origin and has no universally accepted definition or scientific institution behind. This title is rather characterized by the vector of development of IT away from relational databases. Group and organize knowledge about the NoSQL world tried to make Pramod J. Sadalage and Martin Fowler in book ["NoSQL Distilled"](http://www.amazon.com/NoSQL-Distilled-Emerging-Polyglot-Persistence/dp/0321826620).
 
 Now there are about 150 kinds of NoSQL databases ([nosql-database.org](http://nosql-database.org/)). Let's consider the main development directions of NoSQL.
 
 ## Wide Column Store / Column Families
 
-The idea behind - store data in rows, as do traditional RDBMSs, and in columns. Physically tables are a collection of columns, each of which is essentially a table from a single field. For example, in a table consisting of a column 50, from which it is necessary to consider the value of the three columns, load input-output channel is about 50/3 = 17 times smaller than when the same request in a conventional database. Apply generally to the class of analytic systems, business intelligence and analytical data stores.
+The idea behind - store data in rows, as do traditional RDBMSs, and in columns. Physically tables are a collection of columns, each of which is essentially a table from a single field. For example, in a table consisting of a column 50, from which it is necessary to consider the value of the three columns, load input-output channel is about 50/3 = 17 times smaller than when the same request in a conventional database. This databases generally used for analytic systems, business intelligence and analytical data stores.
 
 Advantages:
 
@@ -54,7 +52,7 @@ Advantages:
 
 Disadvantages:
 
- * Slow to insert/update of data;
+ * Slow for write (in general);
  * No transaction;
  * Have a number of limitations to the developer who is used to the development of traditional RDBMS.
 
@@ -64,17 +62,6 @@ Examples of such databases:
 * [Cassandra](http://cassandra.apache.org/)
 * [Accumulo](http://accumulo.apache.org/)
 * [Amazon SimpleDB](http://aws.amazon.com/simpledb/)
-
-## Document Store
-
-Are programs designed to store, search, and manage document-oriented information (semi-structured data). The central concept - a document. Implementation of the specific document-oriented database is different, but in general, they suggest, encapsulation and encryption of data (documents) in several standard formats. Encoding: XML, YAML, JSON, BSON, PDF, documents Microsoft Office (MS Word, Excel, etc).
-
-Examples of such databases:
-
-* [MongoDB](http://www.mongodb.org/)
-* [Couchbase](http://www.couchbase.com/)
-* [CouchDB](http://couchdb.apache.org/)
-* [RethinkDB](http://www.rethinkdb.com/)
 
 ## Key Value / Tuple Store
 
@@ -90,8 +77,8 @@ Advantages:
 
 Disadvantages:
 
- * Limitations of relational databases ensure data integrity at the lowest level. In stores key/value no such restriction, so data integrity control by applications. In this case data integrity may be compromised due to errors in the code;
- * In an RDBMS if you are well designed model, the database will contain a logical structure that fully reflects the structure of the stored data, however, at odds with the structure of the application. Thus, the data are independent of the application. Here it is harder to achieve.
+ * Limitations of relational databases ensure data integrity at the lowest level. In stores key/value no such restriction. Data integrity controled by applications. In this case data integrity may be compromised due to errors in the application code;
+ * In an RDBMS if you are well designed model, the database will contain a logical structure that fully reflects the structure of the stored data and can be differs with the structure of the application (the data are independent from the application). For a key/value storage of this is harder to achieve.
 
 Examples of such databases:
 
@@ -102,6 +89,22 @@ Examples of such databases:
  * [Scalaris](https://code.google.com/p/scalaris/)
  * [MemcacheDB](http://memcachedb.org/)
  * [Kyoto Cabinet](http://fallabs.com/kyotocabinet/)
+
+## Document Store
+
+# TODO: finish here
+
+Are programs designed to store, search, and manage document-oriented information (semi-structured data). The central concept is a document. Implementation of the specific document-oriented database is different, but in general, they suggest, encapsulation and encryption of data (documents) in several standard formats: XML, YAML, JSON, BSON, PDF, etc.
+
+Advantages:
+
+
+Examples of such databases:
+
+* [MongoDB](http://www.mongodb.org/)
+* [Couchbase](http://www.couchbase.com/)
+* [CouchDB](http://couchdb.apache.org/)
+* [RethinkDB](http://www.rethinkdb.com/)
 
 ## Graph Databases
 
