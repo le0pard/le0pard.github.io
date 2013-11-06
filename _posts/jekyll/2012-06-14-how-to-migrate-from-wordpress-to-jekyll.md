@@ -27,7 +27,7 @@ So just three folders and a configuration file.
 
 _\_config.yml_ stores configuration data. A majority of these options can be specified from the command line executable but it's easier to throw them in here so you don't have to remember them.
 
-_\_includes_ these are the partials that can be mixed and matched by your _layouts and _posts to facilitate reuse. The liquid tag {% include file.ext %} can be used to include the partial in _includes/file.ext.
+_\_includes_ these are the partials that can be mixed and matched by your _layouts and _posts to facilitate reuse. The liquid tag "include file.ext" can be used to include the partial in \_includes/file.ext.
 
 _\_layouts_ these are the templates which posts are inserted into. Layouts are chosen on a post-by-post basis in the YAML front matter, which is described in the next section. The liquid tag {{ content }} is used to inject data onto the page.
 
