@@ -135,6 +135,7 @@ Examples of such databases:
  * [Neo4j](http://www.neo4j.org/)
  * [FlockDB](https://github.com/twitter/flockdb)
  * [InfoGrid](http://infogrid.org/trac/)
+ * [OrientDB](http://www.orientdb.org/)
 
 ## Multimodel Databases
 
