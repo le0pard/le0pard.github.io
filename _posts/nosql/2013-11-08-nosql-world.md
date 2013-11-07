@@ -1,6 +1,6 @@
 ---
 layout: post
-title: NoSQL databases world
+title: World of the NoSQL databases
 date: 2013-11-08 00:00:00
 categories:
 - nosql
