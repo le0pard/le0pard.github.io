@@ -177,7 +177,7 @@ If inputA 2 elements, the inner loop (on inputB) will be executed 2 times. This 
 
 
 
-# Conclusion
+# Summary
 
 As you can be seen, Multicorn is very useful extensions, which provide for PostgreSQL communicate with many external types of data source and provide for Python developers create own custom FDW for PostgreSQL.
 
