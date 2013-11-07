@@ -203,6 +203,6 @@ Examples of such databases:
 
 # Conclusion
 
-NoSQL movement is gaining popularity with enormous speed. However, this does not mean that relational databases are becoming rudiment or something archaic. Most likely they will be used, and will be used still active, but more in a symbiotic relationship with them will be performing NoSQL database. We live an era of polyglot persistence - an era of using the different needs of different data warehouse. Now there is no monopoly of relational databases, as there is no alternative source of data. Increasingly, architects are selected based on the nature of the storage of the data itself and how we want them to manipulate what volumes of data expected.
+NoSQL movement is gaining popularity with enormous speed. However, this does not mean that relational databases are becoming rudiment or something archaic. Most likely they will be used, and will be used still active, but more in a symbiotic relationship with them will be performing NoSQL database. We live an era of polyglot persistence, an era of using the different needs of different data warehouse. Now there is no monopoly of relational databases, as there is no alternative source of data. Increasingly, architects are selected based on the nature of the storage of the data itself and how we want them to manipulate what volumes of data expected.
 
 *That’s all folks!* Thank you for reading till the end.
