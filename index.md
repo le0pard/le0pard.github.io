@@ -14,6 +14,3 @@ Hello everyone. My name Alexey Vasiliev (leopard). I am a web developer and Linu
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
-
-
-
