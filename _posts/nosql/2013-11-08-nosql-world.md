@@ -105,7 +105,6 @@ Advantages:
 
 Disadvantages:
 
- * It cannot have special type of indexes (partial, functional), triggers, stored procedures, forms, etc., which you can find in RDBMS;
  * Atomicity in most cases is conditional.
 
 Examples of such databases:
