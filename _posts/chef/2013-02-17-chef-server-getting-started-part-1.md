@@ -207,9 +207,6 @@ Vagrant::Config.run do |config|
   config.vm.define :chef_client do |chef_client_config|
     chef_client_config.vm.box = "precise64"
     chef_client_config.vm.network :hostonly, "10.33.33.50"
-
-    chef_client_config.ssh.max_tries = 40
-    chef_client_config.ssh.timeout   = 120
   end
 end
 {% endhighlight %}
