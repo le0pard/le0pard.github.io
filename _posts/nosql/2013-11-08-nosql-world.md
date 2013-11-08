@@ -58,7 +58,7 @@ Advantages:
 
 Disadvantages:
 
- * There are no transactions;
+ * In general there are no transactions;
  * Have a number of limitations for the developer who is used to the developed traditional RDBMS.
 
 Examples of databases:
