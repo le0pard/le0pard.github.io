@@ -49,7 +49,7 @@ Now there are about 150 kinds of NoSQL databases ([nosql-database.org](http://no
 
 ## Wide Column Store / Column Families
 
-A column-oriented DBMS is a database management system that stores data tables as sections of columns of data rather than as rows of data. Physically tables are a collection of columns, each of them is essentially a table with a single field. For example, it is necessary to read the value of the three columns from the table consisting of 50 columns, load input-output channel would be about 50/3 = 17 times smaller than when the same request in a conventional database. These databases are generally used for analytic systems, business intelligence and analytical data storages.
+A column-oriented DBMS is a database management system that stores data tables as sections of columns of data rather than as rows of data. Physically tables are a collection of columns, each of them is essentially a table with a single field. These databases are generally used for analytic systems, business intelligence and analytical data storages.
 
 Advantages:
 
