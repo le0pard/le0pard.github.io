@@ -49,7 +49,7 @@ Now there are about 150 kinds of NoSQL databases ([nosql-database.org](http://no
 
 ## Wide Column Store / Column Families
 
-The idea behind is the storage data in rows, as do traditional RDBMSs, and in columns. Physically tables are a collection of columns, each of them is essentially a table with a single field. For example, it is necessary to read the value of the three columns from the table consisting of 50 columns, load input-output channel would be about 50/3 = 17 times smaller than when the same request in a conventional database. These databases are generally used for analytic systems, business intelligence and analytical data storages.
+The idea behind is the storage data in columns. Physically tables are a collection of columns, each of them is essentially a table with a single field. For example, it is necessary to read the value of the three columns from the table consisting of 50 columns, load input-output channel would be about 50/3 = 17 times smaller than when the same request in a conventional database. These databases are generally used for analytic systems, business intelligence and analytical data storages.
 
 Advantages:
 
@@ -58,8 +58,7 @@ Advantages:
 
 Disadvantages:
 
- * Slow for writing (in general);
- * there are transactions;
+ * There are no transactions;
  * Have a number of limitations for the developer who is used to the developed traditional RDBMS.
 
 Examples of databases:
@@ -75,9 +74,9 @@ This database allows you to store key/value pairs in a persistent store, and sub
 
 Advantages:
 
- * RDBMS are too slow, have heavy layer of SQL cursors, they are scaled heavily;
+ * RDBMS are too slow, have heavy layer of SQL cursors;
  * RDBMS are not good enough in terms of index concurrency (concurrent processing of requests);
- * Solutions of RDBMS to store small amounts of data too much cost ;
+ * Solutions of RDBMS to store small amounts of data too much cost;
  * There are no need for SQL queries, indexes, triggers, stored procedures, temporary tables, forms, views, etc;
  * Key/value database is easily scalable and high-performance due to its lightness.
 
