@@ -183,9 +183,6 @@ Vagrant::Config.run do |config|
     chef_config.vm.network :hostonly, "10.33.33.33"
     chef_config.vm.share_folder "cache", guest_cache_path, host_cache_path
 
-    chef_config.ssh.max_tries = 40
-    chef_config.ssh.timeout   = 120
-
     VAGRANT_JSON = JSON.parse(Pathname(__FILE__).dirname.join('nodes', 'vagrant.json').read)
 
     chef_config.vm.provision :chef_solo do |chef|
