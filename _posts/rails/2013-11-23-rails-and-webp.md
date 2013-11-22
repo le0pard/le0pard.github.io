@@ -87,7 +87,7 @@ location ~ ^/(assets)/  {
 }
 {% endhighlight %}
 
-Then, we check if the Accept header is an advertising WebP. Then we check if there is a corresponding file with a .webp extension on disk. If both conditions match, we serve the WebP asset and add Vary: Accept header.
+Then, we check if the Accept header is an advertising WebP. Then we check if there is a corresponding file with a .webp extension on disk. If both conditions match, we serve the WebP asset and add "Vary: Accept" header.
 
 # Results
 
