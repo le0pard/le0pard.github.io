@@ -103,7 +103,7 @@ As we can see, image with size 145.07 Kb was converted in webp image with size 1
 
 <a href="/assets/images/rails/webp5.png"><img src="/assets/images/rails/webp5.png" alt="Webp" title="Webp" class="aligncenter" /></a>
 
-As the result we reduced load time of rails application almoust in 2 times: before we have in average time 800ms, now an average response time of the page is 500ms .
+As the result we reduced load time of rails application almoust in 2 times: before we have in average time 800ms, now an average response time of the page is 500ms.
 
 # Summary
 
