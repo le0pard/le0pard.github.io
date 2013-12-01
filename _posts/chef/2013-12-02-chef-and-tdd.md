@@ -71,20 +71,6 @@ end
 
 Cucumber-chef is a library of tools to enable the emerging discipline of infrastructure as code to practice test driven development. It provides a testing platform within which [Cucumber tests](http://cukes.info/) can be run which provision virtual machines, configure them by applying the appropriate Chef roles to them, and then run acceptance and integration tests against the environment.
 
-## Minitest Chef Handler
-
-* [Site](https://github.com/calavera/minitest-chef-handler)
-
-Minitest Chef Handler run minitest suites after your Chef recipes to check the status of your system. Example:
-
-{% highlight ruby %}
-class TestNginx < MiniTest::Chef::TestCase
-  def test_config_file_exist
-    assert File.exist?('/etc/nginx/nginx.conf')
-  end
-end
-{% endhighlight %}
-
 ## Test-kitchen
 
 * [Site](https://github.com/test-kitchen/test-kitchen)
@@ -230,25 +216,7 @@ default[:monit][:logfile]               = 'syslog facility log_daemon'
 default[:monit][:poll_period]           = 60
 default[:monit][:poll_start_delay]      = 120
 
-default[:monit][:mail_format][:subject] = "$SERVICE $EVENT"
-default[:monit][:mail_format][:from]    = "monit@#{node['fqdn']}"
-default[:monit][:mail_format][:message]    = <<-EOS
-Monit $ACTION $SERVICE at $DATE on $HOST: $DESCRIPTION.
-Yours sincerely,
-monit
-EOS
-
-default[:monit][:mailserver][:host] = "localhost"
-default[:monit][:mailserver][:port] = nil
-default[:monit][:mailserver][:username] = nil
-default[:monit][:mailserver][:password] = nil
-default[:monit][:mailserver][:password_suffix] = nil
-
-default[:monit][:port] = 3737
-default[:monit][:address] = "localhost"
-default[:monit][:ssl] = false
-default[:monit][:cert] = "/etc/monit/monit.pem"
-default[:monit][:allow] = ["localhost"]
+...
 {% endhighlight %}
 
 File: templates/default/monitrc.erb
@@ -258,40 +226,7 @@ set daemon <%= @node[:monit][:poll_period] %>
 <% if @node[:monit][:poll_start_delay] %>
   with start delay <%= @node[:monit][:poll_start_delay] %>
 <% end %>
-
-set logfile <%= @node[:monit][:logfile] %>
-
-set mailserver <%= @node[:monit][:mailserver][:host] %><%= " port #{@node[:monit][:mailserver][:port]}" if @node[:monit][:mailserver][:port] %>
-<% if @node[:monit][:mailserver][:username] %>
-  username "<%= @node[:monit][:mailserver][:username] %>"
-<% end %>
-<% if @node[:monit][:mailserver][:password] %>
-  password "<%= @node[:monit][:mailserver][:password] %>"<%= " #{@node[:monit][:mailserver][:password_suffix]}" if @node[:monit][:mailserver][:password_suffix] %>
-<% end %>
-
-set eventqueue
-    basedir /var/monit  # set the base directory where events will be stored
-#    slots 1000          # optionaly limit the queue size
-
-set mail-format {
-  from: <%= @node[:monit][:mail_format][:from] %>
-  subject: <%= @node[:monit][:mail_format][:subject] %>
-  message: <%= @node[:monit][:mail_format][:message] %>
-}
-
-set alert <%= @node[:monit][:notify_email] %> NOT ON { action, instance, pid, ppid }
-
-set httpd port <%= node[:monit][:port] %>
-  <%= "use address #{node[:monit][:address]}" if node[:monit][:address] %>
-<% node[:monit][:allow].each do |a| %>
-  allow <%= "#{a}" %>
-<% end %>
-<% if node[:monit][:ssl] %>
-  ssl enable
-  pemfile <%= node[:monit][:cert] %>
-<% end %>
-
-include /etc/monit/conf.d/*.conf
+...
 {% endhighlight %}
 
 File: recipes/default.rb
@@ -531,7 +466,7 @@ describe 'monit::default' do
 end
 {% endhighlight %}
 
-And fix tests in recipe default.rb:
+Now we should fix tests in recipe:
 
 {% highlight ruby %}
 directory node[:monit][:includes_dir] do
@@ -616,7 +551,7 @@ Finished in 0.1829 seconds
 {% endhighlight %}
 
 
-## Using test-kitchen
+## Using test-kitchen and minitest
 
 Now let's begin testing by test-kitchen. First we need initialize it:
 
@@ -646,32 +581,32 @@ suites:
   - name: default
     run_list:
       - recipe[monit::default]
-    attributes:
+    attributes: {}
 {% endhighlight %}
 
-Let's add integration tests:
+About this setting better read on [this page](https://github.com/test-kitchen/test-kitchen#the-kitchen-yaml-format). Let's add integration tests. I use for this minitest:
 
 File: test/integration/default/minitest/test\_default.rb
 
 {% highlight ruby %}
-require 'minitest/spec'
+require 'minitest/autorun'
 
 describe 'monit::default' do
 
   it "install monit" do
-    package("monit").must_be_installed
+    assert system('apt-cache policy monit | grep Installed | grep -v none')
   end
 
   describe "services" do
 
     # You can assert that a service must be running following the converge:
     it "runs as a daemon" do
-      service("monit").must_be_running
+      assert system('/etc/init.d/monit status')
     end
 
     # And that it will start when the server boots:
     it "boots on startup" do
-      service("monit").must_be_enabled
+      assert File.exists?(Dir.glob("/etc/rc5.d/S*monit").first)
     end
 
   end
@@ -679,8 +614,7 @@ describe 'monit::default' do
 end
 {% endhighlight %}
 
-
-About this setting better read on [this page](https://github.com/test-kitchen/test-kitchen#the-kitchen-yaml-format). Next run command "kitchen test" for begin testing:
+Finaly run command "kitchen test" for begin testing:
 
 {% highlight bash %}
 $ kitchen test --parallel
@@ -704,10 +638,23 @@ $ kitchen test --parallel
 Uploading /tmp/busser/suites/minitest/test_default.rb (mode=0644)
 -----> Running minitest test suite
 /opt/chef/embedded/bin/ruby  -I"/opt/chef/embedded/lib/ruby/1.9.1" "/opt/chef/embedded/lib/ruby/1.9.1/rake/rake_test_loader.rb" "/tmp/busser/suites/minitest/test_default.rb"
-      Finished verifying <default-ubuntu-1204> (0m1.58s).
+Run options: --seed 34973
+
+# Running tests:
+
+  Installed: 1:5.3.2-1
+. * monit is running
+..
+
+Finished tests in 0.108799s, 27.5739 tests/s, 27.5739 assertions/s.
+
+3 tests, 3 assertions, 0 failures, 0 errors, 0 skips
+
+       Finished verifying <default-ubuntu-1204> (0m1.69s).
+-----> Destroying <default-ubuntu-1204>...
 {% endhighlight %}
 
-Now we can test our cookbook on different OS. By this technique we check, what environment setuped by cookbook as expected. More about test-kitchen you can read [here](https://github.com/test-kitchen/test-kitchen/wiki/Getting-Started).
+Of course my tests are not designed to work on different types of systems, my goal was to show how you can test. By this technique we can check, what environment setuped by our cookbook as expected. More about test-kitchen you can read [here](https://github.com/test-kitchen/test-kitchen/wiki/Getting-Started).
 
 # Summary
 
