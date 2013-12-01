@@ -8,7 +8,7 @@ tags:
 - chef
 - tdd
 ---
-Hello my dear friends. Today we will continue talk about Chef. But today we will write Chef cookbooks by [TDD](http://en.wikipedia.org/wiki/Test-driven_development). If you don't know what is Chef and how to use it, then you better start to read my [articles](/2013/01/04/chef-solo-getting-started-part-1/) about it.
+Hello my dear friends. Today we will continue talk about Chef. But today we will write Chef cookbooks by [TDD](http://en.wikipedia.org/wiki/Test-driven_development). If you don't know what is Chef and how to use it, then you better start to read my [articles](/2013/01/04/chef-solo-getting-started-part-1/) about it. All example code you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
 
 # Chef tetsing tools
 
@@ -150,7 +150,7 @@ end
 
 And execure "bundle" command to install this gems.
 
-# Using ChefSpec
+## Using ChefSpec
 
 Next we should create tests for our cookbook:
 
@@ -206,39 +206,7 @@ monit::default
   create direcory for custom services (FAILED - 3)
   create main monit config (FAILED - 4)
 
-Failures:
-
-  1) monit::default install monit package
-     Failure/Error: expect(chef_run).to install_package('monit')
-       expected "package[monit] with" action :install to be in Chef run. Other package resources:
-
-
-
-     # ./spec/unit/recipes/default_spec.rb:7:in `block (2 levels) in <top (required)>'
-
-  2) monit::default enable monit service
-     Failure/Error: expect(chef_run).to enable_service('monit')
-       expected "service[monit] with" action :enable to be in Chef run. Other service resources:
-
-
-
-     # ./spec/unit/recipes/default_spec.rb:11:in `block (2 levels) in <top (required)>'
-
-  3) monit::default create direcory for custom services
-     Failure/Error: expect(chef_run).to create_directory('/etc/monit/conf.d/').with(
-       expected "directory[/etc/monit/conf.d/] with" action :create to be in Chef run. Other directory resources:
-
-
-
-     # ./spec/unit/recipes/default_spec.rb:15:in `block (2 levels) in <top (required)>'
-
-  4) monit::default create main monit config
-     Failure/Error: expect(chef_run).to create_template('/etc/monit/monitrc')
-       expected "template[/etc/monit/monitrc] with" action :create to be in Chef run. Other template resources:
-
-
-
-     # ./spec/unit/recipes/default_spec.rb:22:in `block (2 levels) in <top (required)>'
+ ...
 
 Finished in 0.07275 seconds
 4 examples, 4 failures
@@ -355,7 +323,7 @@ rspec ./spec/unit/recipes/default_spec.rb:14 # monit::default create direcory fo
 rspec ./spec/unit/recipes/default_spec.rb:21 # monit::default create main monit config
 {% endhighlight %}
 
-Perfect! Let's fix rest tests:
+Perfect! Let's fix rest of tests:
 
 File: recipes/default.rb
 
@@ -385,7 +353,7 @@ template "/etc/monit/monitrc" do
 end
 {% endhighlight %}
 
-And check tests:
+And again check tests:
 
 {% highlight bash %}
 $ rspec
@@ -400,9 +368,9 @@ Finished in 0.06594 seconds
 4 examples, 0 failures
 {% endhighlight %}
 
-Ok, tests pass.
+Ok, tests is pass.
 
-# Checking by Foodcritic
+## Checking by Foodcritic
 
 Now need check our cookbook by foodcritic:
 
@@ -488,7 +456,7 @@ Finished in 0.07382 seconds
 4 examples, 0 failures
 {% endhighlight %}
 
-# Working with different OS
+## Working with different OS
 
 Now I will show how work with different OS. In our attributes we add such default attribute:
 
@@ -583,7 +551,7 @@ template node[:monit][:main_config_path] do
 end
 {% endhighlight %}
 
-Now we can again check tests:
+And we again check tests:
 
 {% highlight bash %}
 $ rspec
@@ -603,7 +571,7 @@ Finished in 0.15188 seconds
 8 examples, 0 failures
 {% endhighlight %}
 
-# Working with Fauxhai
+## Working with Fauxhai
 
 In default attributes we have such attribute:
 
@@ -648,7 +616,7 @@ Finished in 0.1829 seconds
 {% endhighlight %}
 
 
-# Using test-kitchen
+## Using test-kitchen
 
 Now let's begin testing by test-kitchen. First we need initialize it:
 
@@ -743,6 +711,6 @@ Now we can test our cookbook on different OS. By this technique we check, what e
 
 # Summary
 
-In this article I am cover how to write Chef cookbook by TDD. Hope this article will help for you write best cookbooks for Chef.
+In this article I am cover how to write Chef cookbook by TDD. Hope this article will help for you write best cookbooks for Chef. All example code you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
 
 *That’s all folks!* Thank you for reading till the end.
