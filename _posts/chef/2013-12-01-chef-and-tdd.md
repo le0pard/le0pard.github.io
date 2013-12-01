@@ -1,18 +1,18 @@
 ---
 layout: post
 title: Chef cookbooks development by TDD
-date: 2013-12-02 00:00:00
+date: 2013-12-01 00:00:00
 categories:
 - chef
 tags:
 - chef
 - tdd
 ---
-Hello my dear friends. Today we will continue talk about Chef. But today we will write Chef cookbooks by [TDD](http://en.wikipedia.org/wiki/Test-driven_development). If you don't know what is Chef and how to use it, then you better start to read my [articles](/2013/01/04/chef-solo-getting-started-part-1/) about it. All example code you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
+Hello my dear friends. Today we will continue to talk about Chef. But today my article will be about Chef cookbooks by [TDD](http://en.wikipedia.org/wiki/Test-driven_development). If you don't know what is Chef and how to use it, then you should better start with my [articles](/2013/01/04/chef-solo-getting-started-part-1/) about it. All code examples you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
 
 # Chef tetsing tools
 
-First, let's look at what tools exist today to test Chef cookbooks.
+First, let's look what tools exist to test Chef cookbooks today.
 
 ## Foodcritic
 
@@ -86,7 +86,7 @@ Chef Zero is a simple, easy-install, in-memory Chef server that can be useful fo
 
 # Enough words. Let's start with the practice
 
-First of all you must have installed Ruby and Rubygems. Let's create [monit](http://mmonit.com/monit/) cookbook by TDD. I generated structure of coobook by [berkshelf](http://berkshelf.com/):
+First of all you should have installed Ruby and Rubygems. Let's create [monit](http://mmonit.com/monit/) cookbook by TDD. I generated structure of coobook by [berkshelf](http://berkshelf.com/):
 
 {% highlight bash %}
 $ ruby -v
@@ -117,7 +117,7 @@ create  monit/Vagrantfile
 $ cd monit
 {% endhighlight %}
 
-Now we need add in Gemfile gems, which we will use for testing:
+Now we need to add gems in Gemfile, which we will use for testing:
 
 {% highlight ruby %}
 source 'https://rubygems.org'
@@ -135,7 +135,7 @@ group :integration do
 end
 {% endhighlight %}
 
-And execure "bundle" command to install this gems.
+And you should to execute "bundle" command to install this gems.
 
 ## Using ChefSpec
 
@@ -182,7 +182,7 @@ describe 'monit::default' do
 end
 {% endhighlight %}
 
-Of course tests will be fallen:
+Of course tests failed:
 
 {% highlight bash %}
 $ rspec
@@ -206,7 +206,7 @@ rspec ./spec/unit/recipes/default_spec.rb:14 # monit::default create direcory fo
 rspec ./spec/unit/recipes/default_spec.rb:21 # monit::default create main monit config
 {% endhighlight %}
 
-Let's fix this tests by writing cookbook code:
+Let's fix these tests by writing cookbook code:
 
 File: attributes/default.rb
 
@@ -259,7 +259,7 @@ rspec ./spec/unit/recipes/default_spec.rb:14 # monit::default create direcory fo
 rspec ./spec/unit/recipes/default_spec.rb:21 # monit::default create main monit config
 {% endhighlight %}
 
-Perfect! Let's fix rest of tests:
+Perfect! Let's fix rest of the tests:
 
 File: recipes/default.rb
 
@@ -289,7 +289,7 @@ template "/etc/monit/monitrc" do
 end
 {% endhighlight %}
 
-And again check tests:
+And again I will check tests:
 
 {% highlight bash %}
 $ rspec
@@ -304,11 +304,11 @@ Finished in 0.06594 seconds
 4 examples, 0 failures
 {% endhighlight %}
 
-Ok, tests is pass.
+Ok, tests passed.
 
 ## Checking by Foodcritic
 
-Now need check our cookbook by foodcritic:
+Now we need to check our cookbook by foodcritic:
 
 {% highlight bash %}
 $ foodcritic .
@@ -318,7 +318,7 @@ FC027: Resource sets internal attribute: ./recipes/default.rb:12
 FC043: Prefer new notification syntax: ./recipes/default.rb:26
 {% endhighlight %}
 
-We have a few remarks on the code. Let's fix its:
+We have a few warnings in the code. Let's fix them:
 
 FC002: Avoid string interpolation where not required: ./templates/default/monitrc.erb:31
 
@@ -375,7 +375,7 @@ FC043: Prefer new notification syntax: ./recipes/default.rb:26
  end
 {% endhighlight %}
 
-And check foodcritic and tests:
+And I will check foodcritic and tests:
 
 {% highlight bash %}
 $ foodcritic .
@@ -392,9 +392,9 @@ Finished in 0.07382 seconds
 4 examples, 0 failures
 {% endhighlight %}
 
-## Working with different OS
+## Working with different operating systems
 
-Now I will show how work with different OS. In our attributes I add such default attributes:
+Now I will show how to work with different operating systems. I will add such default attributes in our attributes :
 
 {% highlight ruby %}
 case node[:platform_family]
@@ -409,7 +409,7 @@ else
 end
 {% endhighlight %}
 
-And change tests:
+And I will change tests:
 
 {% highlight ruby %}
 require 'chefspec'
@@ -487,7 +487,7 @@ template node[:monit][:main_config_path] do
 end
 {% endhighlight %}
 
-And we again check tests:
+And we again will check tests:
 
 {% highlight bash %}
 $ rspec
@@ -515,7 +515,7 @@ In default attributes we have such attribute:
 default[:monit][:mail_format][:from]    = "monit@#{node[:fqdn]}"
 {% endhighlight %}
 
-where "fqdn" is attribute from ohai. Let's check by Fauxhai what this attribute will work in corrent way. Add this test:
+where "fqdn" is attribute from ohai. Let's check by Fauxhai is this attribute will work corrently. Add this test:
 
 {% highlight ruby %}
 context "mail to attribute" do
@@ -551,11 +551,11 @@ Finished in 0.1829 seconds
 9 examples, 0 failures
 {% endhighlight %}
 
-Maybe this example not perfect for Fauxhai (because we couldn't change "fqdn" by method "mock"), but this should help to understand how you can use it.
+May be this example is not perfect for Fauxhai (because we couldn't change "fqdn" using method "mock"), but this should help you to understand how you can use it.
 
 ## Using test-kitchen, bats and minitest
 
-Now let's begin testing by test-kitchen. First we need initialize it:
+Now let's begin testing using test-kitchen. First we need to initialize it:
 
 {% highlight bash %}
 $ kitchen init
@@ -566,7 +566,7 @@ $ kitchen init
       append  .gitignore
 {% endhighlight %}
 
-This command will create file ".kitchen.yml", which contain all settings for test-kitchen:
+This command will create file ".kitchen.yml", which contains all settings for test-kitchen:
 
 {% highlight yaml %}
 ---
@@ -586,7 +586,7 @@ suites:
     attributes: {}
 {% endhighlight %}
 
-About this setting better read on [this page](https://github.com/test-kitchen/test-kitchen#the-kitchen-yaml-format). Let's add integration tests. I use for this [bats](https://github.com/sstephenson/bats):
+About this setting you can read here [this page](https://github.com/test-kitchen/test-kitchen#the-kitchen-yaml-format). Let's add integration tests. I use them for this [bats](https://github.com/sstephenson/bats):
 
 File: test/integration/default/bats/default.bats
 
@@ -630,9 +630,9 @@ describe 'monit::default' do
 end
 {% endhighlight %}
 
-You no need use bats and minitests together in the same cookbook. I use both in this cookbook to show simple example.
+It is not neccessary to use bats and minitests together in the same cookbook. I use both in this cookbook to show simple example.
 
-Finaly run command "kitchen test" for begin testing:
+Finaly, run command "kitchen test" to begin testing:
 
 {% highlight bash %}
 $ kitchen test --parallel
@@ -668,10 +668,10 @@ Run options: --seed 42931
 
 {% endhighlight %}
 
-Of course my tests are not designed to work on different types of systems (on CentOS its will fail), my goal was to show how you can test. By this technique we can check, what environment setuped by our cookbook as expected. More about test-kitchen you can read [here](https://github.com/test-kitchen/test-kitchen/wiki/Getting-Started).
+Of course my tests are not designed to work on different types of systems (on CentOS they will fail), my goal was to show how you can test environment after your cookbook. More about test-kitchen you can read [here](https://github.com/test-kitchen/test-kitchen/wiki/Getting-Started).
 
 # Summary
 
-In this article I am cover how to write Chef cookbook by TDD. Hope this article will help for you write best cookbooks for Chef. All example code you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
+In this article I covered how to write Chef cookbook by TDD. Hope it will help you to write better cookbooks for Chef. All code examples you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
 
 *That’s all folks!* Thank you for reading till the end.
