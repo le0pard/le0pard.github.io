@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Development of Chef cookbooks by TDD
+title: Chef cookbooks development by TDD
 date: 2013-12-02 00:00:00
 categories:
 - chef
@@ -86,7 +86,7 @@ Chef Zero is a simple, easy-install, in-memory Chef server that can be useful fo
 
 # Enough words. Let's start with the practice
 
-First of all you must have installed Ruby and Rubygems. Let's create [monit](http://mmonit.com/monit/) cookbook by TDD. I generate structure of coobook by [berkshelf](http://berkshelf.com/):
+First of all you must have installed Ruby and Rubygems. Let's create [monit](http://mmonit.com/monit/) cookbook by TDD. I generated structure of coobook by [berkshelf](http://berkshelf.com/):
 
 {% highlight bash %}
 $ ruby -v
@@ -127,6 +127,7 @@ gem 'berkshelf'
 gem 'foodcritic'
 gem 'fauxhai'
 gem 'chefspec'
+gem 'busser-bats'
 gem 'busser-minitest'
 gem 'test-kitchen', '1.0.0.rc.2'
 group :integration do
@@ -138,13 +139,13 @@ And execure "bundle" command to install this gems.
 
 ## Using ChefSpec
 
-Next we should create tests for our cookbook:
+First of all we should create tests for our monit cookbook:
 
 File: spec/spec\_helper.rb
 
 {% highlight ruby %}
 require 'chefspec'
-require 'chefspec/berkshelf'
+require 'chefspec/berkshelf' # I use berkshelf, but it also have librarian support
 
 RSpec.configure do |config|
 
@@ -205,7 +206,7 @@ rspec ./spec/unit/recipes/default_spec.rb:14 # monit::default create direcory fo
 rspec ./spec/unit/recipes/default_spec.rb:21 # monit::default create main monit config
 {% endhighlight %}
 
-Let's fix this tests:
+Let's fix this tests by writing cookbook code:
 
 File: attributes/default.rb
 
@@ -317,7 +318,7 @@ FC027: Resource sets internal attribute: ./recipes/default.rb:12
 FC043: Prefer new notification syntax: ./recipes/default.rb:26
 {% endhighlight %}
 
-We should fix this warnings:
+We have a few remarks on the code. Let's fix its:
 
 FC002: Avoid string interpolation where not required: ./templates/default/monitrc.erb:31
 
@@ -393,7 +394,7 @@ Finished in 0.07382 seconds
 
 ## Working with different OS
 
-Now I will show how work with different OS. In our attributes we add such default attribute:
+Now I will show how work with different OS. In our attributes I add such default attributes:
 
 {% highlight ruby %}
 case node[:platform_family]
@@ -550,8 +551,9 @@ Finished in 0.1829 seconds
 9 examples, 0 failures
 {% endhighlight %}
 
+Maybe this example not perfect for Fauxhai (because we couldn't change "fqdn" by method "mock"), but this should help to understand how you can use it.
 
-## Using test-kitchen and minitest
+## Using test-kitchen, bats and minitest
 
 Now let's begin testing by test-kitchen. First we need initialize it:
 
@@ -564,7 +566,7 @@ $ kitchen init
       append  .gitignore
 {% endhighlight %}
 
-This will create file ".kitchen.yml", which contain all settings for test-kitchen:
+This command will create file ".kitchen.yml", which contain all settings for test-kitchen:
 
 {% highlight yaml %}
 ---
@@ -584,7 +586,21 @@ suites:
     attributes: {}
 {% endhighlight %}
 
-About this setting better read on [this page](https://github.com/test-kitchen/test-kitchen#the-kitchen-yaml-format). Let's add integration tests. I use for this minitest:
+About this setting better read on [this page](https://github.com/test-kitchen/test-kitchen#the-kitchen-yaml-format). Let's add integration tests. I use for this [bats](https://github.com/sstephenson/bats):
+
+File: test/integration/default/bats/default.bats
+
+{% highlight bash %}
+@test "monit is installed and in the path" {
+  which monit
+}
+
+@test "monit configuration dir exists" {
+  [ -d "/etc/monit" ]
+}
+{% endhighlight %}
+
+And [minitest](https://github.com/seattlerb/minitest):
 
 File: test/integration/default/minitest/test\_default.rb
 
@@ -614,6 +630,8 @@ describe 'monit::default' do
 end
 {% endhighlight %}
 
+You no need use bats and minitests together in the same cookbook. I use both in this cookbook to show simple example.
+
 Finaly run command "kitchen test" for begin testing:
 
 {% highlight bash %}
@@ -627,34 +645,30 @@ $ kitchen test --parallel
 
        ...
 
------> Setting up Busser
-      Creating BUSSER_ROOT in /tmp/busser
-      Creating busser binstub
-      Plugin minitest installed (version 0.2.0)
------> Running postinstall for minitest plugin
-      Finished setting up <default-ubuntu-1204> (0m39.45s).
------> Verifying <default-ubuntu-1204>...
-      Suite path directory /tmp/busser/suites does not exist, skipping.
-Uploading /tmp/busser/suites/minitest/test_default.rb (mode=0644)
+-----> Running bats test suite
+✓ monit is installed and in the path
+✓ monit configuration dir exists
+
+2 tests, 0 failures
 -----> Running minitest test suite
 /opt/chef/embedded/bin/ruby  -I"/opt/chef/embedded/lib/ruby/1.9.1" "/opt/chef/embedded/lib/ruby/1.9.1/rake/rake_test_loader.rb" "/tmp/busser/suites/minitest/test_default.rb"
-Run options: --seed 34973
+Run options: --seed 42931
 
 # Running tests:
 
-  Installed: 1:5.3.2-1
+ Installed: 1:5.3.2-1
 . * monit is running
-..
+      ..
 
-Finished tests in 0.108799s, 27.5739 tests/s, 27.5739 assertions/s.
+      Finished tests in 0.027586s, 108.7507 tests/s, 108.7507 assertions/s.
 
-3 tests, 3 assertions, 0 failures, 0 errors, 0 skips
-
-       Finished verifying <default-ubuntu-1204> (0m1.69s).
+      3 tests, 3 assertions, 0 failures, 0 errors, 0 skips
+      Finished verifying <default-ubuntu-1204> (0m2.94s).
 -----> Destroying <default-ubuntu-1204>...
+
 {% endhighlight %}
 
-Of course my tests are not designed to work on different types of systems, my goal was to show how you can test. By this technique we can check, what environment setuped by our cookbook as expected. More about test-kitchen you can read [here](https://github.com/test-kitchen/test-kitchen/wiki/Getting-Started).
+Of course my tests are not designed to work on different types of systems (on CentOS its will fail), my goal was to show how you can test. By this technique we can check, what environment setuped by our cookbook as expected. More about test-kitchen you can read [here](https://github.com/test-kitchen/test-kitchen/wiki/Getting-Started).
 
 # Summary
 
