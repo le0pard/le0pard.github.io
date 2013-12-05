@@ -10,7 +10,6 @@ tags:
 Hello my dear friends. In "[PostgreSQL most useful extensions](http://blog.railsware.com/2012/04/23/postgresql-most-useful-extensions/)" I showed a list of some useful extensions for PostgreSQL. Of course, that article didn't cover all useful extensions (in my humble opinion) and some extensions I want to describe in separate articles. Today we will talk about effective similarity search in PostgreSQL.
 
 Similarity search in large databases is an important issue in nowadays informational services, such as recommender systems, blogs (similar articles), online shops (similar products), image hosting services (similar images, search image duplicates) etc. PostgreSQL allows to make such things more easy. First you need to understand how we will calculate the similarity of two objects.
-<!--more-->
 
 # Similarity
 
