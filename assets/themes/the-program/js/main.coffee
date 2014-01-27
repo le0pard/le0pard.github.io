@@ -10,7 +10,8 @@ LeoSite =
     "rwprecise64",
     "go-falcon",
     "falcon"
-    "my_little_nosql"]
+    "my_little_nosql",
+    "chef_book"]
   additionalProjects: [
       {
           "html_url": "https://github.com/railsware/piro",
