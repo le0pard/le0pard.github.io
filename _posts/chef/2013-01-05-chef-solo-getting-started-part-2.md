@@ -80,7 +80,7 @@ default['nginx']['binary'] = "/usr/sbin/nginx"
 
   As you remember we can redefine all these attributes in the node file.
 
- * definitions - a folder, which contain helpers from this cookbook. You can find this helper in the nginx cookbook you can find this helper:
+ * definitions - a folder, which contain helpers from this cookbook. You can find this helper in the nginx cookbook:
 
 {% highlight ruby %}
 define :nginx_site, :enable => true do
