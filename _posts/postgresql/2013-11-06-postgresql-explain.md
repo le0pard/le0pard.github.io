@@ -172,11 +172,6 @@ end
 
 If inputA 2 elements, the inner loop (on inputB) will be executed 2 times. This is exactly what we are told by the optimizer in the example above. If you multiply 135.267 by 2, you get a little less than the difference between the total execution time hash join'a and the total time of the inner loop (the remaining time will likely go to the overhead associated with the computation of all of this).
 
-
-
-
-
-
 # Summary
 
 As you can be seen, Multicorn is very useful extensions, which provide for PostgreSQL communicate with many external types of data source and provide for Python developers create own custom FDW for PostgreSQL.
