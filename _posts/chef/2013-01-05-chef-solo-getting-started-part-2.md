@@ -317,7 +317,7 @@ nginx_site "#{node.app.name}.conf"
 
 cookbook_file "#{node.app.web_dir}/public/index.html" do
   source "index.html"
-  mode 0755
+  mode "0755"
   owner node.user.name
 end
 {% endhighlight %}
