@@ -12,7 +12,7 @@ LeoSite =
     "chef_book"
     "webp-ffi"
     "redis_pool"
-    "moscow_yammer"]
+    "moscow_yammer2"]
   additionalProjects: [
       {
           "html_url": "https://github.com/railsware/piro",
