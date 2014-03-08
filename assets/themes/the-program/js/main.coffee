@@ -2,16 +2,17 @@ LeoSite =
   repos: []
   recentlyUpdatedRepos: []
   reposInclude: [
-    "mongodb_logger",
-    "omniauth-yammer",
-    "postgresql_book",
-    "couch_yammer",
-    "LibreOfficeCSVGenerator",
-    "rwprecise64",
-    "go-falcon",
-    "falcon"
-    "my_little_nosql",
-    "chef_book"]
+    "mongodb_logger"
+    "omniauth-yammer"
+    "postgresql_book"
+    "LibreOfficeCSVGenerator"
+    "rwprecise64"
+    "go-falcon"
+    "my_little_nosql"
+    "chef_book"
+    "webp-ffi"
+    "redis_pool"
+    "moscow_yammer"]
   additionalProjects: [
       {
           "html_url": "https://github.com/railsware/piro",
@@ -160,5 +161,4 @@ LeoSite =
       reposContent.push Mustache.render(repoTemplate, repo)
     $("#repos").html(reposContent.join(""))
 
-$ ->
-  LeoSite.init() if $("#repos").length
+$ -> LeoSite.init() if $("#repos").length

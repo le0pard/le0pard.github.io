@@ -13,10 +13,10 @@ markdown: redcarpet
 # so be sure to set them if your theme uses them.
 #
 title : Leopard Blog
-tagline: Anything is possible, the impossible becomes longer
+tagline: "Anything is possible, the impossible becomes longer"
 author :
   name : Alexey Vasiliev
-  email : leopard_ne[at]inbox.ru
+  email : "leopard_ne[at]inbox.ru"
   github : le0pard
   twitter : leopard_me
   feedburner : ualeopard
