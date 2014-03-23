@@ -12,6 +12,7 @@ LeoSite =
     "chef_book"
     "webp-ffi"
     "redis_pool"
+    "pgtune"
     "moscow_yammer2"]
   additionalProjects: [
       {
