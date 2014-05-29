@@ -8,6 +8,9 @@ tags:
 - chef
 - solo
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will talk about Chef and usage Chef Solo like a Pro. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/1.0](https://github.com/le0pard/chef-solo-example/tree/1.0)
 
 # What is Chef?

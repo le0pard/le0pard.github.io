@@ -8,6 +8,9 @@ tags:
 - chef
 - solo
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will continue to talk about Chef Solo. You can find all example code here: [github.com/le0pard/chef-solo-example/tree/2.0](https://github.com/le0pard/chef-solo-example/tree/2.0).
 
 In [the previous article](/2013/01/04/chef-solo-getting-started-part-1/) we discussed how to use Chef Solo, learned about knife, librarian and vagrant tools, which help us to use and test Chef Solo kitchen. In this article we will learn cookbook structure and will write own cookbook.

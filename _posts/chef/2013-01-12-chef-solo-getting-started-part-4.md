@@ -8,6 +8,9 @@ tags:
 - chef
 - solo
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will continue talk about Chef Solo. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/4.0](https://github.com/le0pard/chef-solo-example/tree/4.0).
 
 In [the previous article](/2013/01/07/chef-solo-getting-started-part-3/) we learned Chef roles. In this article we will learn more about knife and cookbooks.

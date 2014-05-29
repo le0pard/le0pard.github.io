@@ -9,6 +9,9 @@ tags:
 - solo
 - server
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will continue talk about Chef Server (and Solo). In this article I will talk about little update of my Chef Sole and Server code examples.
 
 # New Vagrant - new configuration for testing

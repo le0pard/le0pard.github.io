@@ -8,6 +8,9 @@ tags:
 - chef
 - solo
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will continue talk about Chef Solo. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/5.0](https://github.com/le0pard/chef-solo-example/tree/5.0).
 
 In [the previous article](/2013/01/12/chef-solo-getting-started-part-4/) we learned more about Chef cookbooks. In this article we will learn what is Ohai and how to write Ohai plugin.

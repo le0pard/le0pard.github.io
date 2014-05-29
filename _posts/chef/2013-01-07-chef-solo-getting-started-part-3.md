@@ -8,6 +8,9 @@ tags:
 - chef
 - solo
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will continue talk about Chef Solo. All example code you can find here: [github.com/le0pard/chef-solo-example/tree/3.0](https://github.com/le0pard/chef-solo-example/tree/3.0).
 
 In [the previous article](/2013/01/05/chef-solo-getting-started-part-2/) we learned Chef cookbook structure and wrote own Chef cookbook. In this article we will learn Chef role.
@@ -83,7 +86,7 @@ config.vm.provision :chef_solo do |chef|
    chef.provisioning_path = "/tmp/vagrant-chef"
 
    # You may also specify custom JSON attributes:
-   
+
    chef.run_list = VAGRANT_JSON.delete('run_list')
    chef.json = VAGRANT_JSON
    # old way

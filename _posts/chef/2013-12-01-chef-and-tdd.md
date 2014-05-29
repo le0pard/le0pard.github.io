@@ -8,6 +8,9 @@ tags:
 - chef
 - tdd
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will continue to talk about Chef. But today my article will be about Chef cookbooks by [TDD](http://en.wikipedia.org/wiki/Test-driven_development). If you don't know what is Chef and how to use it, then you should better start with my [articles](/2013/01/04/chef-solo-getting-started-part-1/) about it. All code examples you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
 
 # Chef testing tools

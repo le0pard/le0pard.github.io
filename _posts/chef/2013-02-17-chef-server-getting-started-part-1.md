@@ -8,6 +8,9 @@ tags:
 - chef
 - server
 ---
+
+> **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
+
 Hello my dear friends. Today we will continue talk about Chef Server. All example code you can find here: [github.com/le0pard/chef-server-example/tree/1.0](https://github.com/le0pard/chef-server-example/tree/1.0).
 
 In this article we will learn what is Chef Server and how to setup it.
