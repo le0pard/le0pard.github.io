@@ -172,14 +172,15 @@ Let's for test call our node file "vagrant":
 $ cat nodes/vagrant.json
 {
   "nginx": {
-    "version": "1.2.3",
+    "version": "1.6.0",
+    "install_method": "source",
     "default_site_enabled": true,
     "source": {
-      "modules": ["http_gzip_static_module", "http_ssl_module"]
+      "modules": ["nginx::http_gzip_static_module", "nginx::http_ssl_module"]
     }
   },
   "run_list": [
-    "recipe[nginx::source]"
+    "recipe[nginx]"
   ]
 }
 {% endhighlight %}
