@@ -297,7 +297,7 @@ Multicorn provides a simple interface for writing own foreign data wrappers. Mor
 
 # PostgreSQL 9.3+
 
-The original implementation of FDWs in PostgreSQL 9.1 and 9.2 was read-only, but in PostgreSQL 9.3 FDWs also have write access as well. Right now Multicorn doesn't support this, but by changelog it will be added.
+The original implementation of FDWs in PostgreSQL 9.1 and 9.2 was read-only, but in PostgreSQL 9.3 FDWs also have write access as well. Right now Multicorn support write access API in version >= 1.0.0.
 
 # Conclusion
 

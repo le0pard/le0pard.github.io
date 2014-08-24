@@ -11,6 +11,7 @@ tags:
 - postgresql
 - book
 - free
+published: false
 ---
 Hello my dear friends. After a long silence in the blog, I present to you the result of several months - two FREE books.
 
