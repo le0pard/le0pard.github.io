@@ -191,6 +191,6 @@ This types of paginations doesn't need:
 
 As you can see, pagination can be improved by using an indexes (duh..) and the seek method. Last one can improve performance of pagination, but it can be used only for several types of paginations.
 
-This article based on slides for Markus Winand's talk ["Pagination Done the PostgreSQL Way"](https://wiki.postgresql.org/wiki/File:Pagination_Done_the_PostgreSQL_Way.pdf) for PGDay on 1st Feb 2013 in Brussels.
+This article based on slides for Markus Winand's talk ["Pagination Done the PostgreSQL Way"](https://wiki.postgresql.org/wiki/File:Pagination_Done_the_PostgreSQL_Way.pdf) for PGDay on 1st Feb 2013 in Brussels. Also good article ["We need tool support for keyset pagination"](http://use-the-index-luke.com/no-offset).
 
 *That’s all folks!* Thank you for reading till the end.
