@@ -139,7 +139,7 @@ The same index can be using in `WHERE` and `ORDER BY`.
 (5 rows)
 {% endhighlight %}
 
-As you can fetching the next page is also faster. But in order to select, for example, the 10 page (10 per page), PostgreSQL should select 100 records and make offset 90 of selected rows.
+As you can see, fetching the next page is also faster. But in order to select, for example, the 10 page (10 per page), PostgreSQL should select 100 records and make offset 90 of selected rows.
 
 <a href="/assets/images/postgresql/pagination/index.png" target="_blank"><img src="/assets/images/postgresql/pagination/index.png" alt="index" title="index" class="aligncenter size-full" /></a>
 
