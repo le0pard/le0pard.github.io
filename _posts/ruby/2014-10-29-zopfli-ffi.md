@@ -22,7 +22,7 @@ However, compression using Zopfli requires about 100 times more resources than g
 
 # Ruby and Zopfli
 
-I wrote zopfli gem - [zopfli-ffi](http://leopard.in.ua/zopfli-ffi/). You can use this gem to work with zopfli (it can work with MRI, JRuby and RBX). This gem have only one main method - `compress`. You should provide file, which you want to compress compressions and file, which should store compressed result.
+I wrote zopfli gem - [zopfli-ffi](http://leopard.in.ua/zopfli-ffi/). You can use this gem to work with zopfli (it can work with MRI, JRuby and RBX). This gem have only one main method - `compress`. You should provide file, which you want to compress and file, which should store compressed result.
 
 {% highlight ruby %}
 uncompressed_file = 'spec/fixtures/test.txt'
