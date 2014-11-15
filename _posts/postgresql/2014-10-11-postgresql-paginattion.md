@@ -103,6 +103,8 @@ To impove pagination we should have indexes for fields, which we are using in `O
 {% highlight sql %}
 # CREATE INDEX index_news_on_id_type ON news USING btree (id);
 CREATE INDEX
+# CREATE INDEX index_news_on_category_id ON news USING btree (category_id);
+CREATE INDEX
 {% endhighlight %}
 
 The same index can be using in `WHERE` and `ORDER BY`.
