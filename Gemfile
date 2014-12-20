@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'github-pages'
-gem 'rdiscount'
-gem 'redcarpet'
+gem 'github-pages', '>= 31'
+gem 'redcarpet', '>= 3.1'
 gem 'less'
-gem 'therubyracer'
+gem 'therubyracer', '>= 0.12.1'
 gem 'yui-compressor'
 gem 'uglifier'
 gem 'oj'
