@@ -6,13 +6,14 @@ LeoSite =
     "omniauth-yammer"
     "postgresql_book"
     "LibreOfficeCSVGenerator"
-    "rwprecise64"
+    "rwbox"
     "go-falcon"
     "my_little_nosql"
     "chef_book"
     "webp-ffi"
     "redis_pool"
     "pgtune"
+    "sql-joins-app"
     "moscow_yammer2"]
   additionalProjects: [
       {
