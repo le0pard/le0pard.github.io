@@ -7,7 +7,6 @@ categories:
 tags:
 - sql
 - free app
-published: false
 ---
 Hello my dear friends.
 
