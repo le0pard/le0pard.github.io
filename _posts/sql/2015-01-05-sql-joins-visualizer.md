@@ -22,7 +22,7 @@ If you have tried to understand how joins work and constantly get confused about
 
 <a href="http://sql-joins.leopard.in.ua/"><img src="/assets/images/sql/visualizer/sql_visyalizer.png" alt="" title="1" width="800" height="600" class="aligncenter size-full wp-image-1950" /></a>
 
-To select need type of join between two table you need to click at sectors on Venn diagram. For example, if you want to get the results that completely contains the table A you will see that it is sufficient to use the "LEFT JOIN". Also you can see that if you get the results that are included for both A and B may be used to "INNER JOIN".
+To select need type of join between two table you need to click at sectors on Venn diagram. For example, if you want to get the results that completely contains the table A you will see that it is sufficient to use the "LEFT JOIN". You will get "INNER JOIN" if your JOIN results need to include both A and B results.
 
 Of course, this application is [open source](https://github.com/le0pard/sql-joins-app).
 
