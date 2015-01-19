@@ -11,6 +11,7 @@ LeoSite =
     "my_little_nosql"
     "chef_book"
     "webp-ffi"
+    "zopfli-ffi"
     "redis_pool"
     "pgtune"
     "sql-joins-app"
