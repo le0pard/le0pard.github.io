@@ -33,7 +33,7 @@ Index is additional data structure, which can help us with:
  * Grouping - indexes can effectively calculate the arbitrary grouping and aggregate functions (sort-group algorithm)
 
 
-# PostgreSQL index data structures
+# PostgreSQL Index Types
 
 There are many types of indexes in Postgres, as well as different ways to use them. Depending on the structure used to implement the indexes differ substantially supported operations, their cost, and the properties of the data being read.
 
