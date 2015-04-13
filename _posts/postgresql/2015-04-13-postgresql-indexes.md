@@ -18,7 +18,7 @@ Hello my dear friends. In this article I will talk about PostgreSQL indexes.
 
 # What is index?
 
-For the beginning let us remind ourselves that this table in a relational database.
+For the beginning let us remind ourselves that is table in a relational database.
 
 Table in a relational database is a rows list. Each row have cells. The number of cells and cell types in a row is the same as a scheme of a column (columns) in table.
 This rows list have numbered consecutively RowId sequence number. So, we can consider table as list of pairs: (RowId, row).
