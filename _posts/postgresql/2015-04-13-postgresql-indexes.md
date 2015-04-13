@@ -58,7 +58,7 @@ Disadvantages:
 
  * For their construction is required to perform a full sorting pairs (row, RowId) (slow operation)
  * Take up a lot of disk space. Index on unique "Integers" weighs twice as much as the column (because additionaly need stored RowId)
- * At constant recording unbalances tree (in some implementations), and begins to store data sparsely, and the access time is increased by increasing the amount of disk information. What is why, B-Tree indexes require monitoring and periodic rebuilding
+ * At constant recording unbalances tree, and begins to store data sparsely, and the access time is increased by increasing the amount of disk information. What is why, B-Tree indexes require monitoring and periodic rebuilding
 
 
 ## R-Tree index
