@@ -102,7 +102,7 @@ As you can see, Hash indexes are only useful for equality comparisons, but you p
 
 ## Bitmap index
 
-Bitmap index create a separate bitmap (a sequence of 0 and 1) for each possible value of the column, where each bit corresponds to a string with the indexed value and the value of 1 means that the entry corresponding to the bit position contains the indexed value for the column or properties. Bitmap indexes are optimal for data where bit unique values (example, gender field).
+Bitmap index create a separate bitmap (a sequence of 0 and 1) for each possible value of the column, where each bit corresponds to a string with an indexed value. Bitmap indexes are optimal for data where bit unique values (example, gender field).
 
 <a href="/assets/images/postgresql/pg_indexes/bitmap.png"><img src="/assets/images/postgresql/pg_indexes/bitmap.png" alt="Bitmap indexes" title="Bitmap indexes" width="800" class="aligncenter size-full" /></a>
 
@@ -116,7 +116,7 @@ Disadvantages:
 
  * You can not change the method of encoding values in the process of updating the data. From this it follows that if the distribution data has changed, it is required to completely rebuild the index
 
-PostgreSQL do not provide persistent bitmap index. But it using in database to combine multiple indexes. PostgreSQL scans each needed index and prepares a bitmap in memory giving the locations of table rows that are reported as matching that index's conditions. The bitmaps are then ANDed and ORed together as needed by the query. Finally, the actual table rows are visited and returned.
+PostgreSQL doesn't provide persistent bitmap index. But it using in database to combine multiple indexes. PostgreSQL scans each needed index and prepares a bitmap in memory giving the locations of table rows that are reported as matching that index's conditions. The bitmaps are then ANDed and ORed together as needed by the query. Finally, the actual table rows are visited and returned.
 
 
 ## GiST index
