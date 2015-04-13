@@ -108,7 +108,7 @@ Disadvantages:
 
  * You can not change the method of encoding values in the process of updating the data. From this it follows that if the distribution (incidence) data has changed, it is required to completely rebuild the index
 
-To combine multiple indexes, PostgreSQL scans each needed index and prepares a bitmap in memory giving the locations of table rows that are reported as matching that index's conditions. The bitmaps are then ANDed and ORed together as needed by the query. Finally, the actual table rows are visited and returned.
+PostgreSQL do not offer persistent bitmap index (impossible to create by command `CREATE INDEX`). But it using in database to combine multiple indexes. PostgreSQL scans each needed index and prepares a bitmap in memory giving the locations of table rows that are reported as matching that index's conditions. The bitmaps are then ANDed and ORed together as needed by the query. Finally, the actual table rows are visited and returned.
 
 ## GiST index
 
