@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PostgreSQL indexes
+title: PostgreSQL Indexes
 date: 2015-04-13 00:00:00
 categories:
 - postgresql
