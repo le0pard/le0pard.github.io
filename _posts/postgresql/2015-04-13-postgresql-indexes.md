@@ -42,7 +42,7 @@ Index is an additional data structure, which can help us with:
 There are many types of indexes in PostgreSQL, as well as different ways to use them. Let's review all these indexes.
 
 
-## B-Tree index
+### B-Tree index
 
 B-Tree is the default index that you get when you do `CREATE INDEX`. Virtually all databases will have some B-tree indexes. The B stands for Balanced (Boeing/Bayer/Balanced/Broad/Bushy-Tree), and the idea is that the amount of data on both sides of the tree is roughly the same. Therefore the number of levels that must be traversed to find rows is always in the same approximate number. B-Tree indexes can be used for equality and range queries efficiently. They can operate against all datatypes, and can also be used to retrieve NULL values. Btrees are designed to work very well with caching, even when only partially cached.
 
@@ -61,7 +61,7 @@ Disadvantages:
  * Recording unbalances tree constantly, and begins to store data sparsely, and the access time is increased by increasing the amount of disk information. What is why, B-Tree indexes require monitoring and periodic rebuilding
 
 
-## R-Tree index
+### R-Tree index
 
 R-Tree (rectangle-tree) index storing numeric type pairs of (X, Y) values (for example, the coordinates). R-Tree is very similar to B-Tree. The only difference is the information written to intermediate page in a tree. For the i-th value of the B-Tree node we write the most out of the i-th subtree. In R-Tree it is a minimum rectangle that encloses all the rectangles of the child. Details can be seen in figure:
 
@@ -80,7 +80,7 @@ Disadvantages:
 In general, the pros-cons are very similar to B-Tree.
 
 
-## Hash index
+### Hash index
 
 Hash index doesn't store the values, but their hashes. Such indexing way reducing the size (and therefore increased speed and processing) of high index fields. In this case, when a query using Hash indexes will not be compared with the value of the field, but the hash value of the desired hash fields.
 
@@ -100,7 +100,7 @@ Disadvantages:
 As you can see, Hash indexes are only useful for equality comparisons, but you pretty much never want to use them since they are not transaction safe, need to be manually rebuilt after crashes, and are not replicated to followers in PostgreSQL.
 
 
-## Bitmap index
+### Bitmap index
 
 Bitmap index create a separate bitmap (a sequence of 0 and 1) for each possible value of the column, where each bit corresponds to a string with an indexed value. Bitmap indexes are optimal for data where bit unique values (example, gender field).
 
@@ -119,7 +119,7 @@ Disadvantages:
 PostgreSQL is not provide persistent bitmap index. But it can be used in database to combine multiple indexes. PostgreSQL scans each needed index and prepares a bitmap in memory giving the locations of table rows that are reported as matching that index's conditions. The bitmaps are then ANDed and ORed together as needed by the query. Finally, the actual table rows are visited and returned.
 
 
-## GiST index
+### GiST index
 
 Generalized Search Tree (GiST) indexes allow you to build general balanced tree structures, and can be used for operations beyond equality and range comparisons. The tree structure is not changed, still no elevators in each node pair stored value (the page number) and the number of children with the same amount of steam in the node.
 The essential difference lies in the organization of the key. B-Tree trees sharpened by search ranges, and hold a maximum subtree-child. R-Tree - the region on the coordinate plane. GiST offers as values ​​in the non-leaf nodes store the information that we consider essential, and which will determine if we are interested in values ​​(satisfying the predicate) in the subtree-child. The specific form of information stored depends on the type of search that we wish to pursue. Thus parameterize R-Tree and B-Tree tree predicates and values ​​we automatically receive specialized for the task index. They are used to index the geometric data types, as well as full-text search.
@@ -136,7 +136,7 @@ Disadvantages:
 The rest of the pros-cons similar to B-Tree and R-Tree.
 
 
-## GIN index
+### GIN index
 
 Generalized Inverted Indexes (GIN) are useful when an index must map many values to one row, whereas B-Tree indexes are optimized for when a row has a single key value. GINs are good for indexing array values as well as for implementing full-text search.
 
