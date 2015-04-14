@@ -122,7 +122,8 @@ PostgreSQL is not provide persistent bitmap index. But it can be used in databas
 ### GiST index
 
 Generalized Search Tree (GiST) indexes allow you to build general balanced tree structures, and can be used for operations beyond equality and range comparisons. The tree structure is not changed, still no elevators in each node pair stored value (the page number) and the number of children with the same amount of steam in the node.
-The essential difference lies in the organization of the key. B-Tree trees sharpened by search ranges, and hold a maximum subtree-child. R-Tree - the region on the coordinate plane. GiST offers as values ​​in the non-leaf nodes store the information that we consider essential, and which will determine if we are interested in values ​​(satisfying the predicate) in the subtree-child. The specific form of information stored depends on the type of search that we wish to pursue. Thus parameterize R-Tree and B-Tree tree predicates and values ​​we automatically receive specialized for the task index. They are used to index the geometric data types, as well as full-text search.
+
+The essential difference lies in the organization of the key. B-Tree trees sharpened by search ranges, and hold a maximum subtree-child. R-Tree - the region on the coordinate plane. GiST offers as values ​​in the non-leaf nodes store the information that we consider essential, and which will determine if we are interested in values ​​(satisfying the predicate) in the subtree-child. The specific form of information stored depends on the type of search that we wish to pursue. Thus parameterize R-Tree and B-Tree tree predicates and values ​​we automatically receive specialized for the task index (examples: PostGiST, pg_trgm, hstore, ltree, etc.). They are used to index the geometric data types, as well as full-text search.
 
 Advantages:
 
