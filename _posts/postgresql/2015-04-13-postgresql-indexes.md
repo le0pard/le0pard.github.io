@@ -18,7 +18,7 @@ Hello my dear friends. This is my new article in which I would like to to tell y
 
 # First of all what is Index?
 
-For the beginning let us remind ourselves that is a table in relational database.
+For the beginning let us remind ourselves what is a table in relational database.
 
 Table in a relational database is a list of rows, in the same time each row have cells. The number of cells and cell types in the row is the same as a scheme of a column (columns) in table.
 This list of rows has consecutively numbered RowId sequence number. So, we can consider table as list of pairs: (RowId, row).
