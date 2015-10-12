@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Improving security of your web application with the Content Security Policy
-date: 2015-09-07 00:00:00
+title: Improving security of your web applications with the Content Security Policy
+date: 2015-10-13 00:00:00
 categories:
 - security
 tags:
@@ -23,7 +23,7 @@ tags:
 
 Hello my dear friends.
 
-Today we will lear about Content Security Policy and how it can help your to make your web application more secure.
+Today we will talk about Content Security Policy and how it can help your to improve security of your web applications.
 
 # What is Content Security Policy?
 
@@ -31,11 +31,11 @@ Today we will lear about Content Security Policy and how it can help your to mak
 
 # Usage example
 
-In most cases many web application no need CSP, if it does't store and show some HTML/CSS data from user input. But if your web application should show some custom user content (html pages with css, some files, etc), in this case you need have good filter engine, which will remove eny inline JavaScript code (`<script>` tags, `onclick` from `<a>` links, etc). For example, if you build you web mail client, you cannot remove all HTML tags from email, because it will be broken and customer will not be happy to read broken email. So you need to prevent any posibility for hackers to inject JavaScript inline code by this HTML email.
+In many cases many web applications do not need CSP, if they do not store and show some HTML/CSS data that user inputs. But in case when your web application should show some custom user content (html pages with css, some files, etc), you need to have good filter engine, which will remove any inline JavaScript code (`<script>` tags, `onclick` from `<a>` links, etc). For example, if you build web mail client, you cann't remove all HTML from email tags, because email will be broken and customer will not be happy to read broken email. So you need to prevent JavaScript inline code injection by this HTML email for hackers with any posibility.
 
 # How to use it
 
-Instead of blindly trusting everything that a server delivers, CSP defines the `Content-Security-Policy` HTTP header that allows you to create a whitelist of sources of trusted content, and instructs the browser to only execute or render resources from those sources. Even if an attacker can find a hole through which to inject script, the script won't match the whitelist, and therefore won't be executed.
+Instead of blindly trust to everything that a server delivers, CSP defines the `Content-Security-Policy` HTTP header that allows you to create a whitelist of sources of trusted content, and instructs the browser to execute or render only resources from those sources. Even if an attacker can find a hole through which to inject script, the script won't match the whitelist, and therefore won't be executed.
 
 For example, if we trust `cdn.example.com` to deliver valid code, and we trust ourselves to do the same, let's define a policy that only allows script to execute when it comes from one of those two sources:
 
@@ -75,7 +75,7 @@ This head can contain such directives:
   <tr>
     <td style="text-align: center">connect-src</td>
     <td style="text-align: center">'self'</td>
-    <td>Applies to XMLHttpRequest (AJAX), WebSocket or EventSource. If not allowed the browser emulates a 400 HTTP status code</td>
+    <td>Applies to XMLHttpRequest (AJAX), WebSocket or EventSource. If it is not allowed, the browser emulates a 400 HTTP status code</td>
   </tr>
   <tr>
     <td style="text-align: center">font-src</td>
@@ -176,7 +176,7 @@ All of the directives that end with "-src" support similar values known as a sou
 
 # Usage example
 
-As you can see we can combine all this values for "Content Security Policy" header and create most flexible rule for our app. Let's create little example. I am using Rails app with [global gem](https://github.com/railsware/global) to make it work with "Content Security Policy". First I create global yml file with configuration (`config/global/content_security_policy.yml`):
+As you can see we can combine all this values for "Content Security Policy" header and create most flexible rule for our app. Let's create a little example. I am using Rails app with [global gem](https://github.com/railsware/global) to make it work with "Content Security Policy". First I create global yml file with configuration (`config/global/content_security_policy.yml`):
 
 {% highlight yaml %}
 default:
@@ -239,7 +239,7 @@ After restarting of the Rails app you should see "Content Security Policy" heade
 
 # Subresource Integrity
 
-Many sites uses a content delivery network (CDN) to serve static assets such as JavaScript, CSS, and images to our users. The CDN makes web browsing faster by delivering assets from data centers that are geographically close to the end user and by using hardware and software that is optimized for quickly serving static assets. The compromise of a major CDN could be devastating to the security of the hundreds of thousands of sites that depend on it. If our CDN were to be compromised, it could be used to serve malicious JavaScript to all our users, rendering our many XSS mitigations and transport security useless. Content Security Policy is invaluable for protecting against traditional XSS attacks, but it provides no defense against an attacker who can control assets served from whitelisted sources.
+Many sites uses a content delivery network (CDN) to serve static assets such as JavaScript, CSS, and images to our users. The CDN makes web browsing faster by delivering assets from data centers that are geographically close to the end user and by using hardware and software that is optimized for quickly serving static assets. The compromise of a major CDN could be devastating to the security of the hundreds of thousands of sites that depends on it. If our CDN were to be compromised, it could be used to serve malicious JavaScript to all our users, rendering our many XSS mitigations and transport security useless. Content Security Policy is invaluable for protecting against traditional XSS attacks, but it provides no defense against an attacker who can control assets served from whitelisted sources.
 
 To prevent this type of attack, you can use [Subresource Integrity](http://www.w3.org/TR/SRI/) browser technology. The website author includes an `integrity` attribute on JavaScript and CSS tags, specifying the cryptographic digest of the resource being loaded from the third party. When the browser fetches the resource, it computes the file's digest and compares it with the value from the `integrity` attribute. If the values match, the resource is loaded. Otherwise, the browser refuses to load the resource. Example:
 
@@ -295,6 +295,6 @@ As you can see in this table, CSP have good support for major browsers. Internet
 
 # Summary
 
-Content Security Policy can provide for you app additional security layer against XSS and data injection attacks (XSS is in third place in the ranking of the key risks of Web-based applications under the 2013 OWASP).
+Content Security Policy can provide the additional security layer for your apps against XSS and data injection attacks (XSS is in third place in the ranking of the key risks of Web-based applications under the 2013 OWASP).
 
 *That’s all folks!* Thank you for reading till the end.
