@@ -152,6 +152,13 @@ Key features:
  * Scales much better than GiST (support large volumes of data)
  * Works well for frequent recurrence of elements (and therefore are perfect for full-text search)
 
+# Block Range (BRIN) Index (9.5+)
+
+BRIN stands for Block Range INdexes, and store metadata on a range of pages. At the moment this means the minimum and maximum values per block.
+
+This results in an inexpensive index that occupies a very small amount of space, and can speed up queries in extremely large tables. This allows the index to determine which blocks are the only ones worth checking, and all others can be skipped. So if a 10GB table of order contained rows that were generally in order of order date, a BRIN index on the order_date column would allow the majority of the table to be skipped rather than performing a full sequential scan. This will still be slower than a regular BTREE index on the same column, but with the benefits of it being far smaller and requires less maintenance.
+
+More info about this index you can read in [this article](http://pythonsweetness.tumblr.com/post/119568339102/block-range-brin-indexes-in-postgresql-95).
 
 # Partial Indexes
 
