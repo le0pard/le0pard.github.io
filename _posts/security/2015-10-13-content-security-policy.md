@@ -85,11 +85,6 @@ This head can contain such directives:
   <tr>
     <td style="text-align: center">object-src</td>
     <td style="text-align: center">'self'</td>
-    <td>Defines valid sources of fonts</td>
-  </tr>
-  <tr>
-    <td style="text-align: center">font-src</td>
-    <td style="text-align: center">font.example.com</td>
     <td>Defines valid sources of plugins, eg &lt;object&gt;, &lt;embed&gt; or &lt;applet&gt;</td>
   </tr>
   <tr>
