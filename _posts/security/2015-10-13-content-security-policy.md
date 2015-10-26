@@ -31,7 +31,7 @@ Today we will talk about Content Security Policy and how it can help your to imp
 
 # Usage example
 
-In many cases many web applications do not need CSP, if they do not store and show some HTML/CSS data that user inputs. But in case when your web application should show some custom user content (html pages with css, some files, etc), you need to have good filter engine, which will remove any inline JavaScript code (`<script>` tags, `onclick` from `<a>` links, etc). For example, if you build web mail client, you cann't remove all HTML from email tags, because email will be broken and customer will not be happy to read broken email. So you need to prevent JavaScript inline code injection by this HTML email for hackers with any posibility.
+In many cases many web applications do not need CSP, if they do not store and show some HTML/CSS data that user inputs. But in case when your web application should show some custom user content (html pages with css, some files, etc), you need to have good filter engine, which will remove any inline JavaScript code (`<script>` tags, `onclick` from `<a>` links, etc). For example, if you build web mail client, you cannot remove all HTML from email tags, because email will be broken and customer will not be happy to read broken email. So you need to prevent JavaScript inline code injection by this HTML email for hackers with any posibility.
 
 # How to use it
 
