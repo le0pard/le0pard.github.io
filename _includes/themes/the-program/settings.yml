@@ -1,2 +1,3 @@
-theme :
-  name : the-program
+---
+theme:
+  name: the-program
