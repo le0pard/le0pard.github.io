@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'github-pages', '>= 31'
 gem 'kramdown', '>= 1.9.0'
-gem 'pygments.rb'
+gem 'rouge'
 gem 'less'
 gem 'therubyracer', '>= 0.12.1'
 gem 'yui-compressor'

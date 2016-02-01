@@ -3,7 +3,7 @@
 permalink: /:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", ".ruby-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+highlighter: rouge
 
 timezone: UTC
 
