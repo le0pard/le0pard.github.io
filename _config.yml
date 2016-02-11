@@ -2,7 +2,7 @@
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /:year/:month/:day/:title
 
-exclude: [".rvmrc", ".rbenv-version", ".ruby-version", "README.md", "Rakefile", "changelog.md"]
+exclude: [".ruby-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
 
 timezone: UTC
