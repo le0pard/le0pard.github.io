@@ -5,11 +5,11 @@ header: Page not found
 ---
 {% include JB/setup %}
 
-<h1>Sorry this page does not exist =(</h1>
-<p><a href="/">Go home</a></p>
-
 <script>
 if (window.location && window.location.pathname && window.location.pathname.substr(-1) === '/') {
   window.location = window.location.pathname.slice(0, -1)
 }
 </script>
+
+<h1>Sorry this page does not exist =(</h1>
+<p><a href="/">Go home</a></p>
