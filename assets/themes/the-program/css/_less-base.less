@@ -28,7 +28,7 @@ No styleguide reference.
 @11cols: (11 * (@column + @gutter) - @gutter) / @em; // 960px
 @12cols: (12 * (@column + @gutter) - @gutter) / @em; // 1050px
 @13cols: (13 * (@column + @gutter) - @gutter) / @em; // 1140px
-@14cols: (14 * (@column + @gutter) - @gutter) / @em; // 1230px 
+@14cols: (14 * (@column + @gutter) - @gutter) / @em; // 1230px
 @15cols: (15 * (@column + @gutter) - @gutter) / @em; // 1320px
 @16cols: (16 * (@column + @gutter) - @gutter) / @em; // 1410px
 
@@ -42,8 +42,8 @@ Font families
 No styleguide reference.
 */
 
-@font-stack: consolas, monaco, monospace;
-@webfont: UbuntuMono-B, consolas, monaco, monospace;
+@font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+@webfont: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
 /*
 Base font size should be larger than 16px.
@@ -154,17 +154,6 @@ No styleguide reference.
 /* COMFORTAA Font
  * http://www.fontsquirrel.com/fonts/Comfortaa
 */
-
-@font-face {
-    font-family: 'UbuntuMono-B';
-    src: url('/assets/themes/the-program/font/UbuntuMono-B-webfont.eot');
-    src: url('/assets/themes/the-program/font/UbuntuMono-B-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/assets/themes/the-program/font/UbuntuMono-B-webfont.woff') format('woff'),
-         url('/assets/themes/the-program/font/UbuntuMono-B-webfont.ttf') format('truetype'),
-         url('/assets/themes/the-program/font/UbuntuMono-B-webfont.svg#UbuntuMono-B') format('svg');
-    font-weight: normal !important;
-    font-style: normal;
-}
 
 /*
 LESS helper
