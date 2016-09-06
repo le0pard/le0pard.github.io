@@ -26,7 +26,7 @@ Usage:
   {% endfor %}
 {% else %}
   {% for category in categories_list %}
-  	<li><a href="{{ BASE_PATH }}{{ site.categories_path | prepend: site.baseurl }}#{{ category[0] }}-ref">
+  	<li><a href="{{ site.categories_path | prepend: site.baseurl }}#{{ category[0] }}-ref">
   		{{ category[0] | join: "/" }} <span>{{ category[1].size }}</span>
   	</a></li>
   {% endfor %}

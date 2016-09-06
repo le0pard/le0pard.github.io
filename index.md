@@ -9,6 +9,6 @@ Hello everyone. My name Alexey Vasiliev. I am a Software Architect, Full-Stack E
 
 <ul class="posts">
   {% for post in site.posts limit:50 %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
