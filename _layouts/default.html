@@ -9,6 +9,10 @@
   <meta name="author" content="{{ site.author.name }}">
   <link href="http://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml" />
 
+  <script type="application/ld+json">
+    {% include site/metadata.json %}
+  </script>
+
   <style amp-custom>
     {% capture include_to_scssify %}
       {% include sass/styles.scss %}
@@ -20,15 +24,10 @@
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   {% if page.layout == 'post' %}
-  <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
-  <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
   {% endif %}
-  <!--
-  <script src="{{ ASSET_PATH }}/js/jquery.min.js"></script>
-  <script src="{{ ASSET_PATH }}/js/modernizr.min.js"></script>
-  <script src="{{ ASSET_PATH }}/js/mustache.js"></script>
-  <script src="{{ ASSET_PATH }}/js/main.js"></script>
-  -->
 </head>
 <body>
 
@@ -39,10 +38,10 @@
 				<nav class="nav-global">
 					<ul>
 						<li class="logo"><a href="/">{{ site.title }}</a></li>
-						<li class="archive"><a href="/archive.html">archive</a></li>
-						<li class="page"><a href="/pages.html">pages</a></li>
-						<li class="category"><a href="/categories.html">categories</a></li>
-						<li class="tag"><a href="/tags.html">tags</a></li>
+						<li class="archive"><a href="{{ site.archive_path }}">archive</a></li>
+						<li class="page"><a href="{{ site.pages_path }}">pages</a></li>
+						<li class="category"><a href="{{ site.categories_path }}">categories</a></li>
+						<li class="tag"><a href="{{ site.tags_path }}">tags</a></li>
 					</ul>
 				</nav>
 			</div><!-- unit-inner -->
@@ -92,18 +91,6 @@
 		</div><!-- unit-foot -->
 	</footer>
 </div><!-- page -->
-<!--
-<script>
-	(function(d, s) {
-		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
-		if (d.getElementById(id)) {return;}
-		js = d.createElement(s); js.src = url; js.id = id;
-		fjs.parentNode.insertBefore(js, fjs);
-		};
-	load('//platform.twitter.com/widgets.js', 'tweetjs');
-	}(document, 'script'));
-</script>
--->
-  {% include JB/analytics %}
+{% include site/analytics %}
 </body>
 </html>

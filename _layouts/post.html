@@ -27,24 +27,37 @@ layout: default
             <ul class="list-category list-linear">
               <li class="list-head">category:&nbsp</li>
               {% assign categories_list = page.categories %}
-              {% include JB/categories_list %}
+              {% include site/categories_list %}
             </ul>
             <ul class="list-tag list-linear">
               <li class="list-head">tags:&nbsp</li>
               {% assign tags_list = page.tags %}
-              {% include JB/tags_list %}
+              {% include site/tags_list %}
             </ul>
           </div><!-- meta -->
         </div><!-- entry-content -->
         <div class="misc-content">
           <div class="social">
-            <ul class="list-linear">
-              <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="{{ site.author.twitter }}" data-lang="en">Tweet</a></div></li>
-              <li><div class="twitter-follow"><a href="https://twitter.com/{{ site.author.twitter }}" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li>
-            </ul>
+            <amp-social-share
+              type="twitter"
+              width="40"
+              height="30"></amp-social-share>
+            <amp-social-share
+              type="facebook"
+              width="40"
+              height="30"
+              app_id="{{ site.sharing.facebook_app_id }}"></amp-social-share>
+            <amp-social-share
+              type="gplus"
+              width="40"
+              height="30"></amp-social-share>
+            <amp-social-share
+              type="email"
+              width="40"
+              height="30"></amp-social-share>
           </div>
           <div class="comment">
-          {% include JB/comments %}
+          {% include site/comments %}
           </div>
         </div><!-- misc-content -->
       </div><!-- bd -->
