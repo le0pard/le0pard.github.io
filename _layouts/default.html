@@ -1,6 +1,103 @@
----
-theme :
-  name : the-program
----
-{% include JB/setup %}
-{% include themes/the-program/default.html %}
+<!DOCTYPE html>
+<html amp class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="google-site-verification" content="9PT3i6suRtibkvkQAJMs90s4u0qL1TQnfAe6HCE1_Fs" />
+  <meta name="author" content="{{ site.author.name }}">
+  <link href="http://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml" />
+
+  <style amp-custom>
+    {% capture include_to_scssify %}
+      {% include sass/styles.scss %}
+    {% endcapture %}
+    {{ include_to_scssify | scssify }}
+  </style>
+
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+  <!--
+  <script src="{{ ASSET_PATH }}/js/jquery.min.js"></script>
+  <script src="{{ ASSET_PATH }}/js/modernizr.min.js"></script>
+  <script src="{{ ASSET_PATH }}/js/mustache.js"></script>
+  <script src="{{ ASSET_PATH }}/js/main.js"></script>
+  -->
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">{{ site.title }}</a></li>
+						<li class="projects"><a href="/projects.html">projects</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					{{ content }}
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>About</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n">{{ site.author.name }}</span></address></li>
+						<li class="email"><address><span class="fn email">{{ site.author.email }}</span></address></li>
+						<li class="github"><a href="http://github.com/{{ site.author.github }}/" rel="me">github.com/{{ site.author.github }}</a></li>
+						<li class="twitter"><a href="http://twitter.com/{{ site.author.twitter }}/" rel="me">twitter.com/{{ site.author.twitter }}</a></li>
+						<li class="rss"><a href="http://feeds.feedburner.com/{{ site.author.feedburner }}">Subscribe to RSS Feed</a></li>
+					</ul>
+				</div><!-- misc -->
+				<div class="misc">
+					<h4>My books</h4>
+					<ul>
+						<li class="chef"><a href="http://chef.leopard.in.ua/" rel="chef">Cooking Infrastructure by Chef (English)</a></li>
+            <li class="postgresql"><a href="http://postgresql.leopard.in.ua/" rel="postgresql">Working with PostgreSQL: tuning and scaling (Russian)</a></li>
+					</ul>
+					<h4>My podcasts</h4>
+					<ul>
+						<li class="rwpod"><a href="http://www.rwpod.com/" rel="rwpod">RWpod (Russian)</a></li>
+					</ul>
+				</div><!-- misc -->
+				<p class="licence">
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><amp-img alt="Creative Commons License" width="80" height="31" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<!--
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	}(document, 'script'));
+</script>
+-->
+  {% include JB/analytics %}
+</body>
+</html>

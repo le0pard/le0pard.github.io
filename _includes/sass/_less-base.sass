@@ -1,0 +1,96 @@
+$font-size: 16
+$line-height: 26
+$em: $font-size
+
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+$webfont: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+body
+  font-family: $font-stack
+  font-size: 1em
+  line-height: $line-height / $em * 1em
+
+h1, h2, h3, h4, h5, h6
+  font-family: $webfont
+
+h1, .h1
+  font-size: 30px
+  line-height: 52px
+  margin-top: 52px
+  margin-bottom: 26px
+
+h2, .h2
+  font-size: 30px
+  line-height: 52px
+  margin-top: 52px
+  margin-bottom: 26px
+
+h3, .h3
+  font-size: 25.888px
+  line-height: 26px
+  margin-top: 26px
+  margin-bottom: 26px
+
+h4, .h4
+  font-size: 18.541px
+  line-height: 26px
+  margin-top: 26px
+  margin-bottom: 26px
+
+p, ul, ol, dl, img
+  margin-top: 0
+  margin-bottom: $line-height / $em * 1em
+
+small, .small, aside
+  font-size: 0.75 * $line-height / $em * 1em
+
+.font-size-default
+  font-size: $line-height / $em * 1em
+
+blockquote
+  font-weight: bold
+
+blockquote cite
+  font-weight: normal
+
+strong
+  font-weight: bold
+
+em
+  font-weight: bold
+
+$base03: #2d2d2d
+$base02: #393939
+$base01: #515151
+$base0: #cccccc
+$subtle: #999999
+$yellow: #ffcc66
+$orange: #f99157
+$red: #f2777a
+$violet: #cc99cc
+$blue: #6699cc
+$cyan: #66cccc
+$green: #99cc99
+
+$noise-100-90-5: "/assets/skin/100-90-5-monochrome.png"
+
+$cross-hair: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAR0lEQVQYGYVOQQoAIAizHuJXpafqR4wFCw9Ggji2OSbubpkp3UI7Qmcidz9JIKniAYITEQasqovcJHhelquxFf9LVjfTeKFtWPOYLQ+xHqUAAAAASUVORK5CYII="
+
+
+.list-linear
+  letter-spacing: -0.31em
+  word-spacing: -0.43em
+  list-style: none
+  padding-left: 0
+
+  li
+    display: inline-block
+    zoom: 1
+    line-height: normal
+    letter-spacing: normal
+    margin-right: 16px
+    word-spacing: normal
+    vertical-align: middle
+
+    &:last-child
+      margin-right: 0
