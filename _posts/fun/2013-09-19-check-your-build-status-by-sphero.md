@@ -14,7 +14,7 @@ Hello my dear friends. In this article we will learn how to check our travis ci 
 
 # What is Sphero?
 
-<a href="/assets/images/fun/sphero/sphero1.png"><img src="/assets/images/fun/sphero/sphero1.png" style="width:100%" alt="sphero" title="sphero" class="aligncenter" /></a>
+<a href="/assets/images/fun/sphero/sphero1.png"><amp-img src="/assets/images/fun/sphero/sphero1.png" alt="sphero" title="sphero" width="644" height="483" class="aligncenter" /></a>
 
 Sphero is small spherical robot. More info you can find on [official page](http://www.gosphero.com/) and see it in [this video](http://www.youtube.com/watch?v=5Bg88VkWGOQ).
 
@@ -81,10 +81,17 @@ CISpheroRobot.work!(CISpheroRobot.new(connections: {sphero: {port: '/dev/tty.Sph
 
 So I created class "CISpheroRobot", which have block "work". In this method you can manipulate by sphero by object "sphero" with methods "set_color", "roll", etc. In the port you can see I used '/dev/tty.Sphero-GGY-AMP-SPP'. To find this info you can in terminal of MacOS "ls /dev/tty\*".
 
-<a href="/assets/images/fun/sphero/sphero.png"><img src="/assets/images/fun/sphero/sphero.png" style="width:100%" alt="sphero" title="sphero" class="aligncenter" /></a>
+<a href="/assets/images/fun/sphero/sphero.png"><amp-img src="/assets/images/fun/sphero/sphero.png" alt="sphero" title="sphero" width="625" height="345" class="aligncenter" /></a>
 
 # Result
 
-Result you can [see on this video](http://youtu.be/P4JlJ3KrduA) (sorry for not good quality).
+Result you can see on this video (sorry for not good quality):
+
+<amp-youtube
+    data-videoid="P4JlJ3KrduA"
+    layout="responsive"
+    width="480" height="270">
+</amp-youtube>
+
 
 *That’s all folks!*

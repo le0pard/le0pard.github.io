@@ -250,7 +250,7 @@ stdin: is not a tty
 
 Our Chef Server by default takes your systems [FQDN](http://en.wikipedia.org/wiki/Fully_qualified_domain_name) as Chef Server url. We can check Chef Server web interface by "https://10.33.33.33" and info about versions by "https://10.33.33.33/version" url. It should looks like this:
 
-<a href="/assets/images/chef-server/chef_server_versions.png"><img src="/assets/images/chef-server/chef_server_versions.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_server_versions.png"><amp-img src="/assets/images/chef-server/chef_server_versions.png" alt="chef_server_versions" title="chef_server_versions" width="791" height="358" layout="responsive" class="aligncenter" /></a>
 
 After login by "admin/p@ssw0rd1" you must change admin password to some secure password.
 
@@ -380,7 +380,7 @@ UQIDAQAB
 
 You also can see this client in Chef Server web interface:
 
-<a href="/assets/images/chef-server/chef_new_node.png"><img src="/assets/images/chef-server/chef_new_node.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_new_node.png"><amp-img src="/assets/images/chef-server/chef_new_node.png" alt="chef_server_versions" title="chef_server_versions" width="557" height="450" layout="responsive" class="aligncenter" /></a>
 
 And new registered node:
 
@@ -389,7 +389,7 @@ $ knife node list
 web.chef-node
 {% endhighlight %}
 
-<a href="/assets/images/chef-server/chef_new_node2.png"><img src="/assets/images/chef-server/chef_new_node2.png" alt="chef_server_versions" title="chef_server_versions" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_new_node2.png"><amp-img src="/assets/images/chef-server/chef_new_node2.png" alt="chef_server_versions" title="chef_server_versions" width="605" height="774" layout="responsive" class="aligncenter" /></a>
 
 # Summary
 

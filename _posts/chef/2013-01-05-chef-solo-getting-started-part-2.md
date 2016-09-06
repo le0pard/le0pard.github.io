@@ -337,7 +337,7 @@ This always will give you the same value from the app.web\_dir attribute.
 
 As you can see in the recipe code we created 3 directories, created a new config for nginx, enabled this config by "nginx\_site" helper (this helper automatically reloads nginx) and put "index.html" into the server directory. After the launch command, "vagrant provision", you should see this in your browser with url "http://localhost:8085/":
 
-<a href="/assets/images/chef/nginx2.png"><img src="/assets/images/chef/nginx2.png" alt="nginx" title="nginx" class="aligncenter" /></a>
+<a href="/assets/images/chef/nginx2.png"><amp-img src="/assets/images/chef/nginx2.png" alt="nginx" title="nginx" width="448" height="195" class="aligncenter" /></a>
 
 # Ruby Power!
 
