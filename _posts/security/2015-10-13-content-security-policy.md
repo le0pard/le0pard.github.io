@@ -9,18 +9,6 @@ tags:
 - content security policy
 ---
 
-<style>
-  .describe-table {
-    font-size: 0.9rem;
-    border: 1px solid #CCC;
-    width: 100%;
-  }
-  .describe-table td, .describe-table th {
-    border: 1px solid #CCC;
-    padding: 10px;
-  }
-</style>
-
 Hello my dear friends.
 
 Today we will talk about Content Security Policy and how it can help your to improve security of your web applications.
@@ -48,63 +36,63 @@ This head can contain such directives:
 
 <table class="describe-table">
   <tr>
-    <th style="width: 180px">Directive</th>
-    <th style="width: 200px">Example Value</th>
+    <th class="w180">Directive</th>
+    <th class="w200">Example Value</th>
     <th>Description</th>
   </tr>
   <tr>
-    <td style="text-align: center">default-src</td>
-    <td style="text-align: center">'self' cdn.example.com</td>
+    <td class="center">default-src</td>
+    <td class="center">'self' cdn.example.com</td>
     <td>The "default-src" is the default policy for loading content such as JavaScript, Images, CSS, Font's, AJAX requests, Frames, HTML5 Media. See the <b>Source List</b> for possible values</td>
   </tr>
   <tr>
-    <td style="text-align: center">script-src</td>
-    <td style="text-align: center">'self' js.example.com</td>
+    <td class="center">script-src</td>
+    <td class="center">'self' js.example.com</td>
     <td>Defines valid sources of JavaScript</td>
   </tr>
   <tr>
-    <td style="text-align: center">style-src</td>
-    <td style="text-align: center">'self' css.example.com</td>
+    <td class="center">style-src</td>
+    <td class="center">'self' css.example.com</td>
     <td>Defines valid sources of stylesheets</td>
   </tr>
   <tr>
-    <td style="text-align: center">img-src</td>
-    <td style="text-align: center">'self' img.example.com</td>
+    <td class="center">img-src</td>
+    <td class="center">'self' img.example.com</td>
     <td>Defines valid sources of images</td>
   </tr>
   <tr>
-    <td style="text-align: center">connect-src</td>
-    <td style="text-align: center">'self'</td>
+    <td class="center">connect-src</td>
+    <td class="center">'self'</td>
     <td>Applies to XMLHttpRequest (AJAX), WebSocket or EventSource. If it is not allowed, the browser emulates a 400 HTTP status code</td>
   </tr>
   <tr>
-    <td style="text-align: center">font-src</td>
-    <td style="text-align: center">font.example.com</td>
+    <td class="center">font-src</td>
+    <td class="center">font.example.com</td>
     <td>Defines valid sources of fonts</td>
   </tr>
   <tr>
-    <td style="text-align: center">object-src</td>
-    <td style="text-align: center">'self'</td>
+    <td class="center">object-src</td>
+    <td class="center">'self'</td>
     <td>Defines valid sources of plugins, eg &lt;object&gt;, &lt;embed&gt; or &lt;applet&gt;</td>
   </tr>
   <tr>
-    <td style="text-align: center">media-src</td>
-    <td style="text-align: center">media.example.com</td>
+    <td class="center">media-src</td>
+    <td class="center">media.example.com</td>
     <td>Defines valid sources of audio and video, eg HTML5 &lt;audio&gt;, &lt;video&gt; elements</td>
   </tr>
   <tr>
-    <td style="text-align: center">child-src (old version frame-src)</td>
-    <td style="text-align: center">'self'</td>
+    <td class="center">child-src (old version frame-src)</td>
+    <td class="center">'self'</td>
     <td>Defines valid sources for loading frames</td>
   </tr>
   <tr>
-    <td style="text-align: center">sandbox</td>
-    <td style="text-align: center">allow-forms allow-scripts</td>
+    <td class="center">sandbox</td>
+    <td class="center">allow-forms allow-scripts</td>
     <td>Enables a sandbox for the requested resource similar to the iframe sandbox attribute. The sandbox applies a same origin policy, prevents popups, plugins and script execution is blocked. You can keep the sandbox value empty to keep all restrictions in place, or add values: allow-forms allow-same-origin allow-scripts, and allow-top-navigation</td>
   </tr>
   <tr>
-    <td style="text-align: center">report-uri</td>
-    <td style="text-align: center">/report</td>
+    <td class="center">report-uri</td>
+    <td class="center">/report</td>
     <td>Instructs the browser to POST a reports of policy failures to this URI. You can also append "-Report-Only" to the HTTP header name to instruct the browser to only send reports (does not block anything)</td>
   </tr>
 </table>
@@ -117,53 +105,53 @@ All of the directives that end with "-src" support similar values known as a sou
 
 <table class="describe-table">
   <tr>
-    <th style="width: 180px">Source Value</th>
-    <th style="width: 200px">Example</th>
+    <th class="w180">Source Value</th>
+    <th class="w200">Example</th>
     <th>Description</th>
   </tr>
   <tr>
-    <td style="text-align: center">*</td>
-    <td style="text-align: center">img-src *</td>
+    <td class="center">*</td>
+    <td class="center">img-src *</td>
     <td>Wildcard, allows anything</td>
   </tr>
   <tr>
-    <td style="text-align: center">'none'</td>
-    <td style="text-align: center">object-src 'none'</td>
+    <td class="center">'none'</td>
+    <td class="center">object-src 'none'</td>
     <td>Prevents loading resources from any source</td>
   </tr>
   <tr>
-    <td style="text-align: center">'self'</td>
-    <td style="text-align: center">script-src 'self'</td>
+    <td class="center">'self'</td>
+    <td class="center">script-src 'self'</td>
     <td>Allows loading resources from the same origin (same scheme, host and port)</td>
   </tr>
   <tr>
-    <td style="text-align: center">data:</td>
-    <td style="text-align: center">img-src 'self' data:</td>
+    <td class="center">data:</td>
+    <td class="center">img-src 'self' data:</td>
     <td>Allows loading resources via the data scheme (eg Base64 encoded images)</td>
   </tr>
   <tr>
-    <td style="text-align: center">domain.example.com</td>
-    <td style="text-align: center">img-src img.example.com</td>
+    <td class="center">domain.example.com</td>
+    <td class="center">img-src img.example.com</td>
     <td>Allows loading resources via the data scheme (eg Base64 encoded images)</td>
   </tr>
   <tr>
-    <td style="text-align: center">*.example.com</td>
-    <td style="text-align: center">img-src *.example.com</td>
+    <td class="center">*.example.com</td>
+    <td class="center">img-src *.example.com</td>
     <td>Allows loading resources from the any subdomain under example.com</td>
   </tr>
   <tr>
-    <td style="text-align: center">https:</td>
-    <td style="text-align: center">img-src https:</td>
+    <td class="center">https:</td>
+    <td class="center">img-src https:</td>
     <td>Allows loading resources only over HTTPS on any domain</td>
   </tr>
   <tr>
-    <td style="text-align: center">'unsafe-inline'</td>
-    <td style="text-align: center">script-src 'unsafe-inline'</td>
+    <td class="center">'unsafe-inline'</td>
+    <td class="center">script-src 'unsafe-inline'</td>
     <td>Allows use of inline source elements such as style attribute, onclick, or script tag bodies (depends on the context of the source it is applied to)</td>
   </tr>
   <tr>
-    <td style="text-align: center">'unsafe-eval'</td>
-    <td style="text-align: center">script-src 'unsafe-eval'</td>
+    <td class="center">'unsafe-eval'</td>
+    <td class="center">script-src 'unsafe-eval'</td>
     <td>Allows unsafe dynamic code evaluation such as JavaScript eval()</td>
   </tr>
 </table>
@@ -229,7 +217,7 @@ module YourCoolApp
 
 After restarting of the Rails app you should see "Content Security Policy" header in any HTTP response from your app. If someone will try to inject JS code in your app (`onclick` in link), it will get such JS error:
 
-<a href="/assets/images/security/csp/csp1.png"><img src="/assets/images/security/csp/csp1.png" alt="CSP error" title="CSP error" width="800" class="aligncenter size-full" /></a>
+<a href="/assets/images/security/csp/csp1.png"><amp-img src="/assets/images/security/csp/csp1.png" alt="CSP error" title="CSP error" width="800" height="173" layout="responsive" class="aligncenter size-full" /></a>
 
 
 # Subresource Integrity
@@ -264,7 +252,7 @@ CSP is designed to be fully backward compatible; browsers that don't support it 
     <th>Internet Explorer/Edge</th>
   </tr>
   <tr>
-    <td style="font-weight: bold">Content-Security-Policy (1.0)</td>
+    <td>Content-Security-Policy (1.0)</td>
     <td>25+</td>
     <td>23+</td>
     <td>7+</td>
