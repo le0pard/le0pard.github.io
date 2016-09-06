@@ -3,7 +3,7 @@ layout: page
 title: Alexey Vasiliev aka leopard
 tagline: Anything is possible, the impossible becomes longer
 ---
-Hello everyone. My name Alexey Vasiliev (leopard). I am a web developer and Linux administrator. [My main projects](/projects.html).
+Hello everyone. My name Alexey Vasiliev. I am a Software Architect, Full-Stack Engineer and Podcaster.
 
 ## Posts
 

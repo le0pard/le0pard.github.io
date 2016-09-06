@@ -40,7 +40,7 @@ In SQL we are using `ORDER BY` to get most recent first news and `LIMIT` to fetc
 
 The limiting factor is the number of rows that match the `WHERE` condition. The database might use an index to satisfy the `WHERE` condition, but must still fetch all matching rows to sort them.
 
-<a href="/assets/images/postgresql/pagination/no_index.png" target="_blank"><img src="/assets/images/postgresql/pagination/no_index.png" alt="no_index" title="no_index" class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pagination/no_index.png" target="_blank"><amp-img src="/assets/images/postgresql/pagination/no_index.png" alt="no_index" title="no_index" width="500" height="435" layout="responsive" class="aligncenter size-full" /></a>
 
 
 # Fetch Next Page
@@ -94,7 +94,7 @@ SELECT * FROM news WHERE category_id = 1234 ORDER BY date, id DESC OFFSET 10 LIM
 
 As you can see by `EXPLAIN` for each next page need more memory to sort rows, before to do `OFFSET` and `LIMIT`. This might become the limiting factor when browsing farther back. Fetching the last page can take considerably longer than fetching the first page.
 
-<a href="/assets/images/postgresql/pagination/no_index2.png" target="_blank"><img src="/assets/images/postgresql/pagination/no_index2.png" alt="no_index2" title="no_index2" class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pagination/no_index2.png" target="_blank"><amp-img src="/assets/images/postgresql/pagination/no_index2.png" alt="no_index2" title="no_index2" width="500" height="435" layout="responsive" class="aligncenter size-full" /></a>
 
 # Improvement #1: Indexed ORDER BY
 
@@ -143,7 +143,7 @@ The same index can be using in `WHERE` and `ORDER BY`.
 
 As you can see, fetching the next page is also faster. But in order to select, for example, the 10 page (10 per page), PostgreSQL should select 100 records and make offset 90 of selected rows.
 
-<a href="/assets/images/postgresql/pagination/index.png" target="_blank"><img src="/assets/images/postgresql/pagination/index.png" alt="index" title="index" class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pagination/index.png" target="_blank"><amp-img src="/assets/images/postgresql/pagination/index.png" alt="index" title="index" width="500" height="435" layout="responsive" class="aligncenter size-full" /></a>
 
 # Improvement #2: The Seek Method
 
@@ -169,7 +169,7 @@ Examples:
 (5 rows)
 {% endhighlight %}
 
-<a href="/assets/images/postgresql/pagination/index2.png" target="_blank"><img src="/assets/images/postgresql/pagination/index2.png" alt="index2" title="index2" class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pagination/index2.png" target="_blank"><amp-img src="/assets/images/postgresql/pagination/index2.png" alt="index2" title="index2" width="500" height="435" layout="responsive" class="aligncenter size-full" /></a>
 
 But the Seek Method has serious limitations:
 
@@ -181,7 +181,7 @@ But the Seek Method has serious limitations:
 
 The Seek Method perfect for "Infinite Scrolling" and "Next-Prev" (only this button) navigations:
 
-<a href="/assets/images/postgresql/pagination/pagination_example.jpg" target="_blank"><img src="/assets/images/postgresql/pagination/pagination_example.jpg" alt="index2" title="index2" class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pagination/pagination_example.jpg" target="_blank"><amp-img src="/assets/images/postgresql/pagination/pagination_example.jpg" alt="index2" title="index2" width="417" height="220" layout="responsive" class="aligncenter size-full" /></a>
 
 This types of paginations doesn't need:
 
