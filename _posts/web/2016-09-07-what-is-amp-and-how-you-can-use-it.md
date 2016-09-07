@@ -58,6 +58,7 @@ An AMP page is simply a regular HTML, page with a few extra rules and restrictio
  You can also use the:
  {% highlight html %}<html ⚡>{% endhighlight %}
  * Contain a `<link rel="canonical" href="$SOME_URL" />` tag inside their head that points to the regular HTML version of the AMP HTML document or to itself if no such HTML version exists;
+ * Contain a `<meta name="viewport" content="width=device-width,minimum-scale=1">` tag inside their head tag. It's also recommended to include `initial-scale=1`;
  * You must inline all your CSS in your HEAD tag (no external stylesheets allowed) using a `<style amp-custom>` tag;
  * You must include the following code as the last items before your `</head><body>` tag:
  {% highlight html %}
