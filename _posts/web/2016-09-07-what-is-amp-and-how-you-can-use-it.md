@@ -7,7 +7,6 @@ categories:
 tags:
 - web
 - performance
-published: false
 ---
 Hello my dear friends. Today we will talk about [Accelerated Mobile Pages (AMP)](https://www.ampproject.org/) and how it can help to you speedup your website.
 
@@ -69,6 +68,85 @@ An AMP page is simply a regular HTML, page with a few extra rules and restrictio
  * Other items (e.g. forms) must also be removed;
  * You must implement [Schema.org NewsArticle](http://schema.org/NewsArticle), [Schema.org Article](http://schema.org/Article) or [Schema.org BlogPosting](http://schema.org/BlogPosting) meta detail in your HEAD and also include an image of at least 696 pixels, if you want Google to use your AMP pages in the Top stories carousel;
 
+Next, make sure that your AMP page is actually valid AMP, or it won't get discovered and distributed by third-party platforms like Google Search. To validate:
+
+ * Open your page in your browser;
+ * Add `#development=1` to the URL, for example, [http://leopard.in.ua/#development=1](http://leopard.in.ua/#development=1);
+ * Open the Chrome DevTools console and check for validation errors;
+
+# Migration leopard.in.ua to AMP
+
+I decided to migrate this website to AMP. It is working on top of [Jekyll](https://jekyllrb.com/) and this is what I change inside it:
+
+ * Added all needed html tags/attributes and removed all JS code from pages (except AMP scripts);
+ * Change `<img>` tags to `<amp-img>` and provide width and height attributes for its;
+ * Inline CSS code in `<style amp-custom>`. I used for this new feature of Jekyll, which allow compile scss/sass files on a fly:
+ {% highlight html %}{% raw %}
+{% capture include_to_scssify %}{% include sass/styles.scss %}{% endcapture %}
+<style amp-custom>{{ include_to_scssify | scssify }}</style>
+ {% endraw %}{% endhighlight %}
+ but scss/sass files moved in `_includes` directory.
+
+ * Back Google Analytic script by `amp-analytics` component. Example:
+  {% highlight html %}{% raw %}
+<amp-analytics type="googleanalytics" id="googleAnalytics">
+ <script type="application/json">
+ {
+   "vars": {
+     "account": "{{ site.analytics.google_tracking_id }}"
+   },
+   "triggers": {
+     "trackPageview": {
+       "on": "visible",
+       "request": "pageview"
+     }
+   }
+ }
+ </script>
+</amp-analytics>
+  {% endraw %}{% endhighlight %}
+
+ * Back social buttons by `amp-social-share` component. Example:
+ {% highlight html %}{% raw %}
+<amp-social-share
+  type="twitter"
+  width="40"
+  height="30"></amp-social-share>
+<amp-social-share
+  type="facebook"
+  width="40"
+  height="30"
+  data-param-app_id="{{ site.sharing.facebook_app_id }}"></amp-social-share>
+<amp-social-share
+  type="gplus"
+  width="40"
+  height="30"></amp-social-share>
+<amp-social-share
+  type="email"
+  width="40"
+  height="30"></amp-social-share>
+ {% endraw %}{% endhighlight %}
+
+ * Return [Disqus](https://disqus.com/) was little tricky, because AMP doesn't contain component for it. I found solution by using `amp-iframe` component on github:
+ {% highlight html %}{% raw %}
+<amp-iframe
+   height="400"
+   sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+   frameborder="0"
+   src="https://tempest.services.disqus.com/engage-iframe/amp/?forum={{ site.comments.disqus_short_name }}&amp;disqus_url={{ page.url | prepend: site.baseurl | prepend: site.url }}"
+>
+  <div placeholder class="disqus-placeholder__wrap">
+    <div class="disqus-placeholder">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024" class="disqus-placeholder__svg"><path d="M524.456259,1012.5 C404.195712,1012.5 294.23718,968.012444 209.221899,894.419296 L0,923.35537 L80.8289496,721.399852 C52.6676835,658.493741 36.8688345,588.659481 36.8688345,515 C36.8688345,240.254704 255.169612,17.5 524.456259,17.5 C793.721065,17.5 1012,240.254704 1012,515 C1012,789.796889 793.728345,1012.5 524.456259,1012.5 L524.456259,1012.5 Z M790.685065,520.577519 L790.685065,519.191889 C790.685065,375.631815 690.679079,273.264741 518.245928,273.264741 L332.008806,273.264741 L332.008806,770.764741 L515.48659,770.764741 C689.259367,770.772111 790.685065,664.130222 790.685065,520.577519 L790.685065,520.577519 L790.685065,520.577519 Z M520.29905,648.534519 L465.825784,648.534519 L465.825784,395.531815 L520.29905,395.531815 C600.305295,395.531815 653.409813,441.707185 653.409813,521.344037 L653.409813,522.729667 C653.409813,603.037222 600.305295,648.534519 520.29905,648.534519 L520.29905,648.534519 Z"></path></svg>
+      LOADING DISCUSSION
+    </div>
+  </div>
+</amp-iframe>
+ {% endraw %}{% endhighlight %}
+
+# Results
+
+After all this changes need to check results. Page without AMP:
 
 
 
