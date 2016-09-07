@@ -2,7 +2,7 @@
    height="400"
    sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
    frameborder="0"
-   src="https://tempest.services.disqus.com/engage-iframe/amp/?forum={{ site.comments.disqus_short_name }}&amp;disqus_url={{ page.url | prepend: site.baseurl | prepend: site.url }}"
+   src="https://tempest.services.disqus.com/engage-iframe/amp/?forum={{ site.comments.disqus_short_name }}&amp;disqus_url={{ page.url | prepend: site.baseurl | prepend: site.url | cgi_escape }}"
 >
   <div placeholder class="disqus-placeholder__wrap">
     <div class="disqus-placeholder">
