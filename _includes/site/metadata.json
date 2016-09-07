@@ -12,8 +12,8 @@
   "image": {
     "@type": "ImageObject",
     "url": "{{ '/assets/skin/logo.png' | prepend: site.baseurl | prepend: site.url }}",
-    "height": 600,
-    "width": 600
+    "height": 800,
+    "width": 800
   },
   "author": {
     "@type": "Person",
@@ -24,9 +24,9 @@
     "name": "{{ site.title }}",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ '/assets/skin/logo.png' | prepend: site.baseurl | prepend: site.url }}",
+      "url": "{{ '/assets/skin/organization.png' | prepend: site.baseurl | prepend: site.url }}",
       "width": 600,
-      "height": 600
+      "height": 60
     }
   }
 }
