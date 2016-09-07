@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What is Accelerated Mobile Pages (AMP) and how you can use it
-date: 2016-09-07 00:00:00
+date: 2016-09-08 00:00:00
 categories:
 - web
 tags:
@@ -17,6 +17,15 @@ Speed of loading your web page is really matters today. Many studies have shown 
  * **AMP HTML** is HTML with some restrictions for reliable performance and some extensions for building rich content beyond basic HTML;
  * The **AMP JS** library ensures the fast rendering of AMP HTML pages;
  * The **Google AMP Cache** can be used to serve cached AMP HTML pages;
+
+<amp-video width="360" height="720" autoplay loop
+  src="https://www.google.com/images/google-blog-assets/amp-phone-10062015.mp4"
+  poster="/assets/images/web/amp/placeholder.png">
+ <div fallback>
+   <p>Your browser doesn’t support HTML5 video</p>
+ </div>
+</amp-video>
+
 
 ### AMP HTML
 
@@ -148,11 +157,16 @@ I decided to migrate this website to AMP. It is working on top of [Jekyll](https
 
 After all this changes need to check results. Page without AMP:
 
+<a href="http://sql-joins.leopard.in.ua/"><amp-img src="/assets/images/web/amp/without_amp.png" alt="without_amp" title="without_amp" width="981" height="629" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
 
+With AMP:
 
+<a href="http://sql-joins.leopard.in.ua/"><amp-img src="/assets/images/web/amp/with_amp.png" alt="with_amp" title="with_amp" width="962" height="568" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
+
+The results are impressive, even for a simple site like this without much bloat. The Start Render time drops from 2.091 seconds to under a 0.793 seconds and the overall load plummets (from 493kb to 231kb) as does the number of resources loaded (31 versus 11). Very nice!
 
 # Summary
 
-This article describes some techniques for speeding up the testing of your Ruby project at Travis-CI. Of course others techniques can be exist which I did not mention, but these ones helped to reduce the testing time of the projects in several times.
+This article describes what is AMP and how it can help to build web pages for static content that render fast. This technology can be used for news web portals, blogs and similar websites, where static content is a major resource for customers. You can look, who [already support AMP](https://www.ampproject.org/who/) (this resource too). I do not cover fully all usage of AMP, aspecially Google AMP Cache, which also can add additional speed for AMP pages, but in this case better create separate AMP pages and provide link to them with AMP Cache by `<link rel="amphtml" href="https://cdn.ampproject.org/c/s/YOUR_AMP_PAGE">` tag inside non-AMP page.
 
 *That’s all folks!* Thank you for reading till the end.
