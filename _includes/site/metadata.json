@@ -9,12 +9,24 @@
   "datePublished": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}",
   "dateModified": "{% if page.date %}{{ page.date | date_to_xmlschema }}{% else %}{{ site.time | date_to_xmlschema }}{% endif %}",
   "description": "{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{{ '/assets/skin/logo.png' | prepend: site.baseurl | prepend: site.url }}",
+    "height": 600,
+    "width": 600
+  },
   "author": {
     "@type": "Person",
     "name": "{{ site.author.name }}"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "{{ site.title }}"
+    "name": "{{ site.title }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ '/assets/skin/logo.png' | prepend: site.baseurl | prepend: site.url }}",
+      "width": 600,
+      "height": 600
+    }
   }
 }
