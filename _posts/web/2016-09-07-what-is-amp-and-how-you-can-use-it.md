@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What is Accelerated Mobile Pages (AMP) and how you can use it
-date: 2016-09-08 00:00:00
+date: 2016-09-07 00:00:00
 categories:
 - web
 tags:
