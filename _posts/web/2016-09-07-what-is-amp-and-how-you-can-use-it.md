@@ -158,11 +158,11 @@ I decided to migrate this website to AMP. It is working on top of [Jekyll](https
 
 After all this changes need to check results. Page without AMP:
 
-<a href="http://sql-joins.leopard.in.ua/"><amp-img src="/assets/images/web/amp/without_amp.png" alt="without_amp" title="without_amp" width="981" height="629" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/web/amp/without_amp.png"><amp-img src="/assets/images/web/amp/without_amp.png" alt="without_amp" title="without_amp" width="981" height="629" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
 
 With AMP:
 
-<a href="http://sql-joins.leopard.in.ua/"><amp-img src="/assets/images/web/amp/with_amp.png" alt="with_amp" title="with_amp" width="962" height="568" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/web/amp/with_amp.png"><amp-img src="/assets/images/web/amp/with_amp.png" alt="with_amp" title="with_amp" width="962" height="568" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
 
 The results are impressive, even for a simple site like this without much bloat. The Start Render time drops from 2.091 seconds to under a 0.793 seconds and the overall load plummets (from 493kb to 231kb) as does the number of resources loaded (31 versus 11). Very nice!
 
