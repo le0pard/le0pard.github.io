@@ -9,39 +9,35 @@ tags:
 - "high load"
 ---
 
-Hello my dear friends. This is my new article in which I would like to to tell you about safe and unsafe operations for high volume PostgreSQL.
-
-# PostgreSQL usage on High Load
-
 [PostgreSQL](https://www.postgresql.org/) is an object-relational database management system, which I often to use for many products. Some of this products should have high availability and working without any downtime. This means, I should run a database schema migrations while the app is up and serving requests. I have to be very careful about what database operations I run. If I run a bad command, it can lock out updates to a table for a long time. For example, if I create a new index on table, I cannot create new record in this table while that index is building. Anyone who tries to make a record in this table will block, and possibly time out, causing a partial outage. In general, I am ok with database operations taking a long time. However, any operation that locks a table for updates for more than a few seconds means downtime for me.
 
 I decided to make a list of an operations, which can be done safe (without downtime) and usafe.
 
-## Add a new column (safe)
+# Add a new column (safe)
 
 This operation will not block table and can be done safety. But exists some cases, which can lock your table.
 
-### Add a column with a default (unsafe)
+## Add a column with a default (unsafe)
 
 Adding a column with a default requires updating each row of the table (to store the new column value). For big table this will create long running operation that locks it. So if you intend to fill the column with mostly non default values, it's best to add the column with no default, insert the correct values using `UPDATE`, and then add any desired default.
 
-### Add a column that is non-nullable (unsafe)
+## Add a column that is non-nullable (unsafe)
 
 This will have the same problem, as "Add a column with a default". To make this operation without locking, you can create a new table with the addition of the non-nullable column, write to both tables, backfill, and then switch to the new table. This workaround is incredibly onerous and need two times more space than is a table takes.
 
-## Drop a column (safe)
+# Drop a column (safe)
 
 Dropping a column is very quick, but PostgreSQL won't reclaim the disk space until you run a "VACUUM FULL".
 
-## Change the type of a column (unsafe)
+# Change the type of a column (unsafe)
 
 Changing a column type requires updating each row of the table (to store the new column value). As workaround, you can add a new column with needed type, change the code to write to both columns, and backfill the new column.
 
-## Add a default value to an existing column (safe)
+# Add a default value to an existing column (safe)
 
 This operation will not block table and can be done safety.
 
-## Add an index (unsafe)
+# Add an index (unsafe)
 
 Normally PostgreSQL locks the table to be indexed against writes and performs the entire index build with a single scan of the table. Other transactions can still read the table, but if they try to insert, update, or delete rows in the table they will block until the index build is finished.
 
@@ -64,7 +60,7 @@ The recommended recovery method in such cases is to drop the index and try again
 Another difference is that a regular `CREATE INDEX` command can be performed within a transaction block, but `CREATE INDEX CONCURRENTLY` cannot.
 
 
-## Add a column with a unique constraint (unsafe)
+# Add a column with a unique constraint (unsafe)
 
 This operation will lock table. As workaround, you can add column, add unique index concurrently, and then add the constraint onto the table:
 
@@ -73,11 +69,11 @@ CREATE UNIQUE INDEX CONCURRENTLY token_is_unique ON large_table(token);
 ALTER TABLE large_table ADD CONSTRAINT token UNIQUE USING INDEX token_is_unique;
 {% endhighlight %}
 
-## Drop a constraint (safe)
+# Drop a constraint (safe)
 
 This operation will not block table and can be done safety.
 
-## VACUUM FULL (unsafe)
+# VACUUM FULL (unsafe)
 
 `VACUUM` reclaims storage occupied by dead tuples. In normal PostgreSQL operation, tuples that are deleted or obsoleted by an update are not physically removed from their table; they remain present until a `VACUUM` is done. `VACUUM FULL` rewrites the entire contents of the table into a new disk file with no extra space, allowing unused space to be returned to the operating system. This form is much slower and requires an exclusive lock on each table while it is being processed.
 
