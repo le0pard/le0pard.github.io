@@ -19,7 +19,7 @@ This operation will not block table and can be done safety. But exists some case
 
 ## Add a column with a default (unsafe)
 
-Adding a column with a default requires updating each row of the table (to store the new column value). For big table this will create long running operation that locks it. So if you intend to fill the column with mostly non default values, it's best to add the column with no default, insert the correct values using `UPDATE`, and then add any desired default.
+Adding a column with a default requires updating each row of the table (to store the new column value). For big table this will create long running operation that locks it. So if you intend to fill the column with mostly non default values, it's best to add the column with no default, insert the correct values using `UPDATE` (correct way is to do batched updates, for example, update 1000 rows at a time, because big update will create table-wide lock), and then add any desired default.
 
 ## Add a column that is non-nullable (unsafe)
 
@@ -31,7 +31,7 @@ Dropping a column is very quick, but PostgreSQL won't reclaim the disk space unt
 
 # Change the type of a column (unsafe)
 
-Changing a column type requires updating each row of the table (to store the new column value). As workaround, you can add a new column with needed type, change the code to write to both columns, and backfill the new column.
+It is not strictly unsafe for all changes. Changing the length of a varchar, for example, does not lock a table. But if column type change requires a rewrite or not depends on the datatype, in this case this operation requires updating each row of the table. As workaround, you can add a new column with needed type, change the code to write to both columns, and backfill the new column.
 
 # Add a default value to an existing column (safe)
 
@@ -90,6 +90,24 @@ To solve this problem you can use [Pg_repack](https://github.com/reorg/pg_repack
 Pg\_repack will only hold an `ACCESS EXCLUSIVE` lock for a short period during initial setup (steps 1 and 2 above) and during the final swap-and-drop phase (steps 6 and 7). For the rest of its time, pg\_repack only needs to hold an `ACCESS SHARE` lock on the original table, meaning INSERTs, UPDATEs, and DELETEs may proceed as usual.
 
 Performing a full-table repack requires free disk space about twice as large as the target table(s) and its indexes.
+
+# ALTER TABLE SET TABLESPACE (unsafe)
+
+Normally all PostgreSQL data resides in single directory. But you might have some additional SSD disks, or quite the contrary~--- some slow, but very large disks. And you'd want to put some of the data to another disk set. This is what tablespaces are.
+
+Default tablespace is simply `$PGDATA/base` directory. But you can have many other, created with:
+
+{% highlight sql %}
+CREATE TABLESPACE xxx LOCATION '/wherver';
+{% endhighlight %}
+
+command. Afterwards you can move some tables/indexes to this new tablespace with:
+
+{% highlight sql %}
+ALTER TABLE/INDEX whatever SET TABLESPACE xxx;
+{% endhighlight %}
+
+This is locking operation. To solve this problem you can use pg\_repack with `--tablespace` option.
 
 # Summary
 
