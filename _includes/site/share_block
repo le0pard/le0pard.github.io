@@ -1,0 +1,17 @@
+<amp-social-share
+  type="twitter"
+  width="40"
+  height="30"></amp-social-share>
+<amp-social-share
+  type="facebook"
+  width="40"
+  height="30"
+  data-param-app_id="{{ site.sharing.facebook_app_id }}"></amp-social-share>
+<amp-social-share
+  type="gplus"
+  width="40"
+  height="30"></amp-social-share>
+<amp-social-share
+  type="email"
+  width="40"
+  height="30"></amp-social-share>

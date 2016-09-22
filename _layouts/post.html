@@ -38,26 +38,10 @@ layout: default
         </div><!-- entry-content -->
         <div class="misc-content">
           <div class="social">
-            <amp-social-share
-              type="twitter"
-              width="40"
-              height="30"></amp-social-share>
-            <amp-social-share
-              type="facebook"
-              width="40"
-              height="30"
-              data-param-app_id="{{ site.sharing.facebook_app_id }}"></amp-social-share>
-            <amp-social-share
-              type="gplus"
-              width="40"
-              height="30"></amp-social-share>
-            <amp-social-share
-              type="email"
-              width="40"
-              height="30"></amp-social-share>
+            {% include site/share_block %}
           </div>
           <div class="comment">
-          {% include site/comments %}
+            {% include site/comments %}
           </div>
         </div><!-- misc-content -->
       </div><!-- bd -->
@@ -66,13 +50,17 @@ layout: default
           <nav class="pagination">
             <ul>
               {% if page.previous %}
-              <li class="prev"><a class="internal" rel="prev"  href="{{ page.previous.url }}" title="View {{ page.previous.title }}">&laquo; {{ page.previous.title }}</a></li>
+                <li class="prev">
+                  <a class="internal" href="{{ page.previous.url }}" title="View {{ page.previous.title }}">&laquo; {{ page.previous.title }}</a>
+                </li>
               {% endif %}
               {% if page.previous and page.next %}
-              <li class="pipe"> | </li>
+                <li class="pipe"> | </li>
               {% endif %}
               {% if page.next %}
-              <li class="next"><a class="internal" rel="next"  href="{{ page.next.url }}" title="View {{ page.next.title }}">{{ page.next.title }} &raquo;</a></li>
+                <li class="next">
+                  <a class="internal" href="{{ page.next.url }}" title="View {{ page.next.title }}">{{ page.next.title }} &raquo;</a>
+                </li>
               {% endif %}
             </ul>
           </nav>
