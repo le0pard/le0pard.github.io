@@ -15,7 +15,7 @@ Hello my dear friends. Today we will talk about Chef and usage Chef Solo like a 
 
 # What is Chef?
 
-<a href="/assets/images/chef/chef_logo.png"><img src="/assets/images/chef/chef_logo.png" alt="Chef" title="Chef" width="300" height="237" /></a>
+<a href="/assets/images/chef/chef_logo.png"><img src="/assets/images/chef/chef_logo.png" alt="Chef" title="Chef" /></a>
 
 [Chef](http://www.opscode.com/chef/) is an open-source systems integration framework built specifically for automating the cloud.
 
@@ -26,7 +26,7 @@ Why you should use Chef?
  * __Reusing__ and __Save money__: No need 10 times install a same software for your application on server. Just create new node in Chef and after several minutes you will have configured instance.
  * __Documentation__: You Chef is also documentation for your cloud, because Chef recipes contain all information about your environment.
 
-<a href="/assets/images/chef/automate-all-the-things.png"><img src="/assets/images/chef/automate-all-the-things.png" alt="Automate All The Things" title="Automate All The Things" width="500" height="375" class="aligncenter" /></a>
+<a href="/assets/images/chef/automate-all-the-things.png"><img src="/assets/images/chef/automate-all-the-things.png" alt="Automate All The Things" title="Automate All The Things" class="aligncenter" /></a>
 
 And of course main point is __Automate All The Things!!!__
 
@@ -324,7 +324,7 @@ $ vagrant reload
 
 And you should see in your browser:
 
-<a href="/assets/images/chef/nginx.png"><img src="/assets/images/chef/nginx.png" alt="nginx" title="nginx" width="492" height="201" class="aligncenter" /></a>
+<a href="/assets/images/chef/nginx.png"><img src="/assets/images/chef/nginx.png" alt="nginx" title="nginx" class="aligncenter" /></a>
 
 After change something in your kitchen, you should run command "vagrant provision":
 

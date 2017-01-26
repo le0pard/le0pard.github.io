@@ -18,15 +18,12 @@ Speed of loading your web page is really matters today. Many studies have shown 
  * The **AMP JS** library ensures the fast rendering of AMP HTML pages;
  * The **Google AMP Cache** can be used to serve cached AMP HTML pages;
 
-<amp-video width="360" height="720" autoplay loop controls
-  src="https://www.google.com/images/google-blog-assets/amp-phone-10062015.mp4"
-  poster="/assets/images/web/amp/placeholder.png">
- <div fallback>
-   <p>Your browser doesn’t support HTML5 video</p>
- </div>
- <source type="video/mp4" src="https://www.google.com/images/google-blog-assets/amp-phone-10062015.mp4">
-</amp-video>
-
+<div class="video-container">
+ <video width="320" height="720" autoplay loop controls>
+   <source src="https://www.google.com/images/google-blog-assets/amp-phone-10062015.mp4" type="video/mp4">
+ Your browser does not support the video tag.
+ </video>
+</dvi>
 
 ### AMP HTML
 
@@ -158,11 +155,11 @@ I decided to migrate this website to AMP. It is working on top of [Jekyll](https
 
 After all this changes need to check results. Page without AMP:
 
-<a href="/assets/images/web/amp/without_amp.png"><img src="/assets/images/web/amp/without_amp.png" alt="without_amp" title="without_amp" width="981" height="629"  class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/web/amp/without_amp.png"><img src="/assets/images/web/amp/without_amp.png" alt="without_amp" title="without_amp"  class="aligncenter size-full wp-image-1950" /></a>
 
 With AMP:
 
-<a href="/assets/images/web/amp/with_amp.png"><img src="/assets/images/web/amp/with_amp.png" alt="with_amp" title="with_amp" width="962" height="568"  class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/web/amp/with_amp.png"><img src="/assets/images/web/amp/with_amp.png" alt="with_amp" title="with_amp"  class="aligncenter size-full wp-image-1950" /></a>
 
 The results are impressive, even for a simple site like this without much bloat. The Start Render time drops from 2.091 seconds to under a 0.793 seconds and the overall load plummets (from 493kb to 231kb) as does the number of resources loaded (31 versus 11). Very nice!
 

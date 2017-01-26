@@ -22,7 +22,7 @@ The relational database model focuses on the organization of the data in the for
 
 [Edgar Codd](http://en.wikipedia.org/wiki/Edgar_F._Codd) is the author of the 'relational' concept.
 
-<a href="/assets/images/nosql/Edgar_F_Codd.jpg"><img src="/assets/images/nosql/Edgar_F_Codd.jpg" alt="Edgar_F_Codd" title="Edgar_F_Codd" width="211" height="300" class="aligncenter" /></a>
+<a href="/assets/images/nosql/Edgar_F_Codd.jpg"><img src="/assets/images/nosql/Edgar_F_Codd.jpg" alt="Edgar_F_Codd" title="Edgar_F_Codd" class="aligncenter" /></a>
 
 The architecture of relational models started its history in the 1970s. The main task of the database then was to support the launched in 1960 a massive shift from paper records to computer-economic activities. A huge amount of information from paper documents tolerated in the database accounting systems that was a securety store of all incoming information and, if necessary, way for quick finding of information. These requirements led to the architectural features of a RDBMS that remained virtually unchanged until now: the row-data storage, indexing, records and logging operations.
 
@@ -39,7 +39,7 @@ NoSQL (not only SQL) - a number of approaches and projects aimed for the impleme
 
 For the first time the term "NoSQL" was used in the late 90's. The real meaning of the form used now got only in the middle 2009. Originally, it was a title of the open-source database created by Carlo Strozzi, which stores all data as ASCII files and used shell scripts instead of SQL to access data. This database did not have anything in common with the "NoSQL" in it's current form.
 
-<a href="/assets/images/nosql/carlo-strozzi.jpg"><img src="/assets/images/nosql/carlo-strozzi.jpg" alt="carlo-strozzi" title="carlo-strozzi" width="230" height="300" class="aligncenter" /></a>
+<a href="/assets/images/nosql/carlo-strozzi.jpg"><img src="/assets/images/nosql/carlo-strozzi.jpg" alt="carlo-strozzi" title="carlo-strozzi" class="aligncenter" /></a>
 
 Johan Oskarsson organized a meeting to discuss new technologies in the IT market, storage and processing of data in June 2009 in San Francisco. The main stimulus for the meeting was the new products such as BigTable and Dynamo. For a meeting it was necessary to find a brief term for using as a Twitter hashtag. "NoSQL" term was suggested by Eric Evans from RackSpace. The term was planned to use only for this meeting and did not have a deep meaning. But it turned out that it spread worldwide network such as viral advertising and became the de facto name of a trend in the IT.
 

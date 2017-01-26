@@ -217,7 +217,7 @@ module YourCoolApp
 
 After restarting of the Rails app you should see "Content Security Policy" header in any HTTP response from your app. If someone will try to inject JS code in your app (`onclick` in link), it will get such JS error:
 
-<a href="/assets/images/security/csp/csp1.png"><img src="/assets/images/security/csp/csp1.png" alt="CSP error" title="CSP error" width="800" height="173"  class="aligncenter size-full" /></a>
+<a href="/assets/images/security/csp/csp1.png"><img src="/assets/images/security/csp/csp1.png" alt="CSP error" title="CSP error"  class="aligncenter size-full" /></a>
 
 
 # Subresource Integrity

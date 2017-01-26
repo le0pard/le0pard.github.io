@@ -25,7 +25,7 @@ This list of rows has consecutively numbered RowId sequence number. So, we can c
 
 Indexes are in the inverse relationship: (row, RowId). In index row must contain at least one cell. Obviously, if a row is not unique (two identical rows), these relations look like mapped RowId list.
 
-<a href="/assets/images/postgresql/pg_indexes/pg_indexes1.png"><img src="/assets/images/postgresql/pg_indexes/pg_indexes1.png" alt="Indexes" title="Indexes" width="800" height="361"  class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pg_indexes/pg_indexes1.png"><img src="/assets/images/postgresql/pg_indexes/pg_indexes1.png" alt="Indexes" title="Indexes"  class="aligncenter size-full" /></a>
 
 Index is an additional data structure, which can help us with:
 
@@ -46,7 +46,7 @@ There are many types of indexes in PostgreSQL, as well as different ways to use 
 
 B-Tree is the default index that you get when you do `CREATE INDEX`. Virtually all databases will have some B-tree indexes. The B stands for Balanced (Boeing/Bayer/Balanced/Broad/Bushy-Tree), and the idea is that the amount of data on both sides of the tree is roughly the same. Therefore the number of levels that must be traversed to find rows is always in the same approximate number. B-Tree indexes can be used for equality and range queries efficiently. They can operate against all datatypes, and can also be used to retrieve NULL values. Btrees are designed to work very well with caching, even when only partially cached.
 
-<a href="/assets/images/postgresql/pg_indexes/btree1.gif"><img src="/assets/images/postgresql/pg_indexes/btree1.gif" alt="B-Tree" title="B-Tree" width="800" height="319"  class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pg_indexes/btree1.gif"><img src="/assets/images/postgresql/pg_indexes/btree1.gif" alt="B-Tree" title="B-Tree"  class="aligncenter size-full" /></a>
 
 Advantages:
 
@@ -65,7 +65,7 @@ Disadvantages:
 
 R-Tree (rectangle-tree) index storing numeric type pairs of (X, Y) values (for example, the coordinates). R-Tree is very similar to B-Tree. The only difference is the information written to intermediate page in a tree. For the i-th value of the B-Tree node we write the most out of the i-th subtree. In R-Tree it is a minimum rectangle that encloses all the rectangles of the child. Details can be seen in figure:
 
-<a href="/assets/images/postgresql/pg_indexes/pg_indexes2.jpg"><img src="/assets/images/postgresql/pg_indexes/pg_indexes2.jpg" alt="R-Tree" title="R-Tree" width="800" height="685"  class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pg_indexes/pg_indexes2.jpg"><img src="/assets/images/postgresql/pg_indexes/pg_indexes2.jpg" alt="R-Tree" title="R-Tree"  class="aligncenter size-full" /></a>
 
 Advantages:
 
@@ -86,7 +86,7 @@ Hash index doesn't store the values, but their hashes. Such indexing way reducin
 
 Because hash functions is non-linear, such index cannot be sorted. This causes inability to use the comparisons more/less and "IS NULL" with this index. In addition, since the hashes are not unique, then the matching hashes used methods of resolving conflicts.
 
-<a href="/assets/images/postgresql/pg_indexes/hash_indexes.png"><img src="/assets/images/postgresql/pg_indexes/hash_indexes.png" alt="Hash indexes" title="Hash indexes" width="800" height="551"  class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/postgresql/pg_indexes/hash_indexes.png"><img src="/assets/images/postgresql/pg_indexes/hash_indexes.png" alt="Hash indexes" title="Hash indexes"  class="aligncenter size-full wp-image-1950" /></a>
 
 Advantages:
 
@@ -104,7 +104,7 @@ As you can see, Hash indexes are only useful for equality comparisons, but you p
 
 Bitmap index create a separate bitmap (a sequence of 0 and 1) for each possible value of the column, where each bit corresponds to a string with an indexed value. Bitmap indexes are optimal for data where bit unique values (example, gender field).
 
-<a href="/assets/images/postgresql/pg_indexes/bitmap.png"><img src="/assets/images/postgresql/pg_indexes/bitmap.png" alt="Bitmap indexes" title="Bitmap indexes" width="800" height="445"  class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pg_indexes/bitmap.png"><img src="/assets/images/postgresql/pg_indexes/bitmap.png" alt="Bitmap indexes" title="Bitmap indexes"  class="aligncenter size-full" /></a>
 
 Advantages:
 
@@ -141,7 +141,7 @@ The rest of the pros-cons similar to B-Tree and R-Tree.
 
 Generalized Inverted Indexes (GIN) are useful when an index must map many values to one row, whereas B-Tree indexes are optimized for when a row has a single key value. GINs are good for indexing array values as well as for implementing full-text search.
 
-<a href="/assets/images/postgresql/pg_indexes/fulltext-gist-vs-gin.png"><img src="/assets/images/postgresql/pg_indexes/fulltext-gist-vs-gin.png" alt="GIN index" title="GIN index" width="800" height="591"  class="aligncenter size-full" /></a>
+<a href="/assets/images/postgresql/pg_indexes/fulltext-gist-vs-gin.png"><img src="/assets/images/postgresql/pg_indexes/fulltext-gist-vs-gin.png" alt="GIN index" title="GIN index"  class="aligncenter size-full" /></a>
 
 Key features:
 
