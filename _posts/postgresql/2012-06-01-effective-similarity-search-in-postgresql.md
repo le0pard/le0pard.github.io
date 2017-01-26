@@ -29,13 +29,13 @@ Ni - the number of unique elements in the intersection of arrays
 One of the simplest calculation of the similarity of two objects is the number of unique elements in the intersection of arrays divided by the number of unique elements in two arrays:
 
 <div class="aligncenter">
-  <amp-img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{N_{i}}{(N_{a}%20+%20N_{b})}" alt="simplest0" width="287" height="80" class="aligncenter size-full" />
+  <img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{N_{i}}{(N_{a}%20+%20N_{b})}" alt="simplest0" width="287" height="80" class="aligncenter size-full" />
 </div>
 
 or only
 
 <div class="aligncenter">
-  <amp-img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{N_{i}}{N_{u}}" alt="simplest123" width="190" height="79" class="aligncenter size-full" />
+  <img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{N_{i}}{N_{u}}" alt="simplest123" width="190" height="79" class="aligncenter size-full" />
 </div>
 
 Pros:
@@ -47,7 +47,7 @@ Pros:
 Similarity can also be calculated using the formula of cosines:
 
 <div class="aligncenter">
-  <amp-img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{N_{i}}{\sqrt{N_{a}%20*%20N_{b}}}" alt="simplest1" width="289" height="81" class="aligncenter size-full" />
+  <img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{N_{i}}{\sqrt{N_{a}%20*%20N_{b}}}" alt="simplest1" width="289" height="81" class="aligncenter size-full" />
 </div>
 
 Pros:
@@ -63,17 +63,17 @@ But both of these metrics have common problems:
 [TF/IDF](http://en.wikipedia.org/wiki/Tf*idf) metric avoids these problems to calculate the similarity:
 
 <div class="aligncenter">
-  <amp-img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{\sum_{i%20%3C%20N_{a},%20j%20%3C%20N_{b},%20A_{i}%20=%20B_{j}}TF_{i}%20*%20TF_{j}}{\sqrt{\sum_{i%20%3C%20N_{a}}TF_{i}^{2}%20*%20\sum_{j%20%3C%20N_{b}}TF_{j}^{2}}}" alt="simplest2"  width="533" height="120" class="aligncenter size-full" />
+  <img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20S(A,B)%20=%20\frac{\sum_{i%20%3C%20N_{a},%20j%20%3C%20N_{b},%20A_{i}%20=%20B_{j}}TF_{i}%20*%20TF_{j}}{\sqrt{\sum_{i%20%3C%20N_{a}}TF_{i}^{2}%20*%20\sum_{j%20%3C%20N_{b}}TF_{j}^{2}}}" alt="simplest2"  width="533" height="120" class="aligncenter size-full" />
 </div>
 
 where
 
 <div class="aligncenter">
-  <amp-img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20IDF_{element}%20=%20log(\frac{N_{objects}}{N_{objects\%20with\%20element}}%20+%201)" alt="simplest" width="559" height="83" class="aligncenter size-full" />
+  <img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20IDF_{element}%20=%20log(\frac{N_{objects}}{N_{objects\%20with\%20element}}%20+%201)" alt="simplest" width="559" height="83" class="aligncenter size-full" />
 </div>
 
 <div class="aligncenter">
-  <amp-img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20TF_{element}%20=%20IDF_{element}%20*%20N_{occurrences}" alt="simplest" width="496" height="32" class="aligncenter size-full" />
+  <img src="http://latex.codecogs.com/png.latex?\LARGE%20\dpi{120}%20\fn_phv%20TF_{element}%20=%20IDF_{element}%20*%20N_{occurrences}" alt="simplest" width="496" height="32" class="aligncenter size-full" />
 </div>
 
 Now it would be great to use this knowledge in practice.
@@ -142,11 +142,11 @@ For example, I select the search for duplicate images. Other options for shoppin
 
 In our algorithm, we will create a pixel matrix of each image. Let it be 15x15 pixels. The next step: we do not know the color of a pixel, but its intensity (the intensity is given by 0.299 * red + 0,587 * green + 0,114 * blue). Calculating the intensity will help us find the image is not paying attention to the colors of the images.
 
-<a href="/assets/images/postgresql/smlar/1.jpg"><amp-img src="/assets/images/postgresql/smlar/1.jpg" alt="" title="1" width="800" height="600" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/postgresql/smlar/1.jpg"><img src="/assets/images/postgresql/smlar/1.jpg" alt="" title="1" width="800" height="600"  class="aligncenter size-full wp-image-1950" /></a>
 
 Once you have to calculate the intensity of all pixels in a 15x15 matrix, we find the ratio of the intensity of each pixel to the mean intensity of the matrix, and generate a unique number for each cell (in the code to generate unique for each cell, I added the coordinates to intensity) and obtain an array of 225 elements length (15 * 15 = 225). Excellent.
 
-<a href="/assets/images/postgresql/smlar/2.jpg"><amp-img src="/assets/images/postgresql/smlar/2.jpg" alt="" title="2" width="800" height="333" layout="responsive" class="aligncenter size-full wp-image-1951" /></a>
+<a href="/assets/images/postgresql/smlar/2.jpg"><img src="/assets/images/postgresql/smlar/2.jpg" alt="" title="2" width="800" height="333"  class="aligncenter size-full wp-image-1951" /></a>
 
 Below is the code to generate a digital signature for images on [Ruby](https://gist.github.com/2521687) and [PHP](https://gist.github.com/2521710) languages:
 
@@ -154,10 +154,10 @@ Below is the code to generate a digital signature for images on [Ruby](https://g
   <tbody>
     <tr>
       <td>
-        <a href="/assets/images/postgresql/smlar/chart1.png"><amp-img src="/assets/images/postgresql/smlar/chart1.png" alt="" title="chart1" width="300" height="225" class="alignleft size-full wp-image-1956" /></a>
+        <a href="/assets/images/postgresql/smlar/chart1.png"><img src="/assets/images/postgresql/smlar/chart1.png" alt="" title="chart1" width="300" height="225" class="alignleft size-full wp-image-1956" /></a>
       </td>
       <td>
-        <a href="/assets/images/postgresql/smlar/chart2.png"><amp-img src="/assets/images/postgresql/smlar/chart2.png" alt="" title="chart2" width="300" height="225" class="alignleft size-full wp-image-1957" /></a>
+        <a href="/assets/images/postgresql/smlar/chart2.png"><img src="/assets/images/postgresql/smlar/chart2.png" alt="" title="chart2" width="300" height="225" class="alignleft size-full wp-image-1957" /></a>
       </td>
     </tr>
     <tr>
@@ -175,12 +175,12 @@ Below is the code to generate a digital signature for images on [Ruby](https://g
     <tr>
       <td>
         <a href="/assets/images/postgresql/smlar/11.png">
-          <amp-img src="/assets/images/postgresql/smlar/11-300x300.png" alt="" title="11" width="300" height="300" class="aligncenter size-medium wp-image-1952" />
+          <img src="/assets/images/postgresql/smlar/11-300x300.png" alt="" title="11" width="300" height="300" class="aligncenter size-medium wp-image-1952" />
         </a>
       </td>
       <td>
         <a href="/assets/images/postgresql/smlar/12.gif">
-          <amp-img src="/assets/images/postgresql/smlar/12-264x300.gif" alt="" title="12" width="264" height="300" class="aligncenter size-medium wp-image-1953" />
+          <img src="/assets/images/postgresql/smlar/12-264x300.gif" alt="" title="12" width="264" height="300" class="aligncenter size-medium wp-image-1953" />
         </a>
       </td>
     </tr>
@@ -199,12 +199,12 @@ Below is the code to generate a digital signature for images on [Ruby](https://g
     <tr>
       <td>
         <a href="/assets/images/postgresql/smlar/689545_65148464.jpg">
-          <amp-img src="/assets/images/postgresql/smlar/689545_65148464-300x225.jpg" alt="" title="689545_65148464" width="300" height="225" class="aligncenter size-medium wp-image-1954" />
+          <img src="/assets/images/postgresql/smlar/689545_65148464-300x225.jpg" alt="" title="689545_65148464" width="300" height="225" class="aligncenter size-medium wp-image-1954" />
         </a>
       </td>
       <td>
         <a href="/assets/images/postgresql/smlar/689545_651484642.jpg">
-          <amp-img src="/assets/images/postgresql/smlar/689545_651484642-300x225.jpg" alt="" title="689545_651484642" width="300" height="225" class="aligncenter size-medium wp-image-1955" />
+          <img src="/assets/images/postgresql/smlar/689545_651484642-300x225.jpg" alt="" title="689545_651484642" width="300" height="225" class="aligncenter size-medium wp-image-1955" />
         </a>
       </td>
     </tr>

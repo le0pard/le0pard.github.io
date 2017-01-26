@@ -11,7 +11,7 @@ tags:
 
 Hello my dear friends. In this article I will talk about my new little app - PgTune.
 
-<a href="http://pgtune.leopard.in.ua/" target="_blank"><amp-img src="/assets/images/postgresql/pgtune/pgtune.png" alt="pgtune" title="pgtune" width="200" height="200" class="aligncenter size-full" /></a>
+<a href="http://pgtune.leopard.in.ua/" target="_blank"><img src="/assets/images/postgresql/pgtune/pgtune.png" alt="pgtune" title="pgtune" width="200" height="200" class="aligncenter size-full" /></a>
 
 # PgTune?
 

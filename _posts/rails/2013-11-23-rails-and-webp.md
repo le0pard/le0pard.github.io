@@ -93,15 +93,15 @@ Then, we check if the Accept header is an advertising WebP. Then we check if the
 
 Now we can see results of our work. First we check the speed of loading of our assets in Firefox ([full image](/assets/images/rails/webp1.png)):
 
-<a href="/assets/images/rails/webp2.png"><amp-img src="/assets/images/rails/webp2.png" alt="Firefox Webp" title="Firefox Webp" width="136" height="369" class="aligncenter" /></a>
+<a href="/assets/images/rails/webp2.png"><img src="/assets/images/rails/webp2.png" alt="Firefox Webp" title="Firefox Webp" width="136" height="369" class="aligncenter" /></a>
 
 As we can see, many big image have size 145.07 Kb. Now let's check the result in Chrome ([full image](/assets/images/rails/webp3.png)):
 
-<a href="/assets/images/rails/webp4.png"><amp-img src="/assets/images/rails/webp4.png" alt="Chrome Webp" title="Chrome Webp" width="203" height="648" class="aligncenter" /></a>
+<a href="/assets/images/rails/webp4.png"><img src="/assets/images/rails/webp4.png" alt="Chrome Webp" title="Chrome Webp" width="203" height="648" class="aligncenter" /></a>
 
 As we can see, image with size 145.07 Kb was converted in webp image with size 17.2 Kb. Another images also have smaller size, than png or jpeg images. By the way, the visual quality of images has not become worse.
 
-<a href="/assets/images/rails/webp5.png"><amp-img src="/assets/images/rails/webp5.png" alt="Webp" title="Webp" width="526" height="678" class="aligncenter" /></a>
+<a href="/assets/images/rails/webp5.png"><img src="/assets/images/rails/webp5.png" alt="Webp" title="Webp" width="526" height="678" class="aligncenter" /></a>
 
 As the result we reduced load time of rails application almoust in 2 times: before we have in average time 800ms, now an average response time of the page is 500ms.
 

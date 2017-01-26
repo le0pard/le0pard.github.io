@@ -1,13 +1,11 @@
-<amp-iframe
-   height="400"
-   sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-   frameborder="0"
-   src="https://tempest.services.disqus.com/engage-iframe/amp/?forum={{ site.comments.disqus_short_name }}&amp;disqus_url={{ page.url | prepend: site.baseurl | prepend: site.url | cgi_escape }}"
->
-  <div placeholder class="disqus-placeholder__wrap">
-    <div class="disqus-placeholder">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024" class="disqus-placeholder__svg"><path d="M524.456259,1012.5 C404.195712,1012.5 294.23718,968.012444 209.221899,894.419296 L0,923.35537 L80.8289496,721.399852 C52.6676835,658.493741 36.8688345,588.659481 36.8688345,515 C36.8688345,240.254704 255.169612,17.5 524.456259,17.5 C793.721065,17.5 1012,240.254704 1012,515 C1012,789.796889 793.728345,1012.5 524.456259,1012.5 L524.456259,1012.5 Z M790.685065,520.577519 L790.685065,519.191889 C790.685065,375.631815 690.679079,273.264741 518.245928,273.264741 L332.008806,273.264741 L332.008806,770.764741 L515.48659,770.764741 C689.259367,770.772111 790.685065,664.130222 790.685065,520.577519 L790.685065,520.577519 L790.685065,520.577519 Z M520.29905,648.534519 L465.825784,648.534519 L465.825784,395.531815 L520.29905,395.531815 C600.305295,395.531815 653.409813,441.707185 653.409813,521.344037 L653.409813,522.729667 C653.409813,603.037222 600.305295,648.534519 520.29905,648.534519 L520.29905,648.534519 Z"></path></svg>
-      LOADING DISCUSSION
-    </div>
-  </div>
-</amp-iframe>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = '{{ site.comments.disqus_short_name }}'; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>

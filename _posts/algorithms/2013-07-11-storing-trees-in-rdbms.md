@@ -14,7 +14,7 @@ For some programmers this topic can be simple. If you know such words as "Nested
 
 # Parent-child
 
-<a href="/assets/images/algorithms/01.jpg"><amp-img src="/assets/images/algorithms/01.jpg" alt="Parent-child" title="Parent-child" width="428" height="127" class="aligncenter" /></a>
+<a href="/assets/images/algorithms/01.jpg"><img src="/assets/images/algorithms/01.jpg" alt="Parent-child" title="Parent-child" width="428" height="127" class="aligncenter" /></a>
 
 This is the most common and simple pattern for storing trees. Numerous of implementations can be seen in various forums, commenting systems, etc. The essence of this pattern is seen on the picture - each element holds a reference (ID) to the parent as a foreign key (on the picture, PK - primary key, FK - foreign key). It is a typical one-to-many relationship.
 
@@ -40,7 +40,7 @@ If you use this pattern the procedures of adding and moving items would be very 
 
 # Materialized Path
 
-<a href="/assets/images/algorithms/02.jpg"><amp-img src="/assets/images/algorithms/02.jpg" alt="Materialized Path" title="Materialized Path" width="428" height="349" class="aligncenter" /></a>
+<a href="/assets/images/algorithms/02.jpg"><img src="/assets/images/algorithms/02.jpg" alt="Materialized Path" title="Materialized Path" width="428" height="349" class="aligncenter" /></a>
 
 Despite the terrible name, this is a very common pattern that is closest to the common human logic. With this pattern we encounter all the time, just without knowing its title. For example, library lists, URL in the browser and even the Bible. The essence of this pattern is that the each element stores the full path from the root itself. For example, "Part 22, Section 8, Chapter 21, paragraph 2".
 
@@ -66,7 +66,7 @@ This pattern can be used for frequent selection and additions with minimal struc
 
 # Nested Sets
 
-<a href="/assets/images/algorithms/03.jpg"><amp-img src="/assets/images/algorithms/03.jpg" alt="Nested Sets" title="Nested Sets" width="661" height="427" class="aligncenter" /></a>
+<a href="/assets/images/algorithms/03.jpg"><img src="/assets/images/algorithms/03.jpg" alt="Nested Sets" title="Nested Sets" width="661" height="427" class="aligncenter" /></a>
 
 The pattern is more difficult to understand. The idea is similar to the previous pattern - to simplify the selection of children. Unlike "Materialized Path", item does not store explicitly path information. But let’s consider the pattern, based on the ID of the element. Not only your place, but also ID neighbors of the same level are stores for this item. If the neighbor is not on the same level, ID of the level above is stored. In the picture above, item 1 knows that his neighbor "to the left" - 0, "right" - 14. How many elements, child element "Vegetable" have? (7 - 2 - 1) / 2 = 2 ("Potato" and "Tomato"). What are the parents of the element "Tomato"? All elements whose "neighbors left" less than 5 (ID) and the "right-hand man" for more than 6 (ID). Under this request falls "Vegetable" and "Food". It was a bit unreadable. "Left" and "right" to receive "top" and "bottom". Not for people accustomed to think in rows of tables.
 

@@ -38,7 +38,7 @@ categories_path: /categories.html
 tags_path: /tags.html
 
 sass:
-  sass_dir: _includes/sass
+  sass_dir: _sass
   style: :compressed
 
 comments:

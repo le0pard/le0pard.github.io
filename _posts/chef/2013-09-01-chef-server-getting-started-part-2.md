@@ -55,9 +55,9 @@ Attributes are always applied by the chef-client in the following order:
 
 Attribute precedence, viewed from the same perspective as the overview diagram, where the numbers in the diagram match the order of attribute precedence:
 
-<a href="/assets/images/chef-server/overview_chef_attributes_precedence.png"><amp-img src="/assets/images/chef-server/overview_chef_attributes_precedence.png" alt="overview_chef_attributes_precedence" title="overview_chef_attributes_table" width="600" height="380" layout="responsive" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/overview_chef_attributes_precedence.png"><img src="/assets/images/chef-server/overview_chef_attributes_precedence.png" alt="overview_chef_attributes_precedence" title="overview_chef_attributes_table" width="600" height="380"  class="aligncenter" /></a>
 
-<a href="/assets/images/chef-server/overview_chef_attributes_table.png"><amp-img src="/assets/images/chef-server/overview_chef_attributes_table.png" alt="overview_chef_attributes_table" title="overview_chef_attributes_table" width="600" height="300" layout="responsive" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/overview_chef_attributes_table.png"><img src="/assets/images/chef-server/overview_chef_attributes_table.png" alt="overview_chef_attributes_table" title="overview_chef_attributes_table" width="600" height="300"  class="aligncenter" /></a>
 
 
 # Power of enviroments
@@ -206,7 +206,7 @@ Uploaded all cookbooks.
 
 You can see all your cookbooks in web interface (if you enable it):
 
-<a href="/assets/images/chef-server/chef_cookbooks_list.png"><amp-img src="/assets/images/chef-server/chef_cookbooks_list.png" alt="chef_cookbooks_list" title="chef_cookbooks_list" width="572" height="524" layout="responsive" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_cookbooks_list.png"><img src="/assets/images/chef-server/chef_cookbooks_list.png" alt="chef_cookbooks_list" title="chef_cookbooks_list" width="572" height="524"  class="aligncenter" /></a>
 
 Next we want upload or update roles on server. It's also easy:
 
@@ -218,7 +218,7 @@ Updated Role chef!
 
 This is role in web interface:
 
-<a href="/assets/images/chef-server/chef_role_show.png"><amp-img src="/assets/images/chef-server/chef_role_show.png" alt="chef_role_show" title="chef_role_show" width="605" height="809" layout="responsive" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_role_show.png"><img src="/assets/images/chef-server/chef_role_show.png" alt="chef_role_show" title="chef_role_show" width="605" height="809"  class="aligncenter" /></a>
 
 Almoust the same commands for upload or update environment:
 
@@ -271,7 +271,7 @@ Updated nodes/web.node.json
 
 {% endhighlight %}
 
-<a href="/assets/images/chef-server/chef_server_node.png"><amp-img src="/assets/images/chef-server/chef_server_node.png" alt="chef_server_node" title="chef_server_node" width="658" height="804" layout="responsive" class="aligncenter" /></a>
+<a href="/assets/images/chef-server/chef_server_node.png"><img src="/assets/images/chef-server/chef_server_node.png" alt="chef_server_node" title="chef_server_node" width="658" height="804"  class="aligncenter" /></a>
 
 By default chef client on nodes will not execute your run\_list, but you can execute any command on nodes by command "ssh". For example, run chef client on all nodes:
 

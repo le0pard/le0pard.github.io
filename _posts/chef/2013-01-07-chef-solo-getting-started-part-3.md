@@ -127,11 +127,11 @@ stdin: is not a tty
 
 We should have see the same in your browser by this url "http://localhost:8085/":
 
-<a href="/assets/images/chef/nginx2.png"><amp-img src="/assets/images/chef/nginx2.png" alt="nginx" title="nginx" width="448" height="195" class="aligncenter" /></a>
+<a href="/assets/images/chef/nginx2.png"><img src="/assets/images/chef/nginx2.png" alt="nginx" title="nginx" width="448" height="195" class="aligncenter" /></a>
 
 But nginx successfully updated:
 
-<a href="/assets/images/chef/nginx3.png"><amp-img src="/assets/images/chef/nginx3.png" alt="nginx" title="nginx" width="430" height="196" class="aligncenter" /></a>
+<a href="/assets/images/chef/nginx3.png"><img src="/assets/images/chef/nginx3.png" alt="nginx" title="nginx" width="430" height="196" class="aligncenter" /></a>
 
 Chef very flexible, because your node can use several roles and/or a several recipes simultaneously. For example:
 

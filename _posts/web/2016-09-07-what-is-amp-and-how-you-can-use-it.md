@@ -30,7 +30,7 @@ Speed of loading your web page is really matters today. Many studies have shown 
 
 ### AMP HTML
 
-AMP HTML is basically HTML extended with custom AMP properties. Though most tags in an AMP HTML page are regular HTML tags, some HTML tags are replaced with AMP-specific tags. These custom elements, called AMP HTML components, make common patterns easy to implement in a performant way. For example, the amp-img tag provides full srcset support even in browsers that don’t support it yet. Learn how to create your first AMP HTML page.
+AMP HTML is basically HTML extended with custom AMP properties. Though most tags in an AMP HTML page are regular HTML tags, some HTML tags are replaced with AMP-specific tags. These custom elements, called AMP HTML components, make common patterns easy to implement in a performant way. For example, the img tag provides full srcset support even in browsers that don’t support it yet. Learn how to create your first AMP HTML page.
 
 ### AMP JS
 
@@ -74,7 +74,7 @@ An AMP page is simply a regular HTML, page with a few extra rules and restrictio
 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 <script async src="https://cdn.ampproject.org/v0.js"></script>{% endhighlight %}
  * You must remove any other javascript from your code (whether inline or external);
- * Image tags (`<img>`) must be replaced with amp-img tags (`<amp-img>`) and similarly with other media. This of course means that normal HTML readers can no longer parse or display the page contents without executing the AMP Javascript;
+ * Image tags (`<img>`) must be replaced with img tags (`<img>`) and similarly with other media. This of course means that normal HTML readers can no longer parse or display the page contents without executing the AMP Javascript;
  * Other items (e.g. forms) must also be removed;
  * You must implement [Schema.org NewsArticle](http://schema.org/NewsArticle), [Schema.org Article](http://schema.org/Article) or [Schema.org BlogPosting](http://schema.org/BlogPosting) meta detail in your HEAD and also include an image of at least 696 pixels, if you want Google to use your AMP pages in the Top stories carousel;
 
@@ -89,7 +89,7 @@ Next, make sure that your AMP page is actually valid AMP, or it won't get discov
 I decided to migrate this website to AMP. It is working on top of [Jekyll](https://jekyllrb.com/) and this is what I change inside it:
 
  * Added all needed html tags/attributes and removed all JS code from pages (except AMP scripts);
- * Change `<img>` tags to `<amp-img>` and provide width and height attributes for its;
+ * Change `<img>` tags to `<img>` and provide width and height attributes for its;
  * Inline CSS code in `<style amp-custom>`. I used for this new feature of Jekyll, which allow compile scss/sass files on a fly:
  {% highlight html %}{% raw %}
 {% capture include_to_scssify %}{% include sass/styles.scss %}{% endcapture %}
@@ -158,11 +158,11 @@ I decided to migrate this website to AMP. It is working on top of [Jekyll](https
 
 After all this changes need to check results. Page without AMP:
 
-<a href="/assets/images/web/amp/without_amp.png"><amp-img src="/assets/images/web/amp/without_amp.png" alt="without_amp" title="without_amp" width="981" height="629" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/web/amp/without_amp.png"><img src="/assets/images/web/amp/without_amp.png" alt="without_amp" title="without_amp" width="981" height="629"  class="aligncenter size-full wp-image-1950" /></a>
 
 With AMP:
 
-<a href="/assets/images/web/amp/with_amp.png"><amp-img src="/assets/images/web/amp/with_amp.png" alt="with_amp" title="with_amp" width="962" height="568" layout="responsive" class="aligncenter size-full wp-image-1950" /></a>
+<a href="/assets/images/web/amp/with_amp.png"><img src="/assets/images/web/amp/with_amp.png" alt="with_amp" title="with_amp" width="962" height="568"  class="aligncenter size-full wp-image-1950" /></a>
 
 The results are impressive, even for a simple site like this without much bloat. The Start Render time drops from 2.091 seconds to under a 0.793 seconds and the overall load plummets (from 493kb to 231kb) as does the number of resources loaded (31 versus 11). Very nice!
 
