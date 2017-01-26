@@ -23,7 +23,7 @@ Speed of loading your web page is really matters today. Many studies have shown 
    <source src="https://www.google.com/images/google-blog-assets/amp-phone-10062015.mp4" type="video/mp4">
  Your browser does not support the video tag.
  </video>
-</dvi>
+</div>
 
 ### AMP HTML
 
