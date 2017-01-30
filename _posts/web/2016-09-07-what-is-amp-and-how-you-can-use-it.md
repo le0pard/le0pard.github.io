@@ -18,12 +18,10 @@ Speed of loading your web page is really matters today. Many studies have shown 
  * The **AMP JS** library ensures the fast rendering of AMP HTML pages;
  * The **Google AMP Cache** can be used to serve cached AMP HTML pages;
 
-<div class="video-container">
- <video width="320" height="720" autoplay loop controls>
-   <source src="https://www.google.com/images/google-blog-assets/amp-phone-10062015.mp4" type="video/mp4">
- Your browser does not support the video tag.
- </video>
-</div>
+<video width="320" height="720" autoplay loop controls>
+ <source src="https://www.google.com/images/google-blog-assets/amp-phone-10062015.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ### AMP HTML
 
