@@ -5,13 +5,13 @@
 </div>
 <div id="disqus_thread"></div>
 
+<script id="dsq-count-scr" src="//{{ site.comments.disqus_short_name }}.disqus.com/count.js" async="async"></script>
 <script type="text/javascript">
-var disqusShortname = '{{ site.comments.disqus_short_name }}'; // required: replace example with your forum shortname
 var disqusLoadComments = document.getElementById('disqusLoadComments');
 
 function loadComments() {
   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqusShortname + '.disqus.com/embed.js';
+  dsq.src = '//{{ site.comments.disqus_short_name }}.disqus.com/embed.js';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 
   disqusLoadComments.removeEventListener('click', loadComments);
