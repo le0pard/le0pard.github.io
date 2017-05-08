@@ -1,6 +1,6 @@
 <div id="disqus-comments">
   <button id="disqusLoadComments">
-    <span class="disqus-comment-count">0 Comments</span>. Want to add yours?
+    <span class="disqus-comment-count" data-disqus-url="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">0 Comments</span>. Want to add yours?
   </button>
 </div>
 <div id="disqus_thread"></div>
