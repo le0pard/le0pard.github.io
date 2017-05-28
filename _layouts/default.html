@@ -5,9 +5,12 @@
   <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
   <meta name="google-site-verification" content="{{ site.webtools.google_webmasters_id }}" />
-  <meta name="author" content="{{ site.author.name }}">
+  <meta name="author" content="{{ site.author.name }}" />
 
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+
+  <link rel="preload" href="/css/main.css" as="style" />
+  <link rel="preload" href="/assets/skin/100-90-5-monochrome.png" as="image" type="image/png" />
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
   <link href="http://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml" />
@@ -77,7 +80,7 @@
 				</div><!-- misc -->
 				<p class="licence">
           <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-            <img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/4.0/88x31.png" />
+            <img alt="Creative Commons License" src="https://licensebuttons.net/l/by/4.0/88x31.png" width="88" height="31" />
           </a>
 				</p>
 			</div><!-- unit-foot-inner -->

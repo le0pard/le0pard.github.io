@@ -4,10 +4,9 @@
 @charset "utf-8";
 
 @import "base";
-@import "module";
-@import "less-base";
-@import "main";
+@import "typography";
+@import "layout";
 @import "mediaqueries";
 @import "syntaxhighlighter";
 @import "helpers";
-@import "own";
+@import "article-styles";
