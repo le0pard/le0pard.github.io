@@ -97,7 +97,7 @@ Disadvantages:
 
 * Hash is very sensitive to collisions. In the case of "bad" data distribution, most of the entries will be concentrated in a few bouquets, and in fact the search will occur through collision resolution.
 
-As you can see, Hash indexes are only useful for equality comparisons, but you pretty much never want to use them since they are not transaction safe, need to be manually rebuilt after crashes, and are not replicated to followers in PostgreSQL.
+As you can see, Hash indexes are only useful for equality comparisons, but you pretty much never want to use them since they are not transaction safe, need to be manually rebuilt after crashes, and are not replicated to followers in PostgreSQL (all this fixed in PostgreSQL 10).
 
 
 ### Bitmap index
