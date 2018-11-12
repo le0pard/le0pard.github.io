@@ -17,13 +17,31 @@ I decided to make a list of an operations, which can be done safe (without downt
 
 This operation will not block table and can be done safety. But exists some cases, which can lock your table.
 
-## Add a column with a default (unsafe)
+## Add a column with a default (unsafe if PostgreSQL < 11)
 
 Adding a column with a default requires updating each row of the table (to store the new column value). For big table this will create long running operation that locks it. So if you intend to fill the column with mostly non default values, it's best to add the column with no default, insert the correct values using `UPDATE` (correct way is to do batched updates, for example, update 1000 rows at a time, because big update will create table-wide lock), and then add any desired default.
 
-## Add a column that is non-nullable (unsafe)
+**UPDATE**: With PostgreSQL 11 it is now possible to have DDL statements like this:
+
+{% highlight sql %}
+ALTER TABLE users ADD COLUMN foo_factor integer NOT NULL DEFAULT 42;
+{% endhighlight %}
+
+execute in constant time. Rows are not touched when this executed, and are instead updated "lazily".
+
+
+
+## Add a column that is non-nullable (unsafe if PostgreSQL < 11)
 
 This will have the same problem, as "Add a column with a default". To make this operation without locking, you can create a new table with the addition of the non-nullable column, write to both tables, backfill, and then switch to the new table. This workaround is incredibly onerous and need two times more space than is a table takes.
+
+**UPDATE**: With PostgreSQL 11 it is now possible to have DDL statements like this:
+
+{% highlight sql %}
+ALTER TABLE users ADD COLUMN foo_factor integer NOT NULL DEFAULT 42;
+{% endhighlight %}
+
+execute in constant time. Rows are not touched when this executed, and are instead updated "lazily".
 
 # Drop a column (safe)
 
