@@ -13,7 +13,7 @@
   <link rel="preload" href="/assets/skin/100-90-5-monochrome.png" as="image" type="image/png" />
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
-  <link href="http://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml" />
+  <link href="{{ site.url }}/rss.xml" rel="alternate" title="{{ page.title }}" type="application/atom+xml" />
 
   <script type="application/ld+json">
     {% include site/metadata.json %}
@@ -58,7 +58,7 @@
 						<li class="email"><address><span class="fn email">{{ site.author.email }}</span></address></li>
 						<li class="github"><a href="http://github.com/{{ site.author.github }}/" rel="me">github.com/{{ site.author.github }}</a></li>
 						<li class="twitter"><a href="http://twitter.com/{{ site.author.twitter }}/" rel="me">twitter.com/{{ site.author.twitter }}</a></li>
-						<li class="rss"><a href="http://feeds.feedburner.com/{{ site.author.feedburner }}">Subscribe to RSS Feed</a></li>
+						<li class="rss"><a href="{{ site.url }}/rss.xml">Subscribe to RSS Feed</a></li>
 					</ul>
 				</div><!-- misc -->
 				<div class="misc">
