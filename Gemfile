@@ -8,3 +8,5 @@ gem 'uglifier'
 gem 'oj'
 gem 'multi_json'
 gem 'sass'
+
+gem "webrick", "~> 1.7"
