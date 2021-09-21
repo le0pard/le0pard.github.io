@@ -26,7 +26,7 @@ GEM
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
     execjs (2.8.1)
-    faraday (1.7.1)
+    faraday (1.8.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -236,7 +236,7 @@ GEM
     octokit (4.21.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
-    oj (3.13.3)
+    oj (3.13.7)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.6)
@@ -272,8 +272,8 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.7)
-    unicode-display_width (1.7.0)
+    unf_ext (0.0.8)
+    unicode-display_width (1.8.0)
     webrick (1.7.0)
     zeitwerk (2.4.2)
 
@@ -292,4 +292,4 @@ DEPENDENCIES
   webrick (~> 1.7)
 
 BUNDLED WITH
-   2.2.15
+   2.2.22
