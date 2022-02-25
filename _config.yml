@@ -3,7 +3,7 @@
 permalink: /:year/:month/:day/:title
 encoding: utf-8
 
-exclude: [".ruby-version", "README.md", "Rakefile", "changelog.md"]
+exclude: [".ruby-version", ".tool-versions", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
 
 timezone: UTC
@@ -16,7 +16,7 @@ title: Leopard Blog
 tagline: "Anything is possible, the impossible becomes longer"
 author:
   name: Alexey Vasiliev
-  email: "leopard_ne[at]inbox.ru"
+  email: "rwpod.com[at]gmail.com"
   github: le0pard
   twitter: leopard_me
 
