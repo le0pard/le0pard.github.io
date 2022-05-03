@@ -13,7 +13,7 @@ markdown: kramdown
 # so be sure to set them if your theme uses them.
 #
 title: Leopard Blog
-tagline: "Anything is possible, the impossible becomes longer"
+tagline: ""
 author:
   name: Alexey Vasiliev
   email: "rwpod.com[at]gmail.com"
