@@ -7,6 +7,7 @@ gem 'mini_racer', '>= 0.1.4'
 gem 'uglifier'
 gem 'oj'
 gem 'multi_json'
-gem 'sass'
+gem 'sass-embedded'
+gem 'csv'
 
-gem "webrick", "~> 1.7"
+gem "webrick", ">= 1.7"
