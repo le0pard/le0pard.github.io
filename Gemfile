@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'github-pages', '>= 31'
+gem 'github-pages', '>= 232'
 gem 'jekyll', '>= 3.9'
 gem 'kramdown', '>= 1.9.0'
 gem 'rouge'
