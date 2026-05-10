@@ -1,0 +1,35 @@
+{
+  "name": "blog",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "check": "astro check",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier './src/**/*' --write"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/rss": "^4.0.17",
+    "@picocss/pico": "^2.1.1",
+    "astro": "^6.0.2",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "prettier": "~3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "sass": "^1.97.3"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^22.20.0 ^24.12.0",
+      "onFail": "warn"
+    }
+  },
+  "packageManager": "yarn@4.14.1"
+}
