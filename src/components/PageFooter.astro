@@ -1,8 +1,13 @@
+---
+import NavLink from "./NavLink.astro";
+---
+
 <footer>
   <nav>
     <ul>
       <li><a href="https://github.com/le0pard">GitHub</a></li>
-      <li><a href="/about">About</a></li>
+      <li><NavLink path="tags">Tags</NavLink></li>
+      <li><NavLink path="about">About</NavLink></li>
     </ul>
   </nav>
 </footer>

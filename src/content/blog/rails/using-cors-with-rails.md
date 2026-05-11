@@ -3,18 +3,19 @@ title: Using CORS with Rails
 description: Using CORS with Rails
 pubDate: 2012-07-08
 tags:
-- rails
-- html5
+  - rails
+  - html5
 ---
+
 Hello my dear friends. Today we will talk about CORS and usage it in Rails application. What is CORS?
 
 **Cross-origin resource sharing (CORS)** is a web browser technology specification which defines ways for a web server to allow its resources to be accessed by a web page from a different domain. Such access would otherwise be forbidden by the same origin policy. CORS defines a way in which the browser and the server can interact to determine whether or not to allow the cross-origin request. It is a compromise that allows greater flexibility, but is more secure than simply allowing all such requests. CORS is supported in the following browsers:
 
- * Chrome 3+
- * Firefox 3.5+
- * Safari 4+
- * Internet Explorer 8+
- * Opera 12+
+- Chrome 3+
+- Firefox 3.5+
+- Safari 4+
+- Internet Explorer 8+
+- Opera 12+
 
 Here is example with using JQuery to send CORS request:
 
@@ -28,8 +29,8 @@ Here is example with using JQuery to send CORS request:
 
 The main parameters:
 
-  * *crossDomain* - should be set to true, if we want to use cross domain request
-  * *xhrFields* - a map of fieldName-fieldValue pairs to set on the native XHR object. In this case I set "withCredentials: true". What does do this parameter?
+- _crossDomain_ - should be set to true, if we want to use cross domain request
+- _xhrFields_ - a map of fieldName-fieldValue pairs to set on the native XHR object. In this case I set "withCredentials: true". What does do this parameter?
 
 ## withCredentials
 
@@ -63,7 +64,7 @@ HTTP Request:
     Connection: keep-alive
     User-Agent: Mozilla/5.0...
 
-The first thing to note is that a valid CORS request *always* contains an Origin header. This Origin header is added by the browser, and can not be controlled by the user. The value of this header is the scheme (e.g. http), domain (e.g. bob.com) and port (included only if it is not a default port, e.g. 81) from which the request originates; for example: http://some.another.domain.
+The first thing to note is that a valid CORS request _always_ contains an Origin header. This Origin header is added by the browser, and can not be controlled by the user. The value of this header is the scheme (e.g. http), domain (e.g. bob.com) and port (included only if it is not a default port, e.g. 81) from which the request originates; for example: http://some.another.domain.
 
 Here’s a valid server response:
 
@@ -84,12 +85,12 @@ Its recommended that you don’t set this header unless you are sure you want co
 
 **Access-Control-Expose-Headers (optional)** - The XmlHttpRequest2 object has a getResponseHeader() method that returns the value of a particular response header. During a CORS request, the getResponseHeader() method can only access simple response headers. Simple response headers are defined as follows:
 
- * Cache-Control
- * Content-Language
- * Content-Type
- * Expires
- * Last-Modified
- * Pragma
+- Cache-Control
+- Content-Language
+- Content-Type
+- Expires
+- Last-Modified
+- Pragma
 
 If you want clients to be able to access other headers, you have to use the Access-Control-Expose-Headers header. The value of this header is a comma-delimited list of response headers you want to expose to the client.
 
@@ -99,7 +100,7 @@ So that takes care of a simple GET request, but what if you want to do something
 
 A not-so-simple request looks like a single request to the client, but it actually consists of two requests under the hood. The browser first issues a preflight request, which is like asking the server for permission to make the actual request. Once permissions have been granted, the browser makes the actual request. The browser handles the details of these two requests transparently. The preflight response can also be cached so that it is not issued on every request.
 
-Here’s an example of a  not-so-simple request:
+Here’s an example of a not-so-simple request:
 
 JavaScript:
 
@@ -154,7 +155,7 @@ If the HTTP method and headers are valid, the server should respond with the fol
 
 **Access-Control-Allow-Credentials (optional)** - Same as simple request.
 
-**Access-Control-Max-Age (optional)** - Making a preflight request on *every* request becomes expensive, since the browser is making two requests for every client request. The value of this header allows the preflight response to be cached for a specified number of seconds.
+**Access-Control-Max-Age (optional)** - Making a preflight request on _every_ request becomes expensive, since the browser is making two requests for every client request. The value of this header allows the preflight response to be cached for a specified number of seconds.
 
 Once the preflight request gives permissions, the browser makes the actual request. The actual request looks like the simple request, and the response should be processed in the same way:
 
@@ -215,4 +216,4 @@ This settings allow requests from any origin (any site to be able to access your
 
 All browsers (except Google Chrome) have buggy getRequestHeader() implementations, so the headers may not be accessible to clients even after you set the Access-Control-Expose-Headers header. In my example, ETag header accessible only in Google Chrome browser. Safari return only simple response headers, while Firefox doesn't return ANY response headers.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

@@ -3,8 +3,8 @@ title: Chef cookbooks development by TDD
 description: Chef cookbooks development by TDD
 pubDate: 2013-12-01
 tags:
-- chef
-- tdd
+  - chef
+  - tdd
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -17,18 +17,18 @@ First, let's look what tools exist to test Chef cookbooks today.
 
 ## Foodcritic
 
-* [Site](http://acrmp.github.io/foodcritic/)
+- [Site](http://acrmp.github.io/foodcritic/)
 
 Foodcritic is a lint tool for your Opscode Chef cookbooks. Foodcritic has two goals:
 
- * To make it easier to flag problems in your Chef cookbooks that will cause Chef to blow up when you attempt to converge. This is about faster feedback. If you automate checks for common problems you can save a lot of time.
- * To encourage discussion within the Chef community on the more subjective stuff - what does a good cookbook look like? Opscode have avoided being overly prescriptive which by and large I think is a good thing. Having a set of rules to base discussion on helps drive out what we as a community think is good style.
+- To make it easier to flag problems in your Chef cookbooks that will cause Chef to blow up when you attempt to converge. This is about faster feedback. If you automate checks for common problems you can save a lot of time.
+- To encourage discussion within the Chef community on the more subjective stuff - what does a good cookbook look like? Opscode have avoided being overly prescriptive which by and large I think is a good thing. Having a set of rules to base discussion on helps drive out what we as a community think is good style.
 
 On main site you can find [list of rules](http://acrmp.github.io/foodcritic/#FC001). Also you can define own list of rules (if you need this). Foodcritic is like jslint for cookbooks. At the bare minimum, you should run foodcritic against all your cookbooks.
 
 ## Fauxhai
 
-* [Site](http://technology.customink.com/fauxhai/)
+- [Site](http://technology.customink.com/fauxhai/)
 
 Ohai is a tool that is used to detect attributes on a node, and then provide these attributes to the chef-client at the start of every chef-client run. Ohai is required by the chef-client and must be present on a node. It's awesome, but this can be problem for testing. What is why exist Fauxhai. Fauxhai is a gem for mocking out ohai data in your chef testing. Example:
 
@@ -49,7 +49,7 @@ end
 
 ## ChefSpec
 
-* [Site](http://sethvargo.com/chefspec/)
+- [Site](http://sethvargo.com/chefspec/)
 
 ChefSpec is a unit testing framework for testing Chef cookbooks. ChefSpec makes it easy to write examples and get fast feedback on cookbook changes without the need for virtual machines or cloud servers. Example:
 
@@ -65,25 +65,23 @@ describe 'example::default' do
 end
 ```
 
-
 ## Cucumber-chef
 
-* [Site](http://www.cucumber-chef.org/)
+- [Site](http://www.cucumber-chef.org/)
 
 Cucumber-chef is a library of tools to enable the emerging discipline of infrastructure as code to practice test driven development. It provides a testing platform within which [Cucumber tests](http://cukes.info/) can be run which provision virtual machines, configure them by applying the appropriate Chef roles to them, and then run acceptance and integration tests against the environment.
 
 ## Test-kitchen
 
-* [Site](https://github.com/test-kitchen/test-kitchen)
+- [Site](https://github.com/test-kitchen/test-kitchen)
 
 Test-kitchen is a convergence integration test harness for configuration management systems.
 
 ## Chef Zero
 
-* [Site](https://github.com/opscode/chef-zero)
+- [Site](https://github.com/opscode/chef-zero)
 
 Chef Zero is a simple, easy-install, in-memory Chef server that can be useful for Chef Client testing and chef-solo-like tasks that require a full Chef Server. Because Chef Zero runs in memory, it's super fast and lightweight. This makes it perfect for testing against a "real" Chef Server without mocking the entire Internet.
-
 
 # Enough words. Let's start with the practice
 
@@ -142,7 +140,7 @@ And you should to execute "bundle" command to install this gems.
 
 First of all we should create tests for our monit cookbook:
 
-File: spec/spec\_helper.rb
+File: spec/spec_helper.rb
 
 ```ruby
 require 'chefspec'
@@ -153,7 +151,7 @@ RSpec.configure do |config|
 end
 ```
 
-File: spec/unit/recipes/default\_spec.rb
+File: spec/unit/recipes/default_spec.rb
 
 ```ruby
 require 'chefspec'
@@ -603,7 +601,7 @@ File: test/integration/default/bats/default.bats
 
 And [minitest](https://github.com/seattlerb/minitest):
 
-File: test/integration/default/minitest/test\_default.rb
+File: test/integration/default/minitest/test_default.rb
 
 ```ruby
 require 'minitest/autorun'
@@ -675,4 +673,4 @@ Of course my tests are not designed to work on different types of systems (on Ce
 
 In this article I covered how to write Chef cookbook by TDD. Hope it will help you to write better cookbooks for Chef. All code examples you can find here: [github.com/le0pard/chef-tdd-monit](https://github.com/le0pard/chef-tdd-monit).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

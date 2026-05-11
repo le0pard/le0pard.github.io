@@ -3,9 +3,10 @@ title: Zopfli-ffi - Ruby wrapper for zopfli library
 description: Zopfli-ffi - Ruby wrapper for zopfli library
 pubDate: 2014-10-29
 tags:
-- ruby
-- zopfli
+  - ruby
+  - zopfli
 ---
+
 Hello my dear friends.
 
 Today we will lear about Zopfli and how you can use it with Ruby.
@@ -109,4 +110,4 @@ Zopfli can be very useful for systems, which prepare compressed files for distri
 
 Zopfli is a zlib (gzip, deflate) compatible compressor, that can better compress your files (3.7-8.3%). However, you should pay for this very slow compression time (the decompression is done in the browser at the same speed).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

@@ -3,8 +3,9 @@ title: Effective similarity search in PostgreSQL
 description: Effective similarity search in PostgreSQL
 pubDate: 2012-06-01
 tags:
-- postgresql
+  - postgresql
 ---
+
 Hello my dear friends. In "[PostgreSQL most useful extensions](http://blog.railsware.com/2012/04/23/postgresql-most-useful-extensions/)" I showed a list of some useful extensions for PostgreSQL. Of course, that article didn't cover all useful extensions (in my humble opinion) and some extensions I want to describe in separate articles. Today we will talk about effective similarity search in PostgreSQL.
 
 Similarity search in large databases is an important issue in nowadays informational services, such as recommender systems, blogs (similar articles), online shops (similar products), image hosting services (similar images, search image duplicates) etc. PostgreSQL allows to make such things more easy. First you need to understand how we will calculate the similarity of two objects.
@@ -23,7 +24,6 @@ Nu - the number of unique elements in the union of sets
 
 Ni - the number of unique elements in the intersection of arrays
 
-
 One of the simplest calculation of the similarity of two objects is the number of unique elements in the intersection of arrays divided by the number of unique elements in two arrays:
 
 <div class="aligncenter">
@@ -38,9 +38,9 @@ or only
 
 Pros:
 
- * Easy to understand
- * Speed of calculation: N * log(N)
- * Works well at similar and large Na and Nb
+- Easy to understand
+- Speed of calculation: N \* log(N)
+- Works well at similar and large Na and Nb
 
 Similarity can also be calculated using the formula of cosines:
 
@@ -50,13 +50,13 @@ Similarity can also be calculated using the formula of cosines:
 
 Pros:
 
- * Speed of calculation: N * log(N)
- * Works well for large N
+- Speed of calculation: N \* log(N)
+- Works well for large N
 
 But both of these metrics have common problems:
 
- * Few elements -> large scatter of similarity
- * Frequent elements -> weight below
+- Few elements -> large scatter of similarity
+- Frequent elements -> weight below
 
 [TF/IDF](http://en.wikipedia.org/wiki/Tf*idf) metric avoids these problems to calculate the similarity:
 
@@ -88,11 +88,9 @@ On PostgreSQL 9.2 this extension should build without problem, for PostgreSQL 9.
 
     set_config_option("smlar.threshold", buf, PGC_USERSET, PGC_S_SESSION ,GUC_ACTION_SET, true, 0);
 
-
 to this (delete last argument)
 
     set_config_option("smlar.threshold", buf, PGC_USERSET, PGC_S_SESSION ,GUC_ACTION_SET, true);
-
 
 Let's test instaled extension:
 
@@ -116,7 +114,6 @@ Let's test instaled extension:
      0.666667
     (1 row)
 
-
 If you have the same output in console, you've installed extension successful. More information about this extension you can read in README file.
 
 Function smlar computes similary of two arrays (arrays should be the same type) and return float from 0 to 1 (0 - absolutely no similar objects, 1 - absolutely similar arrays, equal). Function can take the third argument - the formula, that calculates the similarity of the two arrays. Module provides several GUC variables and it's highly recommended to add to postgesql.conf:
@@ -138,11 +135,11 @@ GiST/GIN support for % operation. The parameter "similar.type" allows you to spe
 
 For example, I select the search for duplicate images. Other options for shopping, blogs are implemented in a similar way. The algorithm helps to find similar images that are slightly different: desaturated images, add watermark, passed through the filters.
 
-In our algorithm, we will create a pixel matrix of each image. Let it be 15x15 pixels. The next step: we do not know the color of a pixel, but its intensity (the intensity is given by 0.299 * red + 0,587 * green + 0,114 * blue). Calculating the intensity will help us find the image is not paying attention to the colors of the images.
+In our algorithm, we will create a pixel matrix of each image. Let it be 15x15 pixels. The next step: we do not know the color of a pixel, but its intensity (the intensity is given by 0.299 _ red + 0,587 _ green + 0,114 \* blue). Calculating the intensity will help us find the image is not paying attention to the colors of the images.
 
 <a href="/assets/images/postgresql/smlar/1.jpg"><img src="/assets/images/postgresql/smlar/1.jpg" alt="" title="1"  class="aligncenter size-full wp-image-1950" /></a>
 
-Once you have to calculate the intensity of all pixels in a 15x15 matrix, we find the ratio of the intensity of each pixel to the mean intensity of the matrix, and generate a unique number for each cell (in the code to generate unique for each cell, I added the coordinates to intensity) and obtain an array of 225 elements length (15 * 15 = 225). Excellent.
+Once you have to calculate the intensity of all pixels in a 15x15 matrix, we find the ratio of the intensity of each pixel to the mean intensity of the matrix, and generate a unique number for each cell (in the code to generate unique for each cell, I added the coordinates to intensity) and obtain an array of 225 elements length (15 \* 15 = 225). Excellent.
 
 <a href="/assets/images/postgresql/smlar/2.jpg"><img src="/assets/images/postgresql/smlar/2.jpg" alt="" title="2"  class="aligncenter size-full wp-image-1951" /></a>
 
@@ -166,8 +163,6 @@ Below is the code to generate a digital signature for images on [Ruby](https://g
   </tbody>
 </table>
 
-
-
 <table class="describe-table">
   <tbody>
     <tr>
@@ -190,8 +185,6 @@ Below is the code to generate a digital signature for images on [Ruby](https://g
   </tbody>
 </table>
 
-
-
 <table class="describe-table">
   <tbody>
     <tr>
@@ -213,7 +206,6 @@ Below is the code to generate a digital signature for images on [Ruby](https://g
     </tr>
   </tbody>
 </table>
-
 
 Excellent, but it is comparing two images. Now let's use PostgreSQL for searching. In PostgreSQL is an array type of the field. We will write the digital signature of the image:
 
@@ -281,7 +273,6 @@ Perfect! Let's check performance.
      Total runtime: 2152.411 ms
     (5 rows)
 
-
 Let's add sorting in SQL (the most similar images were the first), and add similarity as extra field:
 
     EXPLAIN ANALYZE SELECT smlar(images.image_array, '{1010259,...,2424252}'::int[]) as similarity FROM images WHERE images.image_array % '{1010259,1011253, ...,2423253,2424252}'::int[] ORDER BY similarity DESC;
@@ -297,7 +288,6 @@ Let's add sorting in SQL (the most similar images were the first), and add simil
      Total runtime: 2912.207 ms
     (8 rows)
 
-
 Added sorting did not complicate query execution.
 
 [Here](https://gist.github.com/2521808) you can see all results in raw format.
@@ -306,4 +296,4 @@ Added sorting did not complicate query execution.
 
 PostgreSQL extension smlar can be used in systems where we need search similar objects, like texts, images, videos.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

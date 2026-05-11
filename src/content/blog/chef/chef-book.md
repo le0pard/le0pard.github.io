@@ -3,11 +3,12 @@ title: "Cooking Infrastructure by Chef: Free open source book about Chef"
 description: "Cooking Infrastructure by Chef: Free open source book about Chef"
 pubDate: 2014-05-26
 tags:
-- chef
-- tdd
-- book
-- free
+  - chef
+  - tdd
+  - book
+  - free
 ---
+
 Hello my dear friends. After number of articles about Chef I decided to create book about it. And today I released my first draft variant of ["Cooking Infrastructure by Chef"](http://chef.leopard.in.ua/) book. It is free and open source book ([CC-by-NC](http://creativecommons.org/licenses/by-nc/4.0/)).
 
 <div class="aligncenter">

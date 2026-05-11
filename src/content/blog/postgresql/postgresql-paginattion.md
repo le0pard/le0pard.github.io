@@ -3,8 +3,8 @@ title: Pagination Done the PostgreSQL Way
 description: Pagination Done the PostgreSQL Way
 pubDate: 2014-10-11
 tags:
-- postgresql
-- tunning
+  - postgresql
+  - tunning
 ---
 
 Hello my dear friends. In this article I will talk about PostgreSQL and pagination.
@@ -39,7 +39,6 @@ In SQL we are using `ORDER BY` to get most recent first news and `LIMIT` to fetc
 The limiting factor is the number of rows that match the `WHERE` condition. The database might use an index to satisfy the `WHERE` condition, but must still fetch all matching rows to sort them.
 
 <a href="/assets/images/postgresql/pagination/no_index.png" target="_blank"><img src="/assets/images/postgresql/pagination/no_index.png" alt="no_index" title="no_index"  class="aligncenter size-full" /></a>
-
 
 # Fetch Next Page
 
@@ -151,7 +150,7 @@ To remove the rows from previous pages we can use `WHERE` filter instead of `OFF
 # SELECT * FROM news WHERE category_id = 1234 AND (date, id) < (prev_date, prev_id) ORDER BY date DESC, id DESC LIMIT 10;
 ```
 
-In this case neither the size of the base set(*) nor the fetched  page number affects the response time. And the memory footprint is very low!
+In this case neither the size of the base set(\*) nor the fetched page number affects the response time. And the memory footprint is very low!
 
 Examples:
 
@@ -171,9 +170,9 @@ Examples:
 
 But the Seek Method has serious limitations:
 
- - You cannot directly navigate to arbitrary pages (because you need the values from the previous page)
- - Bi-directional navigation is possible but tedious (you need to revers the `ORDER BY` direction and `WHERE` comparison)
- - Works best with full row values support (workaround is possible, but ugly and less performant)
+- You cannot directly navigate to arbitrary pages (because you need the values from the previous page)
+- Bi-directional navigation is possible but tedious (you need to revers the `ORDER BY` direction and `WHERE` comparison)
+- Works best with full row values support (workaround is possible, but ugly and less performant)
 
 ## Use case
 
@@ -183,9 +182,9 @@ The Seek Method perfect for "Infinite Scrolling" and "Next-Prev" (only this butt
 
 This types of paginations doesn't need:
 
- - navigate to arbitrary pages
- - browse backwards (only for "Prev-Next" navigation)
- - show total pages
+- navigate to arbitrary pages
+- browse backwards (only for "Prev-Next" navigation)
+- show total pages
 
 # Summary
 
@@ -193,4 +192,4 @@ As you can see, pagination can be improved by using an indexes (duh..) and the s
 
 This article based on slides for Markus Winand's talk ["Pagination Done the PostgreSQL Way"](https://wiki.postgresql.org/wiki/File:Pagination_Done_the_PostgreSQL_Way.pdf) for PGDay on 1st Feb 2013 in Brussels. Also good article ["We need tool support for keyset pagination"](http://use-the-index-luke.com/no-offset).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

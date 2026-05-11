@@ -3,9 +3,9 @@ title: Multicorn - powerful foreign data wrapper for PostgreSQL
 description: Multicorn - powerful foreign data wrapper for PostgreSQL
 pubDate: 2013-09-28
 tags:
-- postgresql
-- fdw
-- multicorn
+  - postgresql
+  - fdw
+  - multicorn
 ---
 
 Hello my dear friends. In this article I will talk about Multicorn: what is this, how to install it and use it with PostgreSQL.
@@ -93,8 +93,8 @@ CREATE FOREIGN TABLE
 
 Main options:
 
-* db_url (string) - an sqlalchemy connection string (examples: "mysql://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;/&lt;dbname&gt;", "mssql: mssql://&lt;user&gt;:&lt;password&gt;@&lt;dsname&gt;"). See the [sqlalchemy dialects documentation](http://docs.sqlalchemy.org/en/latest/dialects/).
-* tablename (string) - the table name in the remote RDBMS.
+- db_url (string) - an sqlalchemy connection string (examples: "mysql://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;/&lt;dbname&gt;", "mssql: mssql://&lt;user&gt;:&lt;password&gt;@&lt;dsname&gt;"). See the [sqlalchemy dialects documentation](http://docs.sqlalchemy.org/en/latest/dialects/).
+- tablename (string) - the table name in the remote RDBMS.
 
 And now we can check how it is work:
 
@@ -111,7 +111,6 @@ And now we can check how it is work:
 ```
 
 As you can see, it is work.
-
 
 ## IMAP servers
 
@@ -147,14 +146,14 @@ CREATE FOREIGN TABLE
 
 Main options:
 
-* host (string) - the IMAP host to connect to.
-* port (string) - the IMAP host port to connect to.
-* login (string) - the login to connect with.
-* password (string) - the password to connect with.
-* payload\_column (string) - the name of the column which will store the payload.
-* flags\_column (string) - the name of the column which will store the IMAP flags, as an array of strings.
-* ssl (boolean) - wether to use ssl or not.
-* imap\_server\_charset (string) - the name of the charset used for IMAP search commands. Defaults to UTF8. For the cyrus IMAP server, it should be set to "utf-8".
+- host (string) - the IMAP host to connect to.
+- port (string) - the IMAP host port to connect to.
+- login (string) - the login to connect with.
+- password (string) - the password to connect with.
+- payload_column (string) - the name of the column which will store the payload.
+- flags_column (string) - the name of the column which will store the IMAP flags, as an array of strings.
+- ssl (boolean) - wether to use ssl or not.
+- imap_server_charset (string) - the name of the charset used for IMAP search commands. Defaults to UTF8. For the cyrus IMAP server, it should be set to "utf-8".
 
 And we can read emails from inbox by using table "my_inbox":
 
@@ -212,7 +211,7 @@ CREATE FOREIGN TABLE
 
 Main options:
 
-* url (string) - the RSS feed URL.
+- url (string) - the RSS feed URL.
 
 Also, you should be sure, what your database use UTF-8 charset. Because in another encodings you can get errors :)
 
@@ -259,10 +258,10 @@ CREATE FOREIGN TABLE
 
 Main options:
 
-* filename (string) - the full path to the CSV file containing the data. This file must be readable to the postgres user.
-* delimiter (character) - the CSV delimiter (defaults to ",").
-* quotechar (character) - the CSV quote character (defaults to ").
-* skip\_header (integer) - the number of lines to skip (defaults to 0).
+- filename (string) - the full path to the CSV file containing the data. This file must be readable to the postgres user.
+- delimiter (character) - the CSV delimiter (defaults to ",").
+- quotechar (character) - the CSV quote character (defaults to ").
+- skip_header (integer) - the number of lines to skip (defaults to 0).
 
 Let's check how it work:
 
@@ -283,11 +282,9 @@ sort_order |     common_name     |               formal_name               |    
 (10 rows)
 ```
 
-
 ## Another FDWs
 
 The Multicorn also contain LDAP and FileSystem Foreign Data Wrappers. LDAP FDW can be used to access directory servers via the LDAP protocol. FileSystem FDW can be used to access data stored in various files, in a filesystem.
-
 
 ## Your custom FDWs
 
@@ -301,4 +298,4 @@ The original implementation of FDWs in PostgreSQL 9.1 and 9.2 was read-only, but
 
 As you can be seen, Multicorn is very useful extensions, which provide for PostgreSQL communicate with many external types of data source and provide for Python developers create own custom FDW for PostgreSQL.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

@@ -3,9 +3,10 @@ title: Speed up testing of ruby projects on Travis-CI
 description: Speed up testing of ruby projects on Travis-CI
 pubDate: 2013-10-12
 tags:
-- testing
-- travis
+  - testing
+  - travis
 ---
+
 Hello my dear friends. Today we will talk about [Travis-CI](https://travis-ci.org/) testing and how to speed up testing for ruby projects.
 
 # Caching .bundle directory
@@ -28,40 +29,40 @@ So we need change our .travis.yml file in project:
 language: ruby
 bundler_args: --without development --path=~/.bundle
 rvm:
-- 2.0.0
+  - 2.0.0
 before_install:
-- 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
-- gem install bundler bundle_cache
-- bundle_cache_install
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+  - gem install bundler bundle_cache
+  - bundle_cache_install
 before_script:
-- cp config/database.travis.yml config/database.yml
-- bundle exec rake db:create db:migrate db:schema:load
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:create db:migrate db:schema:load
 after_script:
-- bundle_cache
+  - bundle_cache
 env:
   global:
-  - BUNDLE_ARCHIVE="test-bundle"
-  - AWS_S3_BUCKET="travisci-bundler-cache"
-  - RAILS_ENV=test
+    - BUNDLE_ARCHIVE="test-bundle"
+    - AWS_S3_BUCKET="travisci-bundler-cache"
+    - RAILS_ENV=test
 ```
 
-Main commands are located in the keys "before\_install", "bundler_args", "env" and "after\_script". Let's analyze what each command are doing:
+Main commands are located in the keys "before_install", "bundler_args", "env" and "after_script". Let's analyze what each command are doing:
 
 ```yaml
 bundler_args: --without development --path=~/.bundle # set for bundler install all gems, except "development" group and use "~/.bundle" folder for this gems
 before_install:
-- 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc' # skip installing docs for gems
-- gem install bundler bundle_cache # install bundler and bundle_cache gems
-- bundle_cache_install # download cached gems and unpack them in "~/.bundle" folder
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc" # skip installing docs for gems
+  - gem install bundler bundle_cache # install bundler and bundle_cache gems
+  - bundle_cache_install # download cached gems and unpack them in "~/.bundle" folder
 after_script:
-- bundle_cache # pack "~/.bundle" folder and upload to AWS S3
+  - bundle_cache # pack "~/.bundle" folder and upload to AWS S3
 env:
   global:
-  - BUNDLE_ARCHIVE="test-bundle" # set name for cached gems file
-  - AWS_S3_BUCKET="travisci-bundler-cache" # set S3 bucket name
+    - BUNDLE_ARCHIVE="test-bundle" # set name for cached gems file
+    - AWS_S3_BUCKET="travisci-bundler-cache" # set S3 bucket name
 ```
 
-Also you'll need to add your AWS credentials to a secure section there.  Adding of this credentials is simple:
+Also you'll need to add your AWS credentials to a secure section there. Adding of this credentials is simple:
 
 1. Install the travis gem using command `gem install travis`
 2. Log into Travis with `travis login --auto` (from inside of your project respository directory), for Travis Pro use command `travis login --pro`.
@@ -72,10 +73,10 @@ In your .travis.yml file something like this will be added :
 ```yaml
 env:
   global:
-  - BUNDLE_ARCHIVE="test-bundle"
-  - AWS_S3_BUCKET="travisci-bundler-cache"
-  - RAILS_ENV=test
-  - secure: wqeqweheo3H743Iob4s8qweqwec0tcv0JGlg8JBhccCPnIiFUArqwe=
+    - BUNDLE_ARCHIVE="test-bundle"
+    - AWS_S3_BUCKET="travisci-bundler-cache"
+    - RAILS_ENV=test
+    - secure: wqeqweheo3H743Iob4s8qweqwec0tcv0JGlg8JBhccCPnIiFUArqwe=
 ```
 
 When you first start testing on Travis-CI you will see the next:
@@ -202,7 +203,7 @@ before_install:
  - "cp -f config/database.travis.yml config/database.yml"
 ```
 
-In you project file "database.travis.yml" should exist, which contains "DB\_NAME". For my project testing speed was faster for 1 minutes (the duration of testing decreased from 8 to 7 minutes).
+In you project file "database.travis.yml" should exist, which contains "DB_NAME". For my project testing speed was faster for 1 minutes (the duration of testing decreased from 8 to 7 minutes).
 
 # Parallelizing your builds across virtual machines
 
@@ -237,4 +238,4 @@ Travis CI VMs run on 1.5 virtual cores. This is not exactly a concurrency, which
 
 This article describes some techniques for speeding up the testing of your Ruby project at Travis-CI. Of course others techniques can be exist which I did not mention, but these ones helped to reduce the testing time of the projects in several times.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

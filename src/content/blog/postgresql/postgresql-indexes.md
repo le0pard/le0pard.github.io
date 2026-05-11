@@ -3,13 +3,13 @@ title: PostgreSQL Indexes
 description: PostgreSQL Indexes
 pubDate: 2015-04-13
 tags:
-- postgresql
-- indexes
-- gist
-- gin
-- b-tree
-- r-tree
-- hash
+  - postgresql
+  - indexes
+  - gist
+  - gin
+  - b-tree
+  - r-tree
+  - hash
 ---
 
 Hello my dear friends. This is my new article in which I would like to to tell you about PostgreSQL indexes.
@@ -27,18 +27,16 @@ Indexes are in the inverse relationship: (row, RowId). In index row must contain
 
 Index is an additional data structure, which can help us with:
 
- * Data search - all indexes support search values on equality. Some indexes also support prefix search (like "abc%"), arbitrary ranges search
- * Optimizer - B-Tree and R-Tree indexes represent a histogram arbitrary precision
- * Join - indexes can be used for Merge, Index algorithms
- * Relation - indexes can be used for except/intersect operations
- * Aggregations - indexes can effectively calculate some aggregation function (count, min, max, etc)
- * Grouping - indexes can effectively calculate the arbitrary grouping and aggregate functions (sort-group algorithm)
-
+- Data search - all indexes support search values on equality. Some indexes also support prefix search (like "abc%"), arbitrary ranges search
+- Optimizer - B-Tree and R-Tree indexes represent a histogram arbitrary precision
+- Join - indexes can be used for Merge, Index algorithms
+- Relation - indexes can be used for except/intersect operations
+- Aggregations - indexes can effectively calculate some aggregation function (count, min, max, etc)
+- Grouping - indexes can effectively calculate the arbitrary grouping and aggregate functions (sort-group algorithm)
 
 # PostgreSQL Index Types
 
 There are many types of indexes in PostgreSQL, as well as different ways to use them. Let's review all these indexes.
-
 
 ### B-Tree index
 
@@ -48,16 +46,15 @@ B-Tree is the default index that you get when you do `CREATE INDEX`. Virtually a
 
 Advantages:
 
- * Retain sorting data
- * Support the search for the unary and binary predicates
- * Allow the entire sequence of data to estimate cardinality (number of entries) for the entire index (and therefore the table), range, and with arbitrary precision without scanning
+- Retain sorting data
+- Support the search for the unary and binary predicates
+- Allow the entire sequence of data to estimate cardinality (number of entries) for the entire index (and therefore the table), range, and with arbitrary precision without scanning
 
 Disadvantages:
 
- * For their construction is require to perform a full sorting pairs (row, RowId) (slow operation)
- * Take up a lot of disk space. Index on unique "Integers" weights twice more as the column (because additionaly RowId need stored)
- * Recording unbalances tree constantly, and begins to store data sparsely, and the access time is increased by increasing the amount of disk information. What is why, B-Tree indexes require monitoring and periodic rebuilding
-
+- For their construction is require to perform a full sorting pairs (row, RowId) (slow operation)
+- Take up a lot of disk space. Index on unique "Integers" weights twice more as the column (because additionaly RowId need stored)
+- Recording unbalances tree constantly, and begins to store data sparsely, and the access time is increased by increasing the amount of disk information. What is why, B-Tree indexes require monitoring and periodic rebuilding
 
 ### R-Tree index
 
@@ -67,16 +64,15 @@ R-Tree (rectangle-tree) index storing numeric type pairs of (X, Y) values (for e
 
 Advantages:
 
- * Search for arbitrary regions, points
- * Allows us to estimate the number of dots in a region without a full data scan
+- Search for arbitrary regions, points
+- Allows us to estimate the number of dots in a region without a full data scan
 
 Disadvantages:
 
- * Significant redundancy in the data storage
- * Slow update
+- Significant redundancy in the data storage
+- Slow update
 
 In general, the pros-cons are very similar to B-Tree.
-
 
 ### Hash index
 
@@ -88,15 +84,14 @@ Because hash functions is non-linear, such index cannot be sorted. This causes i
 
 Advantages:
 
- * Very fast search O(1)
- * Stability - the index does not need to be rebuild
+- Very fast search O(1)
+- Stability - the index does not need to be rebuild
 
 Disadvantages:
 
-* Hash is very sensitive to collisions. In the case of "bad" data distribution, most of the entries will be concentrated in a few bouquets, and in fact the search will occur through collision resolution.
+- Hash is very sensitive to collisions. In the case of "bad" data distribution, most of the entries will be concentrated in a few bouquets, and in fact the search will occur through collision resolution.
 
 As you can see, Hash indexes are only useful for equality comparisons, but you pretty much never want to use them since they are not transaction safe, need to be manually rebuilt after crashes, and are not replicated to followers in PostgreSQL (all this fixed in PostgreSQL 10).
-
 
 ### Bitmap index
 
@@ -106,16 +101,15 @@ Bitmap index create a separate bitmap (a sequence of 0 and 1) for each possible 
 
 Advantages:
 
- * Compact representation (small amount of disk space)
- * Fast reading and searching for the predicate "is"
- * Effective algorithms for packing masks (even more compact representation, than indexed data)
+- Compact representation (small amount of disk space)
+- Fast reading and searching for the predicate "is"
+- Effective algorithms for packing masks (even more compact representation, than indexed data)
 
 Disadvantages:
 
- * You can not change the method of encoding values in the process of updating the data. From this it follows that if the distribution data has changed, it is required the index to be completely rebuild
+- You can not change the method of encoding values in the process of updating the data. From this it follows that if the distribution data has changed, it is required the index to be completely rebuild
 
 PostgreSQL is not provide persistent bitmap index. But it can be used in database to combine multiple indexes. PostgreSQL scans each needed index and prepares a bitmap in memory giving the locations of table rows that are reported as matching that index's conditions. The bitmaps are then ANDed and ORed together as needed by the query. Finally, the actual table rows are visited and returned.
-
 
 ### GiST index
 
@@ -125,15 +119,14 @@ The essential difference lies in the organization of the key. B-Tree trees sharp
 
 Advantages:
 
- * Efficient search
+- Efficient search
 
 Disadvantages:
 
- * Large redundancy
- * The specialized implementation for each query group are nessesary
+- Large redundancy
+- The specialized implementation for each query group are nessesary
 
 The rest of the pros-cons similar to B-Tree and R-Tree.
-
 
 ### GIN index
 
@@ -143,12 +136,12 @@ Generalized Inverted Indexes (GIN) are useful when an index must map many values
 
 Key features:
 
- * Well suited for full-text search
- * Look for a full match ("is", but not "less" or "more").
- * Well suited for semi-structured data search
- * Allows you to perform several different searches (queries) in a single pass
- * Scales much better than GiST (support large volumes of data)
- * Works well for frequent recurrence of elements (and therefore are perfect for full-text search)
+- Well suited for full-text search
+- Look for a full match ("is", but not "less" or "more").
+- Well suited for semi-structured data search
+- Allows you to perform several different searches (queries) in a single pass
+- Scales much better than GiST (support large volumes of data)
+- Works well for frequent recurrence of elements (and therefore are perfect for full-text search)
 
 # Block Range (BRIN) Index (9.5+)
 
@@ -178,7 +171,6 @@ SELECT * FROM access_log WHERE client_ip = '192.168.100.45';
 
 This index will remain fairly small, and can also be used along other indexes on the more complex queries that may require it.
 
-
 # Expression Indexes
 
 Expression indexes are useful for queries that match on some function or modification of your data. Postgres allows you to index the result of that function so that searches become as efficient as searching by raw data values.
@@ -195,13 +187,11 @@ and such sql query will use such index
 SELECT * FROM users WHERE lower(substr(name, 1, 1)) = 'a';
 ```
 
-
 # Unique Indexes
 
 A unique index guarantees that the table won’t have more than one row with the same value. It's advantageous to create unique indexes for two reasons: data integrity and performance. Lookups on a unique index are generally very fast.
 
 There is little distinction between unique indexes and unique constraints. Unique indexes can be though of as lower level, since expression indexes and partial indexes cannot be created as unique constraints. Even partial unique indexes on expressions are possible.
-
 
 # Multi-column Indexes
 
@@ -209,9 +199,8 @@ While Postgres has the ability to create multi-column indexes, it's important to
 
 However there are cases where a multi-column index clearly makes sense. An index on columns (a, b) can be used by queries containing `WHERE a = x AND b = y`, or queries using `WHERE a = x` only, but will not be used by a query using `WHERE b = y`. So if this matches the query patterns of your application, the multi-column index approach is worth considering. Also note that in this case creating an index on a alone would be redundant.
 
-
 # Summary
 
 Indexes are common way to enhance database performance. Index allows the database server to find and retrieve specific rows much faster than it can be without an index. But indexes also add overhead to the database system as a whole, so they should be used sensibly.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

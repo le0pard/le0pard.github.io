@@ -3,9 +3,10 @@ title: How I update project from Rails 3 to Rails 4
 description: How I update project from Rails 3 to Rails 4
 pubDate: 2013-11-01
 tags:
-- rails
-- migration
+  - rails
+  - migration
 ---
+
 Hello my dear friends.
 
 Work with large projects often requires repayment of the technical debts: update some libs, сode refactoring, etc. In my case I should move the project from rails 3 to rails 4. In this article I will tell how I did it.
@@ -18,27 +19,27 @@ First of all, you project must have huge test coverage. In my project we have 93
 
 Rails 4 requires Ruby 1.9.3 and recommends Ruby 2.0.0. Attempting to run Rails 4 with a Ruby version below 1.9.3 will cause syntax errors or runtime issues. So first of all you should migrate your project to new Ruby version. We have been using the last ruby 2.0.0 in this project, so we did not have such problem :)
 
-## Step 2: Strong\_Parameters
+## Step 2: Strong_Parameters
 
-First huge change in the rails 4 is [strong\_parameters](https://github.com/rails/strong_parameters). I began to change project by removing whitelist\_attributes and migration to strong\_parameters. We need to change some settings in our projects to do this. First of all, we have to add strong\_parameters to Gemfile:
+First huge change in the rails 4 is [strong_parameters](https://github.com/rails/strong_parameters). I began to change project by removing whitelist_attributes and migration to strong_parameters. We need to change some settings in our projects to do this. First of all, we have to add strong_parameters to Gemfile:
 
 ```ruby
 gem "strong_parameters"
 ```
 
-Next changes will be in "config/application.rb" whitelist\_attributes settings:
+Next changes will be in "config/application.rb" whitelist_attributes settings:
 
 ```ruby
 config.active_record.whitelist_attributes = false
 ```
 
-And then add "strong\_parameters.rb" file in "config/initializers" with this content:
+And then add "strong_parameters.rb" file in "config/initializers" with this content:
 
 ```ruby
 ActiveRecord::Base.send(:include, ActiveModel::ForbiddenAttributesProtection)
 ```
 
-After this change you have to remove "attr\_accessible" from models and use "strong\_parameters" in controllers. Use the tests to verify that you migrated without problems in strong\_parameters (I used tests in each step).
+After this change you have to remove "attr_accessible" from models and use "strong_parameters" in controllers. Use the tests to verify that you migrated without problems in strong_parameters (I used tests in each step).
 
 ## Step 3: Routes
 
@@ -66,7 +67,7 @@ Again, check all changes by tests :)
 
 Migration of the rails 3 app to the rails 4 requires gem updates. Some gems in your Gemfile can be migrated to new version, which can work in both in rails 3 and in rails 4. For example, we will start with the migration of the devise gem. First of all, I read changelog of this gem to understand differences between versions and know what to change in migration. Check all by tests (also by manual check, tests do not guarantee 100% success) and select another gem for migration.
 
-The "rails4\_upgrade" gem helps to automate some of the processes required to the upgrade to the Rails 4. It add rake task to check old versions of gems:
+The "rails4_upgrade" gem helps to automate some of the processes required to the upgrade to the Rails 4. It add rake task to check old versions of gems:
 
 ```bash
 $ bundle exec rake rails4:check_gems
@@ -101,7 +102,7 @@ gem 'actionpack-page_caching', '1.0.0'
 gem 'actionpack-xml_parser', '1.0.0'
 ```
 
-After "bundle update rails" you should change your rails app. [railsdiff.org](http://railsdiff.org/) will help you very much with this . In my project I had to  use [this diff](http://railsdiff.org/html/v3.2.15-v4.0.1.rc3.html).
+After "bundle update rails" you should change your rails app. [railsdiff.org](http://railsdiff.org/) will help you very much with this . In my project I had to use [this diff](http://railsdiff.org/html/v3.2.15-v4.0.1.rc3.html).
 
 Finally, I continue to update gems, which work only with rails 4
 
@@ -113,4 +114,4 @@ No comments, just check your code and tests.
 
 As you can see migration process even of the big rails project is not so complicated if you do it with clear migration plan. There is open source book [upgradingtorails4](http://www.upgradingtorails4.com/), which can be very helpfull (I did this migration before this book was published).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

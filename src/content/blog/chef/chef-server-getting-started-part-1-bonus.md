@@ -3,9 +3,9 @@ title: Getting Started with Chef Server. Bonus updates
 description: Getting Started with Chef Server. Bonus updates
 pubDate: 2013-03-25
 tags:
-- chef
-- solo
-- server
+  - chef
+  - solo
+  - server
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -18,7 +18,7 @@ New version of Vagrant 1.1.x came out. Vagrant can work with [VMware (non-free)]
 
 First of all, now you should install Vagrant by [separate installer](http://downloads.vagrantup.com/) and shouldn't use for this bundler. Without this you couldn't use vagrant plugins. In my examples I removed vagrant from dependency in Gemfile, so you must install it before using my code examples.
 
-Also removed multi\_json gem from Gemfile, because Gemfile gems not available in vagrant environment. For parsing JSON data I use json gem, which available in vagrant environment. Code changes:
+Also removed multi_json gem from Gemfile, because Gemfile gems not available in vagrant environment. For parsing JSON data I use json gem, which available in vagrant environment. Code changes:
 
 ```ruby
 require 'json'
@@ -88,5 +88,4 @@ $ vagrant up
 
 You can see all final changes by this links: [Chef Solo](https://github.com/le0pard/chef-solo-example/tree/vagrant) and [Chef Server](https://github.com/le0pard/chef-server-example/tree/vagrant).
 
-
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

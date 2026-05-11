@@ -2,6 +2,7 @@
 type Config = {
   title: string;
   description: string;
+  site: string;
   lang: string;
   favicon: string;
   og: {
@@ -17,6 +18,7 @@ export const siteConfig: Config = {
   title: "leopard.in.ua",
   description: "Oleksii Vasyliev blog",
   lang: "en",
+  site: "https://leopard.in.ua",
   favicon: "/favicon.svg",
   og: {
     image: "/ogImage.png",

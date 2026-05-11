@@ -3,8 +3,8 @@ title: Getting Started with Chef Solo. Part 1
 description: Getting Started with Chef Solo. Part 1
 pubDate: 2013-01-04
 tags:
-- chef
-- solo
+  - chef
+  - solo
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -19,21 +19,21 @@ Hello my dear friends. Today we will talk about Chef and usage Chef Solo like a 
 
 Why you should use Chef?
 
- * __Efficiency__: It's more effective to use Chef, which will contain all your servers configuration in one place.
- * __Scalability__: Do you need scale you app? Split your server into cloud (several servers) by using environments, roles and nodes.
- * __Reusing__ and __Save money__: No need 10 times install a same software for your application on server. Just create new node in Chef and after several minutes you will have configured instance.
- * __Documentation__: You Chef is also documentation for your cloud, because Chef recipes contain all information about your environment.
+- **Efficiency**: It's more effective to use Chef, which will contain all your servers configuration in one place.
+- **Scalability**: Do you need scale you app? Split your server into cloud (several servers) by using environments, roles and nodes.
+- **Reusing** and **Save money**: No need 10 times install a same software for your application on server. Just create new node in Chef and after several minutes you will have configured instance.
+- **Documentation**: You Chef is also documentation for your cloud, because Chef recipes contain all information about your environment.
 
 <a href="/assets/images/chef/automate-all-the-things.png"><img src="/assets/images/chef/automate-all-the-things.png" alt="Automate All The Things" title="Automate All The Things" class="aligncenter" /></a>
 
-And of course main point is __Automate All The Things!!!__
+And of course main point is **Automate All The Things!!!**
 
 ## What doesn't Chef do?
 
- * "Magically" configure your server
- * Blindly reuse cookbooks and recipes
- * Monitor your servers or softwares
- * Undoing concept
+- "Magically" configure your server
+- Blindly reuse cookbooks and recipes
+- Monitor your servers or softwares
+- Undoing concept
 
 # Chef types and terminology
 
@@ -41,15 +41,15 @@ Exists two types of Chef: Chef Solo and Chef Server. Chef Solo is simple way to 
 
 This is list of terminology, which I will use in my articles:
 
- * Node - A host where the Chef client will run (web server, database server or another server). Chef Client always working on server, which it configure.
- * Chef Client - a command line tool that configures servers.
- * Chef Solo - a version of the Chef client that doesn't rely to the server for configuration (like Chef server).
- * Recipes - a single file of Ruby code that contains commands to run on a node (nginx ssl module, apache php module).
- * Resources - a node's resources include files, directories, users and services.
- * Cookbook - a collection of Chef recipes (nginx cookbook, postgresql cookbook).
- * Role - reusable configuration for multiple nodes (web role, database role, etc).
- * Attribute - variables that are passed through Chef and used in recipes and templates (the version number of nginx to install).
- * Template - a file with placeholders for attributes, used to create configuration files (simple [Erb](http://ruby-doc.org/stdlib-1.9.3/libdoc/erb/rdoc/ERB.html) file).
+- Node - A host where the Chef client will run (web server, database server or another server). Chef Client always working on server, which it configure.
+- Chef Client - a command line tool that configures servers.
+- Chef Solo - a version of the Chef client that doesn't rely to the server for configuration (like Chef server).
+- Recipes - a single file of Ruby code that contains commands to run on a node (nginx ssl module, apache php module).
+- Resources - a node's resources include files, directories, users and services.
+- Cookbook - a collection of Chef recipes (nginx cookbook, postgresql cookbook).
+- Role - reusable configuration for multiple nodes (web role, database role, etc).
+- Attribute - variables that are passed through Chef and used in recipes and templates (the version number of nginx to install).
+- Template - a file with placeholders for attributes, used to create configuration files (simple [Erb](http://ruby-doc.org/stdlib-1.9.3/libdoc/erb/rdoc/ERB.html) file).
 
 # Initialize chef project
 
@@ -74,9 +74,9 @@ $ bundle
 
 List of the required apps and libs:
 
- * [knife-solo](http://matschaffer.github.com/knife-solo/) - knife is a powerful command-line interface (CLI) that comes with Chef. It is used to control Chef client.
- * [librarian-chef](https://github.com/applicationsonline/librarian-chef) - is a bundler for your Chef-based infrastructure repositories
- * [vagrant](http://www.vagrantup.com/) - create and configure lightweight, reproducible, and portable development environments. For this rubygems need installed VirtualBox. We will use vagrant to test our Chef Solo. WARNING! Right now is not possible use vagrant from rubygems. You should install it separately. Also in this case "multi_json" gem will not available in Vagrant file, but we can use JSON gem, which have vagrant.
+- [knife-solo](http://matschaffer.github.com/knife-solo/) - knife is a powerful command-line interface (CLI) that comes with Chef. It is used to control Chef client.
+- [librarian-chef](https://github.com/applicationsonline/librarian-chef) - is a bundler for your Chef-based infrastructure repositories
+- [vagrant](http://www.vagrantup.com/) - create and configure lightweight, reproducible, and portable development environments. For this rubygems need installed VirtualBox. We will use vagrant to test our Chef Solo. WARNING! Right now is not possible use vagrant from rubygems. You should install it separately. Also in this case "multi_json" gem will not available in Vagrant file, but we can use JSON gem, which have vagrant.
 
 Next you need to create a kitchen by knife:
 
@@ -105,12 +105,12 @@ Command "init" ("kitchen") is used to create a new directory structure that fits
 
 Let's look at the directory structure:
 
- * cookbooks - directory for Chef cookbooks. This directory will be used for vendor cookbooks
- * data_bags - directory for Chef [Data Bags](http://wiki.opscode.com/display/chef/Data+Bags)
- * nodes - directory for Chef nodes
- * roles - directory for Chef roles
- * site-cookbooks - directory for your custom Chef cookbooks
- * solo.rb - file used by Chef Solo with [configuration settings](http://wiki.opscode.com/display/chef/Chef+Configuration+Settings)
+- cookbooks - directory for Chef cookbooks. This directory will be used for vendor cookbooks
+- data_bags - directory for Chef [Data Bags](http://wiki.opscode.com/display/chef/Data+Bags)
+- nodes - directory for Chef nodes
+- roles - directory for Chef roles
+- site-cookbooks - directory for your custom Chef cookbooks
+- solo.rb - file used by Chef Solo with [configuration settings](http://wiki.opscode.com/display/chef/Chef+Configuration+Settings)
 
 # Librarian
 
@@ -183,7 +183,7 @@ $ cat nodes/vagrant.json
 }
 ```
 
-"run\_list" the main part of node, where you specify roles and/or recipes to add to the node. In our case I add recipe source from nginx cookbook. Also you can see nginx attributes (like version, modules, etc.). All cookbook can have directory "attributes" and this directory contain default attributes for cookbook recipes. But you can redefine this attributes in node file. We are ready to test our kitchen!
+"run_list" the main part of node, where you specify roles and/or recipes to add to the node. In our case I add recipe source from nginx cookbook. Also you can see nginx attributes (like version, modules, etc.). All cookbook can have directory "attributes" and this directory contain default attributes for cookbook recipes. But you can redefine this attributes in node file. We are ready to test our kitchen!
 
 # Vagrant
 
@@ -239,7 +239,7 @@ $ cat Vagrantfile
   end
 ```
 
-As you can see "run\_list" and json attributes from node "vagrant.json" automatically loaded from file. More information about using Chef Solo with Vagrant you can find by [this link](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html).
+As you can see "run_list" and json attributes from node "vagrant.json" automatically loaded from file. More information about using Chef Solo with Vagrant you can find by [this link](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html).
 
 Next, we can try test Chef Solo with Vagrant:
 
@@ -351,4 +351,4 @@ In the current article we have learn usage Chef Solo and test our first kitchen.
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/1.0](https://github.com/le0pard/chef-solo-example/tree/1.0).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

@@ -3,8 +3,8 @@ title: Check your build status in Travis CI by Sphero
 description: Check your build status in Travis CI by Sphero
 pubDate: 2013-09-19
 tags:
-- sphero
-- fun
+  - sphero
+  - fun
 ---
 
 Hello my dear friends. In this article we will learn how to check our travis ci build status by sphero.
@@ -91,5 +91,4 @@ Result you can see on this video (sorry for not good quality):
         </iframe>
 </div>
 
-
-*That’s all folks!*
+_That’s all folks!_

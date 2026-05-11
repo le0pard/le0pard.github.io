@@ -3,8 +3,8 @@ title: Getting Started with Chef Solo. Part 3
 description: Getting Started with Chef Solo. Part 3
 pubDate: 2013-01-07
 tags:
-- chef
-- solo
+  - chef
+  - solo
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -34,7 +34,7 @@ Let's create in our kitchen web role. Create in folder "roles" role "web.json":
       "name": "tomatoes",
       "web_dir": "/var/data/www/apps/tomatoes"
     },
-    "user":{
+    "user": {
       "name": "vagrant"
     },
     "nginx": {
@@ -46,29 +46,24 @@ Let's create in our kitchen web role. Create in folder "roles" role "web.json":
       }
     }
   },
-  "run_list": [
-    "recipe[nginx::source]",
-    "recipe[tomatoes]"
-  ]
+  "run_list": ["recipe[nginx::source]", "recipe[tomatoes]"]
 }
 ```
 
 The role require such attributes:
 
- * "chef\_type" - should be "role"
- * "json\_class" - should be "Chef::Role"
- * "name" - name of role, in our case "web"
- * "run\_list" - list of recipes, like in node. We just moved run\_list from "vagrant.json" node to "web.json"
+- "chef_type" - should be "role"
+- "json_class" - should be "Chef::Role"
+- "name" - name of role, in our case "web"
+- "run_list" - list of recipes, like in node. We just moved run_list from "vagrant.json" node to "web.json"
 
-Also Chef role can have "default\_attributes" and "override\_attributes". What's the difference? "default\_attributes" an optional set of attributes that should be applied to all nodes with this role, assuming the node does not already have a value for that attribute. You can override this attributes values in node, which use this role. "override\_attributes" an optional set of attributes that should be applied to all nodes with this role, regardless of whether a node already has a value for that attribute. Useful for setting site-wide values that will always be set, because even node attributes cannot override this attributes values. In our case I moved node attributes in "default\_attributes" (and update nginx version).
+Also Chef role can have "default_attributes" and "override_attributes". What's the difference? "default_attributes" an optional set of attributes that should be applied to all nodes with this role, assuming the node does not already have a value for that attribute. You can override this attributes values in node, which use this role. "override_attributes" an optional set of attributes that should be applied to all nodes with this role, regardless of whether a node already has a value for that attribute. Useful for setting site-wide values that will always be set, because even node attributes cannot override this attributes values. In our case I moved node attributes in "default_attributes" (and update nginx version).
 
 Next, I edited the node for the usage web role:
 
 ```json
 {
-  "run_list": [
-    "role[web]"
-  ]
+  "run_list": ["role[web]"]
 }
 ```
 
@@ -135,11 +130,7 @@ Chef very flexible, because your node can use several roles and/or a several rec
 
 ```json
 {
-  "run_list": [
-    "role[web]",
-    "role[db]",
-    "recipe[monit]"
-  ]
+  "run_list": ["role[web]", "role[db]", "recipe[monit]"]
 }
 ```
 
@@ -149,4 +140,4 @@ In the current article we have learn the Chef roles. In the [next article](/2013
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/3.0](https://github.com/le0pard/chef-solo-example/tree/3.0).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

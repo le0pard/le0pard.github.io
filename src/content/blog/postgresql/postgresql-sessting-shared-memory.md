@@ -3,8 +3,8 @@ title: Setting up shared memory for PostgreSQL
 description: Setting up shared memory for PostgreSQL
 pubDate: 2013-09-05
 tags:
-- postgresql
-- shared memory
+  - postgresql
+  - shared memory
 ---
 
 Hello my dear friends. In this article I will cover about setting up shared memory on Linux for PostgreSQL.
@@ -15,11 +15,11 @@ Hello my dear friends. In this article I will cover about setting up shared memo
 
 # PostgreSQL and shared memory
 
-The "shared\_buffers" configuration parameter determines how much memory is dedicated to PostgreSQL to use for caching data. One reason the defaults are low is because on some platforms (like older Solaris versions and SGI), having large values requires invasive action like recompiling the kernel. Even on a modern Linux system, the stock kernel will likely not allow setting shared_buffers to over 32MB without adjusting kernel settings first.
+The "shared_buffers" configuration parameter determines how much memory is dedicated to PostgreSQL to use for caching data. One reason the defaults are low is because on some platforms (like older Solaris versions and SGI), having large values requires invasive action like recompiling the kernel. Even on a modern Linux system, the stock kernel will likely not allow setting shared_buffers to over 32MB without adjusting kernel settings first.
 
-If you have a system with 1GB or more of RAM, a reasonable starting value for shared\_buffers is 1/4 of the memory in your system. If you have less RAM you'll have to account more carefully for how much RAM the OS is taking up; closer to 15% is more typical there. There are some workloads where even larger settings for shared_buffers are effective, but given the way PostgreSQL also relies on the operating system cache, it's unlikely you'll find using more than 40% of RAM to work better than a smaller amount.
+If you have a system with 1GB or more of RAM, a reasonable starting value for shared_buffers is 1/4 of the memory in your system. If you have less RAM you'll have to account more carefully for how much RAM the OS is taking up; closer to 15% is more typical there. There are some workloads where even larger settings for shared_buffers are effective, but given the way PostgreSQL also relies on the operating system cache, it's unlikely you'll find using more than 40% of RAM to work better than a smaller amount.
 
-It's likely you will have to increase the amount of memory your operating system allows you to allocate at once to set the value for shared\_buffers this high. On UNIX-like systems, if you set it above what's supported, you'll get a message like this
+It's likely you will have to increase the amount of memory your operating system allows you to allocate at once to set the value for shared_buffers this high. On UNIX-like systems, if you set it above what's supported, you'll get a message like this
 
 ```bash
 FATAL:  could not create shared memory segment: Invalid argument
@@ -97,4 +97,4 @@ In 9.3, PostgreSQL has switched from using SysV shared memory to using Posix sha
 
 As can be seen, setting up shared memory on Linux for PostgreSQL is not so hard. Good luck.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

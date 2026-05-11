@@ -3,8 +3,8 @@ title: Getting Started with Chef Solo. Part 2
 description: Getting Started with Chef Solo. Part 2
 pubDate: 2013-01-05
 tags:
-- chef
-- solo
+  - chef
+  - solo
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -40,7 +40,7 @@ drwxr-xr-x   3 leo  staff    102 Jan  4 19:24 test
 
 A cookbook can have:
 
- * metadata.rb - a file, which contain all information about the cookbook (name, dependencies).
+- metadata.rb - a file, which contain all information about the cookbook (name, dependencies).
 
 ```ruby
 name              "nginx"
@@ -68,9 +68,9 @@ depends 'ohai', '>= 1.1.2'
 end
 ```
 
-  This is an important file, if you want to distribute your cookbook.
+This is an important file, if you want to distribute your cookbook.
 
- * attributes - a folder, which contain files with default attributes for recipes. In the nginx cookbook you can find such default attributes:
+- attributes - a folder, which contain files with default attributes for recipes. In the nginx cookbook you can find such default attributes:
 
 ```ruby
 default['nginx']['version'] = "1.2.3"
@@ -79,9 +79,9 @@ default['nginx']['log_dir'] = "/var/log/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"
 ```
 
-  As you remember we can redefine all these attributes in the node file.
+As you remember we can redefine all these attributes in the node file.
 
- * definitions - a folder, which contain helpers from this cookbook. You can find this helper in the nginx cookbook:
+- definitions - a folder, which contain helpers from this cookbook. You can find this helper in the nginx cookbook:
 
 ```ruby
 define :nginx_site, :enable => true do
@@ -101,10 +101,10 @@ define :nginx_site, :enable => true do
 end
 ```
 
-  The helper "nginx_site" can enable/disable configuration from the folder "site-available" and reload nginx. I will show you how to use this helper.
+The helper "nginx_site" can enable/disable configuration from the folder "site-available" and reload nginx. I will show you how to use this helper.
 
- * files - a folder, which contain files and these files just need to be copied on the server in the right place (it can be ssl keys, static configs, etc.)
- * recipes - a folder, which contain all recipes from this cookbook. Each recipe is in a separate Ruby file:
+- files - a folder, which contain files and these files just need to be copied on the server in the right place (it can be ssl keys, static configs, etc.)
+- recipes - a folder, which contain all recipes from this cookbook. Each recipe is in a separate Ruby file:
 
 ```bash
 $ ls -la cookbooks/nginx/recipes
@@ -131,7 +131,7 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 -rw-r--r--   1 leo  staff  1571 Jan  4 19:24 upload_progress_module.rb
 ```
 
-  As you remember we added this to the run\_list:
+As you remember we added this to the run_list:
 
 ```ruby
 "run_list": [
@@ -139,7 +139,7 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 ]
 ```
 
-  This is run the source.rb recipe from the nginx cookbook. If you change it with by this:
+This is run the source.rb recipe from the nginx cookbook. If you change it with by this:
 
 ```ruby
 "run_list": [
@@ -147,11 +147,10 @@ drwxr-xr-x  16 leo  staff   544 Jan  4 19:24 ..
 ]
 ```
 
-  This is run default recipe from nginx cookbook (file default.rb in recipes folder).
+This is run default recipe from nginx cookbook (file default.rb in recipes folder).
 
- * templates - a folder, which contains Erb templates for this cookbook (these are nginx configs)
- * test - a folder, which contain tests for this cookbook
-
+- templates - a folder, which contains Erb templates for this cookbook (these are nginx configs)
+- test - a folder, which contain tests for this cookbook
 
 # First cookbook
 
@@ -249,7 +248,7 @@ Let's configure nginx for our application. First of all add new attributes in th
     "name": "tomatoes",
     "web_dir": "/var/data/www/apps/tomatoes"
   },
-  "user":{
+  "user": {
     "name": "vagrant"
   },
   "nginx": {
@@ -259,10 +258,7 @@ Let's configure nginx for our application. First of all add new attributes in th
       "modules": ["http_gzip_static_module", "http_ssl_module"]
     }
   },
-  "run_list": [
-    "recipe[nginx::source]",
-    "recipe[tomatoes]"
-  ]
+  "run_list": ["recipe[nginx::source]", "recipe[tomatoes]"]
 }
 ```
 
@@ -331,9 +327,9 @@ As you can see in the recipe node attributes available for us in the "node" vari
  node[:app][:web_dir]
 ```
 
-This always will give you the same value from the app.web\_dir attribute.
+This always will give you the same value from the app.web_dir attribute.
 
-As you can see in the recipe code we created 3 directories, created a new config for nginx, enabled this config by "nginx\_site" helper (this helper automatically reloads nginx) and put "index.html" into the server directory. After the launch command, "vagrant provision", you should see this in your browser with url "http://localhost:8085/":
+As you can see in the recipe code we created 3 directories, created a new config for nginx, enabled this config by "nginx_site" helper (this helper automatically reloads nginx) and put "index.html" into the server directory. After the launch command, "vagrant provision", you should see this in your browser with url "http://localhost:8085/":
 
 <a href="/assets/images/chef/nginx2.png"><img src="/assets/images/chef/nginx2.png" alt="nginx" title="nginx" class="aligncenter" /></a>
 
@@ -374,4 +370,4 @@ In the current article we have learned the Chef cookbook structure and how to wr
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/2.0](https://github.com/le0pard/chef-solo-example/tree/2.0).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

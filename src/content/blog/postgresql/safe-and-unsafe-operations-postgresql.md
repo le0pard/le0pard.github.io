@@ -3,8 +3,8 @@ title: Safe and unsafe operations for high volume PostgreSQL
 description: Safe and unsafe operations for high volume PostgreSQL
 pubDate: 2016-09-20
 tags:
-- postgresql
-- "high load"
+  - postgresql
+  - "high load"
 ---
 
 [PostgreSQL](https://www.postgresql.org/) is an object-relational database management system, which I often to use for many products. Some of this products should have high availability and working without any downtime. This means, I should run a database schema migrations while the app is up and serving requests. I have to be very careful about what database operations I run. If I run a bad command, it can lock out updates to a table for a long time. For example, if I create a new index on table, I cannot create new record in this table while that index is building. Anyone who tries to make a record in this table will block, and possibly time out, causing a partial outage. In general, I am ok with database operations taking a long time. However, any operation that locks a table for updates for more than a few seconds means downtime for me.
@@ -26,8 +26,6 @@ ALTER TABLE users ADD COLUMN foo_factor integer NOT NULL DEFAULT 42;
 ```
 
 execute in constant time. Rows are not touched when this executed, and are instead updated "lazily".
-
-
 
 ## Add a column that is non-nullable (unsafe if PostgreSQL < 11)
 
@@ -75,7 +73,6 @@ The recommended recovery method in such cases is to drop the index and try again
 
 Another difference is that a regular `CREATE INDEX` command can be performed within a transaction block, but `CREATE INDEX CONCURRENTLY` cannot.
 
-
 # Add a column with a unique constraint (unsafe)
 
 This operation will lock table. As workaround, you can add column, add unique index concurrently, and then add the constraint onto the table:
@@ -95,15 +92,15 @@ This operation will not block table and can be done safety.
 
 To solve this problem you can use [Pg_repack](https://github.com/reorg/pg_repack) PostgreSQL extension. To perform a full-table repack, pg_repack will:
 
- 1. create a log table to record changes made to the original table;
- 2. add a trigger onto the original table, logging INSERTs, UPDATEs and DELETEs into our log table;
- 3. create a new table containing all the rows in the old table;
- 4. build indexes on this new table;
- 5. apply all changes which have accrued in the log table to the new table;
- 6. swap the tables, including indexes and toast tables, using the system catalogs;
- 7. drop the original table;
+1.  create a log table to record changes made to the original table;
+2.  add a trigger onto the original table, logging INSERTs, UPDATEs and DELETEs into our log table;
+3.  create a new table containing all the rows in the old table;
+4.  build indexes on this new table;
+5.  apply all changes which have accrued in the log table to the new table;
+6.  swap the tables, including indexes and toast tables, using the system catalogs;
+7.  drop the original table;
 
-Pg\_repack will only hold an `ACCESS EXCLUSIVE` lock for a short period during initial setup (steps 1 and 2 above) and during the final swap-and-drop phase (steps 6 and 7). For the rest of its time, pg\_repack only needs to hold an `ACCESS SHARE` lock on the original table, meaning INSERTs, UPDATEs, and DELETEs may proceed as usual.
+Pg_repack will only hold an `ACCESS EXCLUSIVE` lock for a short period during initial setup (steps 1 and 2 above) and during the final swap-and-drop phase (steps 6 and 7). For the rest of its time, pg_repack only needs to hold an `ACCESS SHARE` lock on the original table, meaning INSERTs, UPDATEs, and DELETEs may proceed as usual.
 
 Performing a full-table repack requires free disk space about twice as large as the target table(s) and its indexes.
 
@@ -123,10 +120,10 @@ command. Afterwards you can move some tables/indexes to this new tablespace with
 ALTER TABLE/INDEX whatever SET TABLESPACE xxx;
 ```
 
-This is locking operation. To solve this problem you can use pg\_repack with `--tablespace` option.
+This is locking operation. To solve this problem you can use pg_repack with `--tablespace` option.
 
 # Summary
 
 As you can see, all unsafe operations can be solved by some workarounds. Just need to remember how this unsafe operations will behave in the PostgreSQL database and be very careful about what database operations you run on production database.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

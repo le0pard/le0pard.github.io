@@ -12,17 +12,22 @@
     "format": "prettier './src/**/*' --write"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.7",
-    "@astrojs/rss": "^4.0.17",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
     "@picocss/pico": "^2.1.1",
-    "astro": "^6.0.2",
+    "@rollup/plugin-yaml": "^4.1.2",
+    "astro": "^6.3.1",
+    "astro-icon": "^1.1.5",
+    "browserslist": "^4.28.2",
+    "lightningcss": "^1.32.0",
+    "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.5",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "prettier": "~3.8.1",
-    "prettier-plugin-astro": "^0.14.1",
-    "sass": "^1.97.3"
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1"
   },
   "devEngines": {
     "runtime": {

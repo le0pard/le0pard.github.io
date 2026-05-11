@@ -3,9 +3,10 @@ title: SQL Joins Visualizer - build SQL JOIN between two tables by using of Venn
 description: SQL Joins Visualizer - build SQL JOIN between two tables by using of Venn diagrams
 pubDate: 2015-01-05
 tags:
-- sql
-- free app
+  - sql
+  - free app
 ---
+
 Hello my dear friends.
 
 Today we will lear about SQL Joins and my new little app, which help to build and understand its.
@@ -39,4 +40,4 @@ This joins "everything to everything", resulting in 4 x 4 = 16 rows, far more th
 
 SQL Joins Visualizer help to you build SQL JOIN between two tables by using of Venn diagrams. I hope it will help to understand how working SQL joins.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

@@ -3,9 +3,10 @@ title: Speed up your Ruby on Rails application using WebP images
 description: Speed up your Ruby on Rails application using WebP images
 pubDate: 2013-11-23
 tags:
-- rails
-- webp
+  - rails
+  - webp
 ---
+
 Hello my dear friends.
 
 Today we will speed up our rails application using webp images.
@@ -16,7 +17,7 @@ Today we will speed up our rails application using webp images.
 
 # WebP and Ruby on Rails
 
-After the release of webp library I wrote webp gem - [webp-ffi](http://leopard.in.ua/webp-ffi/). You can use this gem to work with webp images in Ruby. Two good Ruby gems were released later  - [sprockets-webp](https://github.com/kavu/sprockets-webp) and [carrierwave-webp](https://github.com/kavu/carrierwave-webp). Sprockets-webp provides a Rails Asset Pipeline hook for converting PNG and JPEG assets to the WebP format. At first, just add this gem in the Gemfile:
+After the release of webp library I wrote webp gem - [webp-ffi](http://leopard.in.ua/webp-ffi/). You can use this gem to work with webp images in Ruby. Two good Ruby gems were released later - [sprockets-webp](https://github.com/kavu/sprockets-webp) and [carrierwave-webp](https://github.com/kavu/carrierwave-webp). Sprockets-webp provides a Rails Asset Pipeline hook for converting PNG and JPEG assets to the WebP format. At first, just add this gem in the Gemfile:
 
 ```ruby
 gem 'sprockets-webp'
@@ -107,4 +108,4 @@ As the result we reduced load time of rails application almoust in 2 times: befo
 
 As we can see using webp images, we have accelerated load speed of our application in Chrome and Opera browsers. Hopefully support of this image format will come into sight in Firefox (and maybe in IE).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

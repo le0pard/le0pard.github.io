@@ -3,8 +3,8 @@ title: Getting Started with Chef Solo. Part 5
 description: Getting Started with Chef Solo. Part 5
 pubDate: 2013-01-26
 tags:
-- chef
-- solo
+  - chef
+  - solo
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -47,7 +47,7 @@ end
 include_recipe "ohai"
 ```
 
-This recipe will generate ohai plugin from template "system\_node\_js.rb". Next we should create this template in folder "tomatoes/templates/default/plugins":
+This recipe will generate ohai plugin from template "system_node_js.rb". Next we should create this template in folder "tomatoes/templates/default/plugins":
 
 ```erb
 provides "system_node_js"
@@ -63,7 +63,7 @@ system_node_js[:version] = stdout[1..-1] if 0 == status
 
 In first two lines we set by method "provides" automatic attributes, which will provide for us this plugin.
 
-Most of the information we want to lookup would be nested in some way, and ohai tends to do this by storing the data in a Mash. This can be done by creating a new mash and setting the attribute to it. We did this with "system\_node\_js".
+Most of the information we want to lookup would be nested in some way, and ohai tends to do this by storing the data in a Mash. This can be done by creating a new mash and setting the attribute to it. We did this with "system_node_js".
 
 In the end of code, plugin set the version of node.js, if node.js installed on server. That's it!
 
@@ -155,4 +155,4 @@ In the current article we have learn Ohai and how to write Ohai plugin.
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/5.0](https://github.com/le0pard/chef-solo-example/tree/5.0).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

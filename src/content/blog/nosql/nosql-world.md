@@ -3,7 +3,7 @@ title: World of the NoSQL databases
 description: World of the NoSQL databases
 pubDate: 2013-11-08
 tags:
-- nosql
+  - nosql
 ---
 
 Hello my dear friends. In this article I will talk about NoSQL databases.
@@ -12,11 +12,11 @@ Hello my dear friends. In this article I will talk about NoSQL databases.
 
 The relational database model focuses on the organization of the data in the form of two-dimensional tables. Each relational table is a two-dimensional array that has the following properties:
 
- * each element of the table is a data element;
- * all cells in the column homogeneous: all elements in the column are the same type (numeric, character, etc.);
- * each column has a unique name;
- * identical rows in the table are not available;
- * the order of the rows and columns can be arbitrary.
+- each element of the table is a data element;
+- all cells in the column homogeneous: all elements in the column are the same type (numeric, character, etc.);
+- each column has a unique name;
+- identical rows in the table are not available;
+- the order of the rows and columns can be arbitrary.
 
 [Edgar Codd](http://en.wikipedia.org/wiki/Edgar_F._Codd) is the author of the 'relational' concept.
 
@@ -26,10 +26,10 @@ The architecture of relational models started its history in the 1970s. The main
 
 Examples of databases:
 
- * [MySQL](http://www.mysql.com/)
- * [PostgreSQL](http://www.postgresql.org/)
- * [DB2](http://www-01.ibm.com/software/data/db2/)
- * [SQL Server](https://www.microsoft.com/en-us/sqlserver/default.aspx)
+- [MySQL](http://www.mysql.com/)
+- [PostgreSQL](http://www.postgresql.org/)
+- [DB2](http://www-01.ibm.com/software/data/db2/)
+- [SQL Server](https://www.microsoft.com/en-us/sqlserver/default.aspx)
 
 # NoSQL
 
@@ -51,20 +51,20 @@ A column-oriented DBMS is a database management system that stores data tables a
 
 Advantages:
 
- * It is possible to compress data significantly, because in a single column of the table, the data is usually in the same type;
- * Allows on a cheap and low-powered hardware to boost the speed for the query performance in the 5, 10 and sometimes even 100 times, thus, due to compression, the data on the drive will take 5-10 times less space than in the case of the traditional RDBMS.
+- It is possible to compress data significantly, because in a single column of the table, the data is usually in the same type;
+- Allows on a cheap and low-powered hardware to boost the speed for the query performance in the 5, 10 and sometimes even 100 times, thus, due to compression, the data on the drive will take 5-10 times less space than in the case of the traditional RDBMS.
 
 Disadvantages:
 
- * In general there are no transactions;
- * Have a number of limitations for the developer who is used to the developed traditional RDBMS.
+- In general there are no transactions;
+- Have a number of limitations for the developer who is used to the developed traditional RDBMS.
 
 Examples of databases:
 
-* [HBase](http://hbase.apache.org/)
-* [Cassandra](http://cassandra.apache.org/)
-* [Accumulo](http://accumulo.apache.org/)
-* [Amazon SimpleDB](http://aws.amazon.com/simpledb/)
+- [HBase](http://hbase.apache.org/)
+- [Cassandra](http://cassandra.apache.org/)
+- [Accumulo](http://accumulo.apache.org/)
+- [Amazon SimpleDB](http://aws.amazon.com/simpledb/)
 
 ## Key Value / Tuple Store
 
@@ -72,25 +72,25 @@ This database allows you to store key/value pairs in a persistent store, and sub
 
 Advantages:
 
- * RDBMS are too slow, have heavy layer of SQL cursors;
- * Solutions of RDBMS to store small amounts of data too much cost;
- * There are no need for SQL queries, indexes, triggers, stored procedures, temporary tables, forms, views, etc;
- * Key/value database is easily scalable and high-performance due to its lightness.
+- RDBMS are too slow, have heavy layer of SQL cursors;
+- Solutions of RDBMS to store small amounts of data too much cost;
+- There are no need for SQL queries, indexes, triggers, stored procedures, temporary tables, forms, views, etc;
+- Key/value database is easily scalable and high-performance due to its lightness.
 
 Disadvantages:
 
- * Limitations of relational databases ensure data integrity at the lowest level. In stores key/value no such restriction. Data integrity controled by applications. In this case data integrity may be compromised due to errors in the application code;
- * In an RDBMS if the model is well designed, the database will contain a logical structure that fully reflects the structure of the stored data and can differ from the structure of the application (the data are independent from the application). For a key/value storage it is harder to achieve.
+- Limitations of relational databases ensure data integrity at the lowest level. In stores key/value no such restriction. Data integrity controled by applications. In this case data integrity may be compromised due to errors in the application code;
+- In an RDBMS if the model is well designed, the database will contain a logical structure that fully reflects the structure of the stored data and can differ from the structure of the application (the data are independent from the application). For a key/value storage it is harder to achieve.
 
 Examples of databases:
 
- * [Amazon DynamoDB](http://aws.amazon.com/dynamodb/)
- * [Riak](http://docs.basho.com/riak/latest/)
- * [Redis](http://redis.io/)
- * [LevelDB](https://code.google.com/p/leveldb/)
- * [Scalaris](https://code.google.com/p/scalaris/)
- * [MemcacheDB](http://memcachedb.org/)
- * [Kyoto Cabinet](http://fallabs.com/kyotocabinet/)
+- [Amazon DynamoDB](http://aws.amazon.com/dynamodb/)
+- [Riak](http://docs.basho.com/riak/latest/)
+- [Redis](http://redis.io/)
+- [LevelDB](https://code.google.com/p/leveldb/)
+- [Scalaris](https://code.google.com/p/scalaris/)
+- [MemcacheDB](http://memcachedb.org/)
+- [Kyoto Cabinet](http://fallabs.com/kyotocabinet/)
 
 ## Document Store
 
@@ -98,19 +98,19 @@ Are programs designed to store, search, and manage document-oriented information
 
 Advantages:
 
- * Sufficiently flexible language for querying;
- * Easy horizontally scalable.
+- Sufficiently flexible language for querying;
+- Easy horizontally scalable.
 
 Disadvantages:
 
- * Atomicity in most cases is conditional.
+- Atomicity in most cases is conditional.
 
 Examples of such databases:
 
-* [MongoDB](http://www.mongodb.org/)
-* [Couchbase](http://www.couchbase.com/)
-* [CouchDB](http://couchdb.apache.org/)
-* [RethinkDB](http://www.rethinkdb.com/)
+- [MongoDB](http://www.mongodb.org/)
+- [Couchbase](http://www.couchbase.com/)
+- [CouchDB](http://couchdb.apache.org/)
+- [RethinkDB](http://www.rethinkdb.com/)
 
 ## Graph Databases
 
@@ -118,19 +118,19 @@ A graph database is a database that uses graph structures with nodes, edges, and
 
 Advantages:
 
- * Often faster for associative data sets;
- * Can scale more naturally to large data sets as they do not typically require expensive join operations.
+- Often faster for associative data sets;
+- Can scale more naturally to large data sets as they do not typically require expensive join operations.
 
 Disadvantages:
 
- * RDBMS can be used in more general cases. Graph databases are suitable for graph-like data.
+- RDBMS can be used in more general cases. Graph databases are suitable for graph-like data.
 
 Examples of such databases:
 
- * [Neo4j](http://www.neo4j.org/)
- * [FlockDB](https://github.com/twitter/flockdb)
- * [InfoGrid](http://infogrid.org/trac/)
- * [OrientDB](http://www.orientdb.org/)
+- [Neo4j](http://www.neo4j.org/)
+- [FlockDB](https://github.com/twitter/flockdb)
+- [InfoGrid](http://infogrid.org/trac/)
+- [OrientDB](http://www.orientdb.org/)
 
 ## Multimodel Databases
 
@@ -138,19 +138,19 @@ These databases includes features of multiple databases.
 
 There are two different groups of products that can be considered as multi-model:
 
- * Multimodel databases that have been developed specifically to support multiple data models and use cases;
+- Multimodel databases that have been developed specifically to support multiple data models and use cases;
 
 For example: ArangoDB - promises the benefits of key-value storage as well as a document-oriented and graph inside.
 
- * General-purpose database with support for multiple model variants.
+- General-purpose database with support for multiple model variants.
 
 For example: Oracle MySQL 5.6, which can support SQL-like access and key-value access via the Memcached API.
 
 Examples of such databases:
 
- * [ArangoDB](http://www.arangodb.org/)
- * [Aerospike](http://www.aerospike.com/)
- * [Datomic](http://www.datomic.com/)
+- [ArangoDB](http://www.arangodb.org/)
+- [Aerospike](http://www.aerospike.com/)
+- [Datomic](http://www.datomic.com/)
 
 ## Object Databases
 
@@ -158,23 +158,22 @@ Database in which the data are modeled as objects, their attributes, methods, an
 
 Advantages:
 
- * The object model is the best display of the real world, rather than relational tuples. This is especially true for complex and multi-faceted objects;
- * Organize your data with hierarchical characteristics;
- * Separate query language is not required for accessing the data, because access is directly to objects. Nevertheless, the possibility exists to use the queries.
+- The object model is the best display of the real world, rather than relational tuples. This is especially true for complex and multi-faceted objects;
+- Organize your data with hierarchical characteristics;
+- Separate query language is not required for accessing the data, because access is directly to objects. Nevertheless, the possibility exists to use the queries.
 
 Disadvantages:
 
- * In the RDBMS schema change as a result of the creation, modification or deletion of tables usually do not depend on the application. In applications that work with object database, schema change class usually means that changes must be made in the other application classes that are associated with this class. This leads to the necessity of correction of the whole system;
- * Object database usually tied to a particular language with a separate API and data are available only through the API. RDBMS in this regard is a great opportunity, thanks to the common query language.
+- In the RDBMS schema change as a result of the creation, modification or deletion of tables usually do not depend on the application. In applications that work with object database, schema change class usually means that changes must be made in the other application classes that are associated with this class. This leads to the necessity of correction of the whole system;
+- Object database usually tied to a particular language with a separate API and data are available only through the API. RDBMS in this regard is a great opportunity, thanks to the common query language.
 
 Examples of such databases:
 
- * [VelocityDB](http://www.velocitydb.com/)
- * [Objectivity](http://www.objectivity.com/)
- * [ZODB](http://www.zodb.org/en/latest/)
- * [Siaqodb](http://siaqodb.com/)
- * [EyeDB](http://www.eyedb.org/)
-
+- [VelocityDB](http://www.velocitydb.com/)
+- [Objectivity](http://www.objectivity.com/)
+- [ZODB](http://www.zodb.org/en/latest/)
+- [Siaqodb](http://siaqodb.com/)
+- [EyeDB](http://www.eyedb.org/)
 
 ## Multidimensional Databases
 
@@ -182,10 +181,10 @@ Database optimization for online analytical processing. Can receive data from a 
 
 Examples of such databases:
 
- * [GlobalsDB](http://globalsdb.org/)
- * [Intersystems Cache](http://www.intersystems.com/cache/index.html)
- * [SciDB](http://scidb.org/)
- * [Rasdaman](http://www.rasdaman.org/)
+- [GlobalsDB](http://globalsdb.org/)
+- [Intersystems Cache](http://www.intersystems.com/cache/index.html)
+- [SciDB](http://scidb.org/)
+- [Rasdaman](http://www.rasdaman.org/)
 
 ## Multivalue Databases
 
@@ -193,12 +192,12 @@ Variety of multi-dimensional database. Main feature is the support of using the 
 
 Examples of such databases:
 
- * [Rocket U2](http://www.rocketsoftware.com/brand/rocket-u2)
- * [OpenInsight](http://www.revsoft.co.uk/openinsight.aspx)
- * [Reality](http://www.northgate-reality.com/)
+- [Rocket U2](http://www.rocketsoftware.com/brand/rocket-u2)
+- [OpenInsight](http://www.revsoft.co.uk/openinsight.aspx)
+- [Reality](http://www.northgate-reality.com/)
 
 # Summary
 
 NoSQL movement is gaining popularity with enormous speed. However, this does not mean that relational databases are becoming rudiment or something archaic. Most likely they will be used, and will be used still active, but more in a symbiotic relationship with them will be performing NoSQL database. We live an era of polyglot persistence, an era of using the different needs of different data warehouse. Now there is no monopoly of relational databases, as there is no alternative source of data. Increasingly, architects are selected based on the nature of the storage of the data itself and how we want them to manipulate what volumes of data expected.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

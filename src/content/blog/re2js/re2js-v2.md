@@ -3,10 +3,10 @@ title: "Re2js v2.2.0: linear-time lookbehinds, RE2Set, and a pure JS architectur
 description: "Re2js v2.2.0: linear-time lookbehinds, RE2Set, and a pure JS architecture"
 pubDate: 2026-04-14
 tags:
-- regex
-- re2js
-- redos
-- re2
+  - regex
+  - re2js
+  - redos
+  - re2
 ---
 
 Hello my dear friends. Today I will talk about regular expressions and usage of the new re2js 2.2.0 release in your JavaScript applications. What is re2js?
@@ -23,9 +23,9 @@ I've made some major architectural changes in this release to push JS performanc
 
 Instead of wrapping native binaries, re2js is a complete JavaScript port of the C++ RE2 and Go regexp engines. It implements Pike's Virtual Machine with a multi-tiered execution architecture:
 
-* **Lazy DFA (Deterministic Finite Automaton):** A high-speed, state-fusing engine used for boolean testing (like `.test()`).
-* **Pike VM NFA (Nondeterministic Finite Automaton):** A fallback engine that safely tracks parallel execution threads to guarantee `O(n)` time, safely handling traps like `(a+)+b`.
-* **OnePass:** A fast-path engine specifically for strictly anchored, 1-unambiguous regexes.
+- **Lazy DFA (Deterministic Finite Automaton):** A high-speed, state-fusing engine used for boolean testing (like `.test()`).
+- **Pike VM NFA (Nondeterministic Finite Automaton):** A fallback engine that safely tracks parallel execution threads to guarantee `O(n)` time, safely handling traps like `(a+)+b`.
+- **OnePass:** A fast-path engine specifically for strictly anchored, 1-unambiguous regexes.
 
 To get C++-like memory efficiency in V8, I heavily rely on flat Int32Array structures and strict object-pooling. This bypasses the V8 garbage collector and JS Call Stack limits entirely, allowing re2js to parse massive multi-megabyte strings without throwing `Maximum call stack size exceeded` errors.
 
@@ -38,18 +38,18 @@ To solve this, 2.2.0 introduces the RE2Set API. Instead of running numerous regu
 Here is a basic example of evaluating multiple expressions at once:
 
 ```js
-import { RE2Set } from 're2js';
+import { RE2Set } from "re2js";
 
 const set = new RE2Set();
-set.add('error');
-set.add('warning');
-set.add('critical');
+set.add("error");
+set.add("warning");
+set.add("critical");
 
 // The set must be compiled before use
 set.compile();
 
 // Finds all matches simultaneously in a single linear pass
-console.log(set.match('The system encountered a critical error.'));
+console.log(set.match("The system encountered a critical error."));
 // Outputs: [0, 2]
 ```
 
@@ -58,59 +58,62 @@ console.log(set.match('The system encountered a critical error.'));
 This feature is incredibly powerful for applications like routing engines. Below is an example demonstrating how to build a blazingly fast JavaScript HTTP router using RE2Set to find matched routes in `O(n)` time and extract groups only for the winning routes:
 
 ```js
-import { RE2Set, RE2JS } from 're2js'
+import { RE2Set, RE2JS } from "re2js";
 
 class Router {
   constructor() {
-    this.set = new RE2Set()
-    this.routes = []
+    this.set = new RE2Set();
+    this.routes = [];
   }
 
   addRoute(pattern, handler) {
     // compile the individual regex (for extracting groups later)
-    const re = RE2JS.compile(pattern)
+    const re = RE2JS.compile(pattern);
 
     // add the raw string to the blazing-fast Set
-    const id = this.set.add(pattern)
+    const id = this.set.add(pattern);
 
     // store them together
-    this.routes[id] = { re, handler }
+    this.routes[id] = { re, handler };
   }
 
   compile() {
-    this.set.compile()
+    this.set.compile();
   }
 
   execute(path) {
     // find WHICH routes matched in O(N) time
-    const matchedIDs = this.set.match(path)
+    const matchedIDs = this.set.match(path);
 
     if (matchedIDs.length === 0) {
-      return '404 Not Found'
+      return "404 Not Found";
     }
 
     // extract groups ONLY for the routes that won
     for (const id of matchedIDs) {
-      const route = this.routes[id]
-      const matcher = route.re.matcher(path)
+      const route = this.routes[id];
+      const matcher = route.re.matcher(path);
 
       if (matcher.matches()) {
-        const params = matcher.getNamedGroups()
-        return route.handler(params)
+        const params = matcher.getNamedGroups();
+        return route.handler(params);
       }
     }
   }
 }
 
 // --- Usage ---
-const router = new Router()
+const router = new Router();
 
-router.addRoute('^/users/(?P<id>\\d+)$', (params) => `User ID: ${params.id}`)
-router.addRoute('^/posts/(?P<slug>[a-z-]+)$', (params) => `Post: ${params.slug}`)
+router.addRoute("^/users/(?P<id>\\d+)$", (params) => `User ID: ${params.id}`);
+router.addRoute(
+  "^/posts/(?P<slug>[a-z-]+)$",
+  (params) => `Post: ${params.slug}`,
+);
 
-router.compile()
+router.compile();
 
-console.log(router.execute('/users/42')) // Outputs: "User ID: 42"
+console.log(router.execute("/users/42")); // Outputs: "User ID: 42"
 ```
 
 ## Keeping Bundles Small: Base64 VLQ Delta Compression
@@ -131,17 +134,17 @@ However, re2js implements a newly developed **captureless linear-time lookbehind
 
 By evaluating Lookbehinds (`(?<=...)` and `(?<!...)`) as parallel, reversed automata threads that execute simultaneously alongside the main string progression, re2js can resolve complex zero-width assertions without ever backtracking.
 
-*(If you are interested in the computer science behind this, I highly recommend reading the EPFL article: [Regular Expressions with Lookarounds in Linear Time](https://systemf.epfl.ch/blog/re2-lookbehinds/)).*
+_(If you are interested in the computer science behind this, I highly recommend reading the EPFL article: [Regular Expressions with Lookarounds in Linear Time](https://systemf.epfl.ch/blog/re2-lookbehinds/))._
 
 ```js
-import { RE2JS } from 're2js';
+import { RE2JS } from "re2js";
 
 // Native engines freeze infinitely on this ReDoS trap.
 // Google C++ RE2 throws a syntax error because it lacks lookbehinds.
 // re2js parses it safely in milliseconds.
-const re = RE2JS.compile('(?<=(a+)+)b', RE2JS.LOOKBEHINDS);
+const re = RE2JS.compile("(?<=(a+)+)b", RE2JS.LOOKBEHINDS);
 
-console.log(re.test('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab')); // true
+console.log(re.test("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab")); // true
 ```
 
 ## Conclusion

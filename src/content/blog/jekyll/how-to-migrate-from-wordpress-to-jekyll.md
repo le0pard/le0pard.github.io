@@ -3,9 +3,10 @@ title: How to migrate from Wordpress blog to Jekyll
 description: How to migrate from Wordpress blog to Jekyll
 pubDate: 2012-06-14
 tags:
-- ruby
-- blog
+  - ruby
+  - blog
 ---
+
 Hello my dear friends. Today we will talk how to migrate from Wordpress blog to Jekyll. [Jekyll](http://jekyllrb.com/) - is a simple, blog aware, static site generator. It takes a template directory (representing the raw form of a website), runs it through Textile or Markdown and Liquid converters, and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.
 
 # Installing and using Jekyll
@@ -25,7 +26,7 @@ So just three folders and a configuration file.
 
 _\_config.yml_ stores configuration data. A majority of these options can be specified from the command line executable but it's easier to throw them in here so you don't have to remember them.
 
-_\_includes_ these are the partials that can be mixed and matched by your _layouts and _posts to facilitate reuse. The liquid tag "include file.ext" can be used to include the partial in \_includes/file.ext.
+_\_includes_ these are the partials that can be mixed and matched by your \_layouts and \_posts to facilitate reuse. The liquid tag "include file.ext" can be used to include the partial in \_includes/file.ext.
 
 _\_layouts_ these are the templates which posts are inserted into. Layouts are chosen on a post-by-post basis in the YAML front matter, which is described in the next section. The liquid tag {{ content }} is used to inject data onto the page.
 
@@ -66,4 +67,4 @@ This is not required. In my case, I didn't like the idea of having new posts in 
 
 Next you should create layout for your blog. The quickest way to start and publish your Jekyll powered blog you can use [Jekyll-Bootstrap](http://jekyllbootstrap.com/). It is 100% compatible with GitHub pages.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

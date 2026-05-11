@@ -3,8 +3,8 @@ title: Improving security of your web applications with the Content Security Pol
 description: Improving security of your web applications with the Content Security Policy
 pubDate: 2015-10-13
 tags:
-- security
-- content security policy
+  - security
+  - content security policy
 ---
 
 Hello my dear friends.
@@ -28,7 +28,6 @@ For example, if we trust `cdn.example.com` to deliver valid code, and we trust o
 ```bash
 Content-Security-Policy: script-src 'self' cdn.example.com
 ```
-
 
 This head can contain such directives:
 
@@ -95,11 +94,9 @@ This head can contain such directives:
   </tr>
 </table>
 
-
-
 ## Source List
 
-All of the directives that end with "-src" support similar values known as a source list. Multiple source list values can be space seperated with the exception of "*" and "none" which should be the only value.
+All of the directives that end with "-src" support similar values known as a source list. Multiple source list values can be space seperated with the exception of "\*" and "none" which should be the only value.
 
 <table class="describe-table">
   <tr>
@@ -153,7 +150,6 @@ All of the directives that end with "-src" support similar values known as a sou
     <td>Allows unsafe dynamic code evaluation such as JavaScript eval()</td>
   </tr>
 </table>
-
 
 # Usage example
 
@@ -217,7 +213,6 @@ After restarting of the Rails app you should see "Content Security Policy" heade
 
 <a href="/assets/images/security/csp/csp1.png"><img src="/assets/images/security/csp/csp1.png" alt="CSP error" title="CSP error"  class="aligncenter size-full" /></a>
 
-
 # Subresource Integrity
 
 Many sites uses a content delivery network (CDN) to serve static assets such as JavaScript, CSS, and images to our users. The CDN makes web browsing faster by delivering assets from data centers that are geographically close to the end user and by using hardware and software that is optimized for quickly serving static assets. The compromise of a major CDN could be devastating to the security of the hundreds of thousands of sites that depends on it. If our CDN were to be compromised, it could be used to serve malicious JavaScript to all our users, rendering our many XSS mitigations and transport security useless. Content Security Policy is invaluable for protecting against traditional XSS attacks, but it provides no defense against an attacker who can control assets served from whitelisted sources.
@@ -225,7 +220,10 @@ Many sites uses a content delivery network (CDN) to serve static assets such as 
 To prevent this type of attack, you can use [Subresource Integrity](http://www.w3.org/TR/SRI/) browser technology. The website author includes an `integrity` attribute on JavaScript and CSS tags, specifying the cryptographic digest of the resource being loaded from the third party. When the browser fetches the resource, it computes the file's digest and compares it with the value from the `integrity` attribute. If the values match, the resource is loaded. Otherwise, the browser refuses to load the resource. Example:
 
 ```html
-<script src="/assets/application-asdhhwheruhsjkadlslkdl.js" integrity="sha256-TvVUHzSfftWg1rcfL6TIJ0XKEGrgLyEq6lsd29qs="></script>
+<script
+  src="/assets/application-asdhhwheruhsjkadlslkdl.js"
+  integrity="sha256-TvVUHzSfftWg1rcfL6TIJ0XKEGrgLyEq6lsd29qs="
+></script>
 ```
 
 If you are using Rails with sprockets-rails gem (version >= 3), you can add `integrity` key to your `javascript_include_tag` helper to activate this feature:
@@ -278,4 +276,4 @@ As you can see in this table, CSP have good support for major browsers. Internet
 
 Content Security Policy can provide the additional security layer for your apps against XSS and data injection attacks (XSS is in third place in the ranking of the key risks of Web-based applications under the 2013 OWASP).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

@@ -3,8 +3,8 @@ title: Using ltree for hierarchical structures in PostgreSQL
 description: Using ltree for hierarchical structures in PostgreSQL
 pubDate: 2013-09-02
 tags:
-- postgresql
-- ltree
+  - postgresql
+  - ltree
 ---
 
 Hello my dear friends. In [the previous article](/2013/07/11/storing-trees-in-rdbms/) we learned about storing the tree structures in the RDBMS. In this article we will learn how to work with ltree module for PostgreSQL, which allow store data in a hierarchical tree-like structure.
@@ -15,10 +15,10 @@ Ltree is a PostgreSQL module. It is implements a data type ltree for representin
 
 ## Why ltree?
 
-* The ltree implements a materialized path, which very quick for INSERT/UPDATE/DELETE and pretty quick for SELECT operations
-* It will be generally faster than using a recursive CTE or recursive function that constantly needs to recalculate the branching
-* As built in query syntax and operators specifically designed for querying and navigating trees
-* Indexes!!!
+- The ltree implements a materialized path, which very quick for INSERT/UPDATE/DELETE and pretty quick for SELECT operations
+- It will be generally faster than using a recursive CTE or recursive function that constantly needs to recalculate the branching
+- As built in query syntax and operators specifically designed for querying and navigating trees
+- Indexes!!!
 
 # Initial data
 
@@ -185,9 +185,10 @@ $ SELECT user_id, path FROM comments WHERE path ~ '0001.0003.*' ORDER by path;
 ```
 
 There are several modifiers that can be put at the end of a non-star label in lquery to make it match more than just the exact match:
-* "@" - match case-insensitively, for example a@ matches A
-* "\*" - match any label with this prefix, for example foo* matches foobar
-* "%" - match initial underscore-separated words
+
+- "@" - match case-insensitively, for example a@ matches A
+- "\*" - match any label with this prefix, for example foo\* matches foobar
+- "%" - match initial underscore-separated words
 
 Also, you can write several possibly-modified labels separated with | (OR) to match any of those labels, and you can put ! (NOT) at the start to match any label that doesn't match any of the alternatives. Example:
 
@@ -268,4 +269,4 @@ If you path will not be unique, it will get several records.
 
 As can be seen, working with ltree materialized path is very simple. In this article, I have listed are not all the possible usage of ltree. It is not considered full-text search issues ltxtquery. But you can found this in [documentation](http://www.postgresql.org/docs/current/static/ltree.html).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

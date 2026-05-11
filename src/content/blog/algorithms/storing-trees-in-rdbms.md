@@ -3,10 +3,11 @@ title: Storing the tree structures in the RDBMS
 pubDate: 2013-07-11
 description: Storing the tree structures in the RDBMS
 tags:
-- algorithms
-- rdbms
-- trees
+  - algorithms
+  - rdbms
+  - trees
 ---
+
 Hello my dear friends. Today we will talk about storing the tree structures in the RDBMS (Relational database management system: MySQL, PostgreSQL, Oracle, etc).
 
 For some programmers this topic can be simple. If you know such words as "Nested Sets" and "Materialized Path", so you will not find something new for yourself in this article. The main reason for writing this post was frequent discussions about storing tree structures in RDBMS after conferences about PostgreSQL where I was a speaker. I was surprised that a lot of people know just "parent-child" pattern for storing tree structures. In this article I would like to talk about these patterns. Of course, for building complex systems you have to think about the possibility of using a relational database for this purpose and may consider other options, like Neo4j or FlockDB.
@@ -53,7 +54,7 @@ Removal of item is more interesting question. The simple removal of any element 
 
 ### Selection
 
-This is the strength of this pattern. For the selection with simple queries you can use various options using which in case of "parent-child" pattern you would have a lot of headaches. ID of all parents (full path) from the root isn't a problem at all. For example, all direct and indirect descendants you can select using this SQL: "SELECT * FROM ... WHERE ID LIKE '00010001% '". It is very convenient to use this pattern for the construction in various directories - such as a request, "the first three sections with the largest number of elements, including nested". As you can realize it is very easy without a lot of recursive calls.
+This is the strength of this pattern. For the selection with simple queries you can use various options using which in case of "parent-child" pattern you would have a lot of headaches. ID of all parents (full path) from the root isn't a problem at all. For example, all direct and indirect descendants you can select using this SQL: "SELECT \* FROM ... WHERE ID LIKE '00010001% '". It is very convenient to use this pattern for the construction in various directories - such as a request, "the first three sections with the largest number of elements, including nested". As you can realize it is very easy without a lot of recursive calls.
 
 ### The number of elements and levels of nesting
 
@@ -93,4 +94,4 @@ This pattern is suitable for frequent selection and rare additions or changes. R
 
 Of course, these are only the most common solutions, and for sure there are techniques that I don't know about. Relational databases (RDBMS) are generally not very well suited for storing tree structures, but that's another topic. We should choose carefully what pattern to use because each of them has certain disadvantages. The main thing is that there are plenty to choose from.
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

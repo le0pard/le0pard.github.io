@@ -3,8 +3,8 @@ title: Getting Started with Chef Solo. Part 4
 description: Getting Started with Chef Solo. Part 4
 pubDate: 2013-01-12
 tags:
-- chef
-- solo
+  - chef
+  - solo
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -76,7 +76,7 @@ execute "nodejs make install" do
 end
 ```
 
-Next, we should add default attributes for this recipe. You should create file "tomatoes/attributes/node\_js.rb" with content:
+Next, we should add default attributes for this recipe. You should create file "tomatoes/attributes/node_js.rb" with content:
 
 ```ruby
 default['nodejs']['version'] = '0.8.6'
@@ -85,7 +85,7 @@ default['nodejs']['dir'] = '/usr/local'
 default['nodejs']['src_url'] = "http://nodejs.org/dist"
 ```
 
-And add this in role "web" run\_list:
+And add this in role "web" run_list:
 
 ```json
 "run_list": [
@@ -124,7 +124,7 @@ Now we can use command "include_recipe" in default.rb recipe:
 include_recipe "tomatoes::node_js"
 ```
 
-And rollback last run\_list (without node\_js recipe, default recipe from tomatoes cookbook automatically will execute node\_js recipe):
+And rollback last run_list (without node_js recipe, default recipe from tomatoes cookbook automatically will execute node_js recipe):
 
 ```json
 "run_list": [
@@ -155,4 +155,4 @@ In the current article we have learn more about Chef cookbooks. In the [next art
 
 All example code you can find here: [github.com/le0pard/chef-solo-example/tree/4.0](https://github.com/le0pard/chef-solo-example/tree/4.0).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

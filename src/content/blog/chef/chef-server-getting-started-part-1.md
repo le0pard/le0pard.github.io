@@ -3,8 +3,8 @@ title: Getting Started with Chef Server. Part 1
 description: Getting Started with Chef Server. Part 1
 pubDate: 2013-02-17
 tags:
-- chef
-- server
+  - chef
+  - server
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -23,9 +23,9 @@ The Chef Server acts as a hub, ensuring that the right cookbooks are used, that 
 
 There are three types of Chef servers:
 
- * Hosted Chef is a version of a Chef Server that is hosted by Opscode. Hosted Chef is cloud-based, scalable, and available (24x7/365), with resource-based access control. Hosted Chef has all of the automation capabilities of Chef, but without requiring it to be set up and managed from behind the firewall.
- * Private Chef is a version of a Chef Server that is designed to provide all of the infrastructure automation capabilities of Chef, set up and managed from within the organization.
- * Open Source Chef is an open source version of the Chef Server that contains much of the same functionality as Hosted Chef, but requires that each instance be configured and managed locally, including performing data migrations, applying updates to the Open Source Chef server, and ensuring that the Open Source Chef server scales as the local infrastructure it is supporting grows. Open Source Chef includes support from the Chef community, but does not include support directly from Opscode.
+- Hosted Chef is a version of a Chef Server that is hosted by Opscode. Hosted Chef is cloud-based, scalable, and available (24x7/365), with resource-based access control. Hosted Chef has all of the automation capabilities of Chef, but without requiring it to be set up and managed from behind the firewall.
+- Private Chef is a version of a Chef Server that is designed to provide all of the infrastructure automation capabilities of Chef, set up and managed from within the organization.
+- Open Source Chef is an open source version of the Chef Server that contains much of the same functionality as Hosted Chef, but requires that each instance be configured and managed locally, including performing data migrations, applying updates to the Open Source Chef server, and ensuring that the Open Source Chef server scales as the local infrastructure it is supporting grows. Open Source Chef includes support from the Chef community, but does not include support directly from Opscode.
 
 In the series of articles we will work with Open Source Chef.
 
@@ -33,17 +33,17 @@ In the series of articles we will work with Open Source Chef.
 
 Chef Solo does not provide:
 
- * Node data storage or search indexes.
- * Centralized cookbook distribution.
- * Environments, for setting policy of cookbook versions.
- * A central API to interact with and use to integrate infrastructure components.
- * Bulk operations with nodes.
+- Node data storage or search indexes.
+- Centralized cookbook distribution.
+- Environments, for setting policy of cookbook versions.
+- A central API to interact with and use to integrate infrastructure components.
+- Bulk operations with nodes.
 
 As you can see, Chef Solo useful for small infrastructure (several servers), but if your you have huge amount of server - you must use Chef Server.
 
 # Environments
 
-As you remember, Chef Solo have nodes, roles and data bags. Chef Server have additional policy: environments. An environment is a way to map an organization's real-life workflow to what can be configured and managed when using Chef Server. Every Chef organization begins with a single environment called the "_default" environment, which cannot be modified (or deleted). Additional environments can be created, such as production, staging, testing, and development. Generally, an environment is also associated with one (or more) cookbook versions. An environment attribute can only be set to be a default attribute or an override attribute.
+As you remember, Chef Solo have nodes, roles and data bags. Chef Server have additional policy: environments. An environment is a way to map an organization's real-life workflow to what can be configured and managed when using Chef Server. Every Chef organization begins with a single environment called the "\_default" environment, which cannot be modified (or deleted). Additional environments can be created, such as production, staging, testing, and development. Generally, an environment is also associated with one (or more) cookbook versions. An environment attribute can only be set to be a default attribute or an override attribute.
 
 Attributes for recipes can be redefined in this way (except "override attributes"):
 
@@ -87,10 +87,10 @@ $ knife solo init .
 
 As you remember, to manage cookbooks for Chef Solo we used librarian gem. For this tutorial I selected another good gem for manage a cookbooks dependencies - [berkshelf](http://berkshelf.com/). You can use any which like, but compared to the "librarian" the "berkshelf" has several pros:
 
- * By default, berkshelf stores every version of a cookbook that you have ever installed in one folder on your local machine (the same workflow as for rubybems)
- * Flexible configuring
- * Build-in integration with [Vagrant](http://www.vagrantup.com/) and [Thor](https://github.com/wycats/thor)
- * Adding sources of cookbooks to a groups (like have bundler)
+- By default, berkshelf stores every version of a cookbook that you have ever installed in one folder on your local machine (the same workflow as for rubybems)
+- Flexible configuring
+- Build-in integration with [Vagrant](http://www.vagrantup.com/) and [Thor](https://github.com/wycats/thor)
+- Adding sources of cookbooks to a groups (like have bundler)
 
 Let's create Berksfile file and add to it ["chef-server" cookbook](https://github.com/opscode-cookbooks/chef-server) (this cookbook supported by Opscode):
 
@@ -135,9 +135,7 @@ After this we should configure for Chef Solo node for our Chef Server. I will do
       }
     }
   },
-  "run_list": [
-    "recipe[chef-server::default]"
-  ]
+  "run_list": ["recipe[chef-server::default]"]
 }
 ```
 
@@ -147,9 +145,7 @@ Next we should create node "vagrant.json" with content:
 
 ```json
 {
-  "run_list": [
-    "role[chef]"
-  ]
+  "run_list": ["role[chef]"]
 }
 ```
 
@@ -212,7 +208,7 @@ Vagrant::Config.run do |config|
 end
 ```
 
-We set two nodes by this configuration: chef (Chef Server) and chef\_client (client of Chef Server). We use "hostonly" network for this servers. In this case both of this servers will be available by IPs: 10.33.33.33 and 10.33.33.50. Also doesn't need to do forward ports, because services on this servers will be available by this IPs. More about ["Multi-VM Environments"](http://docs.vagrantup.com/v1/docs/multivm.html) and ["Chef Solo Provisioning"](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) you can find by this links.
+We set two nodes by this configuration: chef (Chef Server) and chef_client (client of Chef Server). We use "hostonly" network for this servers. In this case both of this servers will be available by IPs: 10.33.33.33 and 10.33.33.50. Also doesn't need to do forward ports, because services on this servers will be available by this IPs. More about ["Multi-VM Environments"](http://docs.vagrantup.com/v1/docs/multivm.html) and ["Chef Solo Provisioning"](http://docs.vagrantup.com/v1/docs/provisioners/chef_solo.html) you can find by this links.
 
 Let's create our nodes:
 
@@ -395,4 +391,4 @@ In the current article we have learn what is Chef Server and how to setup it. In
 
 All example code you can find here: [github.com/le0pard/chef-server-example/tree/1.0](https://github.com/le0pard/chef-server-example/tree/1.0).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.

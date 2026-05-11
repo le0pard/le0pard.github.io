@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://leopard.in.ua/sitemap-index.xml

@@ -3,8 +3,8 @@ title: Getting Started with Chef Server. Part 2
 description: Getting Started with Chef Server. Part 2
 pubDate: 2013-09-01
 tags:
-- chef
-- server
+  - chef
+  - server
 ---
 
 > **WARNING**: This article can be outdated. Better read my book about Chef: [Cooking Infrastructure by Chef](http://chef.leopard.in.ua/)
@@ -29,34 +29,33 @@ syntax_check_cache_path  'syntax_check_cache'
 cookbook_path            [ './cookbooks', './site-cookbooks' ]
 ```
 
-When a node runs the chef-client for the first time, it generally does not yet have an API client identity, and so it cannot make authenticated requests to the server. This is where the validation client—known as the chef-validator—comes in. When the chef-client runs, it checks if it has a "client\_key". If the client key does not exist, it then attempts to borrow the identity of the chef-validator to register itself with the server ("validation_key").
+When a node runs the chef-client for the first time, it generally does not yet have an API client identity, and so it cannot make authenticated requests to the server. This is where the validation client—known as the chef-validator—comes in. When the chef-client runs, it checks if it has a "client_key". If the client key does not exist, it then attempts to borrow the identity of the chef-validator to register itself with the server ("validation_key").
 
 # Attribute Precedence
 
 Attributes are always applied by the chef-client in the following order:
 
- * A default attribute located in an attribute file
- * A default attribute located in a recipe
- * A default attribute located in an environment
- * A default attribute located in role
- * A force_default attribute located in an attribute file
- * A force_default attribute located in a recipe
- * A normal attribute located in an attribute file
- * A normal attribute located in a recipe
- * An override attribute located in an attribute file
- * An override attribute located in a recipe
- * An override attribute located in a role
- * An override attribute located in an environment
- * A force_override attribute located in an attribute file
- * A force_override attribute located in a recipe
- * An automatic attribute identified by Ohai at the start of the chef-client run
+- A default attribute located in an attribute file
+- A default attribute located in a recipe
+- A default attribute located in an environment
+- A default attribute located in role
+- A force_default attribute located in an attribute file
+- A force_default attribute located in a recipe
+- A normal attribute located in an attribute file
+- A normal attribute located in a recipe
+- An override attribute located in an attribute file
+- An override attribute located in a recipe
+- An override attribute located in a role
+- An override attribute located in an environment
+- A force_override attribute located in an attribute file
+- A force_override attribute located in a recipe
+- An automatic attribute identified by Ohai at the start of the chef-client run
 
 Attribute precedence, viewed from the same perspective as the overview diagram, where the numbers in the diagram match the order of attribute precedence:
 
 <a href="/assets/images/chef-server/overview_chef_attributes_precedence.png"><img src="/assets/images/chef-server/overview_chef_attributes_precedence.png" alt="overview_chef_attributes_precedence" title="overview_chef_attributes_table"  class="aligncenter" /></a>
 
 <a href="/assets/images/chef-server/overview_chef_attributes_table.png"><img src="/assets/images/chef-server/overview_chef_attributes_table.png" alt="overview_chef_attributes_table" title="overview_chef_attributes_table"  class="aligncenter" /></a>
-
 
 # Power of enviroments
 
@@ -87,11 +86,10 @@ A per-environment run-list is a run-list that is associated with a role and a sp
 
 where:
 
- - "webserver" is the name of the role
- - "env\_run\_lists" is a hash of per-environment run-lists for production, preprod, test, and dev
- - "production" and "preprod" use the default run-list because they do not have a per-environment run-list
- - "run\_list" defines the default run-list
-
+- "webserver" is the name of the role
+- "env_run_lists" is a hash of per-environment run-lists for production, preprod, test, and dev
+- "production" and "preprod" use the default run-list because they do not have a per-environment run-list
+- "run_list" defines the default run-list
 
 # Chef server and SSL self-signed certificate
 
@@ -122,9 +120,7 @@ By default, as you remember from previous article Chef working only on https pro
       }
     }
   },
-  "run_list": [
-    "recipe[chef-server]"
-  ]
+  "run_list": ["recipe[chef-server]"]
 }
 ```
 
@@ -254,9 +250,7 @@ Ok, so let's cook our node "web.dev". We will install on it python. So let's add
 {
   "chef_type": "node",
   "json_class": "Chef::Node",
-  "run_list": [
-    "recipe[python]"
-  ]
+  "run_list": ["recipe[python]"]
 }
 ```
 
@@ -271,7 +265,7 @@ Updated nodes/web.node.json
 
 <a href="/assets/images/chef-server/chef_server_node.png"><img src="/assets/images/chef-server/chef_server_node.png" alt="chef_server_node" title="chef_server_node"  class="aligncenter" /></a>
 
-By default chef client on nodes will not execute your run\_list, but you can execute any command on nodes by command "ssh". For example, run chef client on all nodes:
+By default chef client on nodes will not execute your run_list, but you can execute any command on nodes by command "ssh". For example, run chef client on all nodes:
 
 ```bash
 $ knife ssh 'name:*' 'sudo chef-client'
@@ -312,10 +306,7 @@ But sometimes you may want update you servers automaticaly. For example, you jus
     }
   },
   "description": "The base role for systems that have chef client",
-  "run_list": [
-    "recipe[chef-client]",
-    "recipe[chef-client::config]"
-  ]
+  "run_list": ["recipe[chef-client]", "recipe[chef-client::config]"]
 }
 ```
 
@@ -327,4 +318,4 @@ In this article I am not cover many things about Chef server (advanced usage, kn
 
 All example code you can find here: [github.com/le0pard/chef-server-example/tree/2.0](https://github.com/le0pard/chef-server-example/tree/2.0).
 
-*That’s all folks!* Thank you for reading till the end.
+_That’s all folks!_ Thank you for reading till the end.
