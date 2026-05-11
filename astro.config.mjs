@@ -9,6 +9,7 @@ import { siteConfig } from "./src/settings";
 
 export default defineConfig({
   site: siteConfig.site,
+  base: '/',
   output: "static",
   compressHTML: true,
   integrations: [

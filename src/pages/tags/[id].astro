@@ -24,8 +24,8 @@ type Post = CollectionEntry<"blog">;
 ---
 
 <Base
-  title={(`Posts tagged with ${tag}`) as string}
-  description={((`Posts tagged with ${tag}`) as string) + "."}
+  title={`Posts tagged with ${tag}` as string}
+  description={(`Posts tagged with ${tag}` as string) + "."}
 >
   <article>
     <h2>Posts tagged with <span> {tag}</span>:</h2>
