@@ -17,7 +17,7 @@ const recentPosts = posts.slice(0, maxPostsToDisplay);
         <article>
           <hgroup>
             <h3>
-              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              <a href={`/${post.id}`}>{post.data.title}</a>
             </h3>
             <p>
               <FormattedDate date={post.data.pubDate} />
