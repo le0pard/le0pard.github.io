@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import icon from "astro-icon";
-import sitemap from "@astrojs/sitemap";
+import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
 import yaml from "@rollup/plugin-yaml";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
@@ -16,8 +16,9 @@ export default defineConfig({
     icon(),
     sitemap({
       xslURL: "/rss/sitemap.xsl",
-      changefreq: "weekly",
+      changefreq: ChangeFreqEnum.WEEKLY,
       priority: 0.7,
+      lastmod: new Date()
     }),
   ],
   markdown: {
