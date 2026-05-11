@@ -18,7 +18,7 @@ export default defineConfig({
       xslURL: "/rss/sitemap.xsl",
       changefreq: ChangeFreqEnum.WEEKLY,
       priority: 0.7,
-      lastmod: new Date().toISOString()
+      lastmod: new Date()
     }),
   ],
   markdown: {
