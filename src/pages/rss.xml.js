@@ -1,9 +1,9 @@
 import { siteConfig } from "~/settings";
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
+import { getPosts } from "@utils/posts";
 
 export async function GET(context) {
-  const posts = await getCollection("blog");
+  const posts = await getPosts();
   return rss({
     // Use custom XSL stylesheet for browsers
     stylesheet: "/rss/style.xsl",

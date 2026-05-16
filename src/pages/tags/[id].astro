@@ -1,18 +1,19 @@
 ---
-import { getCollection } from "astro:content";
+import { getPosts } from "@utils/posts";
 import Base from "@layouts/Base.astro";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@components/FormattedDate.astro";
 import { tagToSlug, getUniqueTags } from "@utils/tags";
+import PostLink from "@components/PostLink.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getPosts();
   const tags = getUniqueTags(posts);
+
   return tags.map((tag) => ({
     params: { id: tagToSlug(tag) },
     props: {
       tag,
-      //post sorting, date
       posts: posts
         .filter((post) => post.data.tags?.includes(tag))
         .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
@@ -36,7 +37,7 @@ type Post = CollectionEntry<"blog">;
             <span>
               <FormattedDate date={post.data.pubDate} />
             </span>
-            <a href={`/${post.id}`}>{post.data.title}</a>
+            <PostLink post={post}>{post.data.title}</PostLink>
           </li>
         ))
       }

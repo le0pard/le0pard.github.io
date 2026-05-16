@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
+import { getPosts } from "@utils/posts";
 import Base from "@layouts/Base.astro";
 import TagLink from "@components/TagLink.astro";
 import { getUniqueTags } from "@utils/tags";
 
-const posts = await getCollection("blog");
+const posts = await getPosts();
 //case-insensitive tag sorting
 const tags = getUniqueTags(posts).sort((a, b) =>
   a.localeCompare(b, undefined, { sensitivity: "base" }),

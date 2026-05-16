@@ -24,13 +24,11 @@ const { title, description, ogType = "website" } = Astro.props;
   />
   <body class="container">
     <PageHeader />
-    <main>
-      <slot />
-    </main>
+    <main><slot /></main>
     <PageFooter />
   </body>
 </html>
-{/* CSS required to keep footer at the bottom of the page */}
+
 <style>
   .container {
     height: 100vh;

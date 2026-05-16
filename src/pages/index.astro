@@ -1,25 +1,10 @@
 ---
 import Base from "@layouts/Base.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { postsGroupByYear } from "@utils/posts";
 import FormattedDate from "@components/FormattedDate.astro";
+import PostLink from "@components/PostLink.astro";
 
-type Post = CollectionEntry<"blog">;
-
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-
-const postByYear: {
-  [year: number]: Post[];
-} = {};
-
-posts.forEach((post) => {
-  const year = post.data.pubDate.getFullYear();
-  if (!postByYear[year]) {
-    postByYear[year] = [];
-  }
-  postByYear[year].push(post);
-});
+const postsByYear = await postsGroupByYear();
 ---
 
 <Base title="Blog" description="List of blog posts">
@@ -31,26 +16,24 @@ posts.forEach((post) => {
       </hgroup>
     </header>
     {
-      Object.keys(postByYear)
-        .sort((a, b) => parseInt(b) - parseInt(a))
-        .map((year) => (
-          <section id={year}>
-            <h2>{year}</h2>
-            <ul>
-              {postByYear[parseInt(year)].map((post: Post) => (
-                <li>
-                  <span>
-                    <FormattedDate date={post.data.pubDate} />
-                  </span>
-                  &#8195;
-                  <a href={`/${post.id}`} class="contrast">
-                    {post.data.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
+      postsByYear.map(({ year, posts }) => (
+        <section id={year}>
+          <h2>{year}</h2>
+          <ul>
+            {posts.map((post: Post) => (
+              <li>
+                <span>
+                  <FormattedDate date={post.data.pubDate} />
+                </span>
+                &#8195;
+                <PostLink post={post} class="contrast">
+                  {post.data.title}
+                </PostLink>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
     }
   </article>
 </Base>

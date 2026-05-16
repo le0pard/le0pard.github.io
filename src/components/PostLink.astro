@@ -1,0 +1,8 @@
+---
+const { post, ...rest } = Astro.props;
+const path = `/${post.id}`;
+---
+
+<a {...rest} href={path}>
+  <slot />
+</a>
