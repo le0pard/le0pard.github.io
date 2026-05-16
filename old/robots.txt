@@ -1,6 +1,0 @@
----
-layout: null
----
-User-agent: *
-Allow: /
-Sitemap: {{ '/sitemap.xml' | prepend: site.baseurl | prepend: site.url }}

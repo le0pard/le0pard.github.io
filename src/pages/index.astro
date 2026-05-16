@@ -1,8 +1,11 @@
 ---
 import Base from "@layouts/Base.astro";
+import { type CollectionEntry } from "astro:content";
 import { postsGroupByYear } from "@utils/posts";
 import FormattedDate from "@components/FormattedDate.astro";
 import PostLink from "@components/PostLink.astro";
+
+type Post = CollectionEntry<"blog">;
 
 const postsByYear = await postsGroupByYear();
 ---
