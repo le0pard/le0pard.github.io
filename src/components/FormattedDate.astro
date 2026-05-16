@@ -4,8 +4,13 @@ interface Props {
 }
 
 const { date } = Astro.props;
+const formatted = [
+  date.getFullYear(),
+  String(date.getMonth() + 1).padStart(2, "0"),
+  String(date.getDate()).padStart(2, "0"),
+].join("-");
 ---
 
 <time datetime={date.toISOString()}>
-  {date.toISOString().substring(0, 10)}
+  {formatted}
 </time>
