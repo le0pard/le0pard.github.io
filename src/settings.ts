@@ -19,7 +19,7 @@ export const siteConfig: Config = {
   description: "Oleksii Vasyliev blog",
   lang: "en",
   site: "https://leopard.in.ua",
-  favicon: "/favicon.ico",
+  favicon: "/favicon.svg",
   og: {
     image: "/ogImage.png",
     imageAlt: "leopard.in.ua",
