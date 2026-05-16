@@ -80,7 +80,7 @@ matched_string = 'I ate an aple'[result[:index]...result[:end_index]]
 
 ```
 
-Source Code: **[tre_regex on GitHub](https://github.com/le0pard/tre_regex)**.
+Source Code: **[tre_regex on GitHub](https://github.com/le0pard/tre_regex)** | Rubygems: **[tre_regex](https://rubygems.org/gems/tre_regex)**
 
 #### 2. TreRegex for Node.js (`@tre-regex/regex`)
 
