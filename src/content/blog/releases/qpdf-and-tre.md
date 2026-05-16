@@ -39,7 +39,7 @@ In both the Ruby and JavaScript ecosystems, standard regular expressions are str
 
 To address this, I've released **TreRegex** for both Ruby and Node.js.
 
-TreRegex provides high-performance interfaces to the TRE C library. It brings robust approximate (fuzzy) regular expression matching to your apps, allowing you to search for a pattern *within* a larger body of text while permitting a configurable number of errors (insertions, deletions, and substitutions).
+TreRegex provides high-performance interfaces to the [TRE C library](https://github.com/laurikari/tre/). It brings robust approximate (fuzzy) regular expression matching to your apps, allowing you to search for a pattern *within* a larger body of text while permitting a configurable number of errors (insertions, deletions, and substitutions).
 
 #### Key Features Across Both Libraries
 * **Approximate Matching:** Find matches even if the target string has missing, extra, or substituted characters.
