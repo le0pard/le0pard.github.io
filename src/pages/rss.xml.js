@@ -12,9 +12,9 @@ export async function GET(context) {
     description: siteConfig.description,
     site: context.site,
     xmlns: {
-      creativeCommons: 'http://backend.userland.com/creativeCommonsRssModule',
-      atom: 'http://www.w3.org/2005/Atom',
-      content: 'http://purl.org/rss/1.0/modules/content/'
+      creativeCommons: 'https://cyber.harvard.edu/rss/creativeCommonsRssModule',
+      atom: 'https://www.w3.org/2005/Atom',
+      content: 'https://web.resource.org/rss/1.0/modules/content/'
     },
     customData: [
       '<language>uk-UA</language>',
