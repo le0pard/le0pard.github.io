@@ -2,8 +2,10 @@ import { siteConfig } from "~/settings";
 import rss from "@astrojs/rss";
 import { getPosts } from "@utils/posts";
 
+const MAX_RSS_POSTS = 50;
+
 export async function GET(context) {
-  const posts = await getPosts();
+  const posts = (await getPosts()).slice(0, MAX_RSS_POSTS);
   return rss({
     // Use custom XSL stylesheet for browsers
     stylesheet: "/rss/style.xsl",
@@ -17,7 +19,7 @@ export async function GET(context) {
       content: "http://purl.org/rss/1.0/modules/content/",
     },
     customData: [
-      "<language>uk-UA</language>",
+      "<language>en-us</language>",
       // atom
       `<atom:link href="${new URL("rss.xml", import.meta.env.SITE)}" rel="self" type="application/rss+xml" />`,
       `<atom:link href="${import.meta.env.SITE}" rel="hub" xmlns="http://www.w3.org/2005/Atom" />`,
