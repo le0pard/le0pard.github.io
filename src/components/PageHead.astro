@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "~/settings";
+import HeadAnalytic from "@components/HeadAnalytic.astro";
 
 interface Props {
   title: string;
@@ -46,4 +47,6 @@ const {
   <meta property="og:image:alt" content={siteConfig.og.imageAlt} />
   <meta property="og:image:width" content={siteConfig.og.imageWidth} />
   <meta property="og:image:height" content={siteConfig.og.imageHeight} />
+
+  <HeadAnalytic />
 </head>
