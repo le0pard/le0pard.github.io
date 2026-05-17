@@ -9,7 +9,7 @@ tags:
   - free
 ---
 
-Hello my dear friends. After number of articles about Chef I decided to create book about it. And today I released my first draft variant of ["Cooking Infrastructure by Chef"](http://chef.leopard.in.ua/) book. It is free and open source book ([CC-by-NC](http://creativecommons.org/licenses/by-nc/4.0/)).
+Hello my dear friends. After number of articles about Chef I decided to create book about it. And today I released my first draft variant of ["Cooking Infrastructure by Chef"](http://chef.leopard.in.ua/) book. It is free and open source book ([CC-by-NC](https://creativecommons.org/licenses/by-nc/4.0/)).
 
 <div class="aligncenter">
   <a href="http://chef.leopard.in.ua/" target="_blank"><img src="/assets/images/chef/cover.jpg" alt="chef" title="chef" class="aligncenter size-full" /></a>

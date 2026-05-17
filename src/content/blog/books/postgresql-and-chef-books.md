@@ -20,6 +20,6 @@ The second book is ["Cooking Infrastructure by Chef"](http://chef.leopard.in.ua/
 
 All books available in PDF, HTML, ePub and Mobi formats.
 
-BTW, this books also Open Source ([CC-by-NC](http://creativecommons.org/licenses/by-nc/4.0/)). All books written in LaTeX.
+BTW, this books also Open Source ([CC-by-NC](https://creativecommons.org/licenses/by-nc/4.0/)). All books written in LaTeX.
 
 _That’s all folks!_ Thank you for reading till the end.
