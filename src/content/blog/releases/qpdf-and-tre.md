@@ -1,6 +1,6 @@
 ---
-title: "New open-source releases: QPDF WASM for client-side PDFs and TreRegex for fuzzy matching in Ruby and Node.js"
-description: "New open-source releases: QPDF WASM for client-side PDFs and TreRegex for fuzzy matching in Ruby and Node.js"
+title: "QPDF WASM for client-side PDFs and TreRegex for fuzzy matching in Ruby and Node.js"
+description: "QPDF WASM for client-side PDFs and TreRegex for fuzzy matching in Ruby and Node.js"
 pubDate: 2026-05-16
 tags:
   - regex
