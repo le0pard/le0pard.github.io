@@ -20,7 +20,7 @@ const postsByYear = await postsGroupByYear();
     </header>
     {
       postsByYear.map(({ year, posts }) => (
-        <section id={year}>
+        <section id={`year${year}`}>
           <h2>{year}</h2>
           <ul>
             {posts.map((post: Post) => (
