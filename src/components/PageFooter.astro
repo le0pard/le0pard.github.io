@@ -9,13 +9,30 @@ import NavLink from "./NavLink.astro";
       <li><NavLink path="/tags">Tags</NavLink></li>
       <li><NavLink path="/about">About</NavLink></li>
       <li>
-        <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
-          <img
-            alt="Creative Commons License"
-            src="https://licensebuttons.net/i/l/by/eeeeee/00/00/00/80x15.png"
-            width="80"
-            height="15"
-          />
+        <a
+          rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <picture>
+            <source
+              srcset="https://licensebuttons.net/i/l/by/000000/ff/ff/ff/80x15.png"
+              media="(prefers-color-scheme: dark)"
+            />
+            <source
+              srcset="https://licensebuttons.net/i/l/by/eeeeee/00/00/00/80x15.png"
+              media="(prefers-color-scheme: light)"
+            />
+            <img
+              src="https://licensebuttons.net/i/l/by/eeeeee/00/00/00/80x15.png"
+              width="80"
+              height="15"
+              loading="lazy"
+              alt="Creative Commons License"
+              style="border-width:0"
+            />
+          </picture>
         </a>
       </li>
     </ul>
