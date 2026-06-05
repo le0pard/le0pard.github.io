@@ -4,12 +4,27 @@ import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
 import yaml from "@rollup/plugin-yaml";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
-import rehypeExternalLinks from "rehype-external-links";
+import { defineHastPlugin } from "satteri";
+import { satteri } from "@astrojs/markdown-satteri";
 import { siteConfig } from "./src/settings";
+
+const mdExternalLinks = defineHastPlugin({
+  name: "external-links",
+  element: {
+    filter: ["a"],
+    visit(node, ctx) {
+      const href = node.properties.href;
+      if (typeof href === "string" && href.startsWith("http")) {
+        ctx.setProperty(node, "target", "_blank");
+        ctx.setProperty(node, "rel", "noopener noreferrer");
+      }
+    },
+  },
+});
 
 export default defineConfig({
   site: siteConfig.site,
-  base: '/',
+  base: "/",
   output: "static",
   compressHTML: true,
   integrations: [
@@ -18,26 +33,22 @@ export default defineConfig({
       xslURL: "/rss/sitemap.xsl",
       changefreq: ChangeFreqEnum.WEEKLY,
       priority: 0.7,
-      lastmod: new Date()
+      lastmod: new Date(),
     }),
   ],
   markdown: {
-    gfm: true,
-    extendDefaultPlugins: true,
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: "noopener noreferrer",
-        },
-      ],
-    ],
+    processor: satteri({
+      hastPlugins: [mdExternalLinks],
+      features: {
+        gfm: true,
+        frontmatter: true,
+      },
+    }),
   },
   build: {
-    assets: 'assets',
-    format: 'file',
-    inlineStylesheets: 'never'
+    assets: "assets",
+    format: "file",
+    inlineStylesheets: "never",
   },
   vite: {
     css: {
