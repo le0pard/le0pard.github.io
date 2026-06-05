@@ -6,7 +6,9 @@ const MAX_RSS_POSTS = 50;
 
 export async function GET(context) {
   const posts = (await getPosts()).slice(0, MAX_RSS_POSTS);
+
   return rss({
+    trailingSlash: false,
     // Use custom XSL stylesheet for browsers
     stylesheet: "/rss/style.xsl",
     // General site info
