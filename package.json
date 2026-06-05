@@ -14,10 +14,10 @@
   "dependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.3",
     "@picocss/pico": "^2.1.1",
-    "@rollup/plugin-yaml": "^4.1.2",
-    "astro": "^6.3.3",
+    "@rollup/plugin-yaml": "^5.0.0",
+    "astro": "^6.4.4",
     "astro-icon": "^1.1.5",
     "browserslist": "^4.28.2",
     "lightningcss": "^1.32.0",
