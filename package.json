@@ -18,7 +18,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@picocss/pico": "^2.1.1",
     "@rollup/plugin-yaml": "^5.0.0",
-    "astro": "^6.4.4",
+    "astro": "^6.4.6",
     "astro-icon": "^1.1.5",
     "browserslist": "^4.28.2",
     "lightningcss": "^1.32.0",
