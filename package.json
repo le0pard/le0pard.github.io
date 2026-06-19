@@ -13,20 +13,20 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/markdown-satteri": "^0.2.2",
+    "@astrojs/markdown-satteri": "^0.3.0",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "@picocss/pico": "^2.1.1",
     "@rollup/plugin-yaml": "^5.0.0",
-    "astro": "^6.4.6",
+    "astro": "^6.4.8",
     "astro-icon": "^1.1.5",
     "browserslist": "^4.28.2",
     "lightningcss": "^1.32.0",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.2",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "prettier": "^3.8.3",
+    "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1"
   },
   "devEngines": {
