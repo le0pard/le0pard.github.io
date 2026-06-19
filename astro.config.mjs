@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import icon from "astro-icon";
 import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
 import yaml from "@rollup/plugin-yaml";
 import browserslist from "browserslist";
@@ -28,7 +27,6 @@ export default defineConfig({
   output: "static",
   compressHTML: true,
   integrations: [
-    icon(),
     sitemap({
       xslURL: "/rss/sitemap.xsl",
       changefreq: ChangeFreqEnum.WEEKLY,
