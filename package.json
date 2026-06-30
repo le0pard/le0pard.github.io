@@ -13,19 +13,19 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/markdown-satteri": "^0.3.0",
+    "@astrojs/markdown-satteri": "^0.3.2",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "@picocss/pico": "^2.1.1",
     "@rollup/plugin-yaml": "^5.0.0",
-    "astro": "^6.4.8",
-    "browserslist": "^4.28.2",
+    "astro": "^7.0.3",
+    "browserslist": "^4.28.4",
     "lightningcss": "^1.32.0",
     "sharp": "^0.35.2",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.4",
     "prettier-plugin-astro": "^0.14.1"
   },
   "devEngines": {
@@ -35,5 +35,5 @@
       "onFail": "warn"
     }
   },
-  "packageManager": "yarn@4.14.1"
+  "packageManager": "yarn@4.17.0"
 }
