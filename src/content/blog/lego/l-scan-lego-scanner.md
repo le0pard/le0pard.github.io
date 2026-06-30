@@ -240,7 +240,7 @@ Instead of pinging the network to check if an image has changed, it queries the 
 const isOptimizedImage = OPTIMIZED_ASSETS_REGEX.test(sanitizedPath);
 if (isOptimizedImage) {
   const cachedImage = await imageCache.match(standardizedReq);
-  if (cachedImage) return cachedImage; // GPU-ready instantly, no network overhead
+  if (cachedImage) return cachedImage; // no network overhead
 }
 ```
 
