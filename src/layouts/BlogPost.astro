@@ -30,11 +30,15 @@ const { title, pubDate, tags } = Astro.props;
 
 <script>
   import mermaid from "mermaid";
+
+  const isDarkMode =
+    document.documentElement.getAttribute("data-theme") === "dark" ||
+    (!document.documentElement.hasAttribute("data-theme") &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
+
   mermaid.initialize({
     startOnLoad: true,
     securityLevel: "loose",
-    theme: window.matchMedia("(prefers-color-scheme: dark)")?.matches
-      ? "dark"
-      : "neutral",
+    theme: isDarkMode ? "dark" : "neutral",
   });
 </script>
