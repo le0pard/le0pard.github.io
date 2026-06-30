@@ -34,18 +34,19 @@ The application is engineered for absolute local permanence and relies on a mode
 - **Service Workers:** Caches all script bundles, stylesheets, custom themes, and image templates locally on the client's device upon initial page visit.
 - **Dexie.js & IndexedDB:** Initializes an embedded database runtime (`LegoScannerDB`) inside the client sandbox, storing the full known catalog matrix indexes local to the phone.
 
-```md
-+--------------------------------------------------------------+
-| Main Thread |
-| [ Svelte 5 UI ] <---> [ Dexie/IndexedDB ] <---> [ Camera ] |
-+--------------------------------------------------------------+
-| |
-Comlink Transfer Zero-Copy Bitmap
-v v
-+-----------------------+ +-----------------------+
-| Sync Worker | | Scanner Worker |
-| (Background Updates) | | (ZXing WASM & Canvas) |
-+-----------------------+ +-----------------------+
+```mermaid
+flowchart TD
+    subgraph Main["Main Thread"]
+        direction LR
+        UI["Svelte 5 UI"] <--> DB[("Dexie / IndexedDB")]
+        DB <--> Cam["Camera Track"]
+    end
+
+    Sync["Sync Worker<br>(Background Updates)"]
+    Scanner["Scanner Worker<br>(ZXing WASM & Canvas)"]
+
+    UI -->|Comlink Transfer| Sync
+    Cam -->|Zero-Copy ImageBitmap| Scanner
 ```
 
 To guarantee that the user interface never hitches or stutters while processing intense image streams, L-Scan divides computational tasks across independent execution contexts using standard browser **Web Workers**. A background synchronization daemon (`sync-worker.js`) updates database mappings silently, while a separate, specialized worker thread (`scanner-worker.js`) runs the active vision frame loops.

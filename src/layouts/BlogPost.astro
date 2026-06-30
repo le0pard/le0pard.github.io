@@ -27,3 +27,14 @@ const { title, pubDate, tags } = Astro.props;
 </article>
 
 <PostComments />
+
+<script>
+  import mermaid from "mermaid";
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "loose",
+    theme: window.matchMedia("(prefers-color-scheme: dark)")?.matches
+      ? "dark"
+      : "neutral",
+  });
+</script>

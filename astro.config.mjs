@@ -3,7 +3,7 @@ import sitemap, { ChangeFreqEnum } from "@astrojs/sitemap";
 import yaml from "@rollup/plugin-yaml";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
-import { defineHastPlugin } from "satteri";
+import { defineHastPlugin, defineMdastPlugin } from "satteri";
 import { satteri } from "@astrojs/markdown-satteri";
 import { siteConfig } from "./src/settings";
 
@@ -21,6 +21,23 @@ const mdExternalLinks = defineHastPlugin({
   },
 });
 
+const satteriMermaidUnwrapper = defineMdastPlugin({
+  name: "raw-html-mermaid-braces",
+  code(node) {
+    if (node.type === "code" && node.lang === "mermaid") {
+      // Escape HTML characters to prevent the compiler parser from choking
+      const escapedValue = node.value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+      return {
+        rawHtml: `<pre class="mermaid">${escapedValue}</pre>`,
+      };
+    }
+  }
+});
+
 export default defineConfig({
   site: siteConfig.site,
   base: "/",
@@ -36,7 +53,12 @@ export default defineConfig({
   ],
   markdown: {
     processor: satteri({
-      hastPlugins: [mdExternalLinks],
+      hastPlugins: [
+        mdExternalLinks
+      ],
+      mdastPlugins: [
+        satteriMermaidUnwrapper
+      ],
       features: {
         gfm: true,
         frontmatter: true,

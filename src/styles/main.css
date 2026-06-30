@@ -9,3 +9,9 @@ img.aligncenter {
   display: block;
   margin: 20px auto;
 }
+
+pre.mermaid {
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--pico-background-color);
+}
