@@ -277,7 +277,7 @@ if (sanitizedPath.startsWith("/api/")) {
     }
     return response;
   } catch (err) {
-    // Cell tower stalled? Instantly serve local IndexedDB fallback layer
+    // Cell tower stalled? Instantly serve local cache fallback layer
     const cachedResponse = await staticCache.match(standardizedReq);
     if (cachedResponse) return cachedResponse;
     throw err;
