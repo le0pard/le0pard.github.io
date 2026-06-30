@@ -45,7 +45,7 @@ flowchart TD
     Sync["Sync Worker<br>(Background Updates)"]
     Scanner["Scanner Worker<br>(ZXing WASM & Canvas)"]
 
-    UI -->|Comlink Transfer| Sync
+    UI -->|Comlink Communication| Sync
     Cam -->|Zero-Copy ImageBitmap| Scanner
 ```
 
