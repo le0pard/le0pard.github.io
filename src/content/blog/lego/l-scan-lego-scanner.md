@@ -1,6 +1,6 @@
 ---
 title: "L-Scan: Under the Hood of a WASM & Morphological Edge-Healed Lego Minifigures Scanner"
-description: A technical deep dive into how L-Scan utilizes Svelte 5, Web Workers, WebAssembly ZXing, and hardware-accelerated OffscreenCanvas morphological filters to scan Lego packaging completely offline
+description: How L-Scan utilizes Svelte 5, Web Workers, WebAssembly ZXing, and hardware-accelerated OffscreenCanvas morphological filters to scan Lego packaging completely offline
 pubDate: 2026-06-30
 tags:
   - lego
@@ -26,9 +26,9 @@ Naturally, I built a web application to scan and decode them instantly. But this
 
 <img src="/assets/images/lego/interface.png" alt="interface" class="aligncenter" />
 
-Imagine you are standing deep inside a windowless concrete superstore. Your cellular connection is dropping bars faster than a bad DJ. If an application requires a round-trip network request to parse a code, it is already dead on arrival.
+Imagine standing deep inside a windowless concrete superstore where cellular connections drop packets constantly. If a web application requires a round-trip network request to parse a code, it is already dead on arrival.
 
-L-Scan is structurally engineered to be a standalone fortress of offline execution. The application relies on a modern front-end stack tailored for data permanence:
+The application is engineered for absolute local permanence and relies on a modern front-end stack tailored for offline-first reliability:
 
 - **Svelte 5 & Runes:** Powers a highly responsive, declarative user interface with minimal execution overhead. The reactive layer handles multi-device orientation changes and layout state machines cleanly using `$state` and `$derived` scopes.
 - **Service Workers:** Caches all script bundles, stylesheets, custom themes, and image templates locally on the client's device upon initial page visit.
@@ -36,17 +36,16 @@ L-Scan is structurally engineered to be a standalone fortress of offline executi
 
 ```md
 +--------------------------------------------------------------+
-|                         Main Thread                          |
-|  [ Svelte 5 UI ] <---> [ Dexie/IndexedDB ] <---> [ Camera ]  |
+| Main Thread |
+| [ Svelte 5 UI ] <---> [ Dexie/IndexedDB ] <---> [ Camera ] |
 +--------------------------------------------------------------+
-          |                                      |
-   Comlink Transfer                       Zero-Copy Bitmap
-          v                                      v
-+-----------------------+              +-----------------------+
-|      Sync Worker      |              |    Scanner Worker     |
-| (Background Updates)  |              | (ZXing WASM & Canvas) |
-+-----------------------+              +-----------------------+
-
+| |
+Comlink Transfer Zero-Copy Bitmap
+v v
++-----------------------+ +-----------------------+
+| Sync Worker | | Scanner Worker |
+| (Background Updates) | | (ZXing WASM & Canvas) |
++-----------------------+ +-----------------------+
 ```
 
 To guarantee that the user interface never hitches or stutters while processing intense image streams, L-Scan divides computational tasks across independent execution contexts using standard browser **Web Workers**. A background synchronization daemon (`sync-worker.js`) updates database mappings silently, while a separate, specialized worker thread (`scanner-worker.js`) runs the active vision frame loops.
@@ -71,9 +70,9 @@ By adding `imageBitmap` directly to the `postMessage` transfer allocation list, 
 
 # WASM-Powered Computer Vision: Localizing ZXing
 
-The heavy mathematical lift of parsing standard Data Matrix configurations is performed by **ZXing** (_Zebra Crossing_), a highly optimized open-source library originally engineered in C++. Running complex matrix math directly in JavaScript would be far too slow, which is why L-Scan integrates a compiled WebAssembly binary version of the decoder via `zxing-wasm`.
+Parsing standard Data Matrix configurations is performed by **ZXing** (_Zebra Crossing_), an open-source library originally engineered in C++. Running complex matrix math directly in JavaScript would be too slow, which is why L-Scan integrates a compiled WebAssembly binary version of the decoder via `zxing-wasm`.
 
-To build an un-brickable offline loop, L-Scan packages the primary binary blob directly inside the static `/public/wasm/` project directory and overrides the runtime localization procedures dynamically during module initialization:
+However, typical npm integrations of WASM modules pull their compiled binary extensions dynamically from global CDNs at runtime. If the phone is offline in the store, the application breaks because it cannot load the engine. To make it work completely offline, L-Scan packages the primary binary blob directly inside the static `/public/wasm/` project directory and overrides the runtime localization procedures dynamically during module initialization:
 
 ```js
 import { prepareZXingModule, ZXING_WASM_VERSION } from "zxing-wasm/reader";
@@ -227,8 +226,8 @@ By isolating image assets inside `runtime-images-v1`, this storage tier **perman
 The service worker isolates minifigure graphics dynamically by tracking an asset regex against incoming requests:
 
 ```js
-const OPTIMIZED_ASSETS_REGEX = /_app\/immutable\/assets\/.+\.(webp|avif|png|jpg|jpeg)$/i;
-
+const OPTIMIZED_ASSETS_REGEX =
+  /_app\/immutable\/assets\/.+\.(webp|avif|png|jpg|jpeg)$/i;
 ```
 
 When an optimized asset request is intercepted, L-Scan switches into an aggressive **Cache-First execution loop**.
@@ -242,7 +241,6 @@ if (isOptimizedImage) {
   const cachedImage = await imageCache.match(standardizedReq);
   if (cachedImage) return cachedImage; // GPU-ready instantly, no network overhead
 }
-
 ```
 
 ## Defensive API Timeouts: Bypassing "Lie-Fi"
@@ -258,17 +256,19 @@ const fetchWithTimeout = (request, timeoutMs) => {
   return Promise.race([
     fetch(request),
     new Promise((_, reject) =>
-      setTimeout(() => reject(new Error('Network request timed out')), timeoutMs)
-    )
+      setTimeout(
+        () => reject(new Error("Network request timed out")),
+        timeoutMs,
+      ),
+    ),
   ]);
 };
-
 ```
 
 When checking public collection data inside `/api/`, the service worker uses a **Network-First with Fallback** approach capped tightly at **3.5 seconds**:
 
 ```js
-if (sanitizedPath.startsWith('/api/')) {
+if (sanitizedPath.startsWith("/api/")) {
   try {
     const response = await fetchWithTimeout(event.request, API_TIMEOUT_MS);
     if (response.status === 200) {
@@ -282,7 +282,6 @@ if (sanitizedPath.startsWith('/api/')) {
     throw err;
   }
 }
-
 ```
 
 If the cellular network takes longer than 3.5 seconds to respond, the connection is aborted, and the service worker serves your locally stored dataset instead.
@@ -299,7 +298,7 @@ const normalizeRequest = (request) => {
   let pathname = url.pathname;
 
   // Defensively trim trailing slashes
-  if (pathname.length > 1 && pathname.endsWith('/')) {
+  if (pathname.length > 1 && pathname.endsWith("/")) {
     pathname = pathname.slice(0, -1);
   }
 
@@ -308,12 +307,11 @@ const normalizeRequest = (request) => {
     return new Request(`${url.origin}${pathname}`, {
       method: request.method,
       headers: request.headers,
-      mode: request.mode
+      mode: request.mode,
     });
   }
   return request;
 };
-
 ```
 
 This normalization step ensures that no matter how the browser structures the request, it resolves to the exact same locally cached asset.
@@ -338,6 +336,6 @@ For instance, pulling the entire catalog matrix for the Space-themed _Series 26_
 
 L-Scan demonstrates that modern mobile web browsers are capable of running intensive, low-latency machine vision workflows without calling external server backends. By offloading resource management to Web Workers, using WebAssembly for heavy algorithmic work, and relying on hardware-accelerated canvas compositing flags to heal images on the fly, we achieve an app-like experience directly on the web.
 
-The full project is entirely open source under the [MIT License on GitHub](https://github.com/le0pard/lego-scanner). Feel free to explore the repository, submit a pull request, or adapt the morphological canvas filtering engine for your own computer vision projects!
+The full project is open source under the [MIT License on GitHub](https://github.com/le0pard/lego-scanner). Feel free to explore the repository, submit a pull request, or adapt the morphological canvas filtering engine for your own computer vision projects!
 
 Happy scanning, and may your next blind-box pull be exactly the minifigure you are looking for!
