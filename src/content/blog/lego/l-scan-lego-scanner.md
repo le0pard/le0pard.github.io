@@ -16,11 +16,13 @@ Today we will explore modern computer vision inside mobile browsers and check ou
 
 If you belong to the global community of AFOLs (Adult Fans of Lego), you recently faced a monumental tragedy: the _Cardboard Box Era_. Lego replaced their traditional crinkly plastic blind bags with rigid cardboard boxes to promote ecological sustainability.
 
-<img src="/assets/images/lego/scanner-code.jpg" alt="lego box" class="aligncenter" />
+<img src="/assets/images/lego/package.jpg" alt="package" class="aligncenter" />
 
 But when Lego closes a bag, they leave a backdoor open. On the bottom of these modern cardboard boxes sits a tiny, unassuming **Data Matrix code**. Encoded inside this tiny matrix is a factory-born serial string that uniquely maps to the exact minifigure hidden within.
 
 Naturally, I built a web application to scan and decode them instantly. But this isn't just another generic wrapper app. We are going to go full _Master Builder_ mode today to dissect how L-Scan achieves real-time, 60fps frame processing directly inside a mobile web browser—completely offline, without a backend server, and without turning your smartphone into a pocket-sized space heater.
+
+<img src="/assets/images/lego/scanner-code.jpg" alt="lego box" class="aligncenter" />
 
 # The Architectural Blueprint: Zero-Network Dependability
 
@@ -55,7 +57,7 @@ To guarantee that the user interface never hitches or stutters while processing 
 
 A frequent performance pitfall in browser-based image scanning involves pulling pixel matrices from a `<video>` element, transforming them into an array of raw integers, and passing them to a worker thread via a standard `postMessage()` execution. Doing this forces the underlying browser agent to create a deep duplicate of your frame data using the structured clone algorithm.
 
-Copying a dense 1080p frame buffer 30 to 60 times every single second quickly chokes the CPU, sparking garbage collection (GC) pauses that drop rendering frame rates to single digits. L-Scan skips this entire performance tax by utilizing **Transferable Objects** and **ImageBitmaps**.
+Copying a dense 1080p frame buffer 30 to 60 times every single second quickly chokes the CPU, sparking garbage collection (GC) pauses that drop rendering frame rates to single digits. L-Scan skips this entire performance tax by utilizing [Transferable Objects](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects) and [ImageBitmaps](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap).
 
 Inside our main rendering pipeline, live frames are extracted directly from the active hardware media stream track using an image capture sequence, generating a lightweight, hardware-backed graphics resource reference:
 
@@ -318,6 +320,8 @@ const normalizeRequest = (request) => {
 This normalization step ensures that no matter how the browser structures the request, it resolves to the exact same locally cached asset.
 
 # Curated by Humans, Free for Everyone
+
+<img src="/assets/images/lego/example.jpg" alt="example" class="aligncenter" />
 
 A scanner application is only as powerful as the database driving it. Because Lego frequently rolls out new production batches with changing serial formats, keeping the catalog accurate requires real-world data coordination.
 
