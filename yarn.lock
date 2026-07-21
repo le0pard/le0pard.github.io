@@ -250,14 +250,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/rss@npm:^4.0.18":
-  version: 4.0.18
-  resolution: "@astrojs/rss@npm:4.0.18"
+"@astrojs/rss@npm:^4.0.19":
+  version: 4.0.19
+  resolution: "@astrojs/rss@npm:4.0.19"
   dependencies:
     fast-xml-parser: "npm:^5.5.7"
     piccolore: "npm:^0.1.3"
     zod: "npm:^4.3.6"
-  checksum: 10/6de3dede4165763e9ed6f3d4eaaceac6038c4e1425149a0507d2126d08cf23070cdcba5083eadc1322f663aea396cb21a35734ba526896b48eec5e6daae506fc
+  checksum: 10/e4a95ba424c4f929fc2b958b6933649bd1cdaf21068bffd5a76459405537808b690736fbf7478e205d7758dc6186ee1203fe07277b0859cd7b0c1f2e808bf3f5
   languageName: node
   linkType: hard
 
@@ -2177,7 +2177,7 @@ __metadata:
   dependencies:
     "@astrojs/check": "npm:^0.9.9"
     "@astrojs/markdown-satteri": "npm:^0.3.2"
-    "@astrojs/rss": "npm:^4.0.18"
+    "@astrojs/rss": "npm:^4.0.19"
     "@astrojs/sitemap": "npm:^3.7.3"
     "@picocss/pico": "npm:^2.1.1"
     "@rollup/plugin-yaml": "npm:^5.0.0"
@@ -3482,13 +3482,13 @@ __metadata:
   linkType: hard
 
 "js-yaml@npm:^4.1.0, js-yaml@npm:^4.1.1":
-  version: 4.2.0
-  resolution: "js-yaml@npm:4.2.0"
+  version: 4.3.0
+  resolution: "js-yaml@npm:4.3.0"
   dependencies:
     argparse: "npm:^2.0.1"
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 10/51de2067a2b44b07ba5206132e56005f8b568ff279bb4d2f645068958c56fa4827d40a6841c983234671fa0a134bf094d0b0717873c2a3d319185297af145a6d
+  checksum: 10/2bcec3a8118d7f744badeb04e14366578d234a736f353d41fe35d2305e4ce2409a8e041d277f07cd6bbc8aaa12128d650a68ce43247072519bede20962d2126f
   languageName: node
   linkType: hard
 
@@ -4736,15 +4736,15 @@ __metadata:
   linkType: hard
 
 "tar@npm:^7.5.4":
-  version: 7.5.16
-  resolution: "tar@npm:7.5.16"
+  version: 7.5.20
+  resolution: "tar@npm:7.5.20"
   dependencies:
     "@isaacs/fs-minipass": "npm:^4.0.0"
     chownr: "npm:^3.0.0"
     minipass: "npm:^7.1.2"
     minizlib: "npm:^3.1.0"
     yallist: "npm:^5.0.0"
-  checksum: 10/fafa22efceb9f056bf29ddc47d9bd90bb82fe3ce57b8d1242fc45771251741964cebba69d4e14a24fd1643f3c7f68478e945a19def534703cf370c2d9dca2e09
+  checksum: 10/90a0fe423ac921197ad5eefc5e5f7ad7f42b06e80444c8c347c1e4112384cbe9cb53ade3ef71748eed3684888756869c2aeef6b6303c766101f3217e254d4be9
   languageName: node
   linkType: hard
 
