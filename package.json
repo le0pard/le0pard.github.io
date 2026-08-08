@@ -25,7 +25,7 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "mermaid": "^11.16.0",
+    "mermaid": "^11.16.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1"
   },
