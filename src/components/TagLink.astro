@@ -4,4 +4,6 @@ import { tagToSlug } from "@utils/tags";
 const { tag } = Astro.props;
 ---
 
-<a href={`/tags/${tagToSlug(tag)}`} class="secondary">#{tag}</a>
+<a href={`/tags/${tagToSlug(tag)}`} class="secondary">
+  #{tag}
+</a>

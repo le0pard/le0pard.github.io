@@ -31,16 +31,16 @@ In this article, we will build a **100% in-process, pure Ruby & ONNX solution** 
 
 When picking a local face detection model for a server environment, you generally have a few popular alternatives, but each comes with specific tradeoffs:
 
-* **Haar Cascades (Legacy OpenCV):** The old-school approach. Extremely fast, but highly inaccurate by modern standards. It struggles with side profiles, poor lighting, and non-frontal faces.
-* **MTCNN (Multi-task Cascaded Convolutional Networks):** A historically popular deep learning approach. However, it relies on a cascade of three separate neural networks (P-Net, R-Net, O-Net). Running three sequential inferences on a CPU is computationally expensive and slow compared to a single-pass model.
-* **BlazeFace (Google MediaPipe):** Blazingly fast, but heavily optimized for mobile phone camera framing (selfies and close-ups). It often struggles to detect smaller faces further away in the background.
-* **RetinaFace:** A heavy-duty, highly accurate model (often paired with ResNet or MobileNet backbones). While excellent for complex facial recognition, 3D alignment, or dense landmark mapping, it is significantly larger and far more computationally expensive on a CPU. It is total overkill for calculating a simple 2D cropping box.
-* **YuNet:** The perfect "Goldilocks" model. Because it is anchor-free and uses a Feature Pyramid Network across multiple strides, it detects both tiny background faces and massive close-ups in a single pass. At under 2MB, it requires minimal RAM and runs effortlessly on standard Ruby web server CPUs without dedicated GPUs.
+- **Haar Cascades (Legacy OpenCV):** The old-school approach. Extremely fast, but highly inaccurate by modern standards. It struggles with side profiles, poor lighting, and non-frontal faces.
+- **MTCNN (Multi-task Cascaded Convolutional Networks):** A historically popular deep learning approach. However, it relies on a cascade of three separate neural networks (P-Net, R-Net, O-Net). Running three sequential inferences on a CPU is computationally expensive and slow compared to a single-pass model.
+- **BlazeFace (Google MediaPipe):** Blazingly fast, but heavily optimized for mobile phone camera framing (selfies and close-ups). It often struggles to detect smaller faces further away in the background.
+- **RetinaFace:** A heavy-duty, highly accurate model (often paired with ResNet or MobileNet backbones). While excellent for complex facial recognition, 3D alignment, or dense landmark mapping, it is significantly larger and far more computationally expensive on a CPU. It is total overkill for calculating a simple 2D cropping box.
+- **YuNet:** The perfect "Goldilocks" model. Because it is anchor-free and uses a Feature Pyramid Network across multiple strides, it detects both tiny background faces and massive close-ups in a single pass. At under 2MB, it requires minimal RAM and runs effortlessly on standard Ruby web server CPUs without dedicated GPUs.
 
 **Model Comparison Summary:**
 
 | Model             | Size / Weight   | CPU Speed              | Accuracy & Robustness | Primary Drawback for Avatar Cropping                           |
-|-------------------|-----------------|------------------------|-----------------------|----------------------------------------------------------------|
+| ----------------- | --------------- | ---------------------- | --------------------- | -------------------------------------------------------------- |
 | **Haar Cascades** | Very Small      | Fast                   | Low                   | Terrible with non-frontal faces and poor lighting.             |
 | **MTCNN**         | Medium          | Slow                   | Good                  | High CPU overhead due to 3-pass cascade architecture.          |
 | **BlazeFace**     | Tiny            | Very Fast              | Moderate              | Struggles to detect smaller, distant faces in full-body shots. |
@@ -51,7 +51,7 @@ When picking a local face detection model for a server environment, you generall
 
 You might notice we are loading a specific `2026may` version of the model. Machine learning models decay over time as frameworks update their operation sets, but more importantly, this specific ONNX compilation was re-exported with **dynamic input shapes (symbolic dimensions)**.
 
-Older vision models often hardcode static resolution requirements (expecting exactly 320x320 or 640x640 pixels), which forces you to stretch, distort, or aggressively crop your image *before* the model even sees it. By replacing static constraints with symbolic height and width dimensions, this 2026 update allows us to run inference on virtually any image resolution natively—as long as we pad it to a multiple of 32 to satisfy the stride math. Furthermore, it ensures absolute compatibility with the latest OpenCV 5.x ONNX Runtime engines, preventing those dreaded deprecated node errors when you update your gems.
+Older vision models often hardcode static resolution requirements (expecting exactly 320x320 or 640x640 pixels), which forces you to stretch, distort, or aggressively crop your image _before_ the model even sees it. By replacing static constraints with symbolic height and width dimensions, this 2026 update allows us to run inference on virtually any image resolution natively—as long as we pad it to a multiple of 32 to satisfy the stride math. Furthermore, it ensures absolute compatibility with the latest OpenCV 5.x ONNX Runtime engines, preventing those dreaded deprecated node errors when you update your gems.
 
 ## Why ONNX Runtime & Numo::NArray?
 
@@ -300,7 +300,7 @@ pad_w = (YUNNET_IMAGE_PADDING - (img.width % YUNNET_IMAGE_PADDING)) % YUNNET_IMA
 
 ```
 
-This modulo arithmetic calculates exactly how many pixels we need to add to the right and bottom edges to reach the nearest multiple of 32. For a 300px width, `300 % 32 = 12`. We need `32 - 12 = 20` pixels of padding. The outer `% 32` handles the edge case where the image is *already* perfectly divisible by 32 (resulting in 0 instead of 32). We then use `vips_image.embed` to attach this black border dynamically.
+This modulo arithmetic calculates exactly how many pixels we need to add to the right and bottom edges to reach the nearest multiple of 32. For a 300px width, `300 % 32 = 12`. We need `32 - 12 = 20` pixels of padding. The outer `% 32` handles the edge case where the image is _already_ perfectly divisible by 32 (resulting in 0 instead of 32). We then use `vips_image.embed` to attach this black border dynamically.
 
 #### `nchw_tensor(img)`: Memory Layout Conversion
 
@@ -313,16 +313,16 @@ narray_img.cast_to(Numo::SFloat).transpose(2, 0, 1).reshape(BATCH_SIZE, RGB_CHAN
 
 Using `Numo::NArray` allows us to restructure this memory instantly in C, bypassing slow Ruby `each` loops.
 
-* `cast_to(Numo::SFloat)` converts the 0-255 RGB integers into decimal floats.
-* `transpose(2, 0, 1)` mathematically shifts the 3rd dimension (Channels) to the front, changing HWC to CHW.
-* `reshape(...)` adds the Batch Size dimension to the very front, completing the NCHW tensor requirement.
+- `cast_to(Numo::SFloat)` converts the 0-255 RGB integers into decimal floats.
+- `transpose(2, 0, 1)` mathematically shifts the 3rd dimension (Channels) to the front, changing HWC to CHW.
+- `reshape(...)` adds the Batch Size dimension to the very front, completing the NCHW tensor requirement.
 
 #### `find_best_face(padded_image, result)`: Decoding the Feature Pyramid & `FACE_THRESHOLD`
 
 YuNet evaluates the image at three different scales (Strides: 8, 16, 32) simultaneously.
 
-* **Stride 8** slices the image into a dense grid of tiny cells to find small background faces.
-* **Stride 32** slices the image into a coarse grid of large cells to find massive close-up faces.
+- **Stride 8** slices the image into a dense grid of tiny cells to find small background faces.
+- **Stride 32** slices the image into a coarse grid of large cells to find massive close-up faces.
 
 The model returns raw arrays containing `cls` (classification probability: is this a face?) and `obj` (objectness probability: is the bounding box accurate?).
 

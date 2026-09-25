@@ -16,14 +16,12 @@ const { title, pubDate, tags } = Astro.props;
   </header>
   <slot />
 
-  {
-    tags && (
-      <footer>
-        <h4>Tags</h4>
-        <TagList tags={tags} />
-      </footer>
-    )
-  }
+  {tags && (
+    <footer>
+      <h4>Tags</h4>
+      <TagList tags={tags} />
+    </footer>
+  )}
 </article>
 
 <PostComments />

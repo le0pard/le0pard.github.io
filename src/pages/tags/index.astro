@@ -15,13 +15,11 @@ const tags = getUniqueTags(posts).sort((a, b) =>
   <article>
     <h1>Post tags</h1>
     <ul class="colums">
-      {
-        tags.map((tag) => (
-          <li>
-            <TagLink tag={tag} />
-          </li>
-        ))
-      }
+      {tags.map((tag) => (
+        <li>
+          <TagLink tag={tag} />
+        </li>
+      ))}
     </ul>
   </article>
 </Base>
