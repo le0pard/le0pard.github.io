@@ -495,6 +495,8 @@ To see the pipeline in action, consider a standard user upload where the subject
 | ![Original Image (Full Body)](/assets/images/rails/yu_net_before1.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after1.jpg) |
 | ![Original Image (Full Body)](/assets/images/rails/yu_net_before2.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after2.jpg) |
 | ![Original Image (Full Body)](/assets/images/rails/yu_net_before3.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after3.jpg) |
+| ![Original Image (Full Body)](/assets/images/rails/yu_net_before4.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after4.jpg) |
+| ![Original Image (Full Body)](/assets/images/rails/yu_net_before5.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after5.jpg) |
 
 ### Bonus: A Modern `<picture>` Tag Helper
 
