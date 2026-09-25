@@ -22,7 +22,7 @@
     "browserslist": "^4.29.1",
     "lightningcss": "^1.33.0",
     "sharp": "^0.35.4",
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "mermaid": "^12.0.0",
@@ -36,5 +36,5 @@
       "onFail": "warn"
     }
   },
-  "packageManager": "yarn@4.18.0"
+  "packageManager": "yarn@4.18.1"
 }
