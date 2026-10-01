@@ -142,7 +142,7 @@ import { RE2JS } from "re2js";
 // Native engines freeze infinitely on this ReDoS trap.
 // Google C++ RE2 throws a syntax error because it lacks lookbehinds.
 // re2js parses it safely in milliseconds.
-const re = RE2JS.compile("(?<=(a+)+)b", RE2JS.LOOKBEHINDS);
+const re = RE2JS.compile("(?<=(?:a+)+)b", RE2JS.LOOKBEHINDS);
 
 console.log(re.test("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab")); // true
 ```
