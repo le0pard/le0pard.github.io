@@ -9,7 +9,7 @@ const { tags } = Astro.props;
 ---
 
 <nav aria-label="Tags">
-  <ul>
+  <ul class="tags-list">
     {tags.map((tag) => (
       <li>
         <TagLink tag={tag} />

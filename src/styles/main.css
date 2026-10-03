@@ -1,17 +1,42 @@
 @import "@picocss/pico";
 
-div.aligncenter {
+.main-article div.aligncenter {
   margin: 0 auto;
   text-align: center;
 }
 
-img.aligncenter {
+.main-article img.aligncenter {
   display: block;
   margin: 20px auto;
 }
 
-pre.mermaid {
+.main-article pre.mermaid {
   margin: 20px auto;
   text-align: center;
   background-color: var(--pico-background-color);
+}
+
+/* Container that wraps the rendered Markdown table */
+.main-article table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.main-article table th,
+.main-article table td {
+  min-width: 120px;
+  /* Gives each column room to breathe */
+  white-space: normal;
+}
+
+.main-article table td:last-child {
+  min-width: 200px;
+}
+
+.main-article ul.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
 }

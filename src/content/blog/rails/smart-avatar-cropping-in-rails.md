@@ -47,7 +47,7 @@ When picking a local face detection model for a server environment, you generall
 | **RetinaFace**    | Large           | Slow                   | Excellent             | Computationally expensive; overkill for a simple bounding box. |
 | **YuNet**         | **Tiny (~2MB)** | **Fast (Single-pass)** | **High**              | **None (The optimal balance of speed, size, and precision).**  |
 
-### Why `face_detection_yunet_2026may.onnx`?
+### Why face_detection_yunet_2026may.onnx?
 
 You might notice we are loading a specific `2026may` version of the model. Machine learning models decay over time as frameworks update their operation sets, but more importantly, this specific ONNX compilation was re-exported with **dynamic input shapes (symbolic dimensions)**.
 
@@ -96,7 +96,7 @@ gem 'numo-narray'
 
 ```
 
-Run `bundle install`. Download the official [face_detection_yunet_2026may.onnx](/assets/images/rails/face_detection_yunet_2026may.onnx) model file and place it inside your application tree (e.g., `lib/assets/models/vision/face_detection_yunet_2026may.onnx`).
+Run `bundle install`. Download the official [face_detection_yunet_2026may.onnx](/assets/images/rails/face_detection_yunet_2026may.onnx) model file and place it inside your application tree (e.g., lib/assets/models/vision/face_detection_yunet_2026may.onnx).
 
 ## The Core Vision Pipeline (`AssetsFaceCropBox`)
 
