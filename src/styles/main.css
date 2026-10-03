@@ -21,14 +21,20 @@
   display: block;
   width: 100%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent images from blowing out table cell widths */
+.main-article table img {
+  max-width: 100%;
+  height: auto;
+  min-width: 120px;
 }
 
 .main-article table th,
 .main-article table td {
   min-width: 120px;
-  /* Gives each column room to breathe */
   white-space: normal;
+  vertical-align: top;
 }
 
 .main-article table td:last-child {

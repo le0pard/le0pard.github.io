@@ -490,13 +490,60 @@ Now, calling `user.avatar_headshot(size: 300)` in your views or serializers auto
 
 To see the pipeline in action, consider a standard user upload where the subject's face occupies only a small portion of the overall frame. A traditional `resize_to_fill` operation would naively crop the geometric center of the image, frequently resulting in an awkward crop of the subject's chest or torso. By passing the image through our YuNet integration, the model identifies the precise bounding box of the face and ActiveStorage crops exactly to those coordinate boundaries (all human portraits in these examples were LLM-generated).
 
-| Original Image (Full Body)                                             | Smart Cropped Variant (Avatar Size)                                            |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| ![Original Image (Full Body)](/assets/images/rails/yu_net_before1.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after1.jpg) |
-| ![Original Image (Full Body)](/assets/images/rails/yu_net_before2.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after2.jpg) |
-| ![Original Image (Full Body)](/assets/images/rails/yu_net_before3.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after3.jpg) |
-| ![Original Image (Full Body)](/assets/images/rails/yu_net_before4.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after4.jpg) |
-| ![Original Image (Full Body)](/assets/images/rails/yu_net_before5.jpg) | ![Smart Cropped Variant (Avatar Size)](/assets/images/rails/yu_net_after5.jpg) |
+<div class="grid" style="margin-bottom: 2rem;">
+  <div>
+    <strong>Original Image (Full Body)</strong><br>
+    <img src="/assets/images/rails/yu_net_before1.jpg" alt="Original Image (Full Body)">
+  </div>
+  <div>
+    <strong>Smart Cropped Variant (Avatar Size)</strong><br>
+    <img src="/assets/images/rails/yu_net_after1.jpg" alt="Smart Cropped Variant (Avatar Size)">
+  </div>
+</div>
+
+<hr />
+
+<div class="grid" style="margin-bottom: 2rem;">
+  <div>
+    <img src="/assets/images/rails/yu_net_before2.jpg" alt="Original Image (Full Body)">
+  </div>
+  <div>
+    <img src="/assets/images/rails/yu_net_after2.jpg" alt="Smart Cropped Variant (Avatar Size)">
+  </div>
+</div>
+
+<hr />
+
+<div class="grid" style="margin-bottom: 2rem;">
+  <div>
+    <img src="/assets/images/rails/yu_net_before3.jpg" alt="Original Image (Full Body)">
+  </div>
+  <div>
+    <img src="/assets/images/rails/yu_net_after3.jpg" alt="Smart Cropped Variant (Avatar Size)">
+  </div>
+</div>
+
+<hr />
+
+<div class="grid" style="margin-bottom: 2rem;">
+  <div>
+    <img src="/assets/images/rails/yu_net_before4.jpg" alt="Original Image (Full Body)">
+  </div>
+  <div>
+    <img src="/assets/images/rails/yu_net_after4.jpg" alt="Smart Cropped Variant (Avatar Size)">
+  </div>
+</div>
+
+<hr />
+
+<div class="grid">
+  <div>
+    <img src="/assets/images/rails/yu_net_before5.jpg" alt="Original Image (Full Body)">
+  </div>
+  <div>
+    <img src="/assets/images/rails/yu_net_after5.jpg" alt="Smart Cropped Variant (Avatar Size)">
+  </div>
+</div>
 
 ### Bonus: A Modern `<picture>` Tag Helper
 
