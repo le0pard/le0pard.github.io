@@ -503,45 +503,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chevrotain/cst-dts-gen@npm:11.1.2":
-  version: 11.1.2
-  resolution: "@chevrotain/cst-dts-gen@npm:11.1.2"
+"@chevrotain/cst-dts-gen@npm:13.2.0":
+  version: 13.2.0
+  resolution: "@chevrotain/cst-dts-gen@npm:13.2.0"
   dependencies:
-    "@chevrotain/gast": "npm:11.1.2"
-    "@chevrotain/types": "npm:11.1.2"
-    lodash-es: "npm:4.17.23"
-  checksum: 10/04a84285fd4d26129f44f8e20b99fd6ab51cb1ee4c7eb104baa4842413b9e18bb171046a665583b94ff29e2c06a2e1a65205940a75cda848aa2a5e847b99bbb6
+    "@chevrotain/gast": "npm:13.2.0"
+    "@chevrotain/types": "npm:13.2.0"
+  checksum: 10/363344e9fe4964ac3a20da092190e9933f7fe1541a629b14da6c9dbb8ee2f8d1fc52ad27c4b122c1501d337d5570abd45bd3bd35e6f7fa4a8b06cb8773267146
   languageName: node
   linkType: hard
 
-"@chevrotain/gast@npm:11.1.2":
-  version: 11.1.2
-  resolution: "@chevrotain/gast@npm:11.1.2"
+"@chevrotain/gast@npm:13.2.0":
+  version: 13.2.0
+  resolution: "@chevrotain/gast@npm:13.2.0"
   dependencies:
-    "@chevrotain/types": "npm:11.1.2"
-    lodash-es: "npm:4.17.23"
-  checksum: 10/8733cbadfcb982f5afe0e1825446ad8e82de3044c9ae22a69771ec20292facce25e459da23c16061c894ef49ca381ad53c0796171fa0dfce08fc25305850eeca
+    "@chevrotain/types": "npm:13.2.0"
+  checksum: 10/4db282031568a9c6fa3df1d3b83edae7837f51de274b94ea754555abd5c510940eeb865b5fe03d1b03c8e4be4baecb2eba943e65f0b49c777b945a4d8deb9bf3
   languageName: node
   linkType: hard
 
-"@chevrotain/regexp-to-ast@npm:11.1.2":
-  version: 11.1.2
-  resolution: "@chevrotain/regexp-to-ast@npm:11.1.2"
-  checksum: 10/9ba399b2c23ae1a86f1bcb1db4b07fd3191d0f491b63303b824850ef5f8b455f8f8a39c4d7876271c23ca06f7e03b7273b07014cd9c8ccb2328bff5dc6c9df00
+"@chevrotain/regexp-to-ast@npm:13.2.0":
+  version: 13.2.0
+  resolution: "@chevrotain/regexp-to-ast@npm:13.2.0"
+  checksum: 10/22f222fe4ba2ea518987b13cad758a737edf3800615d877d836910fad6c309446efe8b86e6084fc31a5d1d3a9ce5d441f4237e3b19874ebb148d419ace55b75b
   languageName: node
   linkType: hard
 
-"@chevrotain/types@npm:11.1.2, @chevrotain/types@npm:~11.1.2":
-  version: 11.1.2
-  resolution: "@chevrotain/types@npm:11.1.2"
-  checksum: 10/ad39d7651a20b05ead9b4374f98afc39915118dda29678c2b623571aa3da3018a0f3fb799d1809605cafcae59cba637d640855ea0f97b9b01d0900d77d6781fe
+"@chevrotain/types@npm:13.2.0, @chevrotain/types@npm:~13.2.0":
+  version: 13.2.0
+  resolution: "@chevrotain/types@npm:13.2.0"
+  checksum: 10/e392db58554e30913dce08e4b62b8b75f064a7388239e9d0263dbb084218f0c06102142fe283c3ad6654ad653923b7c4459c725bc8b6ac0a4dff038996b73a90
   languageName: node
   linkType: hard
 
-"@chevrotain/utils@npm:11.1.2":
-  version: 11.1.2
-  resolution: "@chevrotain/utils@npm:11.1.2"
-  checksum: 10/a5ba5886547665726e6680bdc6e1c939e643c8c606d8eb3806ed178ebb2c3a8a1a581db558412374f230babfe9d8c1c37f2c3edf260c63729dbe6ff9ca4f0223
+"@chevrotain/utils@npm:13.2.0":
+  version: 13.2.0
+  resolution: "@chevrotain/utils@npm:13.2.0"
+  checksum: 10/6f0a59e349a03f8da88354bb0c6769c7356a5e5a4b2295c57db6a43eb0fe041a0819f7e2daaf0a57ebbf596b1d61a3c5dc15cdece798583893fcae6d033555dc
   languageName: node
   linkType: hard
 
@@ -1380,12 +1378,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mermaid-js/parser@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@mermaid-js/parser@npm:2.0.0"
+"@mermaid-js/parser@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@mermaid-js/parser@npm:2.0.1"
   dependencies:
-    "@chevrotain/types": "npm:~11.1.2"
-  checksum: 10/26447a8150902dde6858863b626d6ad355560eb864cc34eeeb45f0c9e604a49f821b55f790cdb8f86372231aa1450eed73b80dca885d217d671fe1e9c61957cf
+    "@chevrotain/types": "npm:~13.2.0"
+  checksum: 10/cf68b26e6b0547c402e2e2f1ce0809c95deb775bab9cab1e94f5a2990998353b1ca95d4ca229fd9cedecb0cdc7ea64a816b7b7e8a78427615f0ad4bffde9fac2
   languageName: node
   linkType: hard
 
@@ -2377,7 +2375,7 @@ __metadata:
     astro: "npm:^7.3.5"
     browserslist: "npm:^4.29.3"
     lightningcss: "npm:^1.33.0"
-    mermaid: "npm:^12.0.0"
+    mermaid: "npm:^12.1.0"
     prettier: "npm:^3.9.9"
     prettier-plugin-astro: "npm:^1.1.0"
     sharp: "npm:^0.35.5"
@@ -2435,17 +2433,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chevrotain@npm:~11.1.2":
-  version: 11.1.2
-  resolution: "chevrotain@npm:11.1.2"
+"chevrotain@npm:~13.2.0":
+  version: 13.2.0
+  resolution: "chevrotain@npm:13.2.0"
   dependencies:
-    "@chevrotain/cst-dts-gen": "npm:11.1.2"
-    "@chevrotain/gast": "npm:11.1.2"
-    "@chevrotain/regexp-to-ast": "npm:11.1.2"
-    "@chevrotain/types": "npm:11.1.2"
-    "@chevrotain/utils": "npm:11.1.2"
-    lodash-es: "npm:4.17.23"
-  checksum: 10/67caa47a3d38eeb4a584960bbf5fdc83894a1419a6428f7dcf8a07f5937c1bda4c8e1acf628fe80d3be8f4c1a84426942c0a8f6bcf44a5958f1df0cf4225bc4d
+    "@chevrotain/cst-dts-gen": "npm:13.2.0"
+    "@chevrotain/gast": "npm:13.2.0"
+    "@chevrotain/regexp-to-ast": "npm:13.2.0"
+    "@chevrotain/types": "npm:13.2.0"
+    "@chevrotain/utils": "npm:13.2.0"
+  checksum: 10/3427db5a7aea882dd91d0ff454cd0b22ccac9dd3d5c2eb22eb62545a688a3ea8c75d94df1d604f6829da00d919b95200cccbb19a2d5884d0260220af5e669b9a
   languageName: node
   linkType: hard
 
@@ -3938,13 +3935,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash-es@npm:4.17.23":
-  version: 4.17.23
-  resolution: "lodash-es@npm:4.17.23"
-  checksum: 10/1feae200df22eb0bd93ca86d485e77784b8a9fb1d13e91b66e9baa7a7e5e04be088c12a7e20c2250fc0bd3db1bc0ef0affc7d9e3810b6af2455a3c6bf6dde59e
-  languageName: node
-  linkType: hard
-
 "lodash-es@npm:^4.17.21":
   version: 4.18.1
   resolution: "lodash-es@npm:4.18.1"
@@ -4019,16 +4009,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mermaid@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "mermaid@npm:12.0.0"
+"mermaid@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "mermaid@npm:12.1.0"
   dependencies:
     "@braintree/sanitize-url": "npm:^7.1.2"
     "@iconify/utils": "npm:^3.0.2"
-    "@mermaid-js/parser": "npm:^2.0.0"
+    "@mermaid-js/parser": "npm:^2.0.1"
     "@types/d3": "npm:^7.4.3"
     "@upsetjs/venn.js": "npm:^2.0.0"
-    chevrotain: "npm:~11.1.2"
+    chevrotain: "npm:~13.2.0"
     cytoscape: "npm:^3.34.0"
     cytoscape-cose-bilkent: "npm:^4.1.0"
     cytoscape-fcose: "npm:^2.2.0"
@@ -4046,7 +4036,7 @@ __metadata:
     stylis: "npm:^4.3.6"
     ts-dedent: "npm:^2.2.0"
     uuid: "npm:^11.1.0 || ^12 || ^13 || ^14.0.0"
-  checksum: 10/3f533abd52537ea3f69e7f9196a4237aa3057348af3d90608e1ba103129b2819abcefd2278744f3ff7177038787262f9455479c26d61eb6a05b584ae168a4c69
+  checksum: 10/eb2a61522ebe9ec0dd5e6cb197fc35411aeffdfc6c68a98bc6fc21f1198350411d534b9372f7b994811ae6d6515b9d0bf1132450d9fdc54c20fd0a875da29697
   languageName: node
   linkType: hard
 
