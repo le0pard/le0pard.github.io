@@ -58,7 +58,7 @@ Older vision models often hardcode static resolution requirements (expecting exa
 Instead of invoking Python sub-processes, we execute the model directly inside Ruby memory:
 
 - **`onnxruntime`:** Ruby bindings for Microsoft's high-performance C++ ONNX Runtime engine. It executes pre-trained `.onnx` models with hardware acceleration.
-- **`numo-narray`:** Ruby's answer to NumPy. It delivers fast multidimensional array manipulation in C, enabling us to transform raw image byte buffers into 4D tensor structures (`1 × 3 × H × W`) required by deep learning backbones.
+- **`numo-narray-alt`:** Ruby's answer to NumPy. It delivers fast multidimensional array manipulation in C, enabling us to transform raw image byte buffers into 4D tensor structures (`1 × 3 × H × W`) required by deep learning backbones.
 
 ## System Architecture
 
@@ -92,7 +92,7 @@ Add the native ML and array manipulation gems to your `Gemfile`:
 gem 'onnxruntime'
 
 # Fast multidimensional matrix/array calculations
-gem 'numo-narray'
+gem 'numo-narray-alt'
 
 ```
 
