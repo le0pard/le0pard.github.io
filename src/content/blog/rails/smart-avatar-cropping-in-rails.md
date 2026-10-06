@@ -174,7 +174,7 @@ class AssetsFaceCropBox
       # Return nil if no face is found above our confidence threshold
       return nil if best_score < FACE_THRESHOLD
 
-      crop_rect = calculate_face_box(vips_image:, best_bbox:, best_stride:, best_grid_x:, best_grid_y:)
+      crop_rect = calculate_face_box(vips_image: ml_image, best_bbox:, best_stride:, best_grid_x:, best_grid_y:)
 
       # Map coordinates back to the original high-resolution image space
       if scale < 1.0
