@@ -45,7 +45,6 @@ export default defineConfig({
   compressHTML: true,
   integrations: [
     sitemap({
-      xslURL: "/rss/sitemap.xsl",
       changefreq: ChangeFreqEnum.WEEKLY,
       priority: 0.7,
       lastmod: new Date(),
@@ -87,8 +86,7 @@ export default defineConfig({
     },
     plugins: [yaml()],
     build: {
-      cssCodeSplit: false,
-      minify: "esbuild",
+      cssCodeSplit: false
     },
   },
 });

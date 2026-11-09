@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 80,
+  "sortPackageJson": false,
+  "astro": true,
+  "ignorePatterns": [
+    "public/",
+    "src/content/blog/web/what-is-amp-and-how-you-can-use-it.md"
+  ]
+}

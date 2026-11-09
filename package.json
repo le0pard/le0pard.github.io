@@ -9,7 +9,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier './src/**/*' --write"
+    "format": "oxfmt src",
+    "format:check": "oxfmt --check src",
+    "lint": "oxlint"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -25,9 +27,10 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "@astrojs/compiler-rs": "^0.5.2",
     "mermaid": "^12.1.0",
-    "prettier": "^3.9.9",
-    "prettier-plugin-astro": "^1.1.1"
+    "oxfmt": "^0.77.0",
+    "oxlint": "^1.92.0"
   },
   "devEngines": {
     "runtime": {

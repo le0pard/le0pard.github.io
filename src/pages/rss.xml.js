@@ -9,8 +9,6 @@ export async function GET(context) {
 
   return rss({
     trailingSlash: false,
-    // Use custom XSL stylesheet for browsers
-    stylesheet: "/rss/style.xsl",
     // General site info
     title: siteConfig.title,
     description: siteConfig.description,
