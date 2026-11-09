@@ -14,21 +14,21 @@
     "lint": "oxlint"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/markdown-satteri": "^0.4.3",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/markdown-satteri": "^0.4.7",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@picocss/pico": "^2.1.1",
-    "@rollup/plugin-yaml": "^5.0.0",
-    "astro": "^7.3.8",
-    "browserslist": "^4.29.3",
+    "@rollup/plugin-yaml": "^5.0.1",
+    "astro": "^7.4.7",
+    "browserslist": "^4.29.5",
     "lightningcss": "^1.33.0",
     "sharp": "^0.35.5",
-    "typescript": "^6.0.3"
+    "typescript": "^6"
   },
   "devDependencies": {
     "@astrojs/compiler-rs": "^0.5.2",
-    "mermaid": "^12.1.0",
+    "mermaid": "^12.3.0",
     "oxfmt": "^0.77.0",
     "oxlint": "^1.92.0"
   },
