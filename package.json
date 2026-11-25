@@ -15,22 +15,22 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",
-    "@astrojs/markdown-satteri": "^0.4.7",
+    "@astrojs/markdown-satteri": "^0.4.10",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/sitemap": "^3.7.6",
     "@picocss/pico": "^2.1.1",
     "@rollup/plugin-yaml": "^5.0.1",
-    "astro": "^7.4.7",
-    "browserslist": "^4.29.5",
+    "astro": "^7.4.13",
+    "browserslist": "^4.29.6",
     "lightningcss": "^1.33.0",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@astrojs/compiler-rs": "^0.5.2",
+    "@astrojs/compiler-rs": "^0.5.3",
     "mermaid": "^12.3.0",
-    "oxfmt": "^0.77.0",
-    "oxlint": "^1.92.0"
+    "oxfmt": "^0.80.0",
+    "oxlint": "^1.95.0"
   },
   "devEngines": {
     "runtime": {
